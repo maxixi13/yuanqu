@@ -12,12 +12,12 @@
         android:color="@color/black" />
 
     <padding
-        android:bottom="50dp"
-        android:left="50dp"
-        android:right="50dp"
-        android:top="50dp" />
-    //角的话，里边有参数可以单独设置
+        android:bottom="0dp"
+        android:left="0dp"
+        android:right="0dp"
+        android:top="0dp" />
 
-    <corners android:radius="10dp" />
+    //角的话，里边有参数可以单独设置
+    <corners android:radius="20dp" />
 
 </shape>
