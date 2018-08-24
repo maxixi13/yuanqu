@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">yuanqu</string>
+    <string name="title_home">首页</string>
+    <string name="title_park">园内服务</string>
+    <string name="title_cloud">云服务</string>
+    <string name="title_personal">个人中心</string>
+    <string name="title_zhengcexinxi">政策信息</string>
+    <string name="title_huodongxinxi">活动信息</string>
+    <string name="title_gengduofuwu">------更多服务持续上线------</string>
+    <string name="title_activity_parkservice">parkservice</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>
