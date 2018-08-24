@@ -19,30 +19,29 @@
             android:background="@color/top_blue" />
 
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="186dp"
-            android:layout_marginLeft="17dp"
-            android:layout_marginRight="17dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
-            android:background="@drawable/personal_yuanjiaojuxing"
             android:orientation="vertical">
 
-            <Button
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/texttouxiang"
+                app:civ_border_color="@color/top_blue"
+                app:civ_border_width="2dp" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="186dp">
 
-        </LinearLayout>
+            </LinearLayout>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="62dp"
-            android:layout_height="62dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="49dp"
-            android:src="@drawable/texttouxiang"
-            app:civ_border_color="@color/top_blue"
-            app:civ_border_width="2dp" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
