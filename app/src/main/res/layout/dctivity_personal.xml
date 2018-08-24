@@ -102,12 +102,135 @@
             android:layout_marginLeft="17dp"
             android:layout_marginRight="17dp"
             android:background="@drawable/personal_yuanjiaojuxing"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:src="@drawable/personal_icon_1"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:src="@drawable/personal_icon_2"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:src="@drawable/personal_icon_3"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:src="@drawable/personal_icon_4"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:src="@drawable/personal_icon_5"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="7"
+                android:orientation="vertical"
+                android:showDividers="middle"
+                android:divider="@drawable/linearlayout_divider">
 
             <TextView
                 android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:text="@string/personal_title_1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/personal_title_2"
+                android:gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/personal_title_3"
+                android:gravity="center_vertical"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/personal_title_4"
+                android:gravity="center_vertical"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/personal_title_5"
+                android:gravity="center_vertical"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="这只是一个测试" />
+                android:layout_weight="1"
+                android:showDividers="middle"
+                android:divider="@drawable/linearlayout_divider"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:src="@drawable/personal_jiantou"
+                    android:scaleY="0.5"
+                    android:scaleX="0.5"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:src="@drawable/personal_jiantou"
+                    android:scaleY="0.5"
+                    android:scaleX="0.5"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:src="@drawable/personal_jiantou"
+                    android:scaleY="0.6"
+                    android:scaleX="0.6"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:src="@drawable/personal_jiantou"
+                    android:scaleY="0.5"
+                    android:scaleX="0.5"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:src="@drawable/personal_jiantou"
+                    android:scaleY="0.5"
+                    android:scaleX="0.5"/>
+            </LinearLayout>
+
         </LinearLayout>
 
     </RelativeLayout>

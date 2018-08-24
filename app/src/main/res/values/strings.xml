@@ -10,4 +10,9 @@
     <string name="title_activity_parkservice">parkservice</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="personal_title_1">云服务申请服务</string>
+    <string name="personal_title_2">园区服务申请记录</string>
+    <string name="personal_title_3">管理我的车辆</string>
+    <string name="personal_title_4">管理我的外卖地址</string>
+    <string name="personal_title_5">成为企业用户</string>
 </resources>
