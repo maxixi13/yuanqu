@@ -63,20 +63,23 @@
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
-                        android:layout_marginLeft="17dp"/>
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="17dp"/>
+                        android:layout_marginLeft="17dp"
+                        android:background="@drawable/personal_button_tingche"/>
 
                     <ImageButton
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:layout_marginLeft="17dp"
-                        android:layout_marginRight="17dp"/>
+                        android:background="@drawable/personal_button_waimai"/>
+
+                    <ImageButton
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="17dp"
+                        android:layout_marginRight="17dp"
+                        android:background="@drawable/personal_button_changdi"/>
 
                 </LinearLayout>
 
@@ -95,6 +98,7 @@
         </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/personal_title_list"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_below="@id/personal_touxiangnicheng"
@@ -233,16 +237,51 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_below="@id/personal_title_list"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginRight="17dp"
+            android:background="@drawable/personal_yuanjiaojuxing"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/personal_button_done"
+                android:scaleX="0.5"
+                android:scaleY="0.5"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/personal_tuichu"
+                android:textSize="20sp"
+                android:textColor="@color/out_red"/>
+
+        </LinearLayout>
+
     </RelativeLayout>
 
 
     <Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/personal_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:background="?attr/colorPrimary"
         android:title="@string/title_personal"
-        android:titleTextColor="@android:color/white">
+        android:titleTextColor="@android:color/white"
+        android:theme="@style/OverflowButtonStyle">
+
+    <!--    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/personal_chilun"
+            android:background="#0000"/>-->
+
     </Toolbar>
 
 </android.support.constraint.ConstraintLayout>

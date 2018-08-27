@@ -15,4 +15,5 @@
     <string name="personal_title_3">管理我的车辆</string>
     <string name="personal_title_4">管理我的外卖地址</string>
     <string name="personal_title_5">成为企业用户</string>
+    <string name="personal_tuichu">退出登陆</string>
 </resources>

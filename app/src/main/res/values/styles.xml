@@ -12,4 +12,12 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <!--toolbar三点主题设置-->
+    <style name="ToolbarColorBackArrow" parent="AppTheme">
+        <item name="android:actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
+    </style>
+    <style name="OverflowButtonStyle" parent="ToolbarColorBackArrow">
+        <item name="android:src">@drawable/personal_chilun</item>
+    </style>
+
 </resources>
