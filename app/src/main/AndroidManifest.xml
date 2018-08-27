@@ -22,7 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Parkservice_yuannei"></activity>
+        <activity android:name=".perkservice.Parkservice_yuannei" />
+        <activity android:name=".cloud.cloud_zuling"></activity>
     </application>
 
 </manifest>

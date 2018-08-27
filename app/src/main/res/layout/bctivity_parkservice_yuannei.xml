@@ -3,16 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Parkservice_yuannei">
+    tools:context=".perkservice.Parkservice_yuannei">
 
     <Toolbar
         android:id="@+id/toolbar_park_yuanei"
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:background="?attr/colorPrimary"
-        android:title="@string/title_park"
+        android:title=""
         android:titleTextColor="@android:color/white"
         android:navigationIcon="@drawable/back_button">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/title_park"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>
     </Toolbar>
 
 

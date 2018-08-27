@@ -33,6 +33,7 @@
                 android:background="@drawable/cloud_jinrong" />
 
             <ImageButton
+                android:id="@+id/cloud_zuling"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:layout_marginLeft="17dp"

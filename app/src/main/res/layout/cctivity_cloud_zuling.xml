@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".cloud.cloud_zuling">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:layout_marginBottom="?android:actionBarSize">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="135dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginTop="11dp"
+            android:background="@drawable/cloud_zuling_kuaizu"/>
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="135dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginTop="11dp"
+            android:background="@drawable/cloud_zuling_mizu"/>
+    </LinearLayout>
+
+    <Toolbar
+        android:id="@+id/cloud_zuling_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:title=""
+        android:titleTextColor="@android:color/white"
+        android:navigationIcon="@drawable/back_button">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/zuling"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>
+
+    </Toolbar>
+
+</android.support.constraint.ConstraintLayout>
