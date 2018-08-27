@@ -17,4 +17,7 @@
     <string name="personal_title_5">成为企业用户</string>
     <string name="personal_tuichu">退出登陆</string>
     <string name="zuling">办公租赁</string>
+    <string name="chuangye">创业服务</string>
+    <string name="zhidao">创业指导</string>
+    <string name="luyan">路演大会</string>
 </resources>

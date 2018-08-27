@@ -23,7 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".perkservice.Parkservice_yuannei" />
-        <activity android:name=".cloud.cloud_zuling"></activity>
+        <activity android:name=".cloud.cloud_zuling" />
+        <activity android:name=".cloud.cloud_chuangye"></activity>
     </application>
 
 </manifest>

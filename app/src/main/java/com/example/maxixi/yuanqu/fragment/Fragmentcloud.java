@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.maxixi.yuanqu.R;
+import com.example.maxixi.yuanqu.cloud.cloud_chuangye;
 import com.example.maxixi.yuanqu.cloud.cloud_zuling;
 
 public class Fragmentcloud extends Fragment{
@@ -23,6 +24,16 @@ public class Fragmentcloud extends Fragment{
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), cloud_zuling.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton chuangyefuwu=(ImageButton) view.findViewById(R.id.cloud_chuangye);
+        chuangyefuwu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), cloud_chuangye.class);
                 startActivity(intent);
             }
         });
