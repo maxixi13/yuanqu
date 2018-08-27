@@ -31,7 +31,7 @@
                 android:layout_height="60dp"
                 android:layout_marginBottom="6dp"
                 android:layout_marginEnd="6dp"
-                android:background="#00000000"
+                android:background="@color/touming"
                 android:scaleType="fitXY"
                 android:src="@drawable/banner_buttontingche" />
 
@@ -41,7 +41,7 @@
                 android:layout_height="60dp"
                 android:layout_marginBottom="6dp"
                 android:layout_marginStart="6dp"
-                android:background="#00000000"
+                android:background="@color/touming"
                 android:scaleType="fitXY"
                 android:src="@drawable/banner_buttondiancan" />
 

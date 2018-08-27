@@ -273,14 +273,16 @@
         android:layout_height="?android:actionBarSize"
         android:background="?attr/colorPrimary"
         android:title="@string/title_personal"
-        android:titleTextColor="@android:color/white"
-        android:theme="@style/OverflowButtonStyle">
+        android:titleTextColor="@android:color/white">
 
-    <!--    <ImageButton
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/personal_chilun"
-            android:background="#0000"/>-->
+            android:background="@color/touming"
+            android:layout_marginStart="275dp"
+            android:scaleX="0.5"
+            android:scaleY="0.5"/>
 
     </Toolbar>
 
