@@ -13,28 +13,28 @@ import java.util.List;
 
 public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adapter.ViewHolder>{
 
-    private List<cloud_zhidao_lei> myzhidaolist;
+        private List<cloud_zhidao_lei> myzhidaolist;
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
-        TextView zhidaoText;
-        TextView zhidaoTime;
+        static class ViewHolder extends RecyclerView.ViewHolder{
+            TextView zhidaoText;
+            TextView zhidaoTime;
 
-        public ViewHolder(View view){
-            super(view);
-            zhidaoText=(TextView)view.findViewById(R.id.chuangye_zhidao_name);
-            zhidaoTime=(TextView)view.findViewById(R.id.chuangye_zhidao_time) ;
+            public ViewHolder(View view){
+                super(view);
+                zhidaoText=(TextView)view.findViewById(R.id.chuangye_zhidao_name);
+                zhidaoTime=(TextView)view.findViewById(R.id.chuangye_zhidao_time) ;
+            }
+
         }
-
-    }
 
     public cloud_zhidao_adapter(List<cloud_zhidao_lei>zhidaolist){ myzhidaolist=zhidaolist; }
 
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.cctivity_cloud_chuangye_zhidao_item,parent,false);
-        ViewHolder holder=new ViewHolder(view);
-        return holder;
-    }
+        @Override
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+            View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.cctivity_cloud_chuangye_zhidao_item,parent,false);
+            ViewHolder holder=new ViewHolder(view);
+            return holder;
+        }
 
     @Override
     public void onBindViewHolder(ViewHolder holder,int position){
