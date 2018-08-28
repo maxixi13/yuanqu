@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".cloud.cloud_chuangye">
+    tools:context=".cloud.cloud_chuangye"
+    android:id="@+id/container_cloud">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,9 +38,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@android:color/white"
-            app:menu="@menu/chuangye_navigation" />
+            app:menu="@menu/chuangye_navigation"
+            app:elevation="0dp"/>
 
-        <fragment
+        <FrameLayout
             android:id="@+id/chuangye_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

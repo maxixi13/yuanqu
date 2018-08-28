@@ -77,7 +77,7 @@ public class cloud_chuangye extends AppCompatActivity {
         if (fragment != fg){
             FragmentTransaction transaction=fragmentManager.beginTransaction();
             if (!fg.isAdded()){
-                transaction.hide(fragment).add(R.id.container,fg);
+                transaction.hide(fragment).add(R.id.chuangye_fragment,fg);
             }else {
                 transaction.hide(fragment).show(fg);
             }

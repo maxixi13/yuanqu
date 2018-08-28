@@ -11,8 +11,8 @@ import com.example.maxixi.yuanqu.R;
 public class Fragmentchuangyeluyan extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState){
-        View view=inflater.inflate(R.layout.cctivity_cloud_chuangye_luyan,container,false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container_cloud, Bundle saveInstanceState){
+        View view=inflater.inflate(R.layout.cctivity_cloud_chuangye_luyan,container_cloud,false);
         return view;
     }
 }
