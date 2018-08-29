@@ -11,7 +11,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginTop="?android:attr/actionBarSize"
-        android:layout_marginBottom="?android:actionBarSize">
+        android:layout_marginBottom="?android:actionBarSize"
+        android:background="@color/f5f5f5">
 
         <ImageButton
             android:layout_width="match_parent"

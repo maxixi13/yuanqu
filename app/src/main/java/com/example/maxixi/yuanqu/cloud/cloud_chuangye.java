@@ -1,5 +1,6 @@
 package com.example.maxixi.yuanqu.cloud;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -9,9 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
+import com.example.maxixi.yuanqu.perkservice.Parkservice_yuannei;
 
 public class cloud_chuangye extends AppCompatActivity {
 
@@ -69,6 +73,18 @@ public class cloud_chuangye extends AppCompatActivity {
         transaction = fragmentManager.beginTransaction().add(R.id.chuangye_fragment, fragmentchuangyechuangye);
         fragment = fragmentchuangyechuangye;
         transaction.commit();
+
+        Button button=(Button)findViewById(R.id.cc90);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(cloud_chuangye.this,cloud_chuangye_chuangye.class);
+                startActivity(intent);
+            }
+        });
+
+
+
     }
 
     //切换fragment

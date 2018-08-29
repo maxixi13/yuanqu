@@ -20,4 +20,17 @@
     <string name="chuangye">创业服务</string>
     <string name="zhidao">创业指导</string>
     <string name="luyan">路演大会</string>
+    <string name="shengqing">申请</string>
+    <string name="chuangyeshenqing">创业服务申请</string>
+    <string name="tijiao">提交</string>
+    <string name="suozaiyuanqu">所在园区</string>
+    <string name="bangongquyu">办公区域</string>
+    <string name="gongsimingcheng">公司名称</string>
+    <string name="lianxiren">联系人</string>
+    <string name="lianxidianhua">练习电话</string>
+    <string name="chuangye_shengqing_title1">请选择所在园区</string>
+    <string name="chuangye_shengqing_title2">请输入办公区域</string>
+    <string name="chuangye_shengqing_title3">请输入公司名称</string>
+    <string name="chuangye_shengqing_title4">请输入联系人</string>
+    <string name="chuangye_shengqing_title5">请输入联系电话</string>
 </resources>

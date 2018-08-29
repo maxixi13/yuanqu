@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/grey">
+        android:background="@color/f5f5f5">
 
         <Toolbar
             android:id="@+id/cloud_chuangye_toolbar"
@@ -30,6 +30,11 @@
                 android:text="@string/chuangye"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"/>
+            <Button
+                android:id="@+id/cc90"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="jhghjgjhgh"/>
 
         </Toolbar>
 

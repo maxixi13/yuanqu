@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".cloud.cloud_chuangye_shenqing">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/f5f5f5"
+        android:orientation="vertical">
+
+        <Toolbar
+            android:id="@+id/cloud_chuangye_shenqing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:title=""
+            android:titleTextColor="@android:color/white"
+            android:navigationIcon="@drawable/back_button">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/chuangyeshenqing"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"/>
+
+        </Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="263dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="17dp"
+            android:background="@drawable/personal_yuanjiaojuxingsuo">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/suozaiyuanqu"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:textColor="#666666"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/bangongquyu"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:textColor="#666666"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/gongsimingcheng"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:textColor="#666666"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/lianxiren"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:textColor="#666666"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/lianxidianhua"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:textColor="#666666"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:gravity="center_vertical"
+                    android:text="@string/chuangye_shengqing_title1"
+                    android:textSize="15sp"
+                    android:textColor="@color/d6d6d6"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/chuangye_chuangye_xia"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dddddd"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/chuangye_shengqing_title2"
+                    android:textSize="15sp"
+                    android:textColorHint="@color/d6d6d6"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dddddd"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/chuangye_shengqing_title3"
+                    android:textSize="15sp"
+                    android:textColorHint="@color/d6d6d6"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dddddd"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/chuangye_shengqing_title4"
+                    android:textSize="15sp"
+                    android:textColorHint="@color/d6d6d6"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dddddd"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/chuangye_shengqing_title5"
+                    android:textSize="15sp"
+                    android:textColorHint="@color/d6d6d6"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dddddd"/>
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/personal_yuanjiaojuxingsuoblue"
+            android:layout_marginTop="45dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="17dp"
+            android:text="@string/tijiao"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center">
+        </Button>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

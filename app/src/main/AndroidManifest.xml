@@ -24,7 +24,9 @@
         </activity>
         <activity android:name=".perkservice.Parkservice_yuannei" />
         <activity android:name=".cloud.cloud_zuling" />
-        <activity android:name=".cloud.cloud_chuangye"></activity>
+        <activity android:name=".cloud.cloud_chuangye" />
+        <activity android:name=".cloud.cloud_chuangye_shenqing" />
+        <activity android:name=".cloud.cloud_chuangye_chuangye"></activity>
     </application>
 
 </manifest>
