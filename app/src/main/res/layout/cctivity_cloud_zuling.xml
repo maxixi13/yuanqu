@@ -15,6 +15,7 @@
         android:background="@color/f5f5f5">
 
         <ImageButton
+            android:id="@+id/cloud_zuling_zupc"
             android:layout_width="match_parent"
             android:layout_height="135dp"
             android:layout_marginLeft="17dp"
@@ -23,6 +24,7 @@
             android:background="@drawable/cloud_zuling_kuaizu"/>
 
         <ImageButton
+            android:id="@+id/cloud_zuling_mizujie"
             android:layout_width="match_parent"
             android:layout_height="135dp"
             android:layout_marginLeft="17dp"

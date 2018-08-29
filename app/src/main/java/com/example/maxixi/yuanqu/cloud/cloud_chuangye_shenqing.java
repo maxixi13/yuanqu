@@ -51,23 +51,22 @@ public class cloud_chuangye_shenqing extends AppCompatActivity {
                 TextView textView=(TextView)findViewById(R.id.chuangye_chuangye_shengqing_yuanqu_text);
                 textView.setText(strArray[which]);
                 textView.setTextColor(Color.parseColor("#666666"));
-                dialog.dismiss();
             }
         });
         //创建对话框
         AlertDialog dialog = builder.create();
 
 
-        //设置确定按钮
-        dialog.setButton(DialogInterface.BUTTON_NEUTRAL,"取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+        //设置取消按钮
+//        dialog.setButton(DialogInterface.BUTTON_NEUTRAL,"取消", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss();
+//            }
+//        });
 
         //设置确定按钮
-        dialog.setButton(DialogInterface.BUTTON_POSITIVE,"确定", new DialogInterface.OnClickListener() {
+        dialog.setButton(DialogInterface.BUTTON_POSITIVE,"确认", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

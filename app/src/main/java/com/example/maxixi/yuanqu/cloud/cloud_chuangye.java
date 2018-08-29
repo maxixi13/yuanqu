@@ -74,15 +74,6 @@ public class cloud_chuangye extends AppCompatActivity {
         fragment = fragmentchuangyechuangye;
         transaction.commit();
 
-        Button button=(Button)findViewById(R.id.cc90);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(cloud_chuangye.this,cloud_chuangye_chuangye.class);
-                startActivity(intent);
-            }
-        });
-
 
 
     }
