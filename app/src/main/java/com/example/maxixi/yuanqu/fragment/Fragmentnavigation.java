@@ -1,29 +1,36 @@
 package com.example.maxixi.yuanqu.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.example.maxixi.yuanqu.GlideImageLoader;
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.RecyclerViewGroup.hdxx;
 import com.example.maxixi.yuanqu.RecyclerViewGroup.hdxxAdapter;
+import com.example.maxixi.yuanqu.cloud.cloud_zuling;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static android.support.constraint.Constraints.TAG;
+
 
 public class Fragmentnavigation extends Fragment {
 
     private List<hdxx> hdxxList=new ArrayList<>();
+    private List<hdxx> zcxxList=new ArrayList<>();
 
 
     @Override
@@ -63,6 +70,49 @@ public class Fragmentnavigation extends Fragment {
         recyclerView.setAdapter(adapterhdxx);
         recyclerView.setNestedScrollingEnabled(false);
 
+        initzcxx();
+        RecyclerView recyclerViewzcxx=(RecyclerView)view.findViewById(R.id.relativelayout_zcxx);
+        LinearLayoutManager layoutManagerzcxx=new LinearLayoutManager(getActivity());
+        recyclerViewzcxx.setLayoutManager(layoutManagerzcxx);
+        hdxxAdapter adapterzcxx=new hdxxAdapter(zcxxList);
+        recyclerViewzcxx.setAdapter(adapterzcxx);
+        recyclerViewzcxx.setNestedScrollingEnabled(false);
+
+        //hdxx监听
+        adapterhdxx.setOnItemClickListener(new hdxxAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(getContext(), "click " + hdxxList.get(position), Toast.LENGTH_SHORT).show();
+            }
+        });
+        adapterhdxx.setOnItemLongClickListener(new hdxxAdapter.OnItemLongClickListener() {
+            @Override
+            public void onItemLongClick(View view, int position) {
+                Toast.makeText(getActivity(),"long click "+hdxxList.get(position),Toast.LENGTH_SHORT).show();
+            }
+        });
+        recyclerView.setAdapter(adapterhdxx);
+
+
+
+        //zcxx监听
+        adapterzcxx.setOnItemClickListener(new hdxxAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(getContext(), "click " + zcxxList.get(position), Toast.LENGTH_SHORT).show();
+            }
+        });
+        adapterzcxx.setOnItemLongClickListener(new hdxxAdapter.OnItemLongClickListener() {
+            @Override
+            public void onItemLongClick(View view, int position) {
+                Toast.makeText(getActivity(),"long click "+position,Toast.LENGTH_SHORT).show();
+            }
+        });
+        recyclerViewzcxx.setAdapter(adapterzcxx);
+
+
+
+
 
         return view;
     }
@@ -75,5 +125,15 @@ public class Fragmentnavigation extends Fragment {
         hdxxList.add(apple);
         hdxx apple1=new hdxx("这是标题","这是新闻的文字嗷嗷嗷嗷",R.drawable.textimage);
         hdxxList.add(apple1);
+    }
+
+    //政策政策recyclerview
+    private void initzcxx(){
+        hdxx madada=new hdxx("这是政策","啊啊啊啊",R.drawable.textimage1);
+        zcxxList.add(madada);
+        hdxx apple=new hdxx("这是政策","嗷嗷嗷啊",R.drawable.textimage1);
+        zcxxList.add(apple);
+        hdxx apple1=new hdxx("这是真的政策","啊呜呜呜呜",R.drawable.textimage1);
+        zcxxList.add(apple1);
     }
 }

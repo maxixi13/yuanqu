@@ -9,23 +9,34 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.maxixi.yuanqu.R;
+import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_adapter;
+import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_lei;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Fragmentchuangyeluyan extends Fragment {
 
-    private List<cloud_zhidao_lei> luyanList=new ArrayList<>();
+//    private List<cloud_zhidao_lei> luyanList=new ArrayList<>();
+    private List<cloud_zhidao_lei> zhidaoList=new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container_cloud, Bundle saveInstanceState){
         View view=inflater.inflate(R.layout.cctivity_cloud_chuangye_luyan,container_cloud,false);
 
-        initluyanList();
+//        initluyanList();
+//        RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.cloud_luyan_recycler);
+//        LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
+//        recyclerView.setLayoutManager(layoutManager);
+//        cloud_zhidao_adapter cloud_zhidao_adapter=new cloud_zhidao_adapter(luyanList);
+//        recyclerView.setAdapter(cloud_zhidao_adapter);
+//        recyclerView.setNestedScrollingEnabled(false);
+
+        initzhidaoList();
         RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.cloud_luyan_recycler);
         LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        cloud_zhidao_adapter cloud_zhidao_adapter=new cloud_zhidao_adapter(luyanList);
+        cloud_zhidao_adapter cloud_zhidao_adapter=new cloud_zhidao_adapter(zhidaoList);
         recyclerView.setAdapter(cloud_zhidao_adapter);
         recyclerView.setNestedScrollingEnabled(false);
 
@@ -33,12 +44,22 @@ public class Fragmentchuangyeluyan extends Fragment {
     }
 
     //活动详情recyclerview
-    private void initluyanList() {
-        cloud_zhidao_lei madada = new cloud_zhidao_lei("这是标题", "2000-00-00");
-        luyanList.add(madada);
-        cloud_zhidao_lei apple = new cloud_zhidao_lei("啊啊啊啊", "2000-00-00");
-        luyanList.add(apple);
-        cloud_zhidao_lei apple1 = new cloud_zhidao_lei("嗷哦嗷嗷啊", "2000-00-00");
-        luyanList.add(apple1);
+//    private void initluyanList() {
+//        cloud_zhidao_lei madada = new cloud_zhidao_lei("这是标题");
+//        luyanList.add(madada);
+//        cloud_zhidao_lei apple = new cloud_zhidao_lei("啊啊啊啊");
+//        luyanList.add(apple);
+//        cloud_zhidao_lei apple1 = new cloud_zhidao_lei("嗷哦嗷嗷啊");
+//        luyanList.add(apple1);
+//    }
+
+    //活动详情recyclerview
+    private void initzhidaoList() {
+        cloud_zhidao_lei madada = new cloud_zhidao_lei("2018-07","路演大会","2001-01-02","阴天","2001-01-02","阴天","2001-01-02","阴天","2001-01-02");
+        zhidaoList.add(madada);
+        cloud_zhidao_lei apple = new cloud_zhidao_lei("2018-06","阴天","2001-01-02","阴天","2001-01-02","阴天","2001-01-02","阴天","2001-01-02");
+        zhidaoList.add(apple);
+        cloud_zhidao_lei apple1 = new cloud_zhidao_lei("2018-05","阴天","2001-01-02","阴天","2001-01-02","阴天","2001-01-02","阴天","2001-01-02");
+        zhidaoList.add(apple1);
     }
 }

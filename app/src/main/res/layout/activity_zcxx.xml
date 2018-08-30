@@ -26,6 +26,16 @@
         android:scaleType="fitXY"
         android:layout_marginTop="11dp" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/relativelayout_zcxx"
+        android:layout_width="match_parent"
+        android:layout_height="275dp"
+        android:layout_marginTop="11dp" />
+
+
+
+    <!--
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -127,5 +137,6 @@
         </LinearLayout>
 
     </LinearLayout>
+    -->
 
 </LinearLayout>

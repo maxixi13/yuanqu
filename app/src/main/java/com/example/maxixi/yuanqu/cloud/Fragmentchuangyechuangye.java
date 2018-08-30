@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.maxixi.yuanqu.R;
+import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_adapter;
+import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_lei;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,11 +37,11 @@ public class Fragmentchuangyechuangye extends Fragment {
 
     //活动详情recyclerview
     private void initzhidaoList() {
-        cloud_zhidao_lei madada = new cloud_zhidao_lei("这是标题", "2000-00-00");
+        cloud_zhidao_lei madada = new cloud_zhidao_lei("2018-07","创业大会","2001-01-02","下雨","2001-01-02","下雨","2001-01-02","下雨","2001-01-02");
         zhidaoList.add(madada);
-        cloud_zhidao_lei apple = new cloud_zhidao_lei("这是标题", "2000-00-00");
+        cloud_zhidao_lei apple = new cloud_zhidao_lei("2018-06","下雨","2001-01-02","下雨","2001-01-02","下雨","2001-01-02","下雨","2001-01-02");
         zhidaoList.add(apple);
-        cloud_zhidao_lei apple1 = new cloud_zhidao_lei("这是标题", "2000-00-00");
+        cloud_zhidao_lei apple1 = new cloud_zhidao_lei("2018-05","下雨","2001-01-02","下雨","2001-01-02","下雨","2001-01-02","下雨","2001-01-02");
         zhidaoList.add(apple1);
     }
 }
