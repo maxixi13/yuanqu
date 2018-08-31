@@ -22,23 +22,23 @@ public class hdxxAdapter extends RecyclerView.Adapter<hdxxAdapter.ViewHolder>{
 
     //点击事件
     private OnItemClickListener mOnItemClickListener;
-    private OnItemLongClickListener mOnItemLongClickListener;
+//    private OnItemLongClickListener mOnItemLongClickListener;
 
     public void setOnItemClickListener(OnItemClickListener mOnItemClickListener){
         this.mOnItemClickListener = mOnItemClickListener;
     }
 
-    public void setOnItemLongClickListener(OnItemLongClickListener mOnItemLongClickListener) {
-        this.mOnItemLongClickListener = mOnItemLongClickListener;
-    }
+//    public void setOnItemLongClickListener(OnItemLongClickListener mOnItemLongClickListener) {
+//        this.mOnItemLongClickListener = mOnItemLongClickListener;
+//    }
 
     public interface OnItemClickListener{
         void onItemClick(View view,int position);
     }
 
-    public interface OnItemLongClickListener{
-        void onItemLongClick(View view,int position);
-    }
+//    public interface OnItemLongClickListener{
+//        void onItemLongClick(View view,int position);
+//    }
 
 
 
@@ -47,17 +47,12 @@ public class hdxxAdapter extends RecyclerView.Adapter<hdxxAdapter.ViewHolder>{
         TextView hdxxText;
         TextView hdxxTexttext;
 
-        //点击事件
-        View clickview;
 
         public ViewHolder(View view){
             super(view);
             hdxxImage=(ImageView)view.findViewById(R.id.hdxx_image);
             hdxxText=(TextView)view.findViewById(R.id.hdxx_name);
             hdxxTexttext=(TextView)view.findViewById(R.id.hdxx_name_text) ;
-
-            //点击事件
-            clickview=view;
 
             //设置图片填充
             hdxxImage.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -95,18 +90,18 @@ public class hdxxAdapter extends RecyclerView.Adapter<hdxxAdapter.ViewHolder>{
                 }
             });
         }
-        if(mOnItemLongClickListener != null) {
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    int position = holder.getLayoutPosition();
-                    mOnItemLongClickListener.onItemLongClick(holder.itemView, position);
-                    //返回true 表示消耗了事件 事件不会继续传递
-                    return true;
-                }
-            });
-        }
-
+//        if(mOnItemLongClickListener != null) {
+//            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+//                @Override
+//                public boolean onLongClick(View v) {
+//                    int position = holder.getLayoutPosition();
+//                    mOnItemLongClickListener.onItemLongClick(holder.itemView, position);
+//                    //返回true 表示消耗了事件 事件不会继续传递
+//                    return true;
+//                }
+//            });
+//        }
+//
 
 
         }

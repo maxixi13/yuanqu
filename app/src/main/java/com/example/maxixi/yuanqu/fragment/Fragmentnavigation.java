@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -17,14 +18,13 @@ import com.example.maxixi.yuanqu.GlideImageLoader;
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.RecyclerViewGroup.hdxx;
 import com.example.maxixi.yuanqu.RecyclerViewGroup.hdxxAdapter;
-import com.example.maxixi.yuanqu.cloud.cloud_zuling;
+import com.example.maxixi.yuanqu.diancan;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static android.support.constraint.Constraints.TAG;
 
 
 public class Fragmentnavigation extends Fragment {
@@ -85,12 +85,12 @@ public class Fragmentnavigation extends Fragment {
                 Toast.makeText(getContext(), "click " + hdxxList.get(position), Toast.LENGTH_SHORT).show();
             }
         });
-        adapterhdxx.setOnItemLongClickListener(new hdxxAdapter.OnItemLongClickListener() {
-            @Override
-            public void onItemLongClick(View view, int position) {
-                Toast.makeText(getActivity(),"long click "+hdxxList.get(position),Toast.LENGTH_SHORT).show();
-            }
-        });
+//        adapterhdxx.setOnItemLongClickListener(new hdxxAdapter.OnItemLongClickListener() {
+//            @Override
+//            public void onItemLongClick(View view, int position) {
+//                Toast.makeText(getActivity(),"long click "+hdxxList.get(position),Toast.LENGTH_SHORT).show();
+//            }
+//        });
         recyclerView.setAdapter(adapterhdxx);
 
 
@@ -102,15 +102,27 @@ public class Fragmentnavigation extends Fragment {
                 Toast.makeText(getContext(), "click " + zcxxList.get(position), Toast.LENGTH_SHORT).show();
             }
         });
-        adapterzcxx.setOnItemLongClickListener(new hdxxAdapter.OnItemLongClickListener() {
-            @Override
-            public void onItemLongClick(View view, int position) {
-                Toast.makeText(getActivity(),"long click "+position,Toast.LENGTH_SHORT).show();
-            }
-        });
+//        adapterzcxx.setOnItemLongClickListener(new hdxxAdapter.OnItemLongClickListener() {
+//            @Override
+//            public void onItemLongClick(View view, int position) {
+//                Toast.makeText(getActivity(),"long click "+position,Toast.LENGTH_SHORT).show();
+//            }
+//        });
         recyclerViewzcxx.setAdapter(adapterzcxx);
 
 
+
+
+        //diancananniu
+        ImageButton bannerdiancan=(ImageButton)view.findViewById(R.id.banner_diancan);
+        bannerdiancan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent bannerdiancan=new Intent();
+                bannerdiancan.setClass(getActivity(),diancan.class);
+                startActivity(bannerdiancan);
+            }
+        });
 
 
 

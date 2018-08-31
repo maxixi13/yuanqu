@@ -1,7 +1,5 @@
 package com.example.maxixi.yuanqu.cloud.cloud_adapter;
 
-
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +14,8 @@ import java.util.List;
 
 import static android.media.CamcorderProfile.get;
 
-
-public class cloud_zhidao_adapterchild extends RecyclerView.Adapter<cloud_zhidao_adapterchild.ViewHolder>{
-
+public class cloud_luyan_adapterchild extends RecyclerView.Adapter<cloud_luyan_adapterchild.ViewHolder>{
+//变更
 
 
 
@@ -36,7 +33,9 @@ public class cloud_zhidao_adapterchild extends RecyclerView.Adapter<cloud_zhidao
 
     }
 
-    public cloud_zhidao_adapterchild(List<cloud_zhidao_leichild>zhidaochildlist){ myzhidaochildlist=zhidaochildlist; }
+    public cloud_luyan_adapterchild(List<cloud_zhidao_leichild>zhidaochildlist){ myzhidaochildlist=zhidaochildlist; }
+//变更
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
@@ -57,17 +56,17 @@ public class cloud_zhidao_adapterchild extends RecyclerView.Adapter<cloud_zhidao
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(holder.itemView.getContext(),"指导的儿子"+get(position),Toast.LENGTH_SHORT).show();
+                Toast.makeText(holder.itemView.getContext(),"儿子儿子"+get(position)+position,Toast.LENGTH_SHORT).show();
             }
         });
 
 
 
 
-        }
-        @Override
-        public int getItemCount(){
-            return myzhidaochildlist.size();
+    }
+    @Override
+    public int getItemCount(){
+        return myzhidaochildlist.size();
     }
 
 }

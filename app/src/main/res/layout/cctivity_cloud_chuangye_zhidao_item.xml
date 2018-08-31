@@ -30,93 +30,10 @@
             android:textColor="@color/black" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-
-        <TextView
-            android:id="@+id/chuangye_zhidao_name1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:gravity="center_vertical"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/chuangye_zhidao_time1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical|end"
-            android:textColor="@color/d6d6d6" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-
-        <TextView
-            android:id="@+id/chuangye_zhidao_name2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:gravity="center_vertical"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/chuangye_zhidao_time2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical|end"
-            android:textColor="@color/d6d6d6" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-
-        <TextView
-            android:id="@+id/chuangye_zhidao_name3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:gravity="center_vertical"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/chuangye_zhidao_time3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical|end"
-            android:textColor="@color/d6d6d6" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-
-        <TextView
-            android:id="@+id/chuangye_zhidao_name4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:gravity="center_vertical"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/chuangye_zhidao_time4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical|end"
-            android:textColor="@color/d6d6d6" />
-    </LinearLayout>
-
-
-<!--    <android.support.v7.widget.RecyclerView
-        android:id="@+id/cloud_chuangye_childrecycler"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/cloud_chuangye_recyclerchild"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
--->
+
 
 </LinearLayout>

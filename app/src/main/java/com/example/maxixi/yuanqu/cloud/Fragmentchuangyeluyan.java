@@ -7,8 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.maxixi.yuanqu.R;
+import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_luyan_adapter;
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_adapter;
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_lei;
 
@@ -36,30 +38,21 @@ public class Fragmentchuangyeluyan extends Fragment {
         RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.cloud_luyan_recycler);
         LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        cloud_zhidao_adapter cloud_zhidao_adapter=new cloud_zhidao_adapter(zhidaoList);
-        recyclerView.setAdapter(cloud_zhidao_adapter);
+        cloud_luyan_adapter cloud_luyan_adapter=new cloud_luyan_adapter(zhidaoList);
+        recyclerView.setAdapter(cloud_luyan_adapter);
         recyclerView.setNestedScrollingEnabled(false);
+
 
         return view;
     }
 
     //活动详情recyclerview
-//    private void initluyanList() {
-//        cloud_zhidao_lei madada = new cloud_zhidao_lei("这是标题");
-//        luyanList.add(madada);
-//        cloud_zhidao_lei apple = new cloud_zhidao_lei("啊啊啊啊");
-//        luyanList.add(apple);
-//        cloud_zhidao_lei apple1 = new cloud_zhidao_lei("嗷哦嗷嗷啊");
-//        luyanList.add(apple1);
-//    }
-
-    //活动详情recyclerview
     private void initzhidaoList() {
-        cloud_zhidao_lei madada = new cloud_zhidao_lei("2018-07","路演大会","2001-01-02","阴天","2001-01-02","阴天","2001-01-02","阴天","2001-01-02");
+        cloud_zhidao_lei madada = new cloud_zhidao_lei("路演");
         zhidaoList.add(madada);
-        cloud_zhidao_lei apple = new cloud_zhidao_lei("2018-06","阴天","2001-01-02","阴天","2001-01-02","阴天","2001-01-02","阴天","2001-01-02");
-        zhidaoList.add(apple);
-        cloud_zhidao_lei apple1 = new cloud_zhidao_lei("2018-05","阴天","2001-01-02","阴天","2001-01-02","阴天","2001-01-02","阴天","2001-01-02");
-        zhidaoList.add(apple1);
+        cloud_zhidao_lei apple = new cloud_zhidao_lei("2018-06");
+                zhidaoList.add(apple);
+        cloud_zhidao_lei apple1 = new cloud_zhidao_lei("2018-05");
+                zhidaoList.add(apple1);
     }
 }
