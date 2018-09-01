@@ -16,7 +16,7 @@ import java.util.List;
 import static android.support.constraint.Constraints.TAG;
 
 
-public class hdxxAdapter extends RecyclerView.Adapter<hdxxAdapter.ViewHolder>{
+public class hdxxAdapter extends RecyclerView.Adapter<hdxxAdapter.ViewHolder> {
 
     private List<hdxx> myhdxxList;
 
@@ -24,7 +24,7 @@ public class hdxxAdapter extends RecyclerView.Adapter<hdxxAdapter.ViewHolder>{
     private OnItemClickListener mOnItemClickListener;
 //    private OnItemLongClickListener mOnItemLongClickListener;
 
-    public void setOnItemClickListener(OnItemClickListener mOnItemClickListener){
+    public void setOnItemClickListener(OnItemClickListener mOnItemClickListener) {
         this.mOnItemClickListener = mOnItemClickListener;
     }
 
@@ -32,8 +32,8 @@ public class hdxxAdapter extends RecyclerView.Adapter<hdxxAdapter.ViewHolder>{
 //        this.mOnItemLongClickListener = mOnItemLongClickListener;
 //    }
 
-    public interface OnItemClickListener{
-        void onItemClick(View view,int position);
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
     }
 
 //    public interface OnItemLongClickListener{
@@ -41,18 +41,17 @@ public class hdxxAdapter extends RecyclerView.Adapter<hdxxAdapter.ViewHolder>{
 //    }
 
 
-
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView hdxxImage;
         TextView hdxxText;
         TextView hdxxTexttext;
 
 
-        public ViewHolder(View view){
+        public ViewHolder(View view) {
             super(view);
-            hdxxImage=(ImageView)view.findViewById(R.id.hdxx_image);
-            hdxxText=(TextView)view.findViewById(R.id.hdxx_name);
-            hdxxTexttext=(TextView)view.findViewById(R.id.hdxx_name_text) ;
+            hdxxImage = (ImageView) view.findViewById(R.id.hdxx_image);
+            hdxxText = (TextView) view.findViewById(R.id.hdxx_name);
+            hdxxTexttext = (TextView) view.findViewById(R.id.hdxx_name_text);
 
             //设置图片填充
             hdxxImage.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -61,32 +60,32 @@ public class hdxxAdapter extends RecyclerView.Adapter<hdxxAdapter.ViewHolder>{
 
     }
 
-    public hdxxAdapter(List<hdxx>hdxxList){
-        myhdxxList=hdxxList;
+    public hdxxAdapter(List<hdxx> hdxxList) {
+        myhdxxList = hdxxList;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_huodongxinxi,parent,false);
-        final ViewHolder holder=new ViewHolder(view);
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_huodongxinxi, parent, false);
+        final ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder,int position){
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         hdxx hdxx = myhdxxList.get(position);
         holder.hdxxImage.setImageResource(hdxx.getimageId());
         holder.hdxxText.setText(hdxx.getname());
         holder.hdxxTexttext.setText(hdxx.getnametext());
 
         //判断是否设置了监听器 点击事件
-        if(mOnItemClickListener != null){
+        if (mOnItemClickListener != null) {
             //为ItemView设置监听器
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int position = holder.getLayoutPosition(); // 1
-                    mOnItemClickListener.onItemClick(holder.itemView,position); // 2
+                    mOnItemClickListener.onItemClick(holder.itemView, position); // 2
                 }
             });
         }
@@ -104,10 +103,10 @@ public class hdxxAdapter extends RecyclerView.Adapter<hdxxAdapter.ViewHolder>{
 //
 
 
-        }
+    }
 
     @Override
-    public int getItemCount(){
+    public int getItemCount() {
         return myhdxxList.size();
     }
 

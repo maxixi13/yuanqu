@@ -17,7 +17,7 @@ public class cloud_zuling extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cctivity_cloud_zuling);
 
-        Toolbar toolbar=(Toolbar)findViewById(R.id.cloud_zuling_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.cloud_zuling_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -25,7 +25,7 @@ public class cloud_zuling extends AppCompatActivity {
             }
         });
 
-        final ImageButton zupcButton=(ImageButton) findViewById(R.id.cloud_zuling_zupc);
+        final ImageButton zupcButton = (ImageButton) findViewById(R.id.cloud_zuling_zupc);
         zupcButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,7 +38,7 @@ public class cloud_zuling extends AppCompatActivity {
             }
         });
 
-        final ImageButton mizujieButton=(ImageButton) findViewById(R.id.cloud_zuling_mizujie);
+        final ImageButton mizujieButton = (ImageButton) findViewById(R.id.cloud_zuling_mizujie);
         mizujieButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +51,6 @@ public class cloud_zuling extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
 
     }

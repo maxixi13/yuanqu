@@ -16,7 +16,7 @@ public class cloud_zuling_zupc extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cctivity_cloud_zuling_zupc);
 
-        Toolbar toolbar=(Toolbar)findViewById(R.id.cloud_zuling_zupc_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.cloud_zuling_zupc_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -24,9 +24,9 @@ public class cloud_zuling_zupc extends AppCompatActivity {
             }
         });
 
-        WebView zupc=(WebView)findViewById(R.id.webview_zupc);
+        WebView zupc = (WebView) findViewById(R.id.webview_zupc);
         zupc.loadUrl("https://www.baidu.com");
         //WebSettings zupcSetting=zupc.getSettings();
-       // zupcSetting.set
+        // zupcSetting.set
     }
 }

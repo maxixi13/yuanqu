@@ -11,13 +11,13 @@ import android.widget.ImageButton;
 import com.example.maxixi.yuanqu.perkservice.Parkservice_yuannei;
 import com.example.maxixi.yuanqu.R;
 
-public class Fragmentpark extends Fragment{
+public class Fragmentpark extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle saveInstanceState){
-        final View view=inflater.inflate(R.layout.bctivity_parkservice,container,false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
+        final View view = inflater.inflate(R.layout.bctivity_parkservice, container, false);
 
-        ImageButton imageButton=(ImageButton) view.findViewById(R.id.parkservice_yuannei);
+        ImageButton imageButton = (ImageButton) view.findViewById(R.id.parkservice_yuannei);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

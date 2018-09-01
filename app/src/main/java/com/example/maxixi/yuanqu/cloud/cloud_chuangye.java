@@ -34,13 +34,13 @@ public class cloud_chuangye extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.chuangy_navigation_chuangye:
-                    if (fragmentchuangyechuangye == null){
+                    if (fragmentchuangyechuangye == null) {
                         fragmentchuangyechuangye = new Fragmentchuangyechuangye();
                     }
                     switchFragment(fragmentchuangyechuangye);
                     return true;
                 case R.id.chuangye_navigation_luyan:
-                    if (fragmentchuangyeluyan == null){
+                    if (fragmentchuangyeluyan == null) {
                         fragmentchuangyeluyan = new Fragmentchuangyeluyan();
                     }
                     switchFragment(fragmentchuangyeluyan);
@@ -55,7 +55,7 @@ public class cloud_chuangye extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cctivity_cloud_chuangye);
 
-        Toolbar toolbar=(Toolbar)findViewById(R.id.cloud_chuangye_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.cloud_chuangye_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,17 +75,16 @@ public class cloud_chuangye extends AppCompatActivity {
         transaction.commit();
 
 
-
     }
 
     //切换fragment
 
-    private void switchFragment(Fragment fg){
-        if (fragment != fg){
-            FragmentTransaction transaction=fragmentManager.beginTransaction();
-            if (!fg.isAdded()){
-                transaction.hide(fragment).add(R.id.chuangye_fragment,fg);
-            }else {
+    private void switchFragment(Fragment fg) {
+        if (fragment != fg) {
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            if (!fg.isAdded()) {
+                transaction.hide(fragment).add(R.id.chuangye_fragment, fg);
+            } else {
                 transaction.hide(fragment).show(fg);
             }
             fragment = fg;

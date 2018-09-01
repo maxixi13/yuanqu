@@ -22,7 +22,7 @@ public class GlideImageLoader extends ImageLoader {
 
         //imageview设置图片
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        RequestOptions requestOptions=new RequestOptions();
+        RequestOptions requestOptions = new RequestOptions();
         requestOptions.fitCenter();
         //Glide 加载图片简单用法
         Glide.with(context).load(path).apply(requestOptions).into(imageView);

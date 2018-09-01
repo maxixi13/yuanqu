@@ -17,16 +17,16 @@ public class cloud_chuangye_chuangye extends AppCompatActivity {
         setContentView(R.layout.cctivity_cloud_chuangye_chuangye);
 
         //申请页面
-        TextView shenqingText=(TextView)findViewById(R.id.cloud_chuangye_chuangye_shenqing);
+        TextView shenqingText = (TextView) findViewById(R.id.cloud_chuangye_chuangye_shenqing);
         shenqingText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent shengqingpage=new Intent(cloud_chuangye_chuangye.this,cloud_chuangye_shenqing.class);
+                Intent shengqingpage = new Intent(cloud_chuangye_chuangye.this, cloud_chuangye_shenqing.class);
                 startActivity(shengqingpage);
             }
         });
 
-        Toolbar toolbar=(Toolbar)findViewById(R.id.cloud_chuangye_chuangye_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.cloud_chuangye_chuangye_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

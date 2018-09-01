@@ -7,11 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.ListView;
 
 import com.example.maxixi.yuanqu.R;
+
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_adapter;
-import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_adapterchild;
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_lei;
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_leichild;
 

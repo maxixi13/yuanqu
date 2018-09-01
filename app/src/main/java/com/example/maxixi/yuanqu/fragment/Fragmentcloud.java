@@ -12,13 +12,13 @@ import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.cloud.cloud_chuangye;
 import com.example.maxixi.yuanqu.cloud.cloud_zuling;
 
-public class Fragmentcloud extends Fragment{
+public class Fragmentcloud extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle saveInstanceState){
-        View view=inflater.inflate(R.layout.cctivity_cloud,container,false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
+        View view = inflater.inflate(R.layout.cctivity_cloud, container, false);
 
-        ImageButton qiyezuling=(ImageButton) view.findViewById(R.id.cloud_zuling);
+        ImageButton qiyezuling = (ImageButton) view.findViewById(R.id.cloud_zuling);
         qiyezuling.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,7 +28,7 @@ public class Fragmentcloud extends Fragment{
             }
         });
 
-        ImageButton chuangyefuwu=(ImageButton) view.findViewById(R.id.cloud_chuangye);
+        ImageButton chuangyefuwu = (ImageButton) view.findViewById(R.id.cloud_chuangye);
         chuangyefuwu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -9,11 +9,11 @@ import android.view.ViewGroup;
 import com.example.maxixi.yuanqu.R;
 
 
-public class Fragmentpersonal extends Fragment{
+public class Fragmentpersonal extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle saveInstanceState){
-        View view=inflater.inflate(R.layout.dctivity_personal,container,false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
+        View view = inflater.inflate(R.layout.dctivity_personal, container, false);
         return view;
     }
 }

@@ -19,7 +19,7 @@ public class cloud_luyan_adapter extends RecyclerView.Adapter<cloud_luyan_adapte
 
 
     private List<cloud_zhidao_lei> myzhidaolist;
-    private List<cloud_zhidao_leichild> zhidaochildList=new ArrayList<>();
+    private List<cloud_zhidao_leichild> zhidaochildList = new ArrayList<>();
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView zhidaoText;
@@ -43,10 +43,10 @@ public class cloud_luyan_adapter extends RecyclerView.Adapter<cloud_luyan_adapte
 
         //viewlist嵌套
         initzhidaochildList();
-        RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.cloud_chuangye_recyclerchild);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(parent.getContext());
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.cloud_chuangye_recyclerchild);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(parent.getContext());
         recyclerView.setLayoutManager(layoutManager);
-        cloud_luyan_adapterchild cloud_luyan_adapterchild=new cloud_luyan_adapterchild(zhidaochildList);//变更
+        cloud_luyan_adapterchild cloud_luyan_adapterchild = new cloud_luyan_adapterchild(zhidaochildList);//变更
         recyclerView.setAdapter(cloud_luyan_adapterchild);//变更
         recyclerView.setNestedScrollingEnabled(false);
 
@@ -60,16 +60,13 @@ public class cloud_luyan_adapter extends RecyclerView.Adapter<cloud_luyan_adapte
         holder.zhidaoText.setText(cloud_zhidao_lei.getname());
 
 
-
-
         //点击事件
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(holder.itemView.getContext(),"luyanluyan"+position,Toast.LENGTH_SHORT).show();
+                Toast.makeText(holder.itemView.getContext(), "luyanluyan" + position, Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
     }
@@ -79,12 +76,12 @@ public class cloud_luyan_adapter extends RecyclerView.Adapter<cloud_luyan_adapte
         return myzhidaolist.size();
     }
 
-    private void initzhidaochildList(){
-        cloud_zhidao_leichild madada=new cloud_zhidao_leichild("不演了","2018-07-08");
+    private void initzhidaochildList() {
+        cloud_zhidao_leichild madada = new cloud_zhidao_leichild("不演了", "2018-07-08");
         zhidaochildList.add(madada);
-        cloud_zhidao_leichild madada1=new cloud_zhidao_leichild("演不动了","2018-00-00");
+        cloud_zhidao_leichild madada1 = new cloud_zhidao_leichild("演不动了", "2018-00-00");
         zhidaochildList.add(madada1);
-        cloud_zhidao_leichild madada11=new cloud_zhidao_leichild("不想眼了","2015-00-00");
+        cloud_zhidao_leichild madada11 = new cloud_zhidao_leichild("不想眼了", "2015-00-00");
         zhidaochildList.add(madada11);
 
     }

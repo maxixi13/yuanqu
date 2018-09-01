@@ -7,11 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_luyan_adapter;
-import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_adapter;
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_lei;
 
 import java.util.ArrayList;
@@ -19,12 +17,12 @@ import java.util.List;
 
 public class Fragmentchuangyeluyan extends Fragment {
 
-//    private List<cloud_zhidao_lei> luyanList=new ArrayList<>();
-    private List<cloud_zhidao_lei> zhidaoList=new ArrayList<>();
+    //    private List<cloud_zhidao_lei> luyanList=new ArrayList<>();
+    private List<cloud_zhidao_lei> zhidaoList = new ArrayList<>();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container_cloud, Bundle saveInstanceState){
-        View view=inflater.inflate(R.layout.cctivity_cloud_chuangye_luyan,container_cloud,false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container_cloud, Bundle saveInstanceState) {
+        View view = inflater.inflate(R.layout.cctivity_cloud_chuangye_luyan, container_cloud, false);
 
 //        initluyanList();
 //        RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.cloud_luyan_recycler);
@@ -35,10 +33,10 @@ public class Fragmentchuangyeluyan extends Fragment {
 //        recyclerView.setNestedScrollingEnabled(false);
 
         initzhidaoList();
-        RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.cloud_luyan_recycler);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.cloud_luyan_recycler);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        cloud_luyan_adapter cloud_luyan_adapter=new cloud_luyan_adapter(zhidaoList);
+        cloud_luyan_adapter cloud_luyan_adapter = new cloud_luyan_adapter(zhidaoList);
         recyclerView.setAdapter(cloud_luyan_adapter);
         recyclerView.setNestedScrollingEnabled(false);
 
@@ -51,8 +49,8 @@ public class Fragmentchuangyeluyan extends Fragment {
         cloud_zhidao_lei madada = new cloud_zhidao_lei("路演");
         zhidaoList.add(madada);
         cloud_zhidao_lei apple = new cloud_zhidao_lei("2018-06");
-                zhidaoList.add(apple);
+        zhidaoList.add(apple);
         cloud_zhidao_lei apple1 = new cloud_zhidao_lei("2018-05");
-                zhidaoList.add(apple1);
+        zhidaoList.add(apple1);
     }
 }

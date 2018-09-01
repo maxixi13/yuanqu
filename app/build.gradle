@@ -9,6 +9,17 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        splits {
+            abi {
+                enable true
+                reset()
+                include 'x86', 'armeabi-v7a','x86_64'
+                universalApk true
+            }
+
+        }
+
     }
     buildTypes {
         release {
@@ -34,4 +45,6 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:2.2.0'//圆形头像
     implementation 'com.contrarywind:Android-PickerView:4.1.6'//选择器
     implementation 'se.emilsjolander:stickylistheaders:2.7.0'//详情联动列表stickylistheaders 点餐
+
+
 }

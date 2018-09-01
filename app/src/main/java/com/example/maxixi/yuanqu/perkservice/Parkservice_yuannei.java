@@ -18,7 +18,7 @@ public class Parkservice_yuannei extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bctivity_parkservice_yuannei);
 
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar_park_yuanei);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_park_yuanei);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -20,7 +20,7 @@ public class cloud_chuangye_shenqing extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cctivity_cloud_chuangye_shenqing);
 
-        Toolbar toolbar=(Toolbar)findViewById(R.id.cloud_chuangye_shenqing_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.cloud_chuangye_shenqing_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,7 +28,7 @@ public class cloud_chuangye_shenqing extends AppCompatActivity {
             }
         });
 
-        LinearLayout yuanquxuanzelayout=(LinearLayout)findViewById(R.id.chuangye_chuangye_shengqing_yuanqu_layout);
+        LinearLayout yuanquxuanzelayout = (LinearLayout) findViewById(R.id.chuangye_chuangye_shengqing_yuanqu_layout);
         yuanquxuanzelayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,9 +38,9 @@ public class cloud_chuangye_shenqing extends AppCompatActivity {
 
     }
 
-    private void Dialog(){
+    private void Dialog() {
         //初始化字符串数组
-        final String[] strArray = new String[]{"芈展服务园","离离原上草","一岁一枯荣","野火烧不尽","春风吹又生"};
+        final String[] strArray = new String[]{"芈展服务园", "离离原上草", "一岁一枯荣", "野火烧不尽", "春风吹又生"};
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);//实例化builder
         builder.setIcon(R.mipmap.ic_launcher);//设置图标
         builder.setTitle("请选择所在园区");//设置标题
@@ -48,7 +48,7 @@ public class cloud_chuangye_shenqing extends AppCompatActivity {
         builder.setSingleChoiceItems(strArray, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                TextView textView=(TextView)findViewById(R.id.chuangye_chuangye_shengqing_yuanqu_text);
+                TextView textView = (TextView) findViewById(R.id.chuangye_chuangye_shengqing_yuanqu_text);
                 textView.setText(strArray[which]);
                 textView.setTextColor(Color.parseColor("#666666"));
             }
@@ -66,7 +66,7 @@ public class cloud_chuangye_shenqing extends AppCompatActivity {
 //        });
 
         //设置确定按钮
-        dialog.setButton(DialogInterface.BUTTON_POSITIVE,"确认", new DialogInterface.OnClickListener() {
+        dialog.setButton(DialogInterface.BUTTON_POSITIVE, "确认", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -74,8 +74,6 @@ public class cloud_chuangye_shenqing extends AppCompatActivity {
         });
         dialog.show();//显示对话框
     }
-
-
 
 
 }

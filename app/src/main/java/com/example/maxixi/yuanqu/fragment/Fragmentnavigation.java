@@ -26,17 +26,15 @@ import java.util.Arrays;
 import java.util.List;
 
 
-
 public class Fragmentnavigation extends Fragment {
 
-    private List<hdxx> hdxxList=new ArrayList<>();
-    private List<hdxx> zcxxList=new ArrayList<>();
+    private List<hdxx> hdxxList = new ArrayList<>();
+    private List<hdxx> zcxxList = new ArrayList<>();
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle saveInstanceState){
-        View view=inflater.inflate(R.layout.activity_home,container,false);
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
+        View view = inflater.inflate(R.layout.activity_home, container, false);
 
 
         //banner设置
@@ -46,7 +44,7 @@ public class Fragmentnavigation extends Fragment {
         //设置图片加载器
         banner.setImageLoader(new GlideImageLoader());
         //设置图片集合
-        Integer[] images={R.drawable.home_page_icon,R.drawable.park_service_icon,R.drawable.cloud_service_icon,R.drawable.personal_center_icon,R.drawable.textimage};
+        Integer[] images = {R.drawable.home_page_icon, R.drawable.park_service_icon, R.drawable.cloud_service_icon, R.drawable.personal_center_icon, R.drawable.textimage};
         banner.setImages(Arrays.asList(images));
         //设置banner动画效果
         //banner.setBannerAnimation(Transformer.DepthPage);
@@ -63,18 +61,18 @@ public class Fragmentnavigation extends Fragment {
 
         //viewlist
         inithdxx();
-        RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.relativelayout_hdxx);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.relativelayout_hdxx);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        hdxxAdapter adapterhdxx=new hdxxAdapter(hdxxList);
+        hdxxAdapter adapterhdxx = new hdxxAdapter(hdxxList);
         recyclerView.setAdapter(adapterhdxx);
         recyclerView.setNestedScrollingEnabled(false);
 
         initzcxx();
-        RecyclerView recyclerViewzcxx=(RecyclerView)view.findViewById(R.id.relativelayout_zcxx);
-        LinearLayoutManager layoutManagerzcxx=new LinearLayoutManager(getActivity());
+        RecyclerView recyclerViewzcxx = (RecyclerView) view.findViewById(R.id.relativelayout_zcxx);
+        LinearLayoutManager layoutManagerzcxx = new LinearLayoutManager(getActivity());
         recyclerViewzcxx.setLayoutManager(layoutManagerzcxx);
-        hdxxAdapter adapterzcxx=new hdxxAdapter(zcxxList);
+        hdxxAdapter adapterzcxx = new hdxxAdapter(zcxxList);
         recyclerViewzcxx.setAdapter(adapterzcxx);
         recyclerViewzcxx.setNestedScrollingEnabled(false);
 
@@ -94,7 +92,6 @@ public class Fragmentnavigation extends Fragment {
         recyclerView.setAdapter(adapterhdxx);
 
 
-
         //zcxx监听
         adapterzcxx.setOnItemClickListener(new hdxxAdapter.OnItemClickListener() {
             @Override
@@ -111,41 +108,38 @@ public class Fragmentnavigation extends Fragment {
         recyclerViewzcxx.setAdapter(adapterzcxx);
 
 
-
-
         //diancananniu
-        ImageButton bannerdiancan=(ImageButton)view.findViewById(R.id.banner_diancan);
+        ImageButton bannerdiancan = (ImageButton) view.findViewById(R.id.banner_diancan);
         bannerdiancan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent bannerdiancan=new Intent();
-                bannerdiancan.setClass(getActivity(),diancan.class);
+                Intent bannerdiancan = new Intent();
+                bannerdiancan.setClass(getActivity(), diancan.class);
                 startActivity(bannerdiancan);
             }
         });
-
 
 
         return view;
     }
 
     //活动详情recyclerview
-    private void inithdxx(){
-        hdxx madada=new hdxx("这是标题","这是新闻的文字嗷哦嗷嗷",R.drawable.textimage);
+    private void inithdxx() {
+        hdxx madada = new hdxx("这是标题", "这是新闻的文字嗷哦嗷嗷", R.drawable.textimage);
         hdxxList.add(madada);
-        hdxx apple=new hdxx("这是标题","这是新闻的文字嗷哦嗷嗷啊",R.drawable.textimage);
+        hdxx apple = new hdxx("这是标题", "这是新闻的文字嗷哦嗷嗷啊", R.drawable.textimage);
         hdxxList.add(apple);
-        hdxx apple1=new hdxx("这是标题","这是新闻的文字嗷嗷嗷嗷",R.drawable.textimage);
+        hdxx apple1 = new hdxx("这是标题", "这是新闻的文字嗷嗷嗷嗷", R.drawable.textimage);
         hdxxList.add(apple1);
     }
 
     //政策政策recyclerview
-    private void initzcxx(){
-        hdxx madada=new hdxx("这是政策","啊啊啊啊",R.drawable.textimage1);
+    private void initzcxx() {
+        hdxx madada = new hdxx("这是政策", "啊啊啊啊", R.drawable.textimage1);
         zcxxList.add(madada);
-        hdxx apple=new hdxx("这是政策","嗷嗷嗷啊",R.drawable.textimage1);
+        hdxx apple = new hdxx("这是政策", "嗷嗷嗷啊", R.drawable.textimage1);
         zcxxList.add(apple);
-        hdxx apple1=new hdxx("这是真的政策","啊呜呜呜呜",R.drawable.textimage1);
+        hdxx apple1 = new hdxx("这是真的政策", "啊呜呜呜呜", R.drawable.textimage1);
         zcxxList.add(apple1);
     }
 }

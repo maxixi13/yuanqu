@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     private Fragmentpersonal fragmentpersonal;
 
 
-
     //底部导航栏菜单
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -36,25 +35,25 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    if (fragmentnavigation == null){
+                    if (fragmentnavigation == null) {
                         fragmentnavigation = new Fragmentnavigation();
                     }
                     switchFragment(fragmentnavigation);
                     return true;
                 case R.id.navigation_park:
-                    if (fragmentpark == null){
+                    if (fragmentpark == null) {
                         fragmentpark = new Fragmentpark();
                     }
                     switchFragment(fragmentpark);
                     return true;
                 case R.id.navigation_cloud:
-                    if (fragmentcloud == null){
+                    if (fragmentcloud == null) {
                         fragmentcloud = new Fragmentcloud();
                     }
                     switchFragment(fragmentcloud);
                     return true;
                 case R.id.navigation_personal:
-                    if (fragmentpersonal == null){
+                    if (fragmentpersonal == null) {
                         fragmentpersonal = new Fragmentpersonal();
                     }
                     switchFragment(fragmentpersonal);
@@ -90,12 +89,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Fragment切换
-    private void switchFragment(Fragment fg){
-        if (fragment != fg){
-            FragmentTransaction transaction=fragmentManager.beginTransaction();
-            if (!fg.isAdded()){
-                transaction.hide(fragment).add(R.id.container,fg);
-            }else {
+    private void switchFragment(Fragment fg) {
+        if (fragment != fg) {
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            if (!fg.isAdded()) {
+                transaction.hide(fragment).add(R.id.container, fg);
+            } else {
                 transaction.hide(fragment).show(fg);
             }
             fragment = fg;
