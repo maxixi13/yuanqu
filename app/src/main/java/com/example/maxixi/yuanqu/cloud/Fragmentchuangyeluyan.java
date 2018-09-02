@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.maxixi.yuanqu.R;
-import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_luyan_adapter;
+import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_adapter;
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_lei;
 
 import java.util.ArrayList;
@@ -24,19 +24,12 @@ public class Fragmentchuangyeluyan extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container_cloud, Bundle saveInstanceState) {
         View view = inflater.inflate(R.layout.cctivity_cloud_chuangye_luyan, container_cloud, false);
 
-//        initluyanList();
-//        RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.cloud_luyan_recycler);
-//        LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
-//        recyclerView.setLayoutManager(layoutManager);
-//        cloud_zhidao_adapter cloud_zhidao_adapter=new cloud_zhidao_adapter(luyanList);
-//        recyclerView.setAdapter(cloud_zhidao_adapter);
-//        recyclerView.setNestedScrollingEnabled(false);
 
         initzhidaoList();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.cloud_luyan_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        cloud_luyan_adapter cloud_luyan_adapter = new cloud_luyan_adapter(zhidaoList);
+        cloud_zhidao_adapter cloud_luyan_adapter = new cloud_zhidao_adapter(zhidaoList);
         recyclerView.setAdapter(cloud_luyan_adapter);
         recyclerView.setNestedScrollingEnabled(false);
 
@@ -46,11 +39,11 @@ public class Fragmentchuangyeluyan extends Fragment {
 
     //活动详情recyclerview
     private void initzhidaoList() {
-        cloud_zhidao_lei madada = new cloud_zhidao_lei("路演");
+        cloud_zhidao_lei madada = new cloud_zhidao_lei("路演","2018-06");
         zhidaoList.add(madada);
-        cloud_zhidao_lei apple = new cloud_zhidao_lei("2018-06");
+        cloud_zhidao_lei apple = new cloud_zhidao_lei("hahah","2018-06");
         zhidaoList.add(apple);
-        cloud_zhidao_lei apple1 = new cloud_zhidao_lei("2018-05");
+        cloud_zhidao_lei apple1 = new cloud_zhidao_lei("1234","2018-06");
         zhidaoList.add(apple1);
     }
 }

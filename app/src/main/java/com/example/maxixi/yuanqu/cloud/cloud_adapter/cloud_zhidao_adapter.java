@@ -36,15 +36,15 @@ public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adap
 
 
     private List<cloud_zhidao_lei> myzhidaolist;
-    private List<cloud_zhidao_leichild> zhidaochildList = new ArrayList<>();
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView zhidaoText;
+        TextView zhidaoTime;
 
         public ViewHolder(View view) {
             super(view);
             zhidaoText = (TextView) view.findViewById(R.id.chuangye_zhidao_name);
-
+            zhidaoTime= (TextView) view.findViewById(R.id.chuangye_zhidao_time);
         }
 
     }
@@ -58,14 +58,6 @@ public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adap
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cctivity_cloud_chuangye_zhidao_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
 
-        //viewlist嵌套
-        initzhidaochildList();
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.cloud_chuangye_recyclerchild);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(parent.getContext());
-        recyclerView.setLayoutManager(layoutManager);
-        cloud_zhidao_adapterchild cloud_zhidao_adapterchild = new cloud_zhidao_adapterchild(zhidaochildList);
-        recyclerView.setAdapter(cloud_zhidao_adapterchild);
-        recyclerView.setNestedScrollingEnabled(false);
 
 
         return holder;
@@ -75,6 +67,7 @@ public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adap
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final cloud_zhidao_lei cloud_zhidao_lei = myzhidaolist.get(position);
         holder.zhidaoText.setText(cloud_zhidao_lei.getname());
+        holder.zhidaoTime.setText(cloud_zhidao_lei.getnametime());
 
 
 //        holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -105,14 +98,5 @@ public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adap
     }
 
 
-    private void initzhidaochildList() {
-        cloud_zhidao_leichild madada = new cloud_zhidao_leichild("hahahah", "2018-07-08");
-        zhidaochildList.add(madada);
-        cloud_zhidao_leichild madada1 = new cloud_zhidao_leichild("hahahah", "2018-00-00");
-        zhidaochildList.add(madada1);
-        cloud_zhidao_leichild madada11 = new cloud_zhidao_leichild("hahahah", "2015-00-00");
-        zhidaochildList.add(madada11);
-
-    }
 
 }

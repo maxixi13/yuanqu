@@ -34,4 +34,8 @@
     <string name="chuangye_shengqing_title4">请输入联系人</string>
     <string name="chuangye_shengqing_title5">请输入联系电话</string>
     <string name="mizhandashitang">芈展大食堂</string>
+    <string name="menu_name">菜单</string>
+    <string name="dish_name">菜名</string>
+    <string name="shopcart">购物车</string>
+    <string name="clear">清空</string>
 </resources>

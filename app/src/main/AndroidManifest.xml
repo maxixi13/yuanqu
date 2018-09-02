@@ -30,7 +30,7 @@
         <activity android:name=".cloud.cloud_chuangye_chuangye" />
         <activity android:name=".cloud.cloud_zuling_mizu" />
         <activity android:name=".cloud.cloud_zuling_zupc" />
-        <activity android:name=".diancan"></activity>
+        <activity android:name=".diancan.diancan"></activity>
     </application>
 
 </manifest>

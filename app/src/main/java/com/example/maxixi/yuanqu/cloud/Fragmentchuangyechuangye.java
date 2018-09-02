@@ -7,13 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.example.maxixi.yuanqu.R;
 
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_adapter;
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_lei;
-import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_leichild;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,11 +50,11 @@ public class Fragmentchuangyechuangye extends Fragment {
 
     //活动详情recyclerview
     private void initzhidaoList() {
-        cloud_zhidao_lei madada = new cloud_zhidao_lei("2018-07");
+        cloud_zhidao_lei madada = new cloud_zhidao_lei("这是哪里","2018-07");
         zhidaoList.add(madada);
-        cloud_zhidao_lei apple = new cloud_zhidao_lei("2018-06");
+        cloud_zhidao_lei apple = new cloud_zhidao_lei("是不是指导","2018-07");
         zhidaoList.add(apple);
-        cloud_zhidao_lei apple1 = new cloud_zhidao_lei("2018-05");
+        cloud_zhidao_lei apple1 = new cloud_zhidao_lei("重写的指导","2018-07");
         zhidaoList.add(apple1);
     }
 
