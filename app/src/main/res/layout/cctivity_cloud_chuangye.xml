@@ -33,13 +33,31 @@
 
         </Toolbar>
 
-        <android.support.design.widget.BottomNavigationView
+        <LinearLayout
             android:id="@+id/chuangye_navigation"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@android:color/white"
-            app:menu="@menu/chuangye_navigation"
-            app:elevation="0dp"/>
+            android:background="@android:color/white">
+
+            <Button
+                android:id="@+id/chuangye_navigation_left"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/zhidao"
+                android:textColor="@drawable/textselectcolor"
+                android:background="@drawable/chuangyefuwuselector"/>
+
+            <Button
+                android:id="@+id/chuangye_navigation_right"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/luyan"
+                android:textColor="@drawable/textselectcolor"
+                android:background="@drawable/chuangyefuwuselector" />
+
+        </LinearLayout>
 
         <FrameLayout
             android:id="@+id/chuangye_fragment"

@@ -24,31 +24,8 @@ public class cloud_chuangye extends AppCompatActivity {
     private FragmentTransaction transaction;
     private Fragmentchuangyechuangye fragmentchuangyechuangye;
     private Fragmentchuangyeluyan fragmentchuangyeluyan;
-
-
-    //navigation
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.chuangy_navigation_chuangye:
-                    if (fragmentchuangyechuangye == null) {
-                        fragmentchuangyechuangye = new Fragmentchuangyechuangye();
-                    }
-                    switchFragment(fragmentchuangyechuangye);
-                    return true;
-                case R.id.chuangye_navigation_luyan:
-                    if (fragmentchuangyeluyan == null) {
-                        fragmentchuangyeluyan = new Fragmentchuangyeluyan();
-                    }
-                    switchFragment(fragmentchuangyeluyan);
-                    return true;
-            }
-            return false;
-        }
-    };
+    private Button topleft;
+    private Button topright;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +41,33 @@ public class cloud_chuangye extends AppCompatActivity {
         });
 
 
-        //页面切换
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.chuangye_navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        //顶部导航兰
+        topleft = (Button)findViewById(R.id.chuangye_navigation_left);
+        topleft.setSelected(true);
+        topleft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (fragmentchuangyechuangye == null) {
+                    fragmentchuangyechuangye = new Fragmentchuangyechuangye();
+                }
+                switchFragment(fragmentchuangyechuangye);
+                topleft.setSelected(true);
+                topright.setSelected(false);
+            }
+        });
+        topright = (Button)findViewById(R.id.chuangye_navigation_right);
+        topright.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (fragmentchuangyeluyan == null) {
+                    fragmentchuangyeluyan = new Fragmentchuangyeluyan();
+                }
+                switchFragment(fragmentchuangyeluyan);
+                topleft.setSelected(false);
+                topright.setSelected(true);
+            }
+        });
+
 
         fragmentchuangyechuangye = new Fragmentchuangyechuangye();
         fragmentManager = getSupportFragmentManager();
