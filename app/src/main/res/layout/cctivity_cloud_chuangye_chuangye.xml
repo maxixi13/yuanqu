@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".cloud.cloud_chuangye_chuangye"
-    android:background="@color/f5f5f5">
+    android:background="@color/beijingf5f5f5">
 
     <Toolbar
         android:id="@+id/cloud_chuangye_chuangye_toolbar"

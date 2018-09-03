@@ -4,6 +4,7 @@ package com.example.maxixi.yuanqu.diancan;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -65,6 +67,16 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        Button tijiaodingdanButton = (Button) findViewById(R.id.diancan_dish_tijiaodingdan);
+        tijiaodingdanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent tijiaodingdanIntent = new Intent();
+                tijiaodingdanIntent.setClass(diancan.this, diancan_queren.class);
+                startActivity(tijiaodingdanIntent);
             }
         });
 
@@ -147,62 +159,6 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
         });
     }
 
-    private void initData() {
-        shopCart = new ShopCart();
-        dishMenuList = new ArrayList<>();
-        ArrayList<Dish> dishs1 = new ArrayList<>();
-        dishs1.add(new Dish("面包", 1.0, 10,R.drawable.textkele));
-        dishs1.add(new Dish("蛋挞", 1.0, 10,R.drawable.textkele));
-        dishs1.add(new Dish("牛奶", 1.0, 10,R.drawable.textkele));
-        dishs1.add(new Dish("肠粉", 1.0, 10,R.drawable.textkele));
-        dishs1.add(new Dish("绿茶饼", 1.0, 10,R.drawable.textkele));
-        dishs1.add(new Dish("花卷", 1.0, 10,R.drawable.textkele));
-        dishs1.add(new Dish("包子", 1.0, 10,R.drawable.textkele));
-        DishMenu menu1 = new DishMenu("盖浇饭", dishs1);
-
-        ArrayList<Dish> dishs2 = new ArrayList<>();
-        dishs2.add(new Dish("粥", 1.0, 10,R.drawable.textkele));
-        dishs2.add(new Dish("炒饭", 1.0, 10,R.drawable.textkele));
-        dishs2.add(new Dish("炒米粉", 1.0, 10,R.drawable.textkele));
-        dishs2.add(new Dish("炒粿条", 1.0, 10,R.drawable.textkele));
-        dishs2.add(new Dish("炒牛河", 1.0, 10,R.drawable.textkele));
-        dishs2.add(new Dish("炒菜", 1.0, 10,R.drawable.textkele));
-        DishMenu menu2 = new DishMenu("配菜", dishs2);
-
-        ArrayList<Dish> dishs3 = new ArrayList<>();
-        dishs3.add(new Dish("番茄炒蛋", 1.0, 10,R.drawable.textkele));
-        dishs3.add(new Dish("牛肉炒羊肉", 1.0, 10,R.drawable.textkele));
-        dishs3.add(new Dish("牛排", 1.0, 10,R.drawable.textkele));
-        dishs3.add(new Dish("鸡排", 1.0, 10,R.drawable.textkele));
-        dishs3.add(new Dish("猪排", 1.0, 10,R.drawable.textkele));
-        DishMenu menu3 = new DishMenu("炒菜", dishs3);
-
-        ArrayList<Dish> dishs4 = new ArrayList<>();
-        dishs4.add(new Dish("牛肉面", 1.0, 10,R.drawable.textkele));
-        dishs4.add(new Dish("蛋炒饭", 1.0, 10,R.drawable.textkele));
-        dishs4.add(new Dish("馄炖", 1.0, 10,R.drawable.textkele));
-        dishs4.add(new Dish("水饺", 1.0, 10,R.drawable.textkele));
-        dishs4.add(new Dish("馒头", 1.0, 10,R.drawable.textkele));
-        dishs4.add(new Dish("包子", 1.0, 10,R.drawable.textkele));
-        DishMenu menu4 = new DishMenu("主食", dishs4);
-
-        ArrayList<Dish> dishs5 = new ArrayList<>();
-        dishs5.add(new Dish("可乐", 1.0, 10,R.drawable.textkele));
-        dishs5.add(new Dish("雪碧", 1.0, 10,R.drawable.textkele));
-        dishs5.add(new Dish("橙汁", 1.0, 10,R.drawable.textkele));
-        dishs5.add(new Dish("椰奶", 1.0, 10,R.drawable.textkele));
-        dishs5.add(new Dish("啤酒", 1.0, 10,R.drawable.textkele));
-        dishs5.add(new Dish("二锅头", 1.0, 10,R.drawable.textkele));
-        DishMenu menu5 = new DishMenu("饮料", dishs5);
-
-
-
-        dishMenuList.add(menu1);
-        dishMenuList.add(menu2);
-        dishMenuList.add(menu3);
-        dishMenuList.add(menu4);
-        dishMenuList.add(menu5);
-    }
 
     private void initAdapter() {
         leftAdapter = new LeftMenuAdapter(this, dishMenuList);
@@ -356,6 +312,63 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
     public void dialogDismiss() {
         showTotalPrice();
         rightAdapter.notifyDataSetChanged();
+    }
+
+
+    private void initData() {
+        shopCart = new ShopCart();
+        dishMenuList = new ArrayList<>();
+        ArrayList<Dish> dishs1 = new ArrayList<>();
+        dishs1.add(new Dish("面包", 1.0, 10, R.drawable.textkele));
+        dishs1.add(new Dish("蛋挞", 1.0, 10, R.drawable.textkele));
+        dishs1.add(new Dish("牛奶", 1.0, 10, R.drawable.textkele));
+        dishs1.add(new Dish("肠粉", 1.0, 10, R.drawable.textkele));
+        dishs1.add(new Dish("绿茶饼", 1.0, 10, R.drawable.textkele));
+        dishs1.add(new Dish("花卷", 1.0, 10, R.drawable.textkele));
+        dishs1.add(new Dish("包子", 1.0, 10, R.drawable.textkele));
+        DishMenu menu1 = new DishMenu("盖浇饭", dishs1);
+
+        ArrayList<Dish> dishs2 = new ArrayList<>();
+        dishs2.add(new Dish("粥", 1.0, 10, R.drawable.textkele));
+        dishs2.add(new Dish("炒饭", 1.0, 10, R.drawable.textkele));
+        dishs2.add(new Dish("炒米粉", 1.0, 10, R.drawable.textkele));
+        dishs2.add(new Dish("炒粿条", 1.0, 10, R.drawable.textkele));
+        dishs2.add(new Dish("炒牛河", 1.0, 10, R.drawable.textkele));
+        dishs2.add(new Dish("炒菜", 1.0, 10, R.drawable.textkele));
+        DishMenu menu2 = new DishMenu("配菜", dishs2);
+
+        ArrayList<Dish> dishs3 = new ArrayList<>();
+        dishs3.add(new Dish("番茄炒蛋", 1.0, 10, R.drawable.textkele));
+        dishs3.add(new Dish("牛肉炒羊肉", 1.0, 10, R.drawable.textkele));
+        dishs3.add(new Dish("牛排", 1.0, 10, R.drawable.textkele));
+        dishs3.add(new Dish("鸡排", 1.0, 10, R.drawable.textkele));
+        dishs3.add(new Dish("猪排", 1.0, 10, R.drawable.textkele));
+        DishMenu menu3 = new DishMenu("炒菜", dishs3);
+
+        ArrayList<Dish> dishs4 = new ArrayList<>();
+        dishs4.add(new Dish("牛肉面", 1.0, 10, R.drawable.textkele));
+        dishs4.add(new Dish("蛋炒饭", 1.0, 10, R.drawable.textkele));
+        dishs4.add(new Dish("馄炖", 1.0, 10, R.drawable.textkele));
+        dishs4.add(new Dish("水饺", 1.0, 10, R.drawable.textkele));
+        dishs4.add(new Dish("馒头", 1.0, 10, R.drawable.textkele));
+        dishs4.add(new Dish("包子", 1.0, 10, R.drawable.textkele));
+        DishMenu menu4 = new DishMenu("主食", dishs4);
+
+        ArrayList<Dish> dishs5 = new ArrayList<>();
+        dishs5.add(new Dish("可乐", 1.0, 10, R.drawable.textkele));
+        dishs5.add(new Dish("雪碧", 1.0, 10, R.drawable.textkele));
+        dishs5.add(new Dish("橙汁", 1.0, 10, R.drawable.textkele));
+        dishs5.add(new Dish("椰奶", 1.0, 10, R.drawable.textkele));
+        dishs5.add(new Dish("啤酒", 1.0, 10, R.drawable.textkele));
+        dishs5.add(new Dish("二锅头", 1.0, 10, R.drawable.textkele));
+        DishMenu menu5 = new DishMenu("饮料", dishs5);
+
+
+        dishMenuList.add(menu1);
+        dishMenuList.add(menu2);
+        dishMenuList.add(menu3);
+        dishMenuList.add(menu4);
+        dishMenuList.add(menu5);
     }
 }
 

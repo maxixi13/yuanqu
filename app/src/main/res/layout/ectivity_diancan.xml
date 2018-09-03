@@ -50,6 +50,11 @@
                 android:layout_weight="1"
                 android:background="@color/gray"/>
 
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/beijingf5f5f5"/>
+
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -60,7 +65,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white"/>
-
                 <include layout="@layout/ediancan_right_menu_item" />
             </RelativeLayout>
         </LinearLayout>
@@ -85,6 +89,8 @@
                 android:src="@drawable/ic_shopping_cart_white_24dp" />
         </FrameLayout>
 
+
+
         <TextView
             android:id="@+id/shopping_cart_total_num"
             android:layout_width="wrap_content"
@@ -102,8 +108,19 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/f5f5f5"
+            android:background="@color/beijingf5f5f5"
             android:layout_alignBottom="@id/diancan_dish_menu"/>
+
+        <Button
+            android:id="@+id/diancan_dish_tijiaodingdan"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:background="@color/top_blue"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/tijiaodingdan"
+            android:textColor="@color/white"
+            android:textSize="22sp"/>
 
     </RelativeLayout>
 

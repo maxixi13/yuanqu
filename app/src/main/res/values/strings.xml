@@ -38,4 +38,12 @@
     <string name="dish_name">菜名</string>
     <string name="shopcart">购物车</string>
     <string name="clear">清空</string>
+    <string name="tijiaodingdan">提交订单</string>
+    <string name="querendingdan">确认订单</string>
+    <string name="teststring">王大姐</string>
+    <string name="teststring1">13616464664</string>
+    <string name="textstring2">上海市宝山区大王路XXXX弄18号</string>
+    <string name="dongdashijian">送达时间</string>
+    <string name="zhifufangshi">支付方式</string>
+    <string name="weixin">微信</string>
 </resources>

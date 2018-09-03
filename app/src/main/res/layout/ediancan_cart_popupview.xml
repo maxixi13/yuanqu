@@ -60,7 +60,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/f5f5f5" />
+            android:background="@color/beijingf5f5f5" />
 
 
     </LinearLayout>
@@ -124,5 +124,15 @@
         android:textColor="@color/white"
         android:textSize="10sp"
         android:textStyle="bold" />
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/top_blue"
+        android:text="@string/tijiaodingdan"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
 
 </RelativeLayout>
