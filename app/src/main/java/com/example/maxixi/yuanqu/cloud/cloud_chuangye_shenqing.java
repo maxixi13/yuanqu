@@ -43,7 +43,7 @@ public class cloud_chuangye_shenqing extends AppCompatActivity {
         final String[] strArray = new String[]{"芈展服务园", "离离原上草", "一岁一枯荣", "野火烧不尽", "春风吹又生"};
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);//实例化builder
         builder.setIcon(R.mipmap.ic_launcher);//设置图标
-        builder.setTitle("请选择所在园区");//设置标题
+//        builder.setTitle("请选择所在园区");//设置标题
         //设置单选列表
         builder.setSingleChoiceItems(strArray, 0, new DialogInterface.OnClickListener() {
             @Override

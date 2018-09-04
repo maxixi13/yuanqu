@@ -1,7 +1,9 @@
 package com.example.maxixi.yuanqu.cloud.cloud_adapter;
 
 
-import android.support.v7.widget.LinearLayoutManager;
+import android.content.Intent;
+
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +12,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.example.maxixi.yuanqu.R;
+import com.example.maxixi.yuanqu.cloud.cloud_chuangye_chuangye;
+import com.example.maxixi.yuanqu.cloud.cloud_jingrong_jinrong;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static android.media.CamcorderProfile.get;
+
 
 
 public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adapter.ViewHolder> {
@@ -40,11 +44,13 @@ public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adap
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView zhidaoText;
         TextView zhidaoTime;
+        View adapterview;
 
         public ViewHolder(View view) {
             super(view);
             zhidaoText = (TextView) view.findViewById(R.id.chuangye_zhidao_name);
             zhidaoTime= (TextView) view.findViewById(R.id.chuangye_zhidao_time);
+            adapterview=view;
         }
 
     }
@@ -54,9 +60,27 @@ public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adap
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cctivity_cloud_chuangye_zhidao_item, parent, false);
-        ViewHolder holder = new ViewHolder(view);
+        final ViewHolder holder = new ViewHolder(view);
+        holder.adapterview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position=holder.getAdapterPosition();
+                cloud_zhidao_lei cloud_zhidao_lei=myzhidaolist.get(position);
+                Toast.makeText(parent.getContext(),"你是谁"+cloud_zhidao_lei.getname()+position,Toast.LENGTH_SHORT).show();
+                if(cloud_zhidao_lei.getname()=="芈租界大新闻"){
+                    Intent intent=new Intent(parent.getContext(), cloud_chuangye_chuangye.class);
+                    intent.putExtra("mizujie","http://www.mzujie.com");
+                    parent.getContext().startActivity(intent);
+                }else if(cloud_zhidao_lei.getname()=="危险") {
+                    Intent intent = new Intent(parent.getContext(), cloud_jingrong_jinrong.class);
+                    intent.putExtra("baidu", "https://www.baidu.com");
+                    parent.getContext().startActivity(intent);
+                }
+
+            }
+        });
 
 
 

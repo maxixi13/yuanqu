@@ -1,4 +1,4 @@
-package com.example.maxixi.yuanqu.cloud;
+package com.example.maxixi.yuanqu.cloud.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -32,7 +32,6 @@ public class Fragmentchuangyechuangye extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         cloud_zhidao_adapter cloud_zhidao_adapter = new cloud_zhidao_adapter(zhidaoList);
         recyclerView.setAdapter(cloud_zhidao_adapter);
-        recyclerView.setNestedScrollingEnabled(false);
 
 
 //        //创业recyceler监听
@@ -50,12 +49,26 @@ public class Fragmentchuangyechuangye extends Fragment {
 
     //活动详情recyclerview
     private void initzhidaoList() {
-        cloud_zhidao_lei madada = new cloud_zhidao_lei("这是哪里","2018-07");
+        cloud_zhidao_lei madada = new cloud_zhidao_lei("芈租界大新闻","2018-07");
         zhidaoList.add(madada);
         cloud_zhidao_lei apple = new cloud_zhidao_lei("是不是指导","2018-07");
         zhidaoList.add(apple);
-        cloud_zhidao_lei apple1 = new cloud_zhidao_lei("重写的指导","2018-07");
-        zhidaoList.add(apple1);
+        cloud_zhidao_lei apple2 = new cloud_zhidao_lei("重写的指导","2018-07");
+        zhidaoList.add(apple2);
+        cloud_zhidao_lei apple3 = new cloud_zhidao_lei("重写的指导","2018-07");
+        zhidaoList.add(apple3);
+        cloud_zhidao_lei apple4 = new cloud_zhidao_lei("重写的指导","2018-07");
+        zhidaoList.add(apple4);
+        cloud_zhidao_lei apple5 = new cloud_zhidao_lei("重写的指导","2018-07");
+        zhidaoList.add(apple5);
+        cloud_zhidao_lei apple6 = new cloud_zhidao_lei("重写的指导","2018-07");
+        zhidaoList.add(apple6);
+        cloud_zhidao_lei apple7 = new cloud_zhidao_lei("重写的指导","2018-07");
+        zhidaoList.add(apple7);
+        cloud_zhidao_lei apple8 = new cloud_zhidao_lei("重写的指导","2018-07");
+        zhidaoList.add(apple8);
+
+
     }
 
 }

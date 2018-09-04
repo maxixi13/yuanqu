@@ -27,7 +27,7 @@
     <string name="bangongquyu">办公区域</string>
     <string name="gongsimingcheng">公司名称</string>
     <string name="lianxiren">联系人</string>
-    <string name="lianxidianhua">练习电话</string>
+    <string name="lianxidianhua">联系电话</string>
     <string name="chuangye_shengqing_title1">请选择所在园区</string>
     <string name="chuangye_shengqing_title2">请输入办公区域</string>
     <string name="chuangye_shengqing_title3">请输入公司名称</string>
@@ -49,4 +49,10 @@
     <string name="beizhuxinxi">备注信息：</string>
     <string name="xuantian">(选填）</string>
     <string name="querenzhifu">确认支付</string>
+    <string name="dizhiguanli">地址管理</string>
+    <string name="jinrongfuwu">金融服务</string>
+    <string name="fengxiantouzi">风险投资</string>
+    <string name="yinhangdaikuan">银行贷款</string>
+    <string name="jinrongfuwushenqing">金融服务申请</string>
+    <string name="chuangye_shengqing_title0">请选择服务</string>
 </resources>

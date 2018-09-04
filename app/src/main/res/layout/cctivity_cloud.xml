@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -14,10 +13,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/beijingf5f5f5">
+            android:background="@color/beijingf5f5f5"
+            android:orientation="vertical">
 
             <ImageButton
+                android:id="@+id/cloud_zhengfu"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:layout_marginLeft="17dp"
@@ -26,6 +26,7 @@
                 android:background="@drawable/cloud_zhengfu" />
 
             <ImageButton
+                android:id="@+id/cloud_jinrong"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:layout_marginLeft="17dp"
@@ -52,12 +53,13 @@
                 android:background="@drawable/cloud_chuangye" />
 
             <ImageButton
+                android:id="@+id/cloud_fuwu"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
+                android:layout_marginBottom="11dp"
                 android:layout_marginLeft="17dp"
                 android:layout_marginRight="17dp"
                 android:layout_marginTop="11dp"
-                android:layout_marginBottom="11dp"
                 android:background="@drawable/cloud_qiye" />
 
         </LinearLayout>
@@ -71,7 +73,6 @@
         android:layout_height="?android:actionBarSize"
         android:background="?attr/colorPrimary"
         android:title="@string/title_cloud"
-        android:titleTextColor="@android:color/white">
-    </Toolbar>
+        android:titleTextColor="@android:color/white"></Toolbar>
 
 </android.support.constraint.ConstraintLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cloud.cloud_chuangye_shenqing">
+    tools:context=".cloud.cloud_jinrong_shenqing">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <Toolbar
-            android:id="@+id/cloud_chuangye_shenqing_toolbar"
+            android:id="@+id/cloud_jinrong_shenqing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?android:actionBarSize"
             android:background="?attr/colorPrimary"
@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/chuangyeshenqing"
+                android:text="@string/jinrongfuwushenqing"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -50,7 +50,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/suozaiyuanqu"
+                    android:text="@string/jinrongfuwu"
                     android:textColor="#666666"
                     android:textSize="15sp" />
 
@@ -59,7 +59,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/bangongquyu"
+                    android:text="@string/suozaiyuanqu"
                     android:textColor="#666666"
                     android:textSize="15sp" />
 
@@ -99,19 +99,19 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/chuangye_chuangye_shengqing_yuanqu_layout"
+                    android:id="@+id/jinrong_jinrong_shengqing_fuwu_layout"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/chuangye_chuangye_shengqing_yuanqu_text"
+                        android:id="@+id/jinrong_jinrong_shengqing_fuwu_text"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="7"
                         android:gravity="center_vertical"
-                        android:text="@string/chuangye_shengqing_title1"
+                        android:text="@string/chuangye_shengqing_title0"
                         android:textColor="@color/d6d6d6"
                         android:textSize="15sp" />
 
@@ -130,15 +130,32 @@
                     android:layout_height="1dp"
                     android:background="@color/dddddd" />
 
-                <EditText
+                <LinearLayout
+                    android:id="@+id/jinrong_jinrong_shengqing_yuanqu_layout"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="center_vertical"
-                    android:hint="@string/chuangye_shengqing_title2"
-                    android:textColorHint="@color/d6d6d6"
-                    android:textSize="15sp" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/jinrong_jinrong_shengqing_yuanqu_text"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:text="@string/chuangye_shengqing_title1"
+                        android:textColor="@color/d6d6d6"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
+                        android:src="@drawable/chuangye_chuangye_xia" />
+
+                </LinearLayout>
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -206,7 +223,7 @@
             android:background="@drawable/personal_yuanjiaojuxingsuoblue"
             android:text="@string/tijiao"
             android:textColor="@android:color/white"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
     </LinearLayout>
 

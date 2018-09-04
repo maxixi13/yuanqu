@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".cloud.cloud_jinrong">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/beijingf5f5f5">
+
+        <Toolbar
+            android:id="@+id/cloud_jirong_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:title=""
+            android:titleTextColor="@android:color/white"
+            android:navigationIcon="@drawable/back_button">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/jinrongfuwu"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"/>
+
+        </Toolbar>
+
+        <LinearLayout
+            android:id="@+id/jinrong_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/white">
+
+            <Button
+                android:id="@+id/jinrong_navigation_left"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/fengxiantouzi"
+                android:textColor="@drawable/textselectcolor"
+                android:background="@drawable/chuangyefuwuselector"/>
+
+            <Button
+                android:id="@+id/jinrong_navigation_right"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/yinhangdaikuan"
+                android:textColor="@drawable/textselectcolor"
+                android:background="@drawable/chuangyefuwuselector" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/jirong_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

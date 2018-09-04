@@ -4,11 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cloud.cloud_chuangye_chuangye"
-    android:background="@color/beijingf5f5f5">
+    tools:context=".diancan.diancan_queren_dizhiguanli">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp">
+    </ScrollView>
 
     <Toolbar
-        android:id="@+id/cloud_chuangye_chuangye_toolbar"
+        android:id="@+id/diancan_queren_dizhiguanli_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:background="?attr/colorPrimary"
@@ -20,26 +25,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/chuangye"
+            android:text="@string/dizhiguanli"
             android:textColor="@android:color/white"
             android:textSize="20sp"/>
 
-        <TextView
-            android:id="@+id/cloud_chuangye_chuangye_shenqing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="11dp"
-            android:text="@string/shengqing"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"/>
-
     </Toolbar>
-
-    <WebView
-        android:id="@+id/chuangye_chuangye_web"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="56dp"/>
 
 </android.support.constraint.ConstraintLayout>
