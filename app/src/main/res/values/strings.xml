@@ -46,4 +46,7 @@
     <string name="dongdashijian">送达时间</string>
     <string name="zhifufangshi">支付方式</string>
     <string name="weixin">微信</string>
+    <string name="beizhuxinxi">备注信息：</string>
+    <string name="xuantian">(选填）</string>
+    <string name="querenzhifu">确认支付</string>
 </resources>

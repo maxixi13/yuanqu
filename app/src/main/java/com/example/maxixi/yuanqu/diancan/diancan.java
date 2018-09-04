@@ -293,7 +293,7 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
 
     private void showCart(View view) {
         if (shopCart != null && shopCart.getShoppingAccount() > 0) {
-            ShopCartDialog dialog = new ShopCartDialog(this, shopCart, R.style.cartdialog);
+            final ShopCartDialog dialog = new ShopCartDialog(this, shopCart, R.style.cartdialog);
             Window window = dialog.getWindow();
             dialog.setShopCartDialogImp(this);
             dialog.setCanceledOnTouchOutside(true);
@@ -305,6 +305,7 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
             params.gravity = Gravity.BOTTOM;
             params.dimAmount = 0.5f;
             window.setAttributes(params);
+
         }
     }
 
@@ -319,9 +320,9 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
         shopCart = new ShopCart();
         dishMenuList = new ArrayList<>();
         ArrayList<Dish> dishs1 = new ArrayList<>();
-        dishs1.add(new Dish("面包", 1.0, 10, R.drawable.textkele));
+        dishs1.add(new Dish("面包", 3.0, 10, R.drawable.textkele));
         dishs1.add(new Dish("蛋挞", 1.0, 10, R.drawable.textkele));
-        dishs1.add(new Dish("牛奶", 1.0, 10, R.drawable.textkele));
+        dishs1.add(new Dish("牛奶", 4.0, 10, R.drawable.textkele));
         dishs1.add(new Dish("肠粉", 1.0, 10, R.drawable.textkele));
         dishs1.add(new Dish("绿茶饼", 1.0, 10, R.drawable.textkele));
         dishs1.add(new Dish("花卷", 1.0, 10, R.drawable.textkele));

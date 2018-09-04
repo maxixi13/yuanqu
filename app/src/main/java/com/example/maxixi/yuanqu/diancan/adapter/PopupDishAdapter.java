@@ -18,6 +18,8 @@ import com.example.maxixi.yuanqu.diancan.model.ShopCart;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by cheng on 16-12-23.
  */
@@ -53,6 +55,7 @@ public class PopupDishAdapter extends RecyclerView.Adapter{
         if(dish!=null) {
             dishholder.right_dish_name_tv.setText(dish.getDishName());
             dishholder.right_dish_price_tv.setText(dish.getDishPrice() + "");
+            dishholder.right_dish_imgage.setImageResource(dish.getDishImage());
             int num = shopCart.getShoppingSingleMap().get(dish);
             dishholder.right_dish_account_tv.setText(num+"");
 
@@ -89,7 +92,7 @@ public class PopupDishAdapter extends RecyclerView.Adapter{
     }
 
     public Dish getDishByPosition(int position){
-       return dishList.get(position);
+        return dishList.get(position);
     }
 
     public ShopCartImp getShopCartImp() {
@@ -107,6 +110,7 @@ public class PopupDishAdapter extends RecyclerView.Adapter{
         private ImageView right_dish_remove_iv;
         private ImageView right_dish_add_iv;
         private TextView right_dish_account_tv;
+        private CircleImageView right_dish_imgage;
 
         public DishViewHolder(View itemView) {
             super(itemView);
@@ -116,6 +120,7 @@ public class PopupDishAdapter extends RecyclerView.Adapter{
             right_dish_remove_iv = (ImageView)itemView.findViewById(R.id.right_dish_remove);
             right_dish_add_iv = (ImageView)itemView.findViewById(R.id.right_dish_add);
             right_dish_account_tv = (TextView) itemView.findViewById(R.id.right_dish_account);
+            right_dish_imgage=(CircleImageView)itemView.findViewById(R.id.diancan_dish_imgage);
         }
 
     }

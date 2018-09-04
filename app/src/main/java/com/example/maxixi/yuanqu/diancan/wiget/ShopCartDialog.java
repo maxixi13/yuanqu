@@ -3,21 +3,24 @@ package com.example.maxixi.yuanqu.diancan.wiget;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.diancan.adapter.PopupDishAdapter;
+import com.example.maxixi.yuanqu.diancan.diancan_queren;
 import com.example.maxixi.yuanqu.diancan.imp.ShopCartImp;
 import com.example.maxixi.yuanqu.diancan.model.ShopCart;
-
 
 
 /**
@@ -58,6 +61,20 @@ public class ShopCartDialog extends Dialog implements View.OnClickListener,ShopC
         recyclerView.setAdapter(dishAdapter);
         dishAdapter.setShopCartImp(this);
         showTotalPrice();
+
+
+        Button diancandialogButton=(Button)findViewById(R.id.diancan_cartpop_tijiaodingdan);
+        diancandialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent querenIntent = new Intent();
+                querenIntent.setClass(getContext(), diancan_queren.class);
+                getContext().startActivity(querenIntent);
+                getShopCartDialogImp().dialogDismiss();
+            }
+        });
+
+
     }
 
     @Override

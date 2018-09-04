@@ -126,6 +126,7 @@
         android:textStyle="bold" />
 
     <Button
+        android:id="@+id/diancan_cartpop_tijiaodingdan"
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
