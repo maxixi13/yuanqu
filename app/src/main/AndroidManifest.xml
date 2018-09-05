@@ -38,7 +38,9 @@
         <activity android:name=".cloud.cloud_jinrong" />
         <activity android:name=".cloud.cloud_jingrong_jinrong" />
         <activity android:name=".cloud.cloud_jinrong_shenqing" />
-        <activity android:name=".diancan.diancan_tianjiadizhi"></activity>
+        <activity android:name=".diancan.diancan_tianjiadizhi" />
+        <activity android:name=".personal.waimaijilu" />
+        <activity android:name=".personal.tingchejilu"></activity>
     </application>
 
 </manifest>

@@ -22,7 +22,7 @@ public class Fragmentpark extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(getActivity(), Parkservice_yuannei.class);
+                intent.setClass(getContext(), Parkservice_yuannei.class);
                 startActivity(intent);
             }
         });

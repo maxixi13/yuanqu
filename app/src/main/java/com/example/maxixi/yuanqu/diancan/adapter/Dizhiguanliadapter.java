@@ -1,7 +1,9 @@
 package com.example.maxixi.yuanqu.diancan.adapter;
 
+
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +18,13 @@ import com.example.maxixi.yuanqu.diancan.model.Dizhiguanlilei;
 
 import java.util.List;
 
+import static android.support.constraint.Constraints.TAG;
+
 public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.ViewHolder> {
 
     private List<Dizhiguanlilei> mydizhiguanliList;
+    private int selector = -1;
 
-    private int selected = -1;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
@@ -35,7 +39,7 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
             name = (TextView) view.findViewById(R.id.diancan_queren_dizhiguanli_name);
             dianhua = (TextView) view.findViewById(R.id.diancan_queren_dizhiguanli_dianhua);
             dizhi = (TextView) view.findViewById(R.id.diancan_queren_dizhiguanli_dizhi);
-            linearLayout=(LinearLayout)view.findViewById(R.id.diancan_queren_dizhiguanli_bianji);
+            linearLayout = (LinearLayout) view.findViewById(R.id.diancan_queren_dizhiguanli_bianji);
             morendizhiselect = view;
             imageView = (ImageView) view.findViewById(R.id.diancan_queren_dizhiguanli_selectorimage);
 
@@ -44,10 +48,6 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
 
     public Dizhiguanliadapter(List<Dizhiguanlilei> dizhiguanlileiList) {
         mydizhiguanliList = dizhiguanlileiList;
-    }
-
-    public void setSelection(){
-        notifyDataSetChanged();
     }
 
 
@@ -60,28 +60,47 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(parent.getContext(),diancan_tianjiadizhi.class);
+                Intent intent = new Intent(parent.getContext(), diancan_tianjiadizhi.class);
                 parent.getContext().startActivity(intent);
             }
         });
 
 
+//        int position =holder.getAdapterPosition();
+//        holder.imageView.setSelected(false);
+//
+//        if (selector==position){
+//            notifyDataSetChanged();
+//        }
+//        holder.morendizhiselect.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int position = holder.getAdapterPosition();
+//                Dizhiguanlilei dizhiguanlilei = mydizhiguanliList.get(position);
+//                holder.imageView.setSelected(true);
+//                selector=position;
+//
+//            }
+//        });
 
 
+        int position = holder.getAdapterPosition();
+        holder.imageView.setSelected(false);
 
-        holder.morendizhiselect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int position = holder.getAdapterPosition();
-                Dizhiguanlilei dizhiguanlilei = mydizhiguanliList.get(position);
-                Toast.makeText(parent.getContext(),"ha"+mydizhiguanliList.size()+getItemId(position),Toast.LENGTH_SHORT).show();
-//                mydizhiguanliList.get()
-//                for(int i=-1;i<position;++i);
+        if (selector == position) {
 
-                holder.imageView.setSelected(true);
+            holder.morendizhiselect.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = holder.getAdapterPosition();
+                    Dizhiguanlilei dizhiguanlilei = mydizhiguanliList.get(position);
+                    holder.imageView.setSelected(true);
+                    selector = position;
 
-            }
-        });
+                }
+            });
+
+        }
 
 
         return holder;

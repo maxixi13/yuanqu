@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".diancan.diancan_queren_dizhiguanli">
 
+    <Toolbar
+        android:id="@+id/diancan_queren_dizhiguanli_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:navigationIcon="@drawable/back_button"
+        android:title=""
+        android:titleTextColor="@android:color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/dizhiguanli"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+    </Toolbar>
+
     <ScrollView
+        android:id="@+id/diancan_queren_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="56dp"
         android:layout_marginTop="56dp"
         android:background="@color/beijingf5f5f5">
 
@@ -20,27 +41,33 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/diancan_queren_dizhiguanli_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
         </LinearLayout>
     </ScrollView>
 
-    <Toolbar
-        android:id="@+id/diancan_queren_dizhiguanli_toolbar"
+    <LinearLayout
+        android:id="@+id/diancan_queren_dizhiguanli_tianjiadizhi"
         android:layout_width="match_parent"
-        android:layout_height="?android:actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:title=""
-        android:titleTextColor="@android:color/white"
-        android:navigationIcon="@drawable/back_button">
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/top_blue"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/diancan_queren_dizhiguanli_tianjia" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/dizhiguanli"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"/>
+            android:layout_marginStart="11dp"
+            android:text="@string/tianjiadizhi"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
-    </Toolbar>
+    </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>
