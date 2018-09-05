@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/diancan_queren_dizhiguanli_item_layout"
+    android:layout_height="110dp"
+    android:layout_marginLeft="17dp"
+    android:layout_marginRight="17dp"
+    android:layout_marginTop="11dp"
+    android:background="@drawable/personal_yuanjiaojuxingsuo"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/diancan_queren_dizhiguanli_name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="17dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="@string/teststring"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/diancan_queren_dizhiguanli_dianhua"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center|left|bottom"
+            android:text="@string/teststring1"
+            android:textColor="@color/top_blue"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/diancan_queren_dizhiguanli_dizhi"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="17dp"
+            android:gravity="center_vertical"
+            android:text="@string/textstring2"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <ImageView
+                android:id="@+id/diancan_queren_dizhiguanli_selectorimage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/diancan_queren_dizhixuanze_selector"
+                android:layout_gravity="center"
+                android:layout_marginStart="17dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/shezhimorendizhi"
+                android:layout_gravity="center"
+                android:layout_marginStart="17dp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/diancan_queren_dizhiguanli_bianji"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/diancan_queren_dizhiguanli_bianji"
+                android:layout_gravity="center"
+                android:layout_marginStart="17dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bianji"
+                android:textColor="@color/black"
+                android:layout_gravity="center|right"
+                android:layout_marginStart="17dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
+

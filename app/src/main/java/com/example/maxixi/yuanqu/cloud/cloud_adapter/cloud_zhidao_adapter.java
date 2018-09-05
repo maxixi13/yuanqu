@@ -13,14 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.maxixi.yuanqu.MainActivity;
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.cloud.cloud_chuangye_chuangye;
 import com.example.maxixi.yuanqu.cloud.cloud_jingrong_jinrong;
 
 
 import java.util.List;
-
-
 
 
 public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adapter.ViewHolder> {
@@ -49,8 +48,8 @@ public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adap
         public ViewHolder(View view) {
             super(view);
             zhidaoText = (TextView) view.findViewById(R.id.chuangye_zhidao_name);
-            zhidaoTime= (TextView) view.findViewById(R.id.chuangye_zhidao_time);
-            adapterview=view;
+            zhidaoTime = (TextView) view.findViewById(R.id.chuangye_zhidao_time);
+            adapterview = view;
         }
 
     }
@@ -66,14 +65,14 @@ public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adap
         holder.adapterview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int position=holder.getAdapterPosition();
-                cloud_zhidao_lei cloud_zhidao_lei=myzhidaolist.get(position);
-                Toast.makeText(parent.getContext(),"你是谁"+cloud_zhidao_lei.getname()+position,Toast.LENGTH_SHORT).show();
-                if(cloud_zhidao_lei.getname()=="芈租界大新闻"){
-                    Intent intent=new Intent(parent.getContext(), cloud_chuangye_chuangye.class);
-                    intent.putExtra("mizujie","http://www.mzujie.com");
+                int position = holder.getAdapterPosition();
+                cloud_zhidao_lei cloud_zhidao_lei = myzhidaolist.get(position);
+                Toast.makeText(parent.getContext(), "this is" + cloud_zhidao_lei.getname() + position, Toast.LENGTH_SHORT).show();
+                if (cloud_zhidao_lei.getname() == "芈租界大新闻") {
+                    Intent intent = new Intent(parent.getContext(), cloud_chuangye_chuangye.class);
+                    intent.putExtra("mizujie", "http://www.mzujie.com");
                     parent.getContext().startActivity(intent);
-                }else if(cloud_zhidao_lei.getname()=="危险") {
+                } else if (cloud_zhidao_lei.getname() == "危险") {
                     Intent intent = new Intent(parent.getContext(), cloud_jingrong_jinrong.class);
                     intent.putExtra("baidu", "https://www.baidu.com");
                     parent.getContext().startActivity(intent);
@@ -81,7 +80,6 @@ public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adap
 
             }
         });
-
 
 
         return holder;
@@ -120,7 +118,6 @@ public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adap
     public int getItemCount() {
         return myzhidaolist.size();
     }
-
 
 
 }

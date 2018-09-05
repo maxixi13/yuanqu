@@ -37,7 +37,8 @@
         <activity android:name=".diancan.diancan_queren_dizhiguanli" />
         <activity android:name=".cloud.cloud_jinrong" />
         <activity android:name=".cloud.cloud_jingrong_jinrong" />
-        <activity android:name=".cloud.cloud_jinrong_shenqing"></activity>
+        <activity android:name=".cloud.cloud_jinrong_shenqing" />
+        <activity android:name=".diancan.diancan_tianjiadizhi"></activity>
     </application>
 
 </manifest>

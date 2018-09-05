@@ -66,7 +66,7 @@ public class cloud_chuangye_shenqing extends AppCompatActivity {
 //        });
 
         //设置确定按钮
-        dialog.setButton(DialogInterface.BUTTON_POSITIVE, "确认", new DialogInterface.OnClickListener() {
+        dialog.setButton(DialogInterface.BUTTON_POSITIVE, "取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

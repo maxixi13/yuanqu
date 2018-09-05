@@ -2,6 +2,7 @@ package com.example.maxixi.yuanqu.diancan;
 
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -54,6 +56,15 @@ public class diancan_queren extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         querendingdanAdapter dishAdapter = new querendingdanAdapter(querendingdan);
         recyclerView.setAdapter(dishAdapter);
+
+        LinearLayout dizhiguanli=(LinearLayout)findViewById(R.id.querendingdan_dizhilayout);
+        dizhiguanli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(diancan_queren.this,diancan_queren_dizhiguanli.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

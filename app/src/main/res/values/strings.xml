@@ -55,4 +55,11 @@
     <string name="yinhangdaikuan">银行贷款</string>
     <string name="jinrongfuwushenqing">金融服务申请</string>
     <string name="chuangye_shengqing_title0">请选择服务</string>
+    <string name="shezhimorendizhi">设置为默认地址</string>
+    <string name="bianji">编辑</string>
+    <string name="tianjiadizhi">添加地址</string>
+    <string name="xiangxidizhi">详细地址</string>
+    <string name="chuangye_shengqing_title6">请输入详细地址</string>
+    <string name="shi">是</string>
+    <string name="fou">否</string>
 </resources>
