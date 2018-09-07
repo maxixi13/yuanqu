@@ -40,9 +40,13 @@
         <activity android:name=".cloud.cloud_jinrong_shenqing" />
         <activity android:name=".diancan.diancan_tianjiadizhi" />
         <activity android:name=".personal.waimaijilu" />
-        <activity android:name=".personal.tingchejilu" />
+        <activity android:name=".personal.tingche.tingchejilu" />
         <activity android:name=".personal.renzhengqiye" />
-        <activity android:name=".personal.tingche_linshicheliang"></activity>
+        <activity android:name=".personal.tingche.tingche_linshicheliang" />
+        <activity android:name=".personal.tingche.tingche_yuekacheliang" />
+        <activity android:name=".personal.tingche.tingchejilujilu" />
+        <activity android:name=".cloud.cloud_qiyefuwu" />
+        <activity android:name=".cloud.cloud_qiyefuwu_gongshangzhuce"></activity>
     </application>
 
 </manifest>

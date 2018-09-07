@@ -1,23 +1,16 @@
-package com.example.maxixi.yuanqu.personal;
+package com.example.maxixi.yuanqu.personal.tingche;
 
 import android.app.AlertDialog;
-import android.nfc.Tag;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
-
-import java.util.Objects;
 
 public class tingchejilu extends AppCompatActivity {
 
@@ -34,25 +27,42 @@ public class tingchejilu extends AppCompatActivity {
             }
         });
 
-        RelativeLayout tianjiacheliangbutton=(RelativeLayout)findViewById(R.id.tingchejilu_tianjiacheliang);
+        RelativeLayout tianjiacheliangbutton = (RelativeLayout) findViewById(R.id.tingchejilu_tianjiacheliang);
         tianjiacheliangbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 tianjiacheliangDialog();
             }
         });
+
+        LinearLayout yuekaLinearLayout = (LinearLayout) findViewById(R.id.tingchejilu_yueka_layout);
+        LinearLayout lingshiLinearLayout = (LinearLayout) findViewById(R.id.tingchejilu_lingshi_layout);
+        yuekaLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(tingchejilu.this, tingche_yuekacheliang.class);
+                startActivity(intent);
+            }
+        });
+
+        lingshiLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(tingchejilu.this, tingche_linshicheliang.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
+    private void tianjiacheliangDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog dialog = builder.create();
 
-    private void tianjiacheliangDialog(){
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            final AlertDialog dialog = builder.create();
-
-            View view = View.inflate(this, R.layout.dctivity_tingchejilu_tianjiaitem,null);
+        View view = View.inflate(this, R.layout.dctivity_tingchejilu_tianjiaitem, null);
 //        View view=LayoutInflater.from(this).inflate(R.layout.dctivity_tingchejilu_tianjiaitem,null);
-            // dialog.setView(view);// 将自定义的布局文件设置给dialog
-            dialog.setView(view, 0, 0, 0, 0);// 设置边距为0,保证在2.x的版本上运行没问题
+        // dialog.setView(view);// 将自定义的布局文件设置给dialog
+        dialog.setView(view, 0, 0, 0, 0);// 设置边距为0,保证在2.x的版本上运行没问题
 //        dialog.setContentView(view);
 //            final EditText etPassword = (EditText) view
 //                    .findViewById(R.id.et_password);
@@ -103,11 +113,11 @@ public class tingchejilu extends AppCompatActivity {
 //                }
 //            });
 
-            dialog.show();
-        Toast.makeText(this,"hahah"+view.getHeight()+view.getWidth(),Toast.LENGTH_LONG).show();
+        dialog.show();
+        Toast.makeText(this, "hahah" + view.getHeight() + view.getWidth(), Toast.LENGTH_LONG).show();
+
 
     }
-
 
 
 }

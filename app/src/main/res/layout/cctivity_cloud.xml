@@ -73,6 +73,6 @@
         android:layout_height="?android:actionBarSize"
         android:background="?attr/colorPrimary"
         android:title="@string/title_cloud"
-        android:titleTextColor="@android:color/white"></Toolbar>
+        android:titleTextColor="@android:color/white"/>
 
 </android.support.constraint.ConstraintLayout>

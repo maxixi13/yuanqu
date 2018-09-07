@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/beijingf5f5f5"
+    tools:context=".personal.tingche.tingche_yuekacheliang"
     android:orientation="vertical"
-    tools:context=".personal.tingche.tingchejilu">
+    android:background="@color/beijingf5f5f5">
 
     <Toolbar
-        android:id="@+id/personal_tingchejiaofei_toolbar"
+        android:id="@+id/personal_tingchejiaofei_yueka_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:background="?attr/colorPrimary"
@@ -21,14 +21,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/tingchejiaofei"
+            android:text="@string/yuekajiaofei"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
     </Toolbar>
 
-
     <LinearLayout
-        android:id="@+id/tingchejilu_yueka_layout"
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:layout_marginEnd="17dp"
@@ -139,161 +137,98 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="5dp"
                 android:gravity="bottom|right"
                 android:text="停车状态：未停车"
-                android:textColor="@color/red" />
+                android:textColor="@color/red"
+                android:layout_marginBottom="5dp"/>
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/tingchejilu_lingshi_layout"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="110dp"
         android:layout_marginEnd="17dp"
         android:layout_marginStart="17dp"
         android:layout_marginTop="11dp"
         android:background="@drawable/personal_yuanjiaojuxingsuo"
         android:orientation="horizontal">
 
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/didashijian" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/tingcheshijiannoi" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/yuekajiezhishijian" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="@string/linshitingche"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:gravity="center|end"
+                android:text="2018/07/09" />
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="3"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/cheliangpinpai" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/cheliangxinghao" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/cheliangpaizhao" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="11dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="法拉利" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="488" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="沪A8888" />
-                </LinearLayout>
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/tingcheceshu"
-                android:textAlignment="viewEnd" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="50次"
-                android:textAlignment="viewEnd"
-                android:textColor="@color/top_blue"
-                android:textSize="32sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="5dp"
-                android:gravity="bottom|right"
-                android:text="停车状态：停车中"
+                android:layout_weight="1"
+                android:gravity="center|end"
+                android:text="4小时"
                 android:textColor="@color/top_blue" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center|end"
+                android:text="2018/07/09" />
+
+
+
+
         </LinearLayout>
+
+
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/tingchejilu_tianjiacheliang"
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
         android:layout_marginEnd="17dp"
         android:layout_marginStart="17dp"
-        android:layout_marginTop="11dp"
-        android:background="@drawable/personal_yuanjiaojuxingsuo"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="235dp"
-            android:layout_height="28dp"
-            android:layout_centerInParent="true"
-            android:background="@drawable/personal_yuanjiaojuxingbluebian"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/tianjiacheliangicon" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="11dp"
-                android:text="@string/tianjiacheliang"
-                android:textColor="@color/top_blue" />
-        </LinearLayout>
-    </RelativeLayout>
+        android:layout_marginTop="45dp"
+        android:background="@drawable/personal_yuanjiaojuxingsuoblue"
+        android:text="@string/yuekaxufei"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
 
 </LinearLayout>

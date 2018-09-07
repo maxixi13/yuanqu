@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".personal.tingche_linshicheliang">
+    tools:context=".personal.tingche.tingche_linshicheliang"
+    android:background="@color/beijingf5f5f5">
 
     <Toolbar
         android:id="@+id/personal_tingchejiaofei_linshi_toolbar"
@@ -303,8 +304,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="50dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginEnd="53dp"
+            android:layout_marginTop="10dp"
             android:text="@string/lijijiaofei"
             android:textColor="@color/white"
             android:textSize="20sp" />
@@ -314,7 +315,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="33dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/yixiaoshihouchongxinjifei"
             android:textColor="@color/white" />
     </RelativeLayout>

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".personal.renzhengqiye">
+    tools:context=".personal.renzhengqiye"
+    android:background="@color/beijingf5f5f5">
 
     <Toolbar
         android:id="@+id/personal_renzhengqiye_toolbar"

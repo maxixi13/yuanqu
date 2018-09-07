@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".cloud.cloud_qiyefuwu"
+    android:background="@color/beijingf5f5f5"
+    android:orientation="vertical">
+
+    <Toolbar
+        android:id="@+id/cloud_qiyefuwu_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:title=""
+        android:titleTextColor="@android:color/white"
+        android:navigationIcon="@drawable/back_button">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/qiyefuwu"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>
+
+    </Toolbar>
+
+    <ImageButton
+        android:id="@+id/qiyefuwu_gongshangzhuce"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/cloud_qiyefuwu_zhuce" />
+
+    <ImageButton
+        android:id="@+id/qiyefuwu_zhishichanquan"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/cloud_qiyefuwu_chanquan" />
+
+    <ImageButton
+        android:id="@+id/qiyefuwu_shejiyinshua"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/cloud_qiyefuwu_shejiyinshua" />
+
+    <ImageButton
+        android:id="@+id/qiyefuwu_caiwudaili"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginBottom="11dp"
+        android:background="@drawable/cloud_qiyefuwu_caiwu" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="?android:actionBarSize" />
+
+</LinearLayout>

@@ -100,4 +100,12 @@
     <string name="chongzhiyueka">充值月卡</string>
     <string name="lijijiaofei">立即缴费</string>
     <string name="yixiaoshihouchongxinjifei">(一小时后重新计费)</string>
+    <string name="yuekajiaofei">月卡缴费</string>
+    <string name="yuekajiezhishijian">月卡截止时间</string>
+    <string name="yuekaxufei">月卡续费</string>
+    <string name="benyuenei">一月内</string>
+    <string name="liangyuenei">二月内</string>
+    <string name="sanyuenei">三月内</string>
+    <string name="qiyefuwu">企业服务</string>
+    <string name="gongshangzhuce">工商注册</string>
 </resources>
