@@ -17,6 +17,7 @@ import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.RecyclerViewGroup.hdxx;
 import com.example.maxixi.yuanqu.RecyclerViewGroup.hdxxAdapter;
 import com.example.maxixi.yuanqu.diancan.diancan;
+import com.example.maxixi.yuanqu.personal.tingchejilu;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
@@ -114,6 +115,15 @@ public class Fragmentnavigation extends Fragment {
                 Intent bannerdiancan = new Intent();
                 bannerdiancan.setClass(getActivity(), diancan.class);
                 startActivity(bannerdiancan);
+            }
+        });
+
+        ImageButton tingchejilu = (ImageButton) view.findViewById(R.id.banner_tingche);
+        tingchejilu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), com.example.maxixi.yuanqu.personal.tingchejilu.class);
+                startActivity(intent);
             }
         });
 

@@ -24,6 +24,7 @@
         android:background="@color/beijingf5f5f5">
 
         <ImageButton
+            android:id="@+id/parkservice_tingchejiaofei"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"

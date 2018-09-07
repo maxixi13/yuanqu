@@ -64,6 +64,7 @@
                     android:layout_marginTop="10dp">
 
                     <ImageButton
+                        android:id="@+id/personal_tingchejilu"
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
@@ -184,6 +185,7 @@
                 android:gravity="center_vertical"/>
 
             <TextView
+                android:id="@+id/personal_chengweiqiye"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:text="@string/personal_title_5"

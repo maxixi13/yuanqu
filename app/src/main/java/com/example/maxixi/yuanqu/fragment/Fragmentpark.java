@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 
 import com.example.maxixi.yuanqu.perkservice.Parkservice_yuannei;
 import com.example.maxixi.yuanqu.R;
+import com.example.maxixi.yuanqu.personal.tingchejilu;
 
 public class Fragmentpark extends Fragment {
 
@@ -23,6 +24,15 @@ public class Fragmentpark extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(getContext(), Parkservice_yuannei.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton tingchejilu = (ImageButton) view.findViewById(R.id.parkservice_tingchejiaofei);
+        tingchejilu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), com.example.maxixi.yuanqu.personal.tingchejilu.class);
                 startActivity(intent);
             }
         });
