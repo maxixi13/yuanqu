@@ -4,27 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/beijingf5f5f5"
     android:orientation="vertical"
-    tools:context=".personal.renzhengqiye"
-    android:background="@color/beijingf5f5f5">
+    tools:context=".perkservice.parkservice_yuanei_tousu">
 
     <Toolbar
-        android:id="@+id/personal_renzhengqiye_toolbar"
+        android:id="@+id/yuannei_tousu_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:background="?attr/colorPrimary"
-        android:navigationIcon="@drawable/back_button"
         android:title=""
-        android:titleTextColor="@android:color/white">
+        android:titleTextColor="@android:color/white"
+        android:navigationIcon="@drawable/back_button">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/renzhengqiyeyonghu"
+            android:text="@string/tousujianyi"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
-
+            android:textSize="20sp"/>
     </Toolbar>
 
     <LinearLayout
@@ -46,7 +45,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/qiyemingcheng"
+                android:text="@string/suozaiyuanqu"
                 android:textColor="#666666"
                 android:textSize="15sp" />
 
@@ -55,7 +54,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/farenxinming"
+                android:text="@string/bangongquyu"
                 android:textColor="#666666"
                 android:textSize="15sp" />
 
@@ -64,7 +63,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/lianxifangshi"
+                android:text="@string/gongsimingcheng"
                 android:textColor="#666666"
                 android:textSize="15sp" />
 
@@ -73,16 +72,34 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/tongyixinyongdaimai"
+                android:text="@string/tousuleixing"
                 android:textColor="#666666"
                 android:textSize="15sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/shangchuanqiyezhengshu"
+                android:text="@string/tousuduixiang"
+                android:textColor="#666666"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/lianxiren"
+                android:textColor="#666666"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/lianxidianhua"
                 android:textColor="#666666"
                 android:textSize="15sp" />
 
@@ -94,6 +111,50 @@
             android:layout_weight="4"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:gravity="center_vertical"
+                    android:text="@string/qingxuanzesuozaiyuanqu"
+                    android:textColor="@color/d6d6d6"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"
+                    android:src="@drawable/chuangye_chuangye_xia" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dddddd" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@string/qingxuanzebangongquyu"
+                android:textColorHint="@color/d6d6d6"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dddddd" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -103,8 +164,7 @@
                 android:gravity="center_vertical"
                 android:hint="@string/qingshurugongsimingcheng"
                 android:textColorHint="@color/d6d6d6"
-                android:textSize="15sp"/>
-
+                android:textSize="15sp" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -117,7 +177,7 @@
                 android:layout_weight="1"
                 android:background="@null"
                 android:gravity="center_vertical"
-                android:hint="@string/chuangye_shengqing_title7"
+                android:hint="@string/qingxuanzetousuleixing"
                 android:textColorHint="@color/d6d6d6"
                 android:textSize="15sp" />
 
@@ -132,7 +192,7 @@
                 android:layout_weight="1"
                 android:background="@null"
                 android:gravity="center_vertical"
-                android:hint="@string/chuangye_shengqing_title8"
+                android:hint="@string/qingshurugongsimingcheng"
                 android:textColorHint="@color/d6d6d6"
                 android:textSize="15sp" />
 
@@ -147,7 +207,7 @@
                 android:layout_weight="1"
                 android:background="@null"
                 android:gravity="center_vertical"
-                android:hint="@string/chuangye_shengqing_title9"
+                android:hint="@string/qingshurulianxiren"
                 android:textColorHint="@color/d6d6d6"
                 android:textSize="15sp" />
 
@@ -156,19 +216,20 @@
                 android:layout_height="1dp"
                 android:background="@color/dddddd" />
 
-            <RelativeLayout
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="3">
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@string/qingshulianxidianhua"
+                android:textColorHint="@color/d6d6d6"
+                android:textSize="15sp" />
 
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/personal_renzhengqiye_imageview" />
-            </RelativeLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dddddd" />
 
 
         </LinearLayout>
@@ -186,7 +247,6 @@
         android:background="@drawable/personal_yuanjiaojuxingsuoblue"
         android:text="@string/tijiao"
         android:textColor="@android:color/white"
-        android:textSize="20sp" />
-
+        android:textSize="20sp"/>
 
 </LinearLayout>

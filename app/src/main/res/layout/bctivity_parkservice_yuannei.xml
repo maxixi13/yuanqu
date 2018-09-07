@@ -34,6 +34,7 @@
         android:background="@color/beijingf5f5f5">
 
         <ImageButton
+            android:id="@+id/yuannei_wuyezixun"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -43,6 +44,7 @@
             android:background="@drawable/button_park_zixun" />
 
         <ImageButton
+            android:id="@+id/yuannei_tousujianyi"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -52,6 +54,7 @@
             android:background="@drawable/button_park_jianyi" />
 
         <ImageButton
+            android:id="@+id/yuannei_wuyebaoxiu"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -61,6 +64,7 @@
             android:background="@drawable/button_park_baoxiu" />
 
         <ImageButton
+            android:id="@+id/yuanei_yuanqujieshao"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"

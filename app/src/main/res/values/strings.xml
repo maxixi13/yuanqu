@@ -28,11 +28,11 @@
     <string name="gongsimingcheng">公司名称</string>
     <string name="lianxiren">联系人</string>
     <string name="lianxidianhua">联系电话</string>
-    <string name="chuangye_shengqing_title1">请选择所在园区</string>
-    <string name="chuangye_shengqing_title2">请输入办公区域</string>
-    <string name="chuangye_shengqing_title3">请输入公司名称</string>
-    <string name="chuangye_shengqing_title4">请输入联系人</string>
-    <string name="chuangye_shengqing_title5">请输入联系电话</string>
+    <string name="qingxuanzesuozaiyuanqu">请选择所在园区</string>
+    <string name="qingxuanzebangongquyu">请输入办公区域</string>
+    <string name="qingshurugongsimingcheng">请输入公司名称</string>
+    <string name="qingshurulianxiren">请输入联系人</string>
+    <string name="qingshulianxidianhua">请输入联系电话</string>
     <string name="mizhandashitang">芈展大食堂</string>
     <string name="menu_name">菜单</string>
     <string name="dish_name">菜名</string>
@@ -108,4 +108,10 @@
     <string name="sanyuenei">三月内</string>
     <string name="qiyefuwu">企业服务</string>
     <string name="gongshangzhuce">工商注册</string>
+    <string name="wuyezixun">物业咨询</string>
+    <string name="lijilianxi">立即联系</string>
+    <string name="tousujianyi">投诉建议</string>
+    <string name="tousuleixing">投诉类型</string>
+    <string name="tousuduixiang">投诉对象</string>
+    <string name="qingxuanzetousuleixing">请选择投诉类型</string>
 </resources>

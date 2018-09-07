@@ -96,7 +96,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="center_vertical"
-                    android:hint="@string/chuangye_shengqing_title4"
+                    android:hint="@string/qingshurulianxiren"
                     android:textColorHint="@color/d6d6d6"
                     android:textSize="15sp" />
 
@@ -111,7 +111,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="center_vertical"
-                    android:hint="@string/chuangye_shengqing_title5"
+                    android:hint="@string/qingshulianxidianhua"
                     android:textColorHint="@color/d6d6d6"
                     android:textSize="15sp" />
 

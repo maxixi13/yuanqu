@@ -143,7 +143,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="7"
                         android:gravity="center_vertical"
-                        android:text="@string/chuangye_shengqing_title1"
+                        android:text="@string/qingxuanzesuozaiyuanqu"
                         android:textColor="@color/d6d6d6"
                         android:textSize="15sp" />
 
@@ -168,7 +168,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="center_vertical"
-                    android:hint="@string/chuangye_shengqing_title3"
+                    android:hint="@string/qingshurugongsimingcheng"
                     android:textColorHint="@color/d6d6d6"
                     android:textSize="15sp" />
 
@@ -183,7 +183,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="center_vertical"
-                    android:hint="@string/chuangye_shengqing_title4"
+                    android:hint="@string/qingshurulianxiren"
                     android:textColorHint="@color/d6d6d6"
                     android:textSize="15sp" />
 
@@ -198,7 +198,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:gravity="center_vertical"
-                    android:hint="@string/chuangye_shengqing_title5"
+                    android:hint="@string/qingshulianxidianhua"
                     android:textColorHint="@color/d6d6d6"
                     android:textSize="15sp" />
 

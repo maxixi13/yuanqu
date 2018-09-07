@@ -30,7 +30,9 @@
         <activity android:name=".cloud.cloud_chuangye_chuangye" />
         <activity android:name=".cloud.cloud_zuling_mizu" />
         <activity android:name=".cloud.cloud_zuling_zupc" />
-        <activity android:name=".diancan.diancan" />
+        <activity
+            android:name=".diancan.diancan"
+            android:launchMode="singleTop" />
         <activity
             android:name=".diancan.diancan_queren"
             android:windowSoftInputMode="adjustPan" />
@@ -46,7 +48,17 @@
         <activity android:name=".personal.tingche.tingche_yuekacheliang" />
         <activity android:name=".personal.tingche.tingchejilujilu" />
         <activity android:name=".cloud.cloud_qiyefuwu" />
-        <activity android:name=".cloud.cloud_qiyefuwu_gongshangzhuce"></activity>
+        <activity android:name=".cloud.cloud_qiyefuwu_gongshangzhuce" />
+        <activity android:name=".perkservice.parksevice_yuanei_zixun" />
+        <activity android:name=".perkservice.parkservice_yuanei_tousu"></activity>
     </application>
 
-</manifest>
+</manifest><!--
+    standard：每次调用startActivity()启动时都会创建一个新的Activity放在栈顶
+    　　注:默认都是这个模式
+    singleTop：启动Activity时，指定Activity不在栈顶就创建，如在栈顶，则不再创建
+    　　注:不会出现两个相同的Activity相邻
+    singleTask：如果启动的Activity不存在就创建Activity，如果存在直接跳转到指定的Activity所在位置
+    　　注:在其上面的Activity会被移出栈,也就是一个栈中不能有重复的Activity
+    singleInstance：如果启动的Activity不存在就创建一个Activity同时创建一个栈，如果存在就将指定的Activity存在的栈移动到栈顶
+-->
