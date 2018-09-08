@@ -125,4 +125,5 @@
     <string name="zhengceshenqing">政策申请</string>
     <string name="zhengfuzhengce">政府政策</string>
     <string name="qingxuanzezhengfuzhengce">请选择政府政策</string>
+    <string name="shenqingleixing">申请类型：</string>
 </resources>

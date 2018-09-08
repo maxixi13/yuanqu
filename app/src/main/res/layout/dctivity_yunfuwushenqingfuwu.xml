@@ -1,9 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".personal.yunfuwushenqingfuwu">
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".personal.yunfuwushenqingfuwu.yunfuwushenqingfuwu">
 
-</android.support.constraint.ConstraintLayout>
+    <Toolbar
+        android:id="@+id/yunfuwushenqingfuwu_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:navigationIcon="@drawable/back_button"
+        android:title=""
+        android:titleTextColor="@android:color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/jinrongfuwushenqing"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+    </Toolbar>
+
+    <LinearLayout
+        android:id="@+id/jinrong_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white">
+
+        <Button
+            android:id="@+id/navigation_zhengfuzixun"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/zhengfuzixun"
+            android:textColor="@drawable/textselectcolor"
+            android:background="@drawable/chuangyefuwuselector"/>
+
+        <Button
+            android:id="@+id/navigation_jinrongfuwu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/jinrongfuwu"
+            android:textColor="@drawable/textselectcolor"
+            android:background="@drawable/chuangyefuwuselector" />
+
+        <Button
+            android:id="@+id/navigation_chuangyefuwu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/chuangye"
+            android:textColor="@drawable/textselectcolor"
+            android:background="@drawable/chuangyefuwuselector" />
+
+        <Button
+            android:id="@+id/navigation_qiyefuwu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/qiyefuwu"
+            android:textColor="@drawable/textselectcolor"
+            android:background="@drawable/chuangyefuwuselector" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/yunfuwushenqingfuwu_fg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+
+
+</LinearLayout>

@@ -161,6 +161,7 @@
                 android:divider="@drawable/linearlayout_divider">
 
             <TextView
+                android:id="@+id/personal_yunfuwushenqingfuwu"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:gravity="center_vertical"

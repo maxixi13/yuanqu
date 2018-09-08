@@ -13,6 +13,7 @@ import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.personal.renzhengqiye;
 import com.example.maxixi.yuanqu.personal.tingche.tingchejilujilu;
 import com.example.maxixi.yuanqu.personal.waimaijilu;
+import com.example.maxixi.yuanqu.personal.yunfuwushenqingfuwu.yunfuwushenqingfuwu;
 
 
 public class Fragmentpersonal extends Fragment {
@@ -40,6 +41,15 @@ public class Fragmentpersonal extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), waimaijilu.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView yunfuwushenqingfuwu=(TextView)view.findViewById(R.id.personal_yunfuwushenqingfuwu);
+        yunfuwushenqingfuwu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(),yunfuwushenqingfuwu.class);
                 startActivity(intent);
             }
         });
