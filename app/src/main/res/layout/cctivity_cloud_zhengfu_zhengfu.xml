@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beijingf5f5f5"
+    android:orientation="vertical"
+    tools:context=".cloud.cloud_zhengfu_zhengfu">
+
+    <Toolbar
+        android:id="@+id/cloud_zhengfu_zhengfu_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:navigationIcon="@drawable/back_button"
+        android:title=""
+        android:titleTextColor="@android:color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/zhengfuzixun"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/cloud_zhengfu_zhengfu_shenqing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="11dp"
+            android:text="@string/shengqing"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"/>
+
+    </Toolbar>
+
+    <WebView
+        android:id="@+id/cloud_zhengfu_zhuangfu_web"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

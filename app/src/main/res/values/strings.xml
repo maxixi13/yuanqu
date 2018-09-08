@@ -54,7 +54,7 @@
     <string name="fengxiantouzi">风险投资</string>
     <string name="yinhangdaikuan">银行贷款</string>
     <string name="jinrongfuwushenqing">金融服务申请</string>
-    <string name="chuangye_shengqing_title0">请选择服务</string>
+    <string name="qingxuanzefuwu">请选择服务</string>
     <string name="shezhimorendizhi">设置为默认地址</string>
     <string name="bianji">编辑</string>
     <string name="tianjiadizhi">添加地址</string>
@@ -120,4 +120,9 @@
     <string name="baoxiuduixiang">报修对象</string>
     <string name="qingxuanzebaoxiuleixing">请选择报修类型</string>
     <string name="qingshurubaoxiuduixiang">请输入报修对象</string>
+    <string name="zhengfuzixun">政府咨询</string>
+    <string name="lijishenqing">立即申请</string>
+    <string name="zhengceshenqing">政策申请</string>
+    <string name="zhengfuzhengce">政府政策</string>
+    <string name="qingxuanzezhengfuzhengce">请选择政府政策</string>
 </resources>

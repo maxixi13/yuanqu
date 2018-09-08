@@ -51,7 +51,11 @@
         <activity android:name=".cloud.cloud_qiyefuwu_gongshangzhuce" />
         <activity android:name=".perkservice.parksevice_yuanei_zixun" />
         <activity android:name=".perkservice.parkservice_yuanei_tousu" />
-        <activity android:name=".perkservice.parkservice_yuannei_baoxiu"></activity>
+        <activity android:name=".perkservice.parkservice_yuannei_baoxiu" />
+        <activity android:name=".cloud.cloud_zhengfu" />
+        <activity android:name=".cloud.cloud_zhengfu_zhengfu" />
+        <activity android:name=".cloud.cloud_zhengfu_zhengfu_shenqing" />
+        <activity android:name=".personal.yunfuwushenqingfuwu"></activity>
     </application>
 
 </manifest><!--

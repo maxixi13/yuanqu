@@ -111,7 +111,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="7"
                         android:gravity="center_vertical"
-                        android:text="@string/chuangye_shengqing_title0"
+                        android:text="@string/qingxuanzefuwu"
                         android:textColor="@color/d6d6d6"
                         android:textSize="15sp" />
 

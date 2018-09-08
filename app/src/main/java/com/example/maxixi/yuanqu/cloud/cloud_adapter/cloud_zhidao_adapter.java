@@ -17,6 +17,8 @@ import com.example.maxixi.yuanqu.MainActivity;
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.cloud.cloud_chuangye_chuangye;
 import com.example.maxixi.yuanqu.cloud.cloud_jingrong_jinrong;
+import com.example.maxixi.yuanqu.cloud.cloud_zhengfu_zhengfu;
+import com.example.maxixi.yuanqu.cloud.cloud_zhengfu_zhengfu_shenqing;
 
 
 import java.util.List;
@@ -75,6 +77,10 @@ public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adap
                 } else if (cloud_zhidao_lei.getname() == "危险") {
                     Intent intent = new Intent(parent.getContext(), cloud_jingrong_jinrong.class);
                     intent.putExtra("baidu", "https://www.baidu.com");
+                    parent.getContext().startActivity(intent);
+                }else if(cloud_zhidao_lei.getname()=="政府大事件"){
+                    Intent intent=new Intent(parent.getContext(),cloud_zhengfu_zhengfu.class);
+                    intent.putExtra("mizujie", "http://www.mzujie.com");
                     parent.getContext().startActivity(intent);
                 }
 
