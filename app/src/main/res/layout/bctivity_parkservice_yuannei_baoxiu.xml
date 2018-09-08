@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/beijingf5f5f5"
+    tools:context=".perkservice.parkservice_yuannei_baoxiu"
     android:orientation="vertical"
-    tools:context=".perkservice.parkservice_yuanei_tousu">
+    android:background="@color/beijingf5f5f5">
 
     <Toolbar
-        android:id="@+id/yuannei_tousu_toolbar"
+        android:id="@+id/yuannei_baoxiu_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:background="?attr/colorPrimary"
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/tousujianyi"
+            android:text="@string/wuyebaoxiu"
             android:textColor="@android:color/white"
             android:textSize="20sp"/>
     </Toolbar>
@@ -72,7 +72,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/tousuleixing"
+                android:text="@string/baoxiuleixing"
                 android:textColor="#666666"
                 android:textSize="15sp" />
 
@@ -81,7 +81,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/tousuduixiang"
+                android:text="@string/baoxiuduixiang"
                 android:textColor="#666666"
                 android:textSize="15sp" />
 
@@ -112,14 +112,14 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/tousu_yuanquxuanze_linearlayout"
+                android:id="@+id/baoxiu_yuanquxuanze_linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tousu_yuanquxuanze_textview"
+                    android:id="@+id/baoxiu_yuanquxuanze_textview"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="7"
@@ -174,19 +174,19 @@
                 android:background="@color/dddddd" />
 
             <LinearLayout
-                android:id="@+id/tousu_tousuleixing_linearlayout"
+                android:id="@+id/baoxiu_baoxiuleixing_linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tousu_tousuleixing_textview"
+                    android:id="@+id/baoxiu_baoxiuleixing_textview"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="7"
                     android:gravity="center_vertical"
-                    android:text="@string/qingxuanzetousuleixing"
+                    android:text="@string/qingxuanzebaoxiuleixing"
                     android:textColor="@color/d6d6d6"
                     android:textSize="15sp" />
 
@@ -211,7 +211,7 @@
                 android:layout_weight="1"
                 android:background="@null"
                 android:gravity="center_vertical"
-                android:hint="@string/qingshurutousuduixiang"
+                android:hint="@string/qingshurubaoxiuduixiang"
                 android:textColorHint="@color/d6d6d6"
                 android:textSize="15sp" />
 

@@ -62,6 +62,7 @@ public class cloud_jinrong_shenqing extends AppCompatActivity {
                 TextView textView = (TextView) findViewById(R.id.jinrong_jinrong_shengqing_fuwu_text);
                 textView.setText(strArray[which]);
                 textView.setTextColor(Color.parseColor("#666666"));
+                dialog.dismiss();
             }
         });
         //创建对话框
@@ -90,6 +91,7 @@ public class cloud_jinrong_shenqing extends AppCompatActivity {
                 TextView textView = (TextView) findViewById(R.id.jinrong_jinrong_shengqing_yuanqu_text);
                 textView.setText(strArray[which]);
                 textView.setTextColor(Color.parseColor("#666666"));
+                dialog.dismiss();
             }
         });
         //创建对话框

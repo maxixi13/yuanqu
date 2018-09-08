@@ -114,4 +114,10 @@
     <string name="tousuleixing">投诉类型</string>
     <string name="tousuduixiang">投诉对象</string>
     <string name="qingxuanzetousuleixing">请选择投诉类型</string>
+    <string name="qingshurutousuduixiang">请输入投诉对象</string>
+    <string name="wuyebaoxiu">物业报修</string>
+    <string name="baoxiuleixing">报修类型</string>
+    <string name="baoxiuduixiang">报修对象</string>
+    <string name="qingxuanzebaoxiuleixing">请选择报修类型</string>
+    <string name="qingshurubaoxiuduixiang">请输入报修对象</string>
 </resources>

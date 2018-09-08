@@ -2,6 +2,7 @@ package com.example.maxixi.yuanqu.perkservice;
 
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -42,6 +43,16 @@ public class Parkservice_yuannei extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(Parkservice_yuannei.this,parkservice_yuanei_tousu.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton wuyebaoxiu=(ImageButton)
+                findViewById(R.id.yuannei_wuyebaoxiu);
+        wuyebaoxiu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Parkservice_yuannei.this,parkservice_yuannei_baoxiu.class);
                 startActivity(intent);
             }
         });
