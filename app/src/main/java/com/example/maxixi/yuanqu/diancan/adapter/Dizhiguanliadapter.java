@@ -2,6 +2,7 @@ package com.example.maxixi.yuanqu.diancan.adapter;
 
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.diancan.diancan_tianjiadizhi;
 import com.example.maxixi.yuanqu.diancan.model.Dizhiguanlilei;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.support.constraint.Constraints.TAG;
@@ -23,7 +25,8 @@ import static android.support.constraint.Constraints.TAG;
 public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.ViewHolder> {
 
     private List<Dizhiguanlilei> mydizhiguanliList;
-    private int selector = -1;
+
+
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -65,57 +68,37 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
             }
         });
 
+        holder.morendizhiselect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                Dizhiguanlilei dizhiguanlilei = mydizhiguanliList.get(position);
+                holder.imageView.setSelected(true);
+                Toast.makeText(parent.getContext(),"输出:"+holder.getItemViewType(),Toast.LENGTH_SHORT).show();
 
-//        int position =holder.getAdapterPosition();
-//        holder.imageView.setSelected(false);
-//
-//        if (selector==position){
-//            notifyDataSetChanged();
-//        }
-//        holder.morendizhiselect.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int position = holder.getAdapterPosition();
-//                Dizhiguanlilei dizhiguanlilei = mydizhiguanliList.get(position);
-//                holder.imageView.setSelected(true);
-//                selector=position;
-//
-//            }
-//        });
-
-
-        int position = holder.getAdapterPosition();
-        holder.imageView.setSelected(false);
-
-        if (selector == position) {
-
-            holder.morendizhiselect.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = holder.getAdapterPosition();
-                    Dizhiguanlilei dizhiguanlilei = mydizhiguanliList.get(position);
-                    holder.imageView.setSelected(true);
-                    selector = position;
-
-                }
-            });
-
-        }
+            }
+        });
 
 
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         Dizhiguanlilei dizhiguanlilei = mydizhiguanliList.get(position);
         holder.name.setText(dizhiguanlilei.getName());
         holder.dianhua.setText(dizhiguanlilei.getDianhua());
         holder.dizhi.setText(dizhiguanlilei.getDizhi());
+
+
+
     }
 
     @Override
     public int getItemCount() {
         return mydizhiguanliList.size();
     }
+
+
+
 }
