@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cloud.cloud_qiyefuwu"
+    tools:context=".cloud.qiyefuwu.cloud_qiyefuwu"
     android:background="@color/beijingf5f5f5"
     android:orientation="vertical">
 

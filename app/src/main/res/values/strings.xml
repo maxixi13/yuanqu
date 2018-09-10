@@ -136,4 +136,7 @@
     <string name="qingshuruyonghuming">请输入用户名</string>
     <string name="tousushenqing">投诉申请</string>
     <string name="baoxiushenqing">报修申请</string>
+    <string name="caiwudaili">财务代理</string>
+    <string name="shejiyinshua">设计印刷</string>
+    <string name="zhishichanquan">知识产权</string>
 </resources>

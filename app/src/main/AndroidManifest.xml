@@ -47,8 +47,8 @@
         <activity android:name=".personal.tingche.tingche_linshicheliang" />
         <activity android:name=".personal.tingche.tingche_yuekacheliang" />
         <activity android:name=".personal.tingche.tingchejilujilu" />
-        <activity android:name=".cloud.cloud_qiyefuwu" />
-        <activity android:name=".cloud.cloud_qiyefuwu_gongshangzhuce" />
+        <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu" />
+        <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_gongshangzhuce" />
         <activity android:name=".perkservice.parksevice_yuanei_zixun" />
         <activity android:name=".perkservice.parkservice_yuanei_tousu" />
         <activity android:name=".perkservice.parkservice_yuannei_baoxiu" />
@@ -57,7 +57,14 @@
         <activity android:name=".cloud.cloud_zhengfu_zhengfu_shenqing" />
         <activity android:name=".personal.yunfuwushenqingfuwu.yunfuwushenqingfuwu" />
         <activity android:name=".Loginpage" />
-        <activity android:name=".personal.yuanneifuwujilu.Yuanqufujilu"></activity>
+        <activity android:name=".personal.yuanneifuwujilu.Yuanqufujilu" />
+        <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_gongshangzhuceSQ" />
+        <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_zhishichanquan" />
+        <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_zhishichuanquanSQ" />
+        <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_shejiyinshua" />
+        <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_shejiyinshuaSQ" />
+        <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_caiwudaili" />
+        <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_caiwudailiSQ"></activity>
     </application>
 
 </manifest><!--
