@@ -126,4 +126,12 @@
     <string name="zhengfuzhengce">政府政策</string>
     <string name="qingxuanzezhengfuzhengce">请选择政府政策</string>
     <string name="shenqingleixing">申请类型：</string>
+    <string name="denglu">登陆</string>
+    <string name="zhuce">注册</string>
+    <string name="qingshurushoujihao">请输入手机号码</string>
+    <string name="qingshurumima">请输入密码</string>
+    <string name="qingshuruyanzhengma">请输入验证码</string>
+    <string name="huoquyanzhengma">获取验证码</string>
+    <string name="tongshizhuceweiqiye">同时注册为企业</string>
+    <string name="qingshuruyonghuming">请输入用户名</string>
 </resources>

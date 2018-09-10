@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="275dp"
+        android:background="@drawable/personal_yuanjiaojuxing"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:padding="15sp"
+                android:src="@drawable/login_shoujihaoicon" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="@string/qingshurushoujihao" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="340dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:background="@color/dddddd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:padding="15sp"
+                android:src="@drawable/login_mimaicon" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="@string/qingshurumima" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="340dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:background="@color/dddddd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:padding="15sp"
+                android:src="@drawable/login_yonghumingicon" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="@string/qingshuruyonghuming" />
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="340dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:background="@color/dddddd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:padding="15sp"
+                android:src="@drawable/login_yanzhengmaicon" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@null"
+                android:hint="@string/qingshuruyanzhengma" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="28dp"
+                android:layout_marginEnd="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/login_huisebeijing"
+                android:text="@string/huoquyanzhengma"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="17dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/personal_yuanjiaojuxingsuoblue"
+        android:text="@string/zhuce"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="17dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/personal_yuanjiaojuxingsuobluebian"
+        android:text="@string/tongshizhuceweiqiye"
+        android:textColor="@color/top_blue"
+        android:textSize="20sp" />
+
+
+</LinearLayout>

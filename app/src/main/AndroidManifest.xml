@@ -55,7 +55,8 @@
         <activity android:name=".cloud.cloud_zhengfu" />
         <activity android:name=".cloud.cloud_zhengfu_zhengfu" />
         <activity android:name=".cloud.cloud_zhengfu_zhengfu_shenqing" />
-        <activity android:name=".personal.yunfuwushenqingfuwu.yunfuwushenqingfuwu"></activity>
+        <activity android:name=".personal.yunfuwushenqingfuwu.yunfuwushenqingfuwu" />
+        <activity android:name=".Loginpage"/>
     </application>
 
 </manifest><!--

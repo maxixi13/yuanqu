@@ -22,5 +22,7 @@
 
     <color name="tab_tv_nor">#000</color>
     <color name="tab_tv_sel">#3399dd</color>
+    <color name="qianlan">#9ddffd</color>
+    <color name="huise">#cccccc</color>
 
 </resources>

@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.maxixi.yuanqu.Loginpage;
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.personal.renzhengqiye;
 import com.example.maxixi.yuanqu.personal.tingche.tingchejilujilu;
@@ -60,6 +62,16 @@ public class Fragmentpersonal extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), renzhengqiye.class);
+                startActivity(intent);
+            }
+        });
+
+
+        LinearLayout logout=(LinearLayout)view.findViewById(R.id.personal_logoutbutton);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), Loginpage.class);
                 startActivity(intent);
             }
         });
