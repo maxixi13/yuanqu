@@ -168,6 +168,7 @@
                 android:text="@string/personal_title_1" />
 
             <TextView
+                android:id="@+id/personal_yuanqufushenqingjilu"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:text="@string/personal_title_2"
