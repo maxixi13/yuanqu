@@ -25,8 +25,7 @@ import static android.support.constraint.Constraints.TAG;
 public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.ViewHolder> {
 
     private List<Dizhiguanlilei> mydizhiguanliList;
-
-
+    private int selector=-1;
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -68,13 +67,16 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
             }
         });
 
+
         holder.morendizhiselect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Dizhiguanlilei dizhiguanlilei = mydizhiguanliList.get(position);
-                holder.imageView.setSelected(true);
-                Toast.makeText(parent.getContext(),"输出:"+holder.getItemViewType(),Toast.LENGTH_SHORT).show();
+//                holder.imageView.setSelected(true);
+                selector=position;
+                Toast.makeText(parent.getContext(),"输出:"+selector,Toast.LENGTH_SHORT).show();
+                notifyDataSetChanged();
 
             }
         });
@@ -89,6 +91,12 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
         holder.name.setText(dizhiguanlilei.getName());
         holder.dianhua.setText(dizhiguanlilei.getDianhua());
         holder.dizhi.setText(dizhiguanlilei.getDizhi());
+
+        if (selector==position){
+            holder.imageView.setSelected(true);
+        }else {
+            holder.imageView.setSelected(false);
+        }
 
 
 
