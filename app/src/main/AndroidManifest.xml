@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".perkservice.Parkservice_yuannei" />
         <activity android:name=".cloud.cloud_zuling" />
         <activity android:name=".cloud.cloud_chuangye" />
@@ -64,7 +65,7 @@
         <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_shejiyinshua" />
         <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_shejiyinshuaSQ" />
         <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_caiwudaili" />
-        <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_caiwudailiSQ"></activity>
+        <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_caiwudailiSQ" />
     </application>
 
 </manifest><!--
