@@ -43,7 +43,6 @@ public class Fragmentchuangyechuangye extends Fragment {
     private List<cloud_zhidao_lei> dataArray = new ArrayList<>();
     private RecyclerView recyclerView;
     private cloud_zhidao_adapter cloud_zhidao_adapter;
-//    private boolean is_load = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container_cloud, Bundle saveInstanceState) {
