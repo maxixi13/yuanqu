@@ -2,9 +2,11 @@ package com.example.maxixi.yuanqu.cloud.fragment;
 
 import android.annotation.SuppressLint;
 
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.maxixi.yuanqu.Loginpage;
 import com.example.maxixi.yuanqu.R;
 
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_adapter;
@@ -39,112 +42,61 @@ public class Fragmentchuangyechuangye extends Fragment {
 
     private List<cloud_zhidao_lei> dataArray = new ArrayList<>();
     private RecyclerView recyclerView;
-
+    private cloud_zhidao_adapter cloud_zhidao_adapter;
+//    private boolean is_load = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container_cloud, Bundle saveInstanceState) {
         View view = inflater.inflate(R.layout.cctivity_cloud_chuangye_zhidao, container_cloud, false);
 
-        //viewlist
         recyclerView = (RecyclerView) view.findViewById(R.id.cloud_chuangye_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
+        sendRequestWithOkHttp();
 
-
-        Call call = new OkHttpClient().newCall(new Request.Builder().get().url("http://guolin.tech/api/china").build());
-        //异步调用并设置回调函数
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-
-            }
-
-            @Override
-            public void onResponse(Call call, final Response response) throws IOException {
-                final String responseStr = response.body().string();
-
-                try {
-                    JSONArray array = new JSONArray(responseStr);
-                    for (int i = 0; i < array.length(); i++) {
-                        JSONObject jsonObject = array.getJSONObject(i);
-                        cloud_zhidao_lei madada = new cloud_zhidao_lei(jsonObject.get("name").toString(), jsonObject.get("id").toString());
-                        dataArray.add(madada);
-                        Message msg = new Message();
-                        msg.what = 1;
-                        handler.sendMessage(msg);
-//                        cloud_zhidao_adapter.notifyDataSetChanged();
-                        Log.i(TAG, "hhhhhhh" + jsonObject.get("name").toString());
-
-
-                    }
-                    //Log.i(TAG, "hhhhhhh"+jsonObject.get("code").toString());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-
-
-//        String url = "http://wwww.baidu.com";
-//        OkHttpClient okHttpClient = new OkHttpClient();
-//        final Request request = new Request.Builder()
-//                .url(url)
-//                .get()//默认就是GET请求，可以不写
-//                .build();
-//        Call call = okHttpClient.newCall(request);
-//        call.enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                Log.d(TAG, "onFailure: ");
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                Log.d(TAG, "onResponse: " + response.body().string());
-//            }
-//        });
-
-
-//        //创业recyceler监听
-//        cloud_zhidao_adapter.setOnItemClickListener(new cloud_zhidao_adapterchild.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, int position) {
-//                Toast.makeText(getContext(), "click " + zhidaoList.get(position), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        recyclerView.setAdapter(cloud_zhidao_adapter);
 
 
         return view;
     }
 
-//    @Override
-//    public void onDestroy() {
-//        super.onDestroy();
-//        handler.removeCallbacksAndMessages(null);
-//    }
-
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 1:
-                    //添加分割线
-                    cloud_zhidao_adapter cloud_zhidao_adapter = new cloud_zhidao_adapter(dataArray);
-                    //设置布局显示格式
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    private void sendRequestWithOkHttp() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder().url("http://192.168.11.121/index/consultationdetails/finance_list").build();
+                    Response response = client.newCall(request).execute();
+                    String responseData = response.body().string();
+                    parseJSONWithJSONObject(responseData);
                     recyclerView.setAdapter(cloud_zhidao_adapter);
-                    break;
-
-
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
+        }).start();
+    }
+
+
+    private void parseJSONWithJSONObject(String jsonData) {
+        try {
+            JSONObject jsonObject = new JSONObject(jsonData);
+            JSONArray array = jsonObject.getJSONArray("data");
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject jsonObjectchil = array.getJSONObject(i);
+                cloud_zhidao_lei madada = new cloud_zhidao_lei(jsonObjectchil.getString("title"), jsonObjectchil.getString("ctime"));
+                dataArray.add(madada);
+                cloud_zhidao_adapter = new cloud_zhidao_adapter(dataArray);
+                this.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        recyclerView.setAdapter(cloud_zhidao_adapter);
+                    }
+                });
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
-    };
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        handler.removeCallbacksAndMessages(null);
     }
 }
