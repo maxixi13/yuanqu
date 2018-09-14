@@ -1,5 +1,6 @@
 package com.example.maxixi.yuanqu;
 
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -25,6 +26,19 @@ public class Loginpage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginpage);
+
+        CountDownTimer countDownTimer=new CountDownTimer(60*1000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
+
 
         denglubutton=(TextView)findViewById(R.id.login_denglutext);
         zhucebutton=(TextView)findViewById(R.id.login_zhucetext);
