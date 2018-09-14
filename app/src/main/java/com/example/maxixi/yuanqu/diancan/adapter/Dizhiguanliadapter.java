@@ -73,7 +73,6 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Dizhiguanlilei dizhiguanlilei = mydizhiguanliList.get(position);
-//                holder.imageView.setSelected(true);
                 selector=position;
                 Toast.makeText(parent.getContext(),"输出:"+selector,Toast.LENGTH_SHORT).show();
                 notifyDataSetChanged();

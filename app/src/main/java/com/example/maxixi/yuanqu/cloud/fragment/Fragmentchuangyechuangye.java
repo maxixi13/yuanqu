@@ -1,22 +1,15 @@
 package com.example.maxixi.yuanqu.cloud.fragment;
 
-import android.annotation.SuppressLint;
-
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.maxixi.yuanqu.Loginpage;
+
 import com.example.maxixi.yuanqu.R;
 
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_adapter;
@@ -26,17 +19,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-import static android.support.constraint.Constraints.TAG;
 
 public class Fragmentchuangyechuangye extends Fragment {
 
@@ -54,7 +44,6 @@ public class Fragmentchuangyechuangye extends Fragment {
         sendRequestWithOkHttp();
 
 
-
         return view;
     }
 
@@ -67,8 +56,24 @@ public class Fragmentchuangyechuangye extends Fragment {
                     Request request = new Request.Builder().url("http://192.168.11.121/index/consultationdetails/finance_list").build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
-                    parseJSONWithJSONObject(responseData);
-                    recyclerView.setAdapter(cloud_zhidao_adapter);
+                    try {
+                        JSONObject jsonObject = new JSONObject(responseData);
+                        JSONArray array = jsonObject.getJSONArray("data");
+                        for (int i = 0; i < array.length(); i++) {
+                            JSONObject jsonObjectchil = array.getJSONObject(i);
+                            cloud_zhidao_lei madada = new cloud_zhidao_lei(jsonObjectchil.getString("title"), jsonObjectchil.getString("ctime"));
+                            dataArray.add(madada);
+                            cloud_zhidao_adapter = new cloud_zhidao_adapter(dataArray);
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    recyclerView.setAdapter(cloud_zhidao_adapter);
+                                }
+                            });
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -76,26 +81,4 @@ public class Fragmentchuangyechuangye extends Fragment {
         }).start();
     }
 
-
-    private void parseJSONWithJSONObject(String jsonData) {
-        try {
-            JSONObject jsonObject = new JSONObject(jsonData);
-            JSONArray array = jsonObject.getJSONArray("data");
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject jsonObjectchil = array.getJSONObject(i);
-                cloud_zhidao_lei madada = new cloud_zhidao_lei(jsonObjectchil.getString("title"), jsonObjectchil.getString("ctime"));
-                dataArray.add(madada);
-                cloud_zhidao_adapter = new cloud_zhidao_adapter(dataArray);
-                this.getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        recyclerView.setAdapter(cloud_zhidao_adapter);
-                    }
-                });
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-    }
 }
