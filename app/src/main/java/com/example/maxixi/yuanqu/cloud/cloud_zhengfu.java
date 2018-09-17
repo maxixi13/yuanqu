@@ -12,13 +12,22 @@ import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_adapter;
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_lei;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class cloud_zhengfu extends AppCompatActivity {
 
 
     private List<cloud_zhidao_lei> zhidaoList=new ArrayList<>();
+    private RecyclerView recyclerView;
 
 
     @Override
@@ -35,23 +44,49 @@ public class cloud_zhengfu extends AppCompatActivity {
         });
 
 
-        initzhidaoList();
-        RecyclerView recyclerView=(RecyclerView)findViewById(R.id.cloud_zhengfu_recycler);
+        recyclerView=(RecyclerView)findViewById(R.id.cloud_zhengfu_recycler);
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        cloud_zhidao_adapter cloud_zhidao_adapter=new cloud_zhidao_adapter(zhidaoList);
-        recyclerView.setAdapter(cloud_zhidao_adapter);
+        sendRequestWithOkHttp();
+
 
 
     }
 
-    private void initzhidaoList() {
-        cloud_zhidao_lei madada=new cloud_zhidao_lei("政府大事件","2018-08");
-        zhidaoList.add(madada);
-        cloud_zhidao_lei madada1=new cloud_zhidao_lei("政府大事件","2018-08");
-        zhidaoList.add(madada1);
-        cloud_zhidao_lei madada2=new cloud_zhidao_lei("政府大事件","2018-08");
-        zhidaoList.add(madada2);
 
+
+
+    private void sendRequestWithOkHttp() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder().url("http://192.168.11.121/index/consultationdetails/finance_list").build();
+                    Response response = client.newCall(request).execute();
+                    String responseData = response.body().string();
+                    try {
+                        JSONObject jsonObject = new JSONObject(responseData);
+                        JSONArray array = jsonObject.getJSONArray("data");
+                        for (int i = 0; i < array.length(); i++) {
+                            JSONObject jsonObjectchil = array.getJSONObject(i);
+                            cloud_zhidao_lei madada = new cloud_zhidao_lei(jsonObjectchil.getString("title"), jsonObjectchil.getString("ctime"));
+                            zhidaoList.add(madada);
+                            final cloud_zhidao_adapter cloud_zhidao_adapter = new cloud_zhidao_adapter(zhidaoList);
+                           cloud_zhengfu.this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    recyclerView.setAdapter(cloud_zhidao_adapter);
+                                }
+                            });
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

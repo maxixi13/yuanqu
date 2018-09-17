@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_cloud"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".cloud.cloud_chuangye"
-    android:id="@+id/container_cloud">
+    tools:context=".cloud.cloud_chuangye">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/beijingf5f5f5">
+        android:background="@color/beijingf5f5f5"
+        android:orientation="vertical">
 
         <Toolbar
             android:id="@+id/cloud_chuangye_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?android:actionBarSize"
             android:background="?attr/colorPrimary"
+            android:navigationIcon="@drawable/back_button"
             android:title=""
-            android:titleTextColor="@android:color/white"
-            android:navigationIcon="@drawable/back_button">
+            android:titleTextColor="@android:color/white">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -29,7 +28,7 @@
                 android:layout_gravity="center"
                 android:text="@string/chuangye"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
         </Toolbar>
 
@@ -44,25 +43,30 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/chuangyefuwuselector"
                 android:text="@string/zhidao"
-                android:textColor="@drawable/textselectcolor"
-                android:background="@drawable/chuangyefuwuselector"/>
+                android:textColor="@drawable/textselectcolor" />
 
             <Button
                 android:id="@+id/chuangye_navigation_right"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/chuangyefuwuselector"
                 android:text="@string/luyan"
-                android:textColor="@drawable/textselectcolor"
-                android:background="@drawable/chuangyefuwuselector" />
+                android:textColor="@drawable/textselectcolor" />
 
         </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/chuangye_fragment"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/chuangye_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </ScrollView>
 
     </LinearLayout>
 

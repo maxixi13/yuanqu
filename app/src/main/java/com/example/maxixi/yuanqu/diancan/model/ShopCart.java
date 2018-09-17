@@ -42,7 +42,7 @@ public class ShopCart {
         }
         num+=1;
         shoppingSingle.put(dish,num);
-        Log.e("TAG", "addShoppingSingle: "+shoppingSingle.get(dish));
+        //Log.e("TAG", "addShoppingSingle: "+shoppingSingle.get(dish));
 
         shoppingTotalPrice += dish.getDishPrice();
         shoppingAccount++;
