@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
         <activity android:name=".perkservice.Parkservice_yuannei" />
         <activity android:name=".cloud.cloud_zuling" />
         <activity android:name=".cloud.cloud_chuangye" />
@@ -57,7 +57,9 @@
         <activity android:name=".cloud.cloud_zhengfu_zhengfu" />
         <activity android:name=".cloud.cloud_zhengfu_zhengfu_shenqing" />
         <activity android:name=".personal.yunfuwushenqingfuwu.yunfuwushenqingfuwu" />
-        <activity android:name=".Loginpage" />
+        <activity
+            android:name=".Loginpage"
+            android:launchMode="singleTop" />
         <activity android:name=".personal.yuanneifuwujilu.Yuanqufujilu" />
         <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_gongshangzhuceSQ" />
         <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_zhishichanquan" />
