@@ -5,12 +5,16 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
+
+import static android.widget.Toast.LENGTH_SHORT;
 
 public class tingchejilu extends AppCompatActivity {
 
@@ -59,10 +63,29 @@ public class tingchejilu extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final AlertDialog dialog = builder.create();
 
-        View view = View.inflate(this, R.layout.dctivity_tingchejilu_tianjiaitem, null);
-//        View view=LayoutInflater.from(this).inflate(R.layout.dctivity_tingchejilu_tianjiaitem,null);
-        // dialog.setView(view);// 将自定义的布局文件设置给dialog
+        final View view = View.inflate(this, R.layout.dctivity_tingchejilu_tianjiaitem, null);
         dialog.setView(view, 0, 0, 0, 0);// 设置边距为0,保证在2.x的版本上运行没问题
+
+        TextView quxiao = (TextView) view.findViewById(R.id.tianjia_dialog_quxiao);
+        quxiao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        TextView tijiao=(TextView)view.findViewById(R.id.tianjia_dialog_tiaojiao);
+        tijiao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        dialog.show();
+        Toast.makeText(this, "hahah" + view.getHeight() + view.getWidth(), Toast.LENGTH_LONG).show();
+
+
 //        dialog.setContentView(view);
 //            final EditText etPassword = (EditText) view
 //                    .findViewById(R.id.et_password);
@@ -112,9 +135,6 @@ public class tingchejilu extends AppCompatActivity {
 //                    dialog.dismiss();// 隐藏dialog
 //                }
 //            });
-
-        dialog.show();
-        Toast.makeText(this, "hahah" + view.getHeight() + view.getWidth(), Toast.LENGTH_LONG).show();
 
 
     }

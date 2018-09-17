@@ -19,6 +19,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -50,7 +51,8 @@ public class Fragmentjinrongdaikuan extends Fragment {
             public void run() {
                 try {
                     OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder().url("http://192.168.11.121/index/consultationdetails/finance_list").build();
+                    FormBody formBody=new FormBody.Builder().add("type","2").add("page","2").build();//post
+                    Request request = new Request.Builder().url("http://192.168.11.121/index/consultationdetails/finance_list").post(formBody).build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
                     try {

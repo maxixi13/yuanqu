@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.maxixi.yuanqu.Loginpage;
 import com.example.maxixi.yuanqu.R;
+import com.example.maxixi.yuanqu.diancan.diancan_queren_dizhiguanli;
 import com.example.maxixi.yuanqu.personal.renzhengqiye;
 import com.example.maxixi.yuanqu.personal.tingche.tingchejilujilu;
 import com.example.maxixi.yuanqu.personal.waimaijilu;
@@ -22,7 +23,7 @@ import com.example.maxixi.yuanqu.personal.yunfuwushenqingfuwu.yunfuwushenqingfuw
 public class Fragmentpersonal extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle saveInstanceState) {
         View view = inflater.inflate(R.layout.dctivity_personal, container, false);
 
 
@@ -63,6 +64,16 @@ public class Fragmentpersonal extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getContext(), Yuanqufujilu.class);
+                startActivity(intent);
+            }
+        });
+
+
+        TextView guanliwaimaidizhi=(TextView)view.findViewById(R.id.personal_guanliwaimaidizhi);
+        guanliwaimaidizhi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(),diancan_queren_dizhiguanli.class);
                 startActivity(intent);
             }
         });
