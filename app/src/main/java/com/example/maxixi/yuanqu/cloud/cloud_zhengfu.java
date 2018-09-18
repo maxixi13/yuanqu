@@ -91,12 +91,14 @@ public class cloud_zhengfu extends AppCompatActivity {
                         public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                             super.onScrolled(recyclerView, dx, dy);
                             Log.e("+++++++++++++++", "onScrolled: "+dx+"-----"+dy);
+                            if(dy>50){
+                                if (lid != -1 && lid != 201) {            //加载更多page
+                                    sendRequestWithOkHttp(++page);
+                                }
+                                Log.e("-----------------------", "aa" + lid);
+                            }
                         }
                     });
-                    if (lid != -1 && lid != 201) {            //加载更多page
-                        sendRequestWithOkHttp(++page);
-                    }
-                    Log.e("-----------------------", "aa" + lid);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
