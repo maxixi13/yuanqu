@@ -23,7 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTop" />
         <activity android:name=".perkservice.Parkservice_yuannei" />
         <activity android:name=".cloud.cloud_zuling" />
         <activity android:name=".cloud.cloud_chuangye" />
@@ -43,7 +45,8 @@
         <activity android:name=".cloud.cloud_jinrong_shenqing" />
         <activity android:name=".diancan.diancan_tianjiadizhi" />
         <activity android:name=".personal.waimaijilu" />
-        <activity android:name=".personal.tingche.tingchejilu" />
+        <activity android:name=".personal.tingche.tingchejilu"
+            android:launchMode="singleTop"/>
         <activity android:name=".personal.renzhengqiye" />
         <activity android:name=".personal.tingche.tingche_linshicheliang" />
         <activity android:name=".personal.tingche.tingche_yuekacheliang" />

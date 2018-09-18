@@ -1,12 +1,15 @@
 package com.example.maxixi.yuanqu.cloud.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_adapter;
@@ -30,6 +33,7 @@ public class Fragmentjingrongfengxian extends Fragment {
 
     private List<cloud_zhidao_lei> zhidaoList = new ArrayList<>();
     private RecyclerView recyclerView;
+    private int a=0;
 
 
     @Override
@@ -52,10 +56,8 @@ public class Fragmentjingrongfengxian extends Fragment {
             public void run() {
                 try {
                     OkHttpClient client = new OkHttpClient();
-                    FormBody.Builder builder=new FormBody.Builder();
-                    builder.add("$type","1");
-                    RequestBody requestBody=builder.build();
-                    Request request = new Request.Builder().url("http://192.168.11.121/index/Consultationdetails/finance_list").post(requestBody).build();
+                    FormBody formBody = new FormBody.Builder().add("type", "1").build();
+                    Request request = new Request.Builder().url("http://192.168.11.121/index/Consultationdetails/finance_list").post(formBody).build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
                     try {
@@ -70,6 +72,7 @@ public class Fragmentjingrongfengxian extends Fragment {
                                 @Override
                                 public void run() {
                                     recyclerView.setAdapter(cloud_zhidao_adapter);
+
                                 }
                             });
                         }
