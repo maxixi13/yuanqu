@@ -12,83 +12,78 @@ import android.view.ViewGroup;
 
 import com.example.maxixi.yuanqu.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class Yfuwuzhengfufg extends Fragment {
 
     private List<yunfuwujilulei> yunfuwuList = new ArrayList<>();
-    private int a=0;
+    private RecyclerView recyclerView;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         View view = inflater.inflate(R.layout.dctivity_yunfuwushenqingfuwu_zhengfu, container, false);
 
-        inityunfuwuList();
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.yfuwu_zhengfu_recycler);
+        recyclerView = (RecyclerView) view.findViewById(R.id.yfuwu_zhengfu_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        Yunfuwujiluadapter yunfuwujiluadapter = new Yunfuwujiluadapter(yunfuwuList);
-        recyclerView.setAdapter(yunfuwujiluadapter);
+        sendRequestWithOkHttp(0);
 
-
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                if (dy>100+ a){
-                    a=dy+100;
-                    Log.i("----------","已经过50啦"+dy+"=================="+dx+"   0000000000"+a);
-                }
-            }
-        });
 
         return view;
     }
 
-    private void inityunfuwuList() {
-        yunfuwujilulei madada = new yunfuwujilulei("政府政策", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada);
-        yunfuwujilulei madada1 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada1);
-        yunfuwujilulei madada2 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada2);
-        yunfuwujilulei madada21 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada21);
-        yunfuwujilulei madada22 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada22);
-        yunfuwujilulei madada23 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada23);
-        yunfuwujilulei madada24 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada24);
-        yunfuwujilulei madada25 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada25);
-        yunfuwujilulei madada26 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada26);
-        yunfuwujilulei madada2666 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada2666);
-        yunfuwujilulei madada266666 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada266666);
-        yunfuwujilulei madada211 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada211);
-        yunfuwujilulei madada222 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada222);
-        yunfuwujilulei madada233 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada233);
-        yunfuwujilulei madada244 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada244);
-        yunfuwujilulei madada255 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada255);
-        yunfuwujilulei madada26666 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada26666);
-        yunfuwujilulei madada2123 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada2123);
-        yunfuwujilulei madada21233 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada21233);
-        yunfuwujilulei madada212333 = new yunfuwujilulei("创业服务", "已完成", "申请公司", "2018-09-09");
-        yunfuwuList.add(madada212333);
 
+    private int code;
+    private int page = 0;
+
+    private void sendRequestWithOkHttp(final int page_value) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient client = new OkHttpClient();
+                    FormBody formBody = new FormBody.Builder().add("type", "1").add("page", String.valueOf(page)).build();
+                    Request request = new Request.Builder().url("http://192.168.11.121/index/Consultationdetails/cloud_apply").post(formBody).build();
+                    Response response = client.newCall(request).execute();
+                    String responseData = response.body().string();
+                    try {
+                        JSONObject jsonObject = new JSONObject(responseData);
+                        code = jsonObject.getInt("code");
+                        JSONArray array = jsonObject.getJSONArray("data");
+                        for (int i = 0; i < array.length(); i++) {
+                            JSONObject jsonObjectchil = array.getJSONObject(i);
+                            yunfuwujilulei madada = new yunfuwujilulei("政府政策", "已完成", "申请公司", jsonObjectchil.getString("ctime"));
+                            yunfuwuList.add(madada);
+                            final Yunfuwujiluadapter yunfuwujiluadapter = new Yunfuwujiluadapter(yunfuwuList);
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    recyclerView.setAdapter(yunfuwujiluadapter);
+                                }
+                            });
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    if (code != -1 && code != 201) {
+                        sendRequestWithOkHttp(++page);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
 

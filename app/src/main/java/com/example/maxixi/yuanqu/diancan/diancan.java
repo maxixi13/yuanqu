@@ -35,7 +35,18 @@ import com.example.maxixi.yuanqu.diancan.wiget.FakeAddImageView;
 import com.example.maxixi.yuanqu.diancan.wiget.PointFTypeEvaluator;
 import com.example.maxixi.yuanqu.diancan.wiget.ShopCartDialog;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItemSelectedListener, ShopCartImp, ShopCartDialog.ShopCartDialogImp {
     private final static String TAG = "MainActivity";
@@ -56,6 +67,188 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
     private TextView totalPriceTextView;
     private TextView totalPriceNumTextView;
     private RelativeLayout mainLayout;
+
+
+
+
+
+    private String jjson="{\n" +
+            "    \"code\": 201,\n" +
+            "    \"message\": \"success\",\n" +
+            "    \"data\": {\n" +
+            "        \"米饭\": [\n" +
+            "            {\n" +
+            "                \"mid\": 7,\n" +
+            "                \"name\": \"大米饭\",\n" +
+            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
+            "                \"price\": 3,\n" +
+            "                \"hot\": 100\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 8,\n" +
+            "                \"name\": \"大米饭\",\n" +
+            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
+            "                \"price\": 3,\n" +
+            "                \"hot\": 100\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 9,\n" +
+            "                \"name\": \"大米饭\",\n" +
+            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
+            "                \"price\": 3,\n" +
+            "                \"hot\": 100\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 10,\n" +
+            "                \"name\": \"大米饭\",\n" +
+            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
+            "                \"price\": 3,\n" +
+            "                \"hot\": 100\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 11,\n" +
+            "                \"name\": \"大米饭\",\n" +
+            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
+            "                \"price\": 3,\n" +
+            "                \"hot\": 100\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 12,\n" +
+            "                \"name\": \"大米饭\",\n" +
+            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
+            "                \"price\": 3,\n" +
+            "                \"hot\": 100\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 13,\n" +
+            "                \"name\": \"大米饭\",\n" +
+            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
+            "                \"price\": 3,\n" +
+            "                \"hot\": 100\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 14,\n" +
+            "                \"name\": \"大米饭\",\n" +
+            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
+            "                \"price\": 3,\n" +
+            "                \"hot\": 100\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 15,\n" +
+            "                \"name\": \"大米饭\",\n" +
+            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
+            "                \"price\": 3,\n" +
+            "                \"hot\": 100\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 16,\n" +
+            "                \"name\": \"大米饭\",\n" +
+            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
+            "                \"price\": 3,\n" +
+            "                \"hot\": 100\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 17,\n" +
+            "                \"name\": \"大米饭\",\n" +
+            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
+            "                \"price\": 3,\n" +
+            "                \"hot\": 100\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 18,\n" +
+            "                \"name\": \"大米饭\",\n" +
+            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
+            "                \"price\": 3,\n" +
+            "                \"hot\": 100\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 19,\n" +
+            "                \"name\": \"大米饭\",\n" +
+            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
+            "                \"price\": 3,\n" +
+            "                \"hot\": 100\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 20,\n" +
+            "                \"name\": \"大米饭\",\n" +
+            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
+            "                \"price\": 3,\n" +
+            "                \"hot\": 100\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 21,\n" +
+            "                \"name\": \"大米饭\",\n" +
+            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
+            "                \"price\": 3,\n" +
+            "                \"hot\": 100\n" +
+            "            }\n" +
+            "        ],\n" +
+            "        \"农家小炒\": [\n" +
+            "            {\n" +
+            "                \"mid\": 1,\n" +
+            "                \"name\": \"牛排\",\n" +
+            "                \"food_img\": \"/static/uploads/20180813/07e6cdac5ac2a2a815ddfc6dfa2d8704.jpg\",\n" +
+            "                \"price\": 69,\n" +
+            "                \"hot\": 90\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 22,\n" +
+            "                \"name\": \"牛排\",\n" +
+            "                \"food_img\": \"/static/uploads/20180813/07e6cdac5ac2a2a815ddfc6dfa2d8704.jpg\",\n" +
+            "                \"price\": 69,\n" +
+            "                \"hot\": 90\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 23,\n" +
+            "                \"name\": \"牛排\",\n" +
+            "                \"food_img\": \"/static/uploads/20180813/07e6cdac5ac2a2a815ddfc6dfa2d8704.jpg\",\n" +
+            "                \"price\": 69,\n" +
+            "                \"hot\": 90\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 24,\n" +
+            "                \"name\": \"牛排\",\n" +
+            "                \"food_img\": \"/static/uploads/20180813/07e6cdac5ac2a2a815ddfc6dfa2d8704.jpg\",\n" +
+            "                \"price\": 69,\n" +
+            "                \"hot\": 90\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 25,\n" +
+            "                \"name\": \"牛排\",\n" +
+            "                \"food_img\": \"/static/uploads/20180813/07e6cdac5ac2a2a815ddfc6dfa2d8704.jpg\",\n" +
+            "                \"price\": 69,\n" +
+            "                \"hot\": 90\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 26,\n" +
+            "                \"name\": \"牛排\",\n" +
+            "                \"food_img\": \"/static/uploads/20180813/07e6cdac5ac2a2a815ddfc6dfa2d8704.jpg\",\n" +
+            "                \"price\": 69,\n" +
+            "                \"hot\": 90\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 27,\n" +
+            "                \"name\": \"牛排\",\n" +
+            "                \"food_img\": \"/static/uploads/20180813/07e6cdac5ac2a2a815ddfc6dfa2d8704.jpg\",\n" +
+            "                \"price\": 69,\n" +
+            "                \"hot\": 90\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"mid\": 28,\n" +
+            "                \"name\": \"牛排\",\n" +
+            "                \"food_img\": \"/static/uploads/20180813/07e6cdac5ac2a2a815ddfc6dfa2d8704.jpg\",\n" +
+            "                \"price\": 69,\n" +
+            "                \"hot\": 90\n" +
+            "            }\n" +
+            "        ]\n" +
+            "    }\n" +
+            "}";
+
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +276,10 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
         initData();
         initView();
         initAdapter();
+
+            sendRequestWithOkHttp();
+
+
     }
 
     private void initView() {
@@ -371,6 +568,77 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
         dishMenuList.add(menu4);
         dishMenuList.add(menu5);
     }
+
+
+
+    private void sendRequestWithOkHttp() {
+        try {
+            JSONObject jsonObject = new JSONObject(jjson);
+            JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+
+
+
+
+            Iterator<String> keys =  jsonObject1.keys();
+            while (keys.hasNext()) {
+                JSONArray mifanarry= jsonObject1.getJSONArray(keys.next());
+                Log.e("---","---"+mifanarry);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+//    private void sendRequestWithOkHttp() {
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    OkHttpClient client = new OkHttpClient();
+//                    Request request = new Request.Builder().url("http://192.168.11.165/index/Menu/menu").build();
+//                    Response response = client.newCall(request).execute();
+//                    String responseData = response.body().string();
+//                    try {
+//                        JSONObject jsonObject = new JSONObject(responseData);
+//                        JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+//
+//                        List data=new ArrayList();
+//                        data.add(jsonObject1.keys());
+//
+//
+//
+//                        Iterator<String> keys =  jsonObject1.keys();
+//                        while (keys.hasNext()) {
+//                            JSONArray mifanarry= jsonObject1.getJSONArray(keys.next());
+//                            Log.e("---","---"+mifanarry);
+//                            Log.e("++++","+++"+jsonObject.keys());
+//                        }
+////                        diancan.this.runOnUiThread(new Runnable() {
+////                            @Override
+////                            public void run() {
+////                                recyclerView.setAdapter(cloud_zhidao_adapter);
+////                            }
+////                        });
+////                    }
+//
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            } catch(
+//            Exception e)
+//
+//            {
+//                e.printStackTrace();
+//            }
+//        }
+//    }).
+//
+//    start();
+//}
+
+
 }
 
 
