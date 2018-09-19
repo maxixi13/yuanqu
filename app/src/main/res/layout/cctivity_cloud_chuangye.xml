@@ -58,15 +58,11 @@
 
         </LinearLayout>
 
-        <ScrollView
+        <FrameLayout
+            android:id="@+id/chuangye_fragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" />
 
-            <FrameLayout
-                android:id="@+id/chuangye_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </ScrollView>
 
     </LinearLayout>
 

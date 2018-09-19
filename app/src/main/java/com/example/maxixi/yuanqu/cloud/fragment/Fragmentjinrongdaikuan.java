@@ -1,9 +1,11 @@
 package com.example.maxixi.yuanqu.cloud.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +29,8 @@ import okhttp3.Response;
 public class Fragmentjinrongdaikuan extends Fragment {
 
 
-    private List<cloud_zhidao_lei> zhidaoList = new ArrayList<>();
     private RecyclerView recyclerView;
+    private List<cloud_zhidao_lei> zhidaoList = new ArrayList<>();
 
 
     @Override
@@ -39,24 +41,27 @@ public class Fragmentjinrongdaikuan extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.cloud_daikuan_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        sendRequestWithOkHttp();
+        sendRequestWithOkHttp(0);
 
 
         return view;
     }
 
-    private void sendRequestWithOkHttp() {
+    private int code;
+    private int page=0;
+    private void sendRequestWithOkHttp(final int page_value) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     OkHttpClient client = new OkHttpClient();
-                    FormBody formBody=new FormBody.Builder().add("type","2").add("page","2").build();//post
-                    Request request = new Request.Builder().url("http://192.168.11.121/index/consultationdetails/finance_list").post(formBody).build();
+                    FormBody formBody = new FormBody.Builder().add("type","2").add("page", String.valueOf(page)).build();
+                    Request request = new Request.Builder().url("http://192.168.11.121/index/Consultationdetails/finance_list").post(formBody).build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
                     try {
                         JSONObject jsonObject = new JSONObject(responseData);
+                        code = jsonObject.getInt("code");
                         JSONArray array = jsonObject.getJSONArray("data");
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject jsonObjectchil = array.getJSONObject(i);
@@ -72,6 +77,9 @@ public class Fragmentjinrongdaikuan extends Fragment {
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
+                    }
+                    if (code != -1 && code != 201) {
+                        sendRequestWithOkHttp(++page);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

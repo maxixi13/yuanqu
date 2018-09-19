@@ -1,13 +1,10 @@
 package com.example.maxixi.yuanqu.cloud;
 
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
@@ -54,7 +51,7 @@ public class cloud_zhengfu extends AppCompatActivity {
 
     }
 
-    private int lid;
+    private int code;
     private int page = 0;
 
     private void sendRequestWithOkHttp(final int page_value) {
@@ -63,13 +60,13 @@ public class cloud_zhengfu extends AppCompatActivity {
             public void run() {
                 try {
                     OkHttpClient client = new OkHttpClient();
-                    FormBody formBody = new FormBody.Builder().add("type", "2").add("page", String.valueOf(page)).build();
-                    Request request = new Request.Builder().url("http://192.168.11.121/index/Consultationdetails/finance_list").post(formBody).build();
+                    FormBody formBody = new FormBody.Builder().add("page", String.valueOf(page)).build();
+                    Request request = new Request.Builder().url("http://192.168.11.121/index/Consultationdetails/government_list").post(formBody).build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
                     try {
                         JSONObject jsonObject = new JSONObject(responseData);
-                        lid = jsonObject.getInt("code");
+                        code = jsonObject.getInt("code");
                         JSONArray array = jsonObject.getJSONArray("data");
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject jsonObjectchil = array.getJSONObject(i);
@@ -86,19 +83,9 @@ public class cloud_zhengfu extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-                        @Override
-                        public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                            super.onScrolled(recyclerView, dx, dy);
-                            Log.e("+++++++++++++++", "onScrolled: "+dx+"-----"+dy);
-                            if(dy>50){
-                                if (lid != -1 && lid != 201) {            //加载更多page
-                                    sendRequestWithOkHttp(++page);
-                                }
-                                Log.e("-----------------------", "aa" + lid);
-                            }
-                        }
-                    });
+                    if (code != -1 && code != 201) {
+                        sendRequestWithOkHttp(++page);
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

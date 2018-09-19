@@ -18,6 +18,7 @@ import java.util.List;
 public class Yfuwuzhengfufg extends Fragment {
 
     private List<yunfuwujilulei> yunfuwuList = new ArrayList<>();
+    private int a=0;
 
 
     @Override
@@ -31,12 +32,14 @@ public class Yfuwuzhengfufg extends Fragment {
         Yunfuwujiluadapter yunfuwujiluadapter = new Yunfuwujiluadapter(yunfuwuList);
         recyclerView.setAdapter(yunfuwujiluadapter);
 
+
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (dy>50){
-                    Log.i("----------","已经过50啦"+dy+"=================="+dx);
+                if (dy>100+ a){
+                    a=dy+100;
+                    Log.i("----------","已经过50啦"+dy+"=================="+dx+"   0000000000"+a);
                 }
             }
         });

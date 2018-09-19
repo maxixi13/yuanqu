@@ -23,6 +23,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -30,9 +31,9 @@ import okhttp3.Response;
 
 public class Fragmentchuangyechuangye extends Fragment {
 
-    private List<cloud_zhidao_lei> dataArray = new ArrayList<>();
     private RecyclerView recyclerView;
-    private cloud_zhidao_adapter cloud_zhidao_adapter;
+    private List<cloud_zhidao_lei> zhidaoList = new ArrayList<>();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container_cloud, Bundle saveInstanceState) {
@@ -41,29 +42,34 @@ public class Fragmentchuangyechuangye extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.cloud_chuangye_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        sendRequestWithOkHttp();
+        sendRequestWithOkHttp(0);
 
 
         return view;
     }
 
-    private void sendRequestWithOkHttp() {
+    private int code;
+    private int page = 0;
+
+    private void sendRequestWithOkHttp(final int page_value) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder().url("http://192.168.11.121/index/Consultationdetails/finance_list").build();
+                    FormBody formBody = new FormBody.Builder().add("type", "1").add("page", String.valueOf(page)).build();
+                    Request request = new Request.Builder().url("http://192.168.11.121/index/Consultationdetails/entrepreneurship_list").post(formBody).build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
                     try {
                         JSONObject jsonObject = new JSONObject(responseData);
+                        code = jsonObject.getInt("code");
                         JSONArray array = jsonObject.getJSONArray("data");
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject jsonObjectchil = array.getJSONObject(i);
                             cloud_zhidao_lei madada = new cloud_zhidao_lei(jsonObjectchil.getString("title"), jsonObjectchil.getString("ctime"));
-                            dataArray.add(madada);
-                            cloud_zhidao_adapter = new cloud_zhidao_adapter(dataArray);
+                            zhidaoList.add(madada);
+                            final cloud_zhidao_adapter cloud_zhidao_adapter = new cloud_zhidao_adapter(zhidaoList);
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -73,6 +79,9 @@ public class Fragmentchuangyechuangye extends Fragment {
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
+                    }
+                    if (code != -1 && code != 201) {
+                        sendRequestWithOkHttp(++page);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

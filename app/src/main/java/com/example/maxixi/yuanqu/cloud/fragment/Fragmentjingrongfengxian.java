@@ -31,10 +31,8 @@ import okhttp3.Response;
 
 public class Fragmentjingrongfengxian extends Fragment {
 
-    private List<cloud_zhidao_lei> zhidaoList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private int a=0;
-
+    private List<cloud_zhidao_lei> zhidaoList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
@@ -44,24 +42,28 @@ public class Fragmentjingrongfengxian extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.cloud_fengxian_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        sendRequestWithOkHttp();
+        sendRequestWithOkHttp(0);
 
 
         return view;
     }
 
-    private void sendRequestWithOkHttp() {
+    private int code;
+    private int page = 0;
+
+    private void sendRequestWithOkHttp(final int page_value) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     OkHttpClient client = new OkHttpClient();
-                    FormBody formBody = new FormBody.Builder().add("type", "1").build();
+                    FormBody formBody = new FormBody.Builder().add("type", "1").add("page", String.valueOf(page)).build();
                     Request request = new Request.Builder().url("http://192.168.11.121/index/Consultationdetails/finance_list").post(formBody).build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
                     try {
                         JSONObject jsonObject = new JSONObject(responseData);
+                        code = jsonObject.getInt("code");
                         JSONArray array = jsonObject.getJSONArray("data");
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject jsonObjectchil = array.getJSONObject(i);
@@ -72,12 +74,14 @@ public class Fragmentjingrongfengxian extends Fragment {
                                 @Override
                                 public void run() {
                                     recyclerView.setAdapter(cloud_zhidao_adapter);
-
                                 }
                             });
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
+                    }
+                    if (code != -1 && code != 201) {
+                        sendRequestWithOkHttp(++page);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
