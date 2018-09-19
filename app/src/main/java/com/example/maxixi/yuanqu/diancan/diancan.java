@@ -561,28 +561,33 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
         dishs5.add(new Dish("二锅头", 1.0, 10, R.drawable.textkele));
         DishMenu menu5 = new DishMenu("饮料", dishs5);
 
-
-        dishMenuList.add(menu1);
-        dishMenuList.add(menu2);
-        dishMenuList.add(menu3);
-        dishMenuList.add(menu4);
-        dishMenuList.add(menu5);
+//
+//        dishMenuList.add(menu1);
+//        dishMenuList.add(menu2);
+//        dishMenuList.add(menu3);
+//        dishMenuList.add(menu4);
+//        dishMenuList.add(menu5);
     }
 
 
 
+    private ArrayList<Dish> dish = new ArrayList<>();
     private void sendRequestWithOkHttp() {
         try {
             JSONObject jsonObject = new JSONObject(jjson);
             JSONObject jsonObject1 = jsonObject.getJSONObject("data");
-
-
-
-
             Iterator<String> keys =  jsonObject1.keys();
             while (keys.hasNext()) {
-                JSONArray mifanarry= jsonObject1.getJSONArray(keys.next());
-                Log.e("---","---"+mifanarry);
+                String key = keys.next();
+                JSONArray array= jsonObject1.getJSONArray(key);
+                DishMenu menu=new DishMenu(key,dish);
+                for (int i = 0; i<array.length(); ++i){
+                    JSONObject jsonObjectchild=array.getJSONObject(i);
+                    dish.add(new Dish(jsonObjectchild.getString("mid"), 1.0, 10, R.drawable.textkele));
+                    dishMenuList.add(menu);
+                    Log.e(" "," "+dishMenuList);
+
+                }
             }
         } catch (JSONException e) {
             e.printStackTrace();
