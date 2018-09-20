@@ -23,9 +23,6 @@ import com.example.maxixi.yuanqu.diancan.imp.ShopCartImp;
 import com.example.maxixi.yuanqu.diancan.model.ShopCart;
 
 
-/**
- * Created by cheng on 16-12-22.
- */
 public class ShopCartDialog extends Dialog implements View.OnClickListener,ShopCartImp {
 
     private LinearLayout linearLayout,bottomLayout,clearLayout;

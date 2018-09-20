@@ -1,8 +1,5 @@
 package com.example.maxixi.yuanqu.diancan.wiget;
 
-/**
- * Created by cheng on 16-11-13.
- */
 
 import android.animation.TypeEvaluator;
 import android.graphics.PointF;

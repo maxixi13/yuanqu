@@ -2,9 +2,6 @@ package com.example.maxixi.yuanqu.diancan.model;
 
 import java.util.ArrayList;
 
-/**
- * Created by cheng on 16-11-10.
- */
 public class DishMenu {
     private String menuName;
     private ArrayList<Dish> dishList;

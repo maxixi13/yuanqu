@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.diancan.imp.ShopCartImp;
 import com.example.maxixi.yuanqu.diancan.model.Dish;
@@ -20,9 +21,6 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-/**
- * Created by cheng on 16-12-23.
- */
 public class PopupDishAdapter extends RecyclerView.Adapter{
 
     private static String TAG = "PopupDishAdapter";
@@ -55,7 +53,7 @@ public class PopupDishAdapter extends RecyclerView.Adapter{
         if(dish!=null) {
             dishholder.right_dish_name_tv.setText(dish.getDishName());
             dishholder.right_dish_price_tv.setText(dish.getDishPrice() + "");
-            dishholder.right_dish_imgage.setImageResource(dish.getDishImage());
+            Glide.with(dishholder.itemView).load(dish.getDishImage()).into(((DishViewHolder) holder).right_dish_imgage);
             int num = shopCart.getShoppingSingleMap().get(dish);
             dishholder.right_dish_account_tv.setText(num+"");
 

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.diancan.imp.ShopCartImp;
 import com.example.maxixi.yuanqu.diancan.model.Dish;
@@ -19,9 +20,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-/**
- * Created by cheng on 16-11-10.
- */
+
 public class RightDishAdapter extends RecyclerView.Adapter {
     private final int MENU_TYPE = 0;
     private final int DISH_TYPE = 1;
@@ -84,7 +83,7 @@ public class RightDishAdapter extends RecyclerView.Adapter {
                 dishholder.right_dish_name_tv.setText(dish.getDishName());
                 dishholder.right_dish_price_tv.setText(dish.getDishPrice()+"");
                 dishholder.right_dish_layout.setContentDescription(position+"");
-                dishholder.right_dish_imgage.setImageResource(dish.getDishImage());
+                Glide.with(dishholder.itemView).load(dish.getDishImage()).into(dishholder.right_dish_imgage);
 
                 int count = 0;
                 if(shopCart.getShoppingSingleMap().containsKey(dish)){

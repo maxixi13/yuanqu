@@ -1,17 +1,14 @@
 package com.example.maxixi.yuanqu.diancan.model;
 
-/**
- * Created by cheng on 16-11-10.
- */
 public class Dish {
 
     private String dishName;
     private double dishPrice;
     private int dishAmount;
     private int dishRemain;
-    private int dishImage;
+    private String dishImage;
 
-    public Dish(String dishName, double dishPrice, int dishAmount,int dishImage){
+    public Dish(String dishName, double dishPrice, int dishAmount,String dishImage){
         this.dishName = dishName;
         this.dishPrice = dishPrice;
         this.dishAmount = dishAmount;
@@ -44,7 +41,7 @@ public class Dish {
         this.dishAmount = dishAmount;
     }
 
-    public int getDishImage(){ return dishImage;}
+    public String getDishImage(){ return dishImage;}
 
     public int getDishRemain() {
         return dishRemain;

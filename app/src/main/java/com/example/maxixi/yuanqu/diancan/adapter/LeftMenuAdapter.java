@@ -15,9 +15,7 @@ import com.example.maxixi.yuanqu.diancan.model.DishMenu;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by cheng on 16-11-10.
- */
+
 public class LeftMenuAdapter extends RecyclerView.Adapter {
     private Context mContext;
     private ArrayList<DishMenu> mMenuList;

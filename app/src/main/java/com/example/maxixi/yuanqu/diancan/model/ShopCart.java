@@ -5,9 +5,6 @@ import android.util.Log;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by cheng on 16-11-12.
- */
 public class ShopCart {
     private int shoppingAccount;//商品总数
     private double shoppingTotalPrice;//商品总价钱

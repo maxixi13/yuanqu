@@ -5,7 +5,9 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.graphics.PointF;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,6 +26,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.bumptech.glide.Glide;
+import com.example.maxixi.yuanqu.GlideImageLoader;
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.diancan.adapter.LeftMenuAdapter;
 import com.example.maxixi.yuanqu.diancan.adapter.RightDishAdapter;
@@ -39,17 +43,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItemSelectedListener, ShopCartImp, ShopCartDialog.ShopCartDialogImp {
-    private final static String TAG = "MainActivity";
+    // private final static String TAG = "点餐";
     private RecyclerView leftMenu;//左侧菜单栏
     private RecyclerView rightMenu;//右侧菜单栏
     private TextView headerView;
@@ -69,185 +75,7 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
     private RelativeLayout mainLayout;
 
 
-
-
-
-    private String jjson="{\n" +
-            "    \"code\": 201,\n" +
-            "    \"message\": \"success\",\n" +
-            "    \"data\": {\n" +
-            "        \"米饭\": [\n" +
-            "            {\n" +
-            "                \"mid\": 7,\n" +
-            "                \"name\": \"大米饭\",\n" +
-            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
-            "                \"price\": 3,\n" +
-            "                \"hot\": 100\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 8,\n" +
-            "                \"name\": \"大米饭\",\n" +
-            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
-            "                \"price\": 3,\n" +
-            "                \"hot\": 100\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 9,\n" +
-            "                \"name\": \"大米饭\",\n" +
-            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
-            "                \"price\": 3,\n" +
-            "                \"hot\": 100\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 10,\n" +
-            "                \"name\": \"大米饭\",\n" +
-            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
-            "                \"price\": 3,\n" +
-            "                \"hot\": 100\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 11,\n" +
-            "                \"name\": \"大米饭\",\n" +
-            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
-            "                \"price\": 3,\n" +
-            "                \"hot\": 100\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 12,\n" +
-            "                \"name\": \"大米饭\",\n" +
-            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
-            "                \"price\": 3,\n" +
-            "                \"hot\": 100\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 13,\n" +
-            "                \"name\": \"大米饭\",\n" +
-            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
-            "                \"price\": 3,\n" +
-            "                \"hot\": 100\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 14,\n" +
-            "                \"name\": \"大米饭\",\n" +
-            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
-            "                \"price\": 3,\n" +
-            "                \"hot\": 100\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 15,\n" +
-            "                \"name\": \"大米饭\",\n" +
-            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
-            "                \"price\": 3,\n" +
-            "                \"hot\": 100\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 16,\n" +
-            "                \"name\": \"大米饭\",\n" +
-            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
-            "                \"price\": 3,\n" +
-            "                \"hot\": 100\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 17,\n" +
-            "                \"name\": \"大米饭\",\n" +
-            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
-            "                \"price\": 3,\n" +
-            "                \"hot\": 100\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 18,\n" +
-            "                \"name\": \"大米饭\",\n" +
-            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
-            "                \"price\": 3,\n" +
-            "                \"hot\": 100\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 19,\n" +
-            "                \"name\": \"大米饭\",\n" +
-            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
-            "                \"price\": 3,\n" +
-            "                \"hot\": 100\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 20,\n" +
-            "                \"name\": \"大米饭\",\n" +
-            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
-            "                \"price\": 3,\n" +
-            "                \"hot\": 100\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 21,\n" +
-            "                \"name\": \"大米饭\",\n" +
-            "                \"food_img\": \"/static/uploads/20180820/c47b9018d29312786808b2e50c3d6fa4.jpg\",\n" +
-            "                \"price\": 3,\n" +
-            "                \"hot\": 100\n" +
-            "            }\n" +
-            "        ],\n" +
-            "        \"农家小炒\": [\n" +
-            "            {\n" +
-            "                \"mid\": 1,\n" +
-            "                \"name\": \"牛排\",\n" +
-            "                \"food_img\": \"/static/uploads/20180813/07e6cdac5ac2a2a815ddfc6dfa2d8704.jpg\",\n" +
-            "                \"price\": 69,\n" +
-            "                \"hot\": 90\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 22,\n" +
-            "                \"name\": \"牛排\",\n" +
-            "                \"food_img\": \"/static/uploads/20180813/07e6cdac5ac2a2a815ddfc6dfa2d8704.jpg\",\n" +
-            "                \"price\": 69,\n" +
-            "                \"hot\": 90\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 23,\n" +
-            "                \"name\": \"牛排\",\n" +
-            "                \"food_img\": \"/static/uploads/20180813/07e6cdac5ac2a2a815ddfc6dfa2d8704.jpg\",\n" +
-            "                \"price\": 69,\n" +
-            "                \"hot\": 90\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 24,\n" +
-            "                \"name\": \"牛排\",\n" +
-            "                \"food_img\": \"/static/uploads/20180813/07e6cdac5ac2a2a815ddfc6dfa2d8704.jpg\",\n" +
-            "                \"price\": 69,\n" +
-            "                \"hot\": 90\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 25,\n" +
-            "                \"name\": \"牛排\",\n" +
-            "                \"food_img\": \"/static/uploads/20180813/07e6cdac5ac2a2a815ddfc6dfa2d8704.jpg\",\n" +
-            "                \"price\": 69,\n" +
-            "                \"hot\": 90\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 26,\n" +
-            "                \"name\": \"牛排\",\n" +
-            "                \"food_img\": \"/static/uploads/20180813/07e6cdac5ac2a2a815ddfc6dfa2d8704.jpg\",\n" +
-            "                \"price\": 69,\n" +
-            "                \"hot\": 90\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 27,\n" +
-            "                \"name\": \"牛排\",\n" +
-            "                \"food_img\": \"/static/uploads/20180813/07e6cdac5ac2a2a815ddfc6dfa2d8704.jpg\",\n" +
-            "                \"price\": 69,\n" +
-            "                \"hot\": 90\n" +
-            "            },\n" +
-            "            {\n" +
-            "                \"mid\": 28,\n" +
-            "                \"name\": \"牛排\",\n" +
-            "                \"food_img\": \"/static/uploads/20180813/07e6cdac5ac2a2a815ddfc6dfa2d8704.jpg\",\n" +
-            "                \"price\": 69,\n" +
-            "                \"hot\": 90\n" +
-            "            }\n" +
-            "        ]\n" +
-            "    }\n" +
-            "}";
-
-
-
-
-
+    private ImageView imageView;
 
 
     @Override
@@ -273,12 +101,10 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
             }
         });
 
-        initData();
+        //initData();
         initView();
         sendRequestWithOkHttp();
-        initAdapter();
-
-
+        //initAdapter(); 异步执行
 
 
     }
@@ -295,6 +121,8 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
         shopingCartLayout = (FrameLayout) findViewById(R.id.shopping_cart_layout);
         totalPriceTextView = (TextView) findViewById(R.id.shopping_cart_total_tv);
         totalPriceNumTextView = (TextView) findViewById(R.id.shopping_cart_total_num);
+        imageView=(ImageView)findViewById(R.id.hh7758);
+
 
         leftMenu.setLayoutManager(new LinearLayoutManager(this));
         rightMenu.setLayoutManager(new LinearLayoutManager(this));
@@ -514,149 +342,150 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
     }
 
 
-    private void initData() {
+    private ArrayList<Dish> dish = new ArrayList<>();
+
+    private void sendRequestWithOkHttp() {
         shopCart = new ShopCart();
         dishMenuList = new ArrayList<>();
-        ArrayList<Dish> dishs1 = new ArrayList<>();
-        dishs1.add(new Dish("面包", 3.0, 10, R.drawable.textkele));
-        dishs1.add(new Dish("蛋挞", 1.0, 10, R.drawable.textkele));
-        dishs1.add(new Dish("牛奶", 4.0, 10, R.drawable.textkele));
-        dishs1.add(new Dish("肠粉", 1.0, 10, R.drawable.textkele));
-        dishs1.add(new Dish("绿茶饼", 1.0, 10, R.drawable.textkele));
-        dishs1.add(new Dish("花卷", 1.0, 10, R.drawable.textkele));
-        dishs1.add(new Dish("包子", 1.0, 10, R.drawable.textkele));
-        DishMenu menu1 = new DishMenu("盖浇饭", dishs1);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder().url("http://192.168.11.165/index/Menu/menu").build();
+                    Response response = client.newCall(request).execute();
+                    String responseData = response.body().string();
+                    try {
+                        JSONObject jsonObject = new JSONObject(responseData);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+                        Iterator<String> keys = jsonObject1.keys();
+                        while (keys.hasNext()) {
+                            String key = keys.next();
+                            JSONArray array = jsonObject1.getJSONArray(key);
 
-        ArrayList<Dish> dishs2 = new ArrayList<>();
-        dishs2.add(new Dish("粥", 1.0, 10, R.drawable.textkele));
-        dishs2.add(new Dish("炒饭", 1.0, 10, R.drawable.textkele));
-        dishs2.add(new Dish("炒米粉", 1.0, 10, R.drawable.textkele));
-        dishs2.add(new Dish("炒粿条", 1.0, 10, R.drawable.textkele));
-        dishs2.add(new Dish("炒牛河", 1.0, 10, R.drawable.textkele));
-        dishs2.add(new Dish("炒菜", 1.0, 10, R.drawable.textkele));
-        DishMenu menu2 = new DishMenu("配菜", dishs2);
+                            for (int i = 0; i < array.length(); ++i) {
+                                JSONObject jsonObjectchild = array.getJSONObject(i);
+                                //int img=jsonObjectchild.getInt("food_img");
+                                dish.add(new Dish(jsonObjectchild.getString("name"), jsonObjectchild.getDouble("price"), jsonObjectchild.getInt("hot"),"http://192.168.11.165"+jsonObjectchild.getString("food_img")));
+                            }
+                            DishMenu menu = new DishMenu(key, dish);
+                            dishMenuList.add(menu);
+                        }
 
-        ArrayList<Dish> dishs3 = new ArrayList<>();
-        dishs3.add(new Dish("番茄炒蛋", 1.0, 10, R.drawable.textkele));
-        dishs3.add(new Dish("牛肉炒羊肉", 1.0, 10, R.drawable.textkele));
-        dishs3.add(new Dish("牛排", 1.0, 10, R.drawable.textkele));
-        dishs3.add(new Dish("鸡排", 1.0, 10, R.drawable.textkele));
-        dishs3.add(new Dish("猪排", 1.0, 10, R.drawable.textkele));
-        DishMenu menu3 = new DishMenu("炒菜", dishs3);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    diancan.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            initAdapter();
+                        }
+                    });
 
-        ArrayList<Dish> dishs4 = new ArrayList<>();
-        dishs4.add(new Dish("牛肉面", 1.0, 10, R.drawable.textkele));
-        dishs4.add(new Dish("蛋炒饭", 1.0, 10, R.drawable.textkele));
-        dishs4.add(new Dish("馄炖", 1.0, 10, R.drawable.textkele));
-        dishs4.add(new Dish("水饺", 1.0, 10, R.drawable.textkele));
-        dishs4.add(new Dish("馒头", 1.0, 10, R.drawable.textkele));
-        dishs4.add(new Dish("包子", 1.0, 10, R.drawable.textkele));
-        DishMenu menu4 = new DishMenu("主食", dishs4);
+                } catch (
+                        Exception e)
 
-        ArrayList<Dish> dishs5 = new ArrayList<>();
-        dishs5.add(new Dish("可乐", 1.0, 10, R.drawable.textkele));
-        dishs5.add(new Dish("雪碧", 1.0, 10, R.drawable.textkele));
-        dishs5.add(new Dish("橙汁", 1.0, 10, R.drawable.textkele));
-        dishs5.add(new Dish("椰奶", 1.0, 10, R.drawable.textkele));
-        dishs5.add(new Dish("啤酒", 1.0, 10, R.drawable.textkele));
-        dishs5.add(new Dish("二锅头", 1.0, 10, R.drawable.textkele));
-        DishMenu menu5 = new DishMenu("饮料", dishs5);
-
-
-        dishMenuList.add(menu1);
-        dishMenuList.add(menu2);
-        dishMenuList.add(menu3);
-        dishMenuList.add(menu4);
-        dishMenuList.add(menu5);
-    }
-
-
-
-    private ArrayList<Dish> dish = new ArrayList<>();
-    private void sendRequestWithOkHttp() {
-        try {
-            JSONObject jsonObject = new JSONObject(jjson);
-            JSONObject jsonObject1 = jsonObject.getJSONObject("data");
-            Iterator<String> keys =  jsonObject1.keys();
-            while (keys.hasNext()) {
-                String key = keys.next();
-                JSONArray array= jsonObject1.getJSONArray(key);
-
-                for (int i = 0; i<array.length(); ++i){
-                    JSONObject jsonObjectchild=array.getJSONObject(i);
-                    dish.add(new Dish(jsonObjectchild.getString("mid"), 1.0, 10, R.drawable.textimage));
-                    Log.e(" "," "+dishMenuList);
-
+                {
+                    e.printStackTrace();
                 }
-                DishMenu menu=new DishMenu(key,dish);
-                dishMenuList.add(menu);
             }
-//            diancan.this.runOnUiThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    leftAdapter = new LeftMenuAdapter(diancan.this, dishMenuList);
-//                    rightAdapter = new RightDishAdapter(diancan.this, dishMenuList, shopCart);
-//                    rightMenu.setAdapter(rightAdapter);
-//                    leftMenu.setAdapter(leftAdapter);
-//                }
-//            });
-            //initAdapter();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        }).start();
     }
-
-
-//    private void sendRequestWithOkHttp() {
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    OkHttpClient client = new OkHttpClient();
-//                    Request request = new Request.Builder().url("http://192.168.11.165/index/Menu/menu").build();
-//                    Response response = client.newCall(request).execute();
-//                    String responseData = response.body().string();
-//                    try {
-//                        JSONObject jsonObject = new JSONObject(responseData);
-//                        JSONObject jsonObject1 = jsonObject.getJSONObject("data");
-//
-//                        List data=new ArrayList();
-//                        data.add(jsonObject1.keys());
-//
-//
-//
-//                        Iterator<String> keys =  jsonObject1.keys();
-//                        while (keys.hasNext()) {
-//                            JSONArray mifanarry= jsonObject1.getJSONArray(keys.next());
-//                            Log.e("---","---"+mifanarry);
-//                            Log.e("++++","+++"+jsonObject.keys());
-//                        }
-////                        diancan.this.runOnUiThread(new Runnable() {
-////                            @Override
-////                            public void run() {
-////                                recyclerView.setAdapter(cloud_zhidao_adapter);
-////                            }
-////                        });
-////                    }
-//
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            } catch(
-//            Exception e)
-//
-//            {
-//                e.printStackTrace();
-//            }
-//        }
-//    }).
-//
-//    start();
-//}
 
 
 }
+
+
+//    private void initData() {
+//        shopCart = new ShopCart();
+//        dishMenuList = new ArrayList<>();
+//        ArrayList<Dish> dishs1 = new ArrayList<>();
+//        dishs1.add(new Dish("面包", 3.0, 10, R.drawable.textkele));
+//        dishs1.add(new Dish("蛋挞", 1.0, 10, R.drawable.textkele));
+//        dishs1.add(new Dish("牛奶", 4.0, 10, R.drawable.textkele));
+//        dishs1.add(new Dish("肠粉", 1.0, 10, R.drawable.textkele));
+//        dishs1.add(new Dish("绿茶饼", 1.0, 10, R.drawable.textkele));
+//        dishs1.add(new Dish("花卷", 1.0, 10, R.drawable.textkele));
+//        dishs1.add(new Dish("包子", 1.0, 10, R.drawable.textkele));
+//        DishMenu menu1 = new DishMenu("盖浇饭", dishs1);
+//
+//        ArrayList<Dish> dishs2 = new ArrayList<>();
+//        dishs2.add(new Dish("粥", 1.0, 10, R.drawable.textkele));
+//        dishs2.add(new Dish("炒饭", 1.0, 10, R.drawable.textkele));
+//        dishs2.add(new Dish("炒米粉", 1.0, 10, R.drawable.textkele));
+//        dishs2.add(new Dish("炒粿条", 1.0, 10, R.drawable.textkele));
+//        dishs2.add(new Dish("炒牛河", 1.0, 10, R.drawable.textkele));
+//        dishs2.add(new Dish("炒菜", 1.0, 10, R.drawable.textkele));
+//        DishMenu menu2 = new DishMenu("配菜", dishs2);
+//
+//        ArrayList<Dish> dishs3 = new ArrayList<>();
+//        dishs3.add(new Dish("番茄炒蛋", 1.0, 10, R.drawable.textkele));
+//        dishs3.add(new Dish("牛肉炒羊肉", 1.0, 10, R.drawable.textkele));
+//        dishs3.add(new Dish("牛排", 1.0, 10, R.drawable.textkele));
+//        dishs3.add(new Dish("鸡排", 1.0, 10, R.drawable.textkele));
+//        dishs3.add(new Dish("猪排", 1.0, 10, R.drawable.textkele));
+//        DishMenu menu3 = new DishMenu("炒菜", dishs3);
+//
+//        ArrayList<Dish> dishs4 = new ArrayList<>();
+//        dishs4.add(new Dish("牛肉面", 1.0, 10, R.drawable.textkele));
+//        dishs4.add(new Dish("蛋炒饭", 1.0, 10, R.drawable.textkele));
+//        dishs4.add(new Dish("馄炖", 1.0, 10, R.drawable.textkele));
+//        dishs4.add(new Dish("水饺", 1.0, 10, R.drawable.textkele));
+//        dishs4.add(new Dish("馒头", 1.0, 10, R.drawable.textkele));
+//        dishs4.add(new Dish("包子", 1.0, 10, R.drawable.textkele));
+//        DishMenu menu4 = new DishMenu("主食", dishs4);
+//
+//        ArrayList<Dish> dishs5 = new ArrayList<>();
+//        dishs5.add(new Dish("可乐", 1.0, 10, R.drawable.textkele));
+//        dishs5.add(new Dish("雪碧", 1.0, 10, R.drawable.textkele));
+//        dishs5.add(new Dish("橙汁", 1.0, 10, R.drawable.textkele));
+//        dishs5.add(new Dish("椰奶", 1.0, 10, R.drawable.textkele));
+//        dishs5.add(new Dish("啤酒", 1.0, 10, R.drawable.textkele));
+//        dishs5.add(new Dish("二锅头", 1.0, 10, R.drawable.textkele));
+//        DishMenu menu5 = new DishMenu("饮料", dishs5);
+//
+//
+//        dishMenuList.add(menu1);
+//        dishMenuList.add(menu2);
+//        dishMenuList.add(menu3);
+//        dishMenuList.add(menu4);
+//        dishMenuList.add(menu5);
+//    }
+
+
+//    private ArrayList<Dish> dish = new ArrayList<>();
+//    private void sendRequestWithOkHttp() {
+//        try {
+//            JSONObject jsonObject = new JSONObject(jjson);
+//            JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+//            Iterator<String> keys =  jsonObject1.keys();
+//            while (keys.hasNext()) {
+//                String key = keys.next();
+//                JSONArray array= jsonObject1.getJSONArray(key);
+//
+//                for (int i = 0; i<array.length(); ++i){
+//                    JSONObject jsonObjectchild=array.getJSONObject(i);
+//                    dish.add(new Dish(jsonObjectchild.getString("mid"), 1.0, 10, R.drawable.textimage));
+//                    Log.e(" "," "+dishMenuList);
+//
+//                }
+//                DishMenu menu=new DishMenu(key,dish);
+//                dishMenuList.add(menu);
+//            }
+////            diancan.this.runOnUiThread(new Runnable() {
+////                @Override
+////                public void run() {
+////                    leftAdapter = new LeftMenuAdapter(diancan.this, dishMenuList);
+////                    rightAdapter = new RightDishAdapter(diancan.this, dishMenuList, shopCart);
+////                    rightMenu.setAdapter(rightAdapter);
+////                    leftMenu.setAdapter(leftAdapter);
+////                }
+////            });
+//            //initAdapter();
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
 //    @Override
