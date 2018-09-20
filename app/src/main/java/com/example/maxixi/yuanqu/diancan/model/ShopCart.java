@@ -2,10 +2,11 @@ package com.example.maxixi.yuanqu.diancan.model;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ShopCart {
+public class ShopCart implements Serializable {
     private int shoppingAccount;//商品总数
     private double shoppingTotalPrice;//商品总价钱
     private Map<Dish,Integer> shoppingSingle;//单个物品的总价价钱

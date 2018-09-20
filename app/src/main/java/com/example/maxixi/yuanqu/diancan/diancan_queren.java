@@ -68,15 +68,14 @@ public class diancan_queren extends AppCompatActivity {
 
 
 
-//        Intent intent=getIntent();
-//        String data=intent.getStringExtra("shopcart");
-//        Log.e("---","---"+data);
+        Intent intent=getIntent();
+        ShopCart data=(ShopCart) intent.getSerializableExtra("shopcart");
+        dishAdapter = new PopupDishAdapter(this,data);
+        Log.e("---","---"+data+dishAdapter);
 
         RecyclerView recyclerView=(RecyclerView)findViewById(R.id.qurendingdan_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        dishAdapter = new PopupDishAdapter(this,shopCart);
         recyclerView.setAdapter(dishAdapter);
-        dishAdapter.setShopCartImp((ShopCartImp) this);
 
 
 

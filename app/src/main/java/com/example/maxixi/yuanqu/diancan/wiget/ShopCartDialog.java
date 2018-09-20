@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -20,6 +21,8 @@ import com.example.maxixi.yuanqu.diancan.adapter.PopupDishAdapter;
 import com.example.maxixi.yuanqu.diancan.diancan_queren;
 import com.example.maxixi.yuanqu.diancan.imp.ShopCartImp;
 import com.example.maxixi.yuanqu.diancan.model.ShopCart;
+
+import java.io.Serializable;
 
 
 public class ShopCartDialog extends Dialog implements View.OnClickListener,ShopCartImp {
@@ -65,7 +68,7 @@ public class ShopCartDialog extends Dialog implements View.OnClickListener,ShopC
             public void onClick(View v) {
                 Intent querenIntent = new Intent();
                 querenIntent.setClass(getContext(), diancan_queren.class);
-                //querenIntent.putExtra("shopcart", (Parcelable) shopCart);
+                querenIntent.putExtra("shopcart", shopCart );
                 getContext().startActivity(querenIntent);
                 getShopCartDialogImp().dialogDismiss();
             }
