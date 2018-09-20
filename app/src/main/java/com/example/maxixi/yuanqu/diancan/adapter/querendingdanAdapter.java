@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.maxixi.yuanqu.R;
+import com.example.maxixi.yuanqu.diancan.model.ShopCart;
 import com.example.maxixi.yuanqu.diancan.model.querendingdanlei;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class querendingdanAdapter extends RecyclerView.Adapter<querendingdanAdap
 
 
     private List<querendingdanlei> mylist;
+    private ShopCart shopCart;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         CircleImageView dishimage;
@@ -51,8 +53,10 @@ public class querendingdanAdapter extends RecyclerView.Adapter<querendingdanAdap
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final querendingdanlei querendingdanlei = mylist.get(position);
+
         holder.dishimage.setImageResource(querendingdanlei.getDishimage());
         holder.dishname.setText(querendingdanlei.getDishname());
+        //holder.dishname.setText(shopCart.getShoppingAccount());
         holder.dishamount.setText(querendingdanlei.getDishamount());
         holder.totalprice.setText(querendingdanlei.getTotalprice());
 

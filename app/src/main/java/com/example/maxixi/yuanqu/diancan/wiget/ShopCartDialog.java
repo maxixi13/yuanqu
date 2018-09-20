@@ -3,7 +3,6 @@ package com.example.maxixi.yuanqu.diancan.wiget;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -66,6 +65,7 @@ public class ShopCartDialog extends Dialog implements View.OnClickListener,ShopC
             public void onClick(View v) {
                 Intent querenIntent = new Intent();
                 querenIntent.setClass(getContext(), diancan_queren.class);
+                //querenIntent.putExtra("shopcart", (Parcelable) shopCart);
                 getContext().startActivity(querenIntent);
                 getShopCartDialogImp().dialogDismiss();
             }

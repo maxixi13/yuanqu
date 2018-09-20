@@ -2,6 +2,7 @@ package com.example.maxixi.yuanqu.diancan.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,35 +33,35 @@ public class RightDishAdapter extends RecyclerView.Adapter {
     private ShopCart shopCart;
     private ShopCartImp shopCartImp;
 
-    public RightDishAdapter(Context mContext, ArrayList<DishMenu> mMenuList, ShopCart shopCart){
+    public RightDishAdapter(Context mContext, ArrayList<DishMenu> mMenuList, ShopCart shopCart) {
         this.mContext = mContext;
         this.mMenuList = mMenuList;
         this.mItemCount = mMenuList.size();
         this.shopCart = shopCart;
-        for(DishMenu menu:mMenuList){
-            mItemCount+=menu.getDishList().size();
+        for (DishMenu menu : mMenuList) {
+            mItemCount += menu.getDishList().size();
         }
     }
 
     @Override
     public int getItemViewType(int position) {
-        int sum=0;
-        for(DishMenu menu:mMenuList){
-            if(position==sum){
+        int sum = 0;
+        for (DishMenu menu : mMenuList) {
+            if (position == sum) {
                 return MENU_TYPE;
             }
-            sum+=menu.getDishList().size()+1;
+            sum += menu.getDishList().size() + 1;
         }
         return DISH_TYPE;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if(viewType==MENU_TYPE){
+        if (viewType == MENU_TYPE) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ediancan_right_menu_item, parent, false);
             MenuViewHolder viewHolder = new MenuViewHolder(view);
             return viewHolder;
-        }else{
+        } else {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ediancan_right_dish_item, parent, false);
             DishViewHolder viewHolder = new DishViewHolder(view);
             return viewHolder;
@@ -69,41 +70,41 @@ public class RightDishAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        if(getItemViewType(position)==MENU_TYPE){
-            MenuViewHolder menuholder = (MenuViewHolder)holder;
-            if(menuholder!=null) {
+        if (getItemViewType(position) == MENU_TYPE) {
+            MenuViewHolder menuholder = (MenuViewHolder) holder;
+            if (menuholder != null) {
                 menuholder.right_menu_title.setText(getMenuByPosition(position).getMenuName());
-                menuholder.right_menu_layout.setContentDescription(position+"");
+                menuholder.right_menu_layout.setContentDescription(position + "");
             }
-        }else {
+        } else {
             final DishViewHolder dishholder = (DishViewHolder) holder;
             if (dishholder != null) {
 
                 final Dish dish = getDishByPosition(position);
                 dishholder.right_dish_name_tv.setText(dish.getDishName());
-                dishholder.right_dish_price_tv.setText(dish.getDishPrice()+"");
-                dishholder.right_dish_layout.setContentDescription(position+"");
+                dishholder.right_dish_price_tv.setText(dish.getDishPrice() + "");
+                dishholder.right_dish_layout.setContentDescription(position + "");
                 Glide.with(dishholder.itemView).load(dish.getDishImage()).into(dishholder.right_dish_imgage);
 
                 int count = 0;
-                if(shopCart.getShoppingSingleMap().containsKey(dish)){
+                if (shopCart.getShoppingSingleMap().containsKey(dish)) {
                     count = shopCart.getShoppingSingleMap().get(dish);
                 }
-                if(count<=0){
+                if (count <= 0) {
                     dishholder.right_dish_remove_iv.setVisibility(View.GONE);
                     dishholder.right_dish_account_tv.setVisibility(View.GONE);
-                }else {
+                } else {
                     dishholder.right_dish_remove_iv.setVisibility(View.VISIBLE);
                     dishholder.right_dish_account_tv.setVisibility(View.VISIBLE);
-                    dishholder.right_dish_account_tv.setText(count+"");
+                    dishholder.right_dish_account_tv.setText(count + "");
                 }
                 dishholder.right_dish_add_iv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(shopCart.addShoppingSingle(dish)) {
+                        if (shopCart.addShoppingSingle(dish)) {
                             notifyItemChanged(position);
-                            if(shopCartImp!=null)
-                                shopCartImp.add(view,position);
+                            if (shopCartImp != null)
+                                shopCartImp.add(view, position);
                         }
                     }
                 });
@@ -111,10 +112,10 @@ public class RightDishAdapter extends RecyclerView.Adapter {
                 dishholder.right_dish_remove_iv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(shopCart.subShoppingSingle(dish)){
+                        if (shopCart.subShoppingSingle(dish)) {
                             notifyItemChanged(position);
-                            if(shopCartImp!=null)
-                                shopCartImp.remove(view,position);
+                            if (shopCartImp != null)
+                                shopCartImp.remove(view, position);
                         }
                     }
                 });
@@ -122,37 +123,36 @@ public class RightDishAdapter extends RecyclerView.Adapter {
         }
     }
 
-    public DishMenu getMenuByPosition(int position){
-        int sum =0;
-        for(DishMenu menu:mMenuList){
-            if(position==sum){
+    public DishMenu getMenuByPosition(int position) {
+        int sum = 0;
+        for (DishMenu menu : mMenuList) {
+            if (position == sum) {
                 return menu;
             }
-            sum+=menu.getDishList().size()+1;
+            sum += menu.getDishList().size() + 1;
+
         }
         return null;
     }
 
-    public Dish getDishByPosition(int position){
-        for(DishMenu menu:mMenuList){
-            if(position>0 && position<=menu.getDishList().size()){
-                return menu.getDishList().get(position-1);
-            }
-            else{
-                position-=menu.getDishList().size()+1;
+    public Dish getDishByPosition(int position) {
+        for (DishMenu menu : mMenuList) {
+            if (position > 0 && position <= menu.getDishList().size()) {
+                return menu.getDishList().get(position - 1);
+            } else {
+                position -= menu.getDishList().size() + 1;
             }
         }
         return null;
     }
 
-    public DishMenu getMenuOfMenuByPosition(int position){
-        for(DishMenu menu:mMenuList){
-            if(position==0)return menu;
-            if(position>0 && position<=menu.getDishList().size()){
+    public DishMenu getMenuOfMenuByPosition(int position) {
+        for (DishMenu menu : mMenuList) {
+            if (position == 0) return menu;
+            if (position > 0 && position <= menu.getDishList().size()) {
                 return menu;
-            }
-            else{
-                position-=menu.getDishList().size()+1;
+            } else {
+                position -= menu.getDishList().size() + 1;
             }
         }
         return null;
@@ -171,19 +171,20 @@ public class RightDishAdapter extends RecyclerView.Adapter {
         this.shopCartImp = shopCartImp;
     }
 
-    private class MenuViewHolder extends RecyclerView.ViewHolder{
+
+    private class MenuViewHolder extends RecyclerView.ViewHolder {
         private LinearLayout right_menu_layout;
         private TextView right_menu_title;
 
         public MenuViewHolder(View itemView) {
             super(itemView);
-            right_menu_layout = (LinearLayout)itemView.findViewById(R.id.right_menu_item);
-            right_menu_title = (TextView)itemView.findViewById(R.id.right_menu_tv);
+            right_menu_layout = (LinearLayout) itemView.findViewById(R.id.right_menu_item);
+            right_menu_title = (TextView) itemView.findViewById(R.id.right_menu_tv);
 
         }
     }
 
-    private class DishViewHolder extends RecyclerView.ViewHolder{
+    private class DishViewHolder extends RecyclerView.ViewHolder {
         private TextView right_dish_name_tv;
         private TextView right_dish_price_tv;
         private LinearLayout right_dish_layout;
@@ -194,13 +195,13 @@ public class RightDishAdapter extends RecyclerView.Adapter {
 
         public DishViewHolder(View itemView) {
             super(itemView);
-            right_dish_name_tv = (TextView)itemView.findViewById(R.id.right_dish_name);
-            right_dish_price_tv = (TextView)itemView.findViewById(R.id.right_dish_price);
-            right_dish_layout = (LinearLayout)itemView.findViewById(R.id.right_dish_item);
-            right_dish_remove_iv = (ImageView)itemView.findViewById(R.id.right_dish_remove);
-            right_dish_add_iv = (ImageView)itemView.findViewById(R.id.right_dish_add);
+            right_dish_name_tv = (TextView) itemView.findViewById(R.id.right_dish_name);
+            right_dish_price_tv = (TextView) itemView.findViewById(R.id.right_dish_price);
+            right_dish_layout = (LinearLayout) itemView.findViewById(R.id.right_dish_item);
+            right_dish_remove_iv = (ImageView) itemView.findViewById(R.id.right_dish_remove);
+            right_dish_add_iv = (ImageView) itemView.findViewById(R.id.right_dish_add);
             right_dish_account_tv = (TextView) itemView.findViewById(R.id.right_dish_account);
-            right_dish_imgage=(CircleImageView)itemView.findViewById(R.id.diancan_dish_imgage);
+            right_dish_imgage = (CircleImageView) itemView.findViewById(R.id.diancan_dish_imgage);
         }
 
     }

@@ -81,13 +81,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/shopping_cart_total_price_left_magrin"
             android:text="120"
-            android:textColor="@color/white"
             android:textAlignment="center"
+            android:textColor="@color/red"
             android:textSize="@dimen/shopping_cart_total_price_word_size"
             android:textStyle="bold"
-            android:visibility="gone"
-            android:layout_marginLeft="@dimen/shopping_cart_total_price_left_magrin"/>
+            android:visibility="gone" />
     </LinearLayout>
 
     <FrameLayout

@@ -36,7 +36,6 @@ public class PopupDishAdapter extends RecyclerView.Adapter{
         this.itemCount = shopCart.getDishAccount();
         this.dishList = new ArrayList<>();
         dishList.addAll(shopCart.getShoppingSingleMap().keySet());
-        Log.e(TAG, "PopupDishAdapter: "+this.itemCount );
     }
 
     @Override
