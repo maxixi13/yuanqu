@@ -14,22 +14,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
-
 import com.example.maxixi.yuanqu.diancan.adapter.QuerenAdapter;
-
-import com.example.maxixi.yuanqu.diancan.imp.ShopCartImp;
-import com.example.maxixi.yuanqu.diancan.model.Dish;
 import com.example.maxixi.yuanqu.diancan.model.ShopCart;
-import com.example.maxixi.yuanqu.diancan.model.querendingdanlei;
-
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class diancan_queren extends AppCompatActivity {
+
 
 
 
@@ -56,9 +49,6 @@ public class diancan_queren extends AppCompatActivity {
         });
 
 
-
-
-
         Intent intent=getIntent();
         ShopCart shopCart=(ShopCart) intent.getSerializableExtra("shopcart");
         RecyclerView recyclerView=(RecyclerView)findViewById(R.id.qurendingdan_recycler);
@@ -67,15 +57,6 @@ public class diancan_queren extends AppCompatActivity {
         recyclerView.setAdapter(dishAdapter);
         Log.e("---","---"+shopCart+dishAdapter);
 
-
-
-//
-//
-//        initquerendingdan();
-//        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.qurendingdan_recycler);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        querendingdanAdapter dishAdapter = new querendingdanAdapter(querendingdan);
-//        recyclerView.setAdapter(dishAdapter);
 
         LinearLayout dizhiguanli=(LinearLayout)findViewById(R.id.querendingdan_dizhilayout);
         dizhiguanli.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +68,13 @@ public class diancan_queren extends AppCompatActivity {
         });
 
 
+        TextView diancan_queren_totalprice=(TextView)findViewById(R.id.diancan_queren_totalprice);
+        diancan_queren_totalprice.setText("￥ "+shopCart.getShoppingTotalPrice());
+
+
     }
+
+
 
     private void Dialog(){
         final String[] strArray=new String[]{"微信","支付宝"};
@@ -106,12 +93,4 @@ public class diancan_queren extends AppCompatActivity {
         dialog.show();
     }
 
-//    private void initquerendingdan(){
-//        querendingdanlei dish1=new querendingdanlei(R.drawable.textkele,"西兰花","1","20");
-//        querendingdan.add(dish1);
-//        querendingdanlei dish2=new querendingdanlei(R.drawable.textkele,"西兰花","1","20");
-//        querendingdan.add(dish2);
-//        querendingdanlei dish3=new querendingdanlei(R.drawable.textkele,"西兰花","1","20");
-//        querendingdan.add(dish3);
-//    }
 }

@@ -212,20 +212,15 @@
                 android:layout_weight="2">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="18dp"
-                    android:text="￥"
-                    android:textColor="@color/red" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="10.0"
+                    android:id="@+id/diancan_queren_totalprice"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="50dp"
+                    android:text="¥ 10.0"
                     android:textColor="@color/red"
-                    android:textSize="18sp" />
+                    android:textStyle="bold"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <Button
