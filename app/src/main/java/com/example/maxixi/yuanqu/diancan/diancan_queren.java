@@ -18,7 +18,7 @@ import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
 
-import com.example.maxixi.yuanqu.diancan.adapter.PopupDishAdapter;
+import com.example.maxixi.yuanqu.diancan.adapter.QuerenAdapter;
 
 import com.example.maxixi.yuanqu.diancan.imp.ShopCartImp;
 import com.example.maxixi.yuanqu.diancan.model.Dish;
@@ -31,15 +31,6 @@ import java.util.List;
 
 public class diancan_queren extends AppCompatActivity {
 
-//    private List<querendingdanlei> querendingdan = new ArrayList<>();
-    private PopupDishAdapter dishAdapter;
-
-
-    private ShopCart shopCart;
-    private Context context;
-    private int itemCount;
-    private ArrayList<Dish> dishList;
-    private ShopCartImp shopCartImp;
 
 
 
@@ -69,13 +60,12 @@ public class diancan_queren extends AppCompatActivity {
 
 
         Intent intent=getIntent();
-        ShopCart data=(ShopCart) intent.getSerializableExtra("shopcart");
-        dishAdapter = new PopupDishAdapter(this,data);
-        Log.e("---","---"+data+dishAdapter);
-
+        ShopCart shopCart=(ShopCart) intent.getSerializableExtra("shopcart");
         RecyclerView recyclerView=(RecyclerView)findViewById(R.id.qurendingdan_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        QuerenAdapter dishAdapter = new QuerenAdapter(this,shopCart);
         recyclerView.setAdapter(dishAdapter);
+        Log.e("---","---"+shopCart+dishAdapter);
 
 
 
