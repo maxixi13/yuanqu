@@ -40,7 +40,7 @@
             android:layout_height="0dp"
             android:layout_weight="3"
             android:textSize="16sp"
-            android:text="Lorem ipsum dolor sit amet,consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et vivierra justo commodo."/>
+            android:text="@string/wuyeString"/>
 
         <TextView
             android:id="@+id/yuannei_zixun_dianhuatext"

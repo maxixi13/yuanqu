@@ -1,5 +1,6 @@
 package com.example.maxixi.yuanqu.personal.yuanneifuwujilu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.maxixi.yuanqu.R;
 
@@ -28,6 +30,16 @@ public class Yuanqubaoxiufg extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         Yuanqujiluadapter yuanqujiluadapter = new Yuanqujiluadapter(yuanqujiluleiList);
         recyclerView.setAdapter(yuanqujiluadapter);
+
+
+        Button testbutton=(Button)view.findViewById(R.id.testbutton);
+        testbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(),Yuanqubaoxiulist.class);
+                startActivity(intent);
+            }
+        });
 
 
 
