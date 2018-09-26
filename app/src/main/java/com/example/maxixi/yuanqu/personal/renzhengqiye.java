@@ -3,12 +3,15 @@ package com.example.maxixi.yuanqu.personal;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
+import android.content.ContentUris;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapRegionDecoder;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.DocumentsContract;
@@ -37,6 +40,7 @@ public class renzhengqiye extends AppCompatActivity {
     private static final int TAKE_PHOTO = 1;
     private ImageView picture;
     private Uri imageUri;
+    private AlertDialog dialog;
     private static final int CHOSSE_PHOTO=2;
 
 
@@ -66,33 +70,15 @@ public class renzhengqiye extends AppCompatActivity {
 
     private void Dialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        final AlertDialog dialog = builder.create();
+        dialog = builder.create();
         final View view = View.inflate(this, R.layout.fctivity_photo_dialog, null);
         dialog.setView(view, 0, 0, 0, 0);
 
-        Button camera = (Button) view.findViewById(R.id.photo_camera);
+        final Button camera = (Button) view.findViewById(R.id.photo_camera);
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //创建File，用于储存拍照后的图片
-                File outputImage = new File(getExternalCacheDir(), "output_image.jpg");
-                try {
-                    if (outputImage.exists()) {
-                        outputImage.delete();
-                    }
-                    outputImage.createNewFile();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                if (Build.VERSION.SDK_INT >= 24) {
-                    imageUri = FileProvider.getUriForFile(renzhengqiye.this, "com.example.cameraalbumtest.fileprovider", outputImage);
-                } else {
-                    imageUri = Uri.fromFile(outputImage);
-                }
-                //启动相机程序
-                Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-                startActivityForResult(intent, TAKE_PHOTO);
+            camera_take_photo();
             }
         });
 
@@ -121,6 +107,58 @@ public class renzhengqiye extends AppCompatActivity {
         dialog.show();//显示对话框
     }
 
+
+
+    private void camera_take_photo(){
+        //创建File，用于储存拍照后的图片
+        File outputImage = new File(getExternalCacheDir(), "output_image.jpg");
+        try {
+            if (outputImage.exists()) {
+                outputImage.delete();
+            }
+            outputImage.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (Build.VERSION.SDK_INT >= 24) {
+            imageUri = FileProvider.getUriForFile(renzhengqiye.this, "com.example.cameraalbumtest.fileprovider", outputImage);
+        } else {
+            imageUri = Uri.fromFile(outputImage);
+        }
+        if (ContextCompat.checkSelfPermission(renzhengqiye.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions((Activity) renzhengqiye.this, new String[]{Manifest.permission.CAMERA}, TAKE_PHOTO);
+            Toast.makeText(this,"请打开相机权限",Toast.LENGTH_SHORT).show();
+        } else {
+            //启动相机程序
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            //指定调用相机拍照后照片的储存路径
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+            startActivityForResult(intent, TAKE_PHOTO);
+            dialog.dismiss();
+        }
+    }
+
+
+    private void openAlbum(){
+        Intent intent=new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(intent,CHOSSE_PHOTO);//打开相册
+        dialog.dismiss();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String[] permiddions,int[] grantResults){
+        switch (requestCode){
+            case 1:
+                if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                    openAlbum();
+                }else {
+                    Toast.makeText(this,"您拒绝了相册访问",Toast.LENGTH_SHORT).show();
+                }
+                break;default:
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
@@ -143,29 +181,12 @@ public class renzhengqiye extends AppCompatActivity {
                         handleImageOnKit(data);
                     }else {
                         //4.4以下系统使用这个方式处理图片；
+                        handleImageBeforeKitKat(data);
                     }
                 }
                 break;
             default:
                 break;
-        }
-    }
-
-    private void openAlbum(){
-        Intent intent=new Intent("android.intent.action.GET_CONTENT");
-        intent.setType("image/*");
-        startActivityForResult(intent,CHOSSE_PHOTO);
-    }
-
-    public void onRequestPermiddionsResult(int requestCode,String[] permiddions,int[] grantResults){
-        switch (requestCode){
-            case 1:
-                if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                    openAlbum();
-                }else {
-                    Toast.makeText(this,"You denied the permission",Toast.LENGTH_SHORT).show();
-                }
-                break;default:
         }
     }
 
@@ -176,14 +197,52 @@ public class renzhengqiye extends AppCompatActivity {
         Uri uri=data.getData();
         if (DocumentsContract.isDocumentUri(this,uri)){
             //如果是document类型的Uri，则通过doCument id处理
-            String docId=DocumentsContract.getDocumentId(uri);
+            String docId= DocumentsContract.getDocumentId(uri);
             if ("com.android.providers.media.documents".equals(uri.getAuthority())){
                 String id=docId.split(":")[1];//解析出数字格式的id
                 String selection=MediaStore.Images.Media._ID+"="+id;
-                imagePath = getImagePath(MediaStore.Image.Media.EXTERNAL_CONTENT_URI,selection);
+                imagePath = getImagePath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,selection);
+            }else if ("com.android.providers.downloads.documents".equals(uri.getAuthority())){
+                Uri contentUri= ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"),Long.valueOf(docId));
+                imagePath=getImagePath(contentUri,null);
             }
+        }else if ("content".equalsIgnoreCase(uri.getScheme())){
+            //如果是content 类型的Uri，则使用普通方式处理
+            imagePath=getImagePath(uri,null);
+        }else if ("file".equalsIgnoreCase(uri.getScheme())){
+            //如果是file类型的Uri，直接获取图片路径即可
+            imagePath=uri.getPath();
         }
+        displayImage(imagePath);//根据图片路径显示图片
 
+    }
+
+    private void handleImageBeforeKitKat(Intent data){
+        Uri uri=data.getData();
+        String imagePath=getImagePath(uri,null);
+        displayImage(imagePath);
+    }
+
+    private String getImagePath(Uri uri,String selection){
+        String path=null;
+        //通过Uri和selection来获取真是的图片路径
+        Cursor cursor=getContentResolver().query(uri,null,selection,null,null);
+        if (cursor!=null){
+            if (cursor.moveToFirst()){
+                path=cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+            }
+            cursor.close();
+        }
+        return path;
+    }
+
+    private void displayImage(String imagePath){
+        if (imagePath!=null){
+            Bitmap bitmap=BitmapFactory.decodeFile(imagePath);
+            picture.setImageBitmap(bitmap);
+        }else{
+            Toast.makeText(this,"获取图片失败",Toast.LENGTH_SHORT).show();
+        }
     }
 
 
