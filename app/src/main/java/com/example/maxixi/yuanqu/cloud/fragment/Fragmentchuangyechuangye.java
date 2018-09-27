@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 import com.example.maxixi.yuanqu.R;
@@ -74,6 +75,12 @@ public class Fragmentchuangyechuangye extends Fragment {
                                 @Override
                                 public void run() {
                                     recyclerView.setAdapter(cloud_zhidao_adapter);
+                                    cloud_zhidao_adapter.setOnItemClickListener(new cloud_zhidao_adapter.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(View view, int position) {
+                                            Toast.makeText(getContext(), "click " + zhidaoList.get(position), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                 }
                             });
                         }

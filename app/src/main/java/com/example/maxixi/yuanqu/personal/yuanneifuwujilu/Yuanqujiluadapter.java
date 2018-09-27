@@ -14,6 +14,18 @@ public class Yuanqujiluadapter extends RecyclerView.Adapter<Yuanqujiluadapter.Vi
 
     private List<Yuanqujilulei> myList;
 
+    //点击事件
+    private OnItemClickListener mOnItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener mOnItemClickListener){
+        this.mOnItemClickListener = mOnItemClickListener;
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(View view,int position);
+    }
+
+
     static class ViewHolder extends RecyclerView.ViewHolder{
         TextView name;
         TextView time;
@@ -39,10 +51,24 @@ public class Yuanqujiluadapter extends RecyclerView.Adapter<Yuanqujiluadapter.Vi
 
 
     @Override
-    public void onBindViewHolder(ViewHolder holder,int position){
+    public void onBindViewHolder(final ViewHolder holder, int position){
         Yuanqujilulei yuanqujilulei=myList.get(position);
         holder.name.setText(yuanqujilulei.getName());
         holder.time.setText(yuanqujilulei.getTime());
+
+        //判断是否设置了监听器 点击事件
+        if (mOnItemClickListener != null) {
+            //为ItemView设置监听器
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = holder.getLayoutPosition(); // 1
+                    mOnItemClickListener.onItemClick(holder.itemView, position); // 2
+                }
+            });
+        }
+
+
     }
 
     @Override

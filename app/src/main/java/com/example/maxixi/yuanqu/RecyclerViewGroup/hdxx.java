@@ -3,9 +3,9 @@ package com.example.maxixi.yuanqu.RecyclerViewGroup;
 public class hdxx {
     private String name;
     private String nametext;
-    private int imageId;
+    private String imageId;
 
-    public hdxx(String name, String nametext, int imageId) {
+    public hdxx(String name, String nametext, String imageId) {
         this.name = name;
         this.nametext = nametext;
         this.imageId = imageId;
@@ -19,7 +19,7 @@ public class hdxx {
         return nametext;
     }
 
-    public int getimageId() {
+    public String getimageId() {
         return imageId;
     }
 }

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.maxixi.yuanqu.MainActivity;
 import com.example.maxixi.yuanqu.R;
+import com.example.maxixi.yuanqu.RecyclerViewGroup.hdxxAdapter;
 import com.example.maxixi.yuanqu.cloud.cloud_chuangye_chuangye;
 import com.example.maxixi.yuanqu.cloud.cloud_jingrong_jinrong;
 import com.example.maxixi.yuanqu.cloud.cloud_zhengfu_zhengfu;
@@ -28,16 +29,16 @@ public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adap
 
 
     //点击事件
-//    private OnItemClickListener mOnItemClickListener;
-//
-//    public void setOnItemClickListener(OnItemClickListener mOnItemClickListener){
-//        this.mOnItemClickListener = mOnItemClickListener;
-//    }
-//
-//    public interface OnItemClickListener{
-//        void onItemClick(View view,int position);
-//    }
-//
+    private OnItemClickListener mOnItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener mOnItemClickListener){
+        this.mOnItemClickListener = mOnItemClickListener;
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(View view,int position);
+    }
+
 
 
     private List<cloud_zhidao_lei> myzhidaolist;
@@ -98,25 +99,17 @@ public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adap
         holder.zhidaoTime.setText(cloud_zhidao_lei.getnametime());
 
 
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(holder.itemView.getContext(),"巴巴爸爸"+get(position)+position,Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-
-//        //判断是否设置了监听器 点击事件
-//        if(mOnItemClickListener != null){
-//            //为ItemView设置监听器
-//            holder.itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    int position = holder.getLayoutPosition(); // 1
-//                    mOnItemClickListener.onItemClick(holder.itemView,position); // 2
-//                }
-//            });
-//        }
+        //判断是否设置了监听器 点击事件
+        if(mOnItemClickListener != null){
+            //为ItemView设置监听器
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = holder.getLayoutPosition(); // 1
+                    mOnItemClickListener.onItemClick(holder.itemView,position); // 2
+                }
+            });
+        }
 
     }
 

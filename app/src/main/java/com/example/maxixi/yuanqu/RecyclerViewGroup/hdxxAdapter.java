@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.bumptech.glide.Glide;
 import com.example.maxixi.yuanqu.R;
 
 import java.util.List;
@@ -74,7 +75,8 @@ public class hdxxAdapter extends RecyclerView.Adapter<hdxxAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         hdxx hdxx = myhdxxList.get(position);
-        holder.hdxxImage.setImageResource(hdxx.getimageId());
+        Glide.with(holder.itemView).load(hdxx.getimageId()).into(holder.hdxxImage);
+//        holder.hdxxImage.setImageResource(hdxx.getimageId());
         holder.hdxxText.setText(hdxx.getname());
         holder.hdxxTexttext.setText(hdxx.getnametext());
 

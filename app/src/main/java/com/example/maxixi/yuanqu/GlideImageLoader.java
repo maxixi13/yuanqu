@@ -24,8 +24,10 @@ public class GlideImageLoader extends ImageLoader {
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.fitCenter();
+
         //Glide 加载图片简单用法
-        Glide.with(context).load(path).apply(requestOptions).into(imageView);
+        Glide.with(context).load((String) path).apply(requestOptions).into(imageView);
+        //Glide.load(path) String强转
         //Picasso 加载图片简单用法
         //Picasso.with(context).load(path).into(imageView);
 
