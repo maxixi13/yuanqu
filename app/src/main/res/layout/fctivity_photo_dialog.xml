@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:background="@drawable/personal_yuanjiaojuxing"
+    android:background="@color/touming"
     android:orientation="vertical">
 
     <Button
@@ -10,39 +10,29 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/touming"
+        android:background="@drawable/personal_yuanjiaojuxing"
         android:text="@string/paizhao"
         android:textColor="@color/top_blue"
         android:textSize="20sp" />
 
-    <ImageView
-        android:layout_width="400dp"
-        android:layout_gravity="center"
-        android:layout_height="1dp"
-        android:background="@color/dddddd" />
-
     <Button
+        android:layout_marginTop="1dp"
         android:id="@+id/photo_album"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/touming"
+        android:background="@drawable/personal_yuanjiaojuxing"
         android:text="@string/xiangce"
         android:textColor="@color/top_blue"
         android:textSize="20sp" />
 
-    <ImageView
-        android:layout_gravity="center"
-        android:layout_width="400dp"
-        android:layout_height="4dp"
-        android:background="@color/dddddd" />
-
     <Button
+        android:layout_marginTop="8dp"
         android:id="@+id/photo_cancel"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/touming"
+        android:background="@drawable/personal_yuanjiaojuxing"
         android:text="@string/quxiao"
         android:textColor="@color/top_blue"
         android:textSize="20sp" />

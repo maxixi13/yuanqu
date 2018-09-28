@@ -104,6 +104,7 @@ public class renzhengqiye extends AppCompatActivity {
         });
 
         dialog.getWindow().setGravity(Gravity.BOTTOM);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         dialog.show();//显示对话框
     }
 

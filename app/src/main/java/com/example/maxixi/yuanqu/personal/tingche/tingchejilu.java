@@ -14,6 +14,12 @@ import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
 
+import java.io.IOException;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 import static android.widget.Toast.LENGTH_SHORT;
 
 public class tingchejilu extends AppCompatActivity {
@@ -39,23 +45,23 @@ public class tingchejilu extends AppCompatActivity {
             }
         });
 
-        LinearLayout yuekaLinearLayout = (LinearLayout) findViewById(R.id.tingchejilu_yueka_layout);
-        LinearLayout lingshiLinearLayout = (LinearLayout) findViewById(R.id.tingchejilu_lingshi_layout);
-        yuekaLinearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(tingchejilu.this, tingche_yuekacheliang.class);
-                startActivity(intent);
-            }
-        });
-
-        lingshiLinearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(tingchejilu.this, tingche_linshicheliang.class);
-                startActivity(intent);
-            }
-        });
+//        LinearLayout yuekaLinearLayout = (LinearLayout) findViewById(R.id.tingchejilu_yueka_layout);
+//        LinearLayout lingshiLinearLayout = (LinearLayout) findViewById(R.id.tingchejilu_lingshi_layout);
+//        yuekaLinearLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(tingchejilu.this, tingche_yuekacheliang.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        lingshiLinearLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(tingchejilu.this, tingche_linshicheliang.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
 
@@ -82,8 +88,9 @@ public class tingchejilu extends AppCompatActivity {
             }
         });
 
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);//透明
+
         dialog.show();
-        Toast.makeText(this, "hahah" + view.getHeight() + view.getWidth(), Toast.LENGTH_LONG).show();
 
 
 //        dialog.setContentView(view);
@@ -137,6 +144,21 @@ public class tingchejilu extends AppCompatActivity {
 //            });
 
 
+    }
+
+    private void sendRequestWithOkHttp(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient client=new OkHttpClient();
+                    Request request=new Request.Builder().url("").build();
+                    Response response=client.newCall(request).execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
 
