@@ -194,11 +194,11 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
         headerView.setText(headMenu.getMenuName());
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        leftAdapter.removeItemSelectedListener(this);
-    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        leftAdapter.removeItemSelectedListener(this);
+//    }
 
     private void showHeadView() {
         headerLayout.setTranslationY(0);

@@ -14,8 +14,6 @@ import com.example.maxixi.yuanqu.R;
 
 import java.util.List;
 
-import static android.support.constraint.Constraints.TAG;
-
 
 public class hdxxAdapter extends RecyclerView.Adapter<hdxxAdapter.ViewHolder> {
 
@@ -67,7 +65,7 @@ public class hdxxAdapter extends RecyclerView.Adapter<hdxxAdapter.ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_huodongxinxi, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_hdxx_item, parent, false);
         final ViewHolder holder = new ViewHolder(view);
         return holder;
     }
