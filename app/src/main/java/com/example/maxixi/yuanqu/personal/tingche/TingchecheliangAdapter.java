@@ -1,6 +1,9 @@
 package com.example.maxixi.yuanqu.personal.tingche;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +12,9 @@ import android.widget.TextView;
 import com.example.maxixi.yuanqu.R;
 
 import java.util.List;
+
+import static android.support.constraint.Constraints.TAG;
+import static com.example.maxixi.yuanqu.R.color.top_blue;
 
 
 public class TingchecheliangAdapter extends RecyclerView.Adapter<TingchecheliangAdapter.ViewHolder> {
@@ -71,6 +77,7 @@ public class TingchecheliangAdapter extends RecyclerView.Adapter<Tingchecheliang
         holder.platenum.setText(tingchecheliang.getPlatenum());
         holder.time.setText(tingchecheliang.getTime());
         holder.state.setText(tingchecheliang.getState());
+        if (tingchecheliang.getState() == "停车状态：停车中") holder.state.setTextColor(Color.parseColor("#09affb"));
 
 
         //判断是否设置了监听器 点击事件

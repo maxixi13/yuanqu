@@ -46,10 +46,10 @@ public class parkservice_yuanei_tousu extends AppCompatActivity {
     }
 
 
-    //服务
+    //园区选择dialog
     private void Dialog() {
         //初始化字符串数组
-        final String[] strArray = new String[]{"芈展服务园", "离离原上草", "一岁一枯荣", "野火烧不尽", "春风吹又生"};
+        final String[] strArray = new String[]{"芈展服务园", "上海园区", "浙江园区", "北京园区", "广东园区"};
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);//实例化builder
         builder.setTitle("请选择所在园区");//设置标题
         //设置单选列表
@@ -74,10 +74,10 @@ public class parkservice_yuanei_tousu extends AppCompatActivity {
     }
 
 
-    //服务
+    //投诉dialog
     private void Dialog1() {
         //初始化字符串数组
-        final String[] strArray = new String[]{"服务态度问题", "离离原上草", "一岁一枯荣", "野火烧不尽", "春风吹又生"};
+        final String[] strArray = new String[]{"服务态度问题", "服务质量问题", "投诉", "投诉", "投诉"};
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);//实例化builder
         builder.setTitle("请选择投诉类型");//设置标题
         //设置单选列表
