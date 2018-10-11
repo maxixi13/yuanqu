@@ -85,11 +85,17 @@ public class tingchejilu extends AppCompatActivity {
 
 
     private void tianjiacheliangDialog() {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final AlertDialog dialog = builder.create();
 
         final View view = View.inflate(this, R.layout.dctivity_tingchejilu_tianjiaitem, null);
         dialog.setView(view, 0, 0, 0, 0);// 设置边距为0,保证在2.x的版本上运行没问题
+
+        //view
+        carnametext=(EditText)view.findViewById(R.id.tianjia_carname_text);
+        modeltext=(EditText)view.findViewById(R.id.tianjia_model_text);
+        platenumtext=(EditText)view.findViewById(R.id.tianjia_platenum_text);
 
         TextView quxiao = (TextView) view.findViewById(R.id.tianjia_dialog_quxiao);
         quxiao.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +109,7 @@ public class tingchejilu extends AppCompatActivity {
         tijiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Registerto();
+                Log.i("----", carnametext.getText().toString()+modeltext.getText().toString()+platenumtext.getText().toString());
             }
         });
 
@@ -204,16 +210,6 @@ public class tingchejilu extends AppCompatActivity {
         tingchecheliangList.add(madada7);
 
     }
-
-    private void Registerto(){
-        carnametext=(EditText)findViewById(R.id.tianjia_carname_text);
-        modeltext=(EditText)findViewById(R.id.tianjia_model_text);
-        platenumtext=(EditText)findViewById(R.id.tianjia_platenum_text);
-        Log.i("----", "Registerto: "+carnametext.getText().toString());
-
-
-    }
-
 
 
 }

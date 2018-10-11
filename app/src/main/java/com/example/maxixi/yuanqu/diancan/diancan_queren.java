@@ -21,6 +21,8 @@ import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.diancan.adapter.QuerenAdapter;
 import com.example.maxixi.yuanqu.diancan.model.ShopCart;
 
+import org.json.JSONObject;
+
 public class diancan_queren extends AppCompatActivity {
 
 
