@@ -5,7 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
@@ -23,6 +26,10 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class diancan_tianjiadizhi extends AppCompatActivity {
+
+    private EditText lianxiren;
+    private EditText lianxidianhua;
+    private EditText dizhi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +61,28 @@ public class diancan_tianjiadizhi extends AppCompatActivity {
             }
         });
 
-        Upload();
+        //view
+        lianxiren = (EditText) findViewById(R.id.tinajia_lianxiren_edit);
+        lianxidianhua = (EditText) findViewById(R.id.tinajia_lianxidianhua_edit);
+        dizhi = (EditText) findViewById(R.id.tinajia_xiangxidizhi_edit);
+
+        Button baocunButton = (Button) findViewById(R.id.tianjia_baocun);
+        baocunButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (lianxiren.getText().toString().length() != 0 && lianxidianhua.getText().toString().length() != 0 && dizhi.getText().toString().length() != 0) {
+                    if (shiView.isSelected() || fouView.isSelected()) {
+                        Upload();
+                    } else {
+                        Toast.makeText(diancan_tianjiadizhi.this, "请选择是否设置默认地址", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(diancan_tianjiadizhi.this, "请填写完整填写", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
 
     }
 
@@ -64,44 +92,21 @@ public class diancan_tianjiadizhi extends AppCompatActivity {
             public void run() {
                 try {
                     JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("uid", "2");
-                    jsonObject.put("name", "dada");
-                    jsonObject.put("tel", "1234567");
-                    jsonObject.put("address","hahah");
+                    jsonObject.put("uid", "1");
+                    jsonObject.put("name", lianxiren.getText());
+                    jsonObject.put("tel", lianxidianhua.getText());
+                    jsonObject.put("address", dizhi.getText());
                     jsonObject.put("status", "1");
-                    Log.e("---", String.valueOf(jsonObject));
-
-                    OkHttpClient okHttpClient=new OkHttpClient();
+                    OkHttpClient okHttpClient = new OkHttpClient();
                     RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), String.valueOf(jsonObject));
-                    Request request=new Request.Builder().url("http://192.168.11.165/index/Menu/doaddress").post(formBody).build();
-
-//                    //申明给服务端传递一个json串
-//                    //创建一个OkHttpClient对象
-//                    OkHttpClient okHttpClient = new OkHttpClient();
-//                    //创建一个RequestBody(参数1：数据类型 参数2传递的json串)
-//                    //json为String类型的json数据
-//                    RequestBody requestBody = RequestBody.create(JSON, json);
-//                    //创建一个请求对象
-//                    Request request = new Request.Builder()
-//                            .url("http://192.168.0.102:8080/TestProject/JsonServlet")
-//                            .post(requestBody)
-//                            .build();
-//                    //发送请求获取响应
-//                    try {
-//                        Response response=okHttpClient.newCall(request).execute();
-//                        //判断请求是否成功
-//                        if(response.isSuccessful()){\
-//                            //打印服务端返回结果
-//                            Log.i(TAG,response.body().string());
-//
-//                        }
+                    Request request = new Request.Builder().url("http://192.168.11.165/index/Menu/doaddress").post(requestBody).build();
 
                     try {
-                        Response response=okHttpClient.newCall(request).execute();
+                        Response response = okHttpClient.newCall(request).execute();
                         //判断请求是否成功
-                        if(response.isSuccessful()){
+                        if (response.isSuccessful()) {
                             //打印服务端返回结果
-                            Log.i("------",response.body().string());
+//                            Log.e("------", response.body().string());
 
                         }
                     } catch (IOException e) {

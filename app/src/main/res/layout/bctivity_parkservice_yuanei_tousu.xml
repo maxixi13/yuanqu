@@ -144,6 +144,7 @@
                 android:background="@color/dddddd" />
 
             <EditText
+                android:id="@+id/tousu_bangongquyu_textview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -159,6 +160,7 @@
                 android:background="@color/dddddd" />
 
             <EditText
+                android:id="@+id/tousu_gongsimingcheng_textview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -206,6 +208,7 @@
                 android:background="@color/dddddd" />
 
             <EditText
+                android:id="@+id/tousu_tousuduixiang_textview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -221,6 +224,7 @@
                 android:background="@color/dddddd" />
 
             <EditText
+                android:id="@+id/tousu_lianxiren_textview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -236,6 +240,7 @@
                 android:background="@color/dddddd" />
 
             <EditText
+                android:id="@+id/tousu_lianxidianhua_textview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -257,6 +262,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/tousu_tijiao_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="center"

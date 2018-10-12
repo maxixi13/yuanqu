@@ -57,7 +57,7 @@ public class diancan_queren extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         QuerenAdapter dishAdapter = new QuerenAdapter(this,shopCart);
         recyclerView.setAdapter(dishAdapter);
-        Log.e("---","---"+shopCart+dishAdapter);
+        Log.e("---","---"+shopCart.getDishAccount()+"---"+shopCart.getShoppingAccount()+"---"+shopCart.getShoppingSingleMap()+"---"+shopCart.getShoppingTotalPrice());
 
 
         LinearLayout dizhiguanli=(LinearLayout)findViewById(R.id.querendingdan_dizhilayout);
@@ -72,8 +72,6 @@ public class diancan_queren extends AppCompatActivity {
 
         TextView diancan_queren_totalprice=(TextView)findViewById(R.id.diancan_queren_totalprice);
         diancan_queren_totalprice.setText("￥ "+shopCart.getShoppingTotalPrice());
-
-
     }
 
 

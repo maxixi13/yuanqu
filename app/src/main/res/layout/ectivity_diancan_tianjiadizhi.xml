@@ -91,6 +91,7 @@
                 android:orientation="vertical">
 
                 <EditText
+                    android:id="@+id/tinajia_lianxiren_edit"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -106,6 +107,7 @@
                     android:background="@color/dddddd" />
 
                 <EditText
+                    android:id="@+id/tinajia_lianxidianhua_edit"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -121,6 +123,7 @@
                     android:background="@color/dddddd" />
 
                 <EditText
+                    android:id="@+id/tinajia_xiangxidizhi_edit"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -188,6 +191,7 @@
 
         </LinearLayout>
         <Button
+            android:id="@+id/tianjia_baocun"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center"
