@@ -17,6 +17,7 @@ import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -122,6 +123,23 @@ public class parkservice_yuanei_tousu extends AppCompatActivity {
     //投诉dialog
     private void Dialog1() {
         //初始化字符串数组
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient okHttpClient=new OkHttpClient();
+                    Request request=new Request.Builder().url("192.168.11.165/index/Property/complaint_type").build();
+                    Response response = okHttpClient.newCall(request).execute();
+                    String responseData = response.body().string();
+                    JSONArray jsonArray=new JSONArray(responseData);
+                    JSONObject jsonObject=jsonArray.getJSONObject("data");
+
+
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
         final String[] strArray = new String[]{"服务态度问题", "服务质量问题", "投诉", "投诉", "投诉"};
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);//实例化builder
         builder.setTitle("请选择投诉类型");//设置标题
