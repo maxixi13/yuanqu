@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -22,6 +23,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -78,14 +81,14 @@ public class parkservice_yuanei_tousu extends AppCompatActivity {
             }
         });
 
-        Button tijiao=(Button)findViewById(R.id.tousu_tijiao_button);
+        Button tijiao = (Button) findViewById(R.id.tousu_tijiao_button);
         tijiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textView.getText().toString().length()!=0 && bangongquyu.getText().toString().length()!=0 && gongsimingcheng.getText().toString().length()!=0 && textView1.getText().toString().length()!=0 && tousuduixiang.getText().toString().length()!=0 && liangxiren.getText().toString().length()!=0 && liangxidianhua.getText().toString().length()!=0 ){
+                if (textView.getText().toString().length() != 0 && bangongquyu.getText().toString().length() != 0 && gongsimingcheng.getText().toString().length() != 0 && textView1.getText().toString().length() != 0 && tousuduixiang.getText().toString().length() != 0 && liangxiren.getText().toString().length() != 0 && liangxidianhua.getText().toString().length() != 0) {
                     Upload();
-                }else {
-                    Toast.makeText(parkservice_yuanei_tousu.this,"请填写完整",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(parkservice_yuanei_tousu.this, "请填写完整", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -127,40 +130,48 @@ public class parkservice_yuanei_tousu extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    OkHttpClient okHttpClient=new OkHttpClient();
-                    Request request=new Request.Builder().url("192.168.11.165/index/Property/complaint_type").build();
+                    OkHttpClient okHttpClient = new OkHttpClient();
+                    Request request = new Request.Builder().url("http://192.168.11.165/index/Property/complaint_type").build();
                     Response response = okHttpClient.newCall(request).execute();
                     String responseData = response.body().string();
-                    JSONArray jsonArray=new JSONArray(responseData);
-                    JSONObject jsonObject=jsonArray.getJSONObject("data");
-
-
+                    JSONObject jsonObject = new JSONObject(responseData);
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    List<String> str=new ArrayList<>();
+                    for (int i=0;i<jsonArray.length();++i){
+                        JSONObject jsonObjectcl=jsonArray.getJSONObject(i);
+                        str.add(jsonObjectcl.getString("type_name"));
+                    }
+                    final String[] strArray= str.toArray(new String[str.size()]);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            final AlertDialog.Builder builder = new AlertDialog.Builder(parkservice_yuanei_tousu.this);//实例化builder
+                            builder.setTitle("请选择投诉类型");//设置标题
+                            //设置单选列表
+                            builder.setSingleChoiceItems( strArray, 0, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    textView1.setText(strArray[which]);
+                                    textView1.setTextColor(Color.parseColor("#666666"));
+                                    dialog.dismiss();
+                                }
+                            });
+                            //创建对话框
+                            final AlertDialog dialog = builder.create();
+                            dialog.setButton(DialogInterface.BUTTON_POSITIVE, "取消", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            dialog.show();//显示对话框
+                        }
+                    });
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
             }
         }).start();
-        final String[] strArray = new String[]{"服务态度问题", "服务质量问题", "投诉", "投诉", "投诉"};
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);//实例化builder
-        builder.setTitle("请选择投诉类型");//设置标题
-        //设置单选列表
-        builder.setSingleChoiceItems(strArray, 0, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                textView1.setText(strArray[which]);
-                textView1.setTextColor(Color.parseColor("#666666"));
-                dialog.dismiss();
-            }
-        });
-        //创建对话框
-        AlertDialog dialog = builder.create();
-        dialog.setButton(DialogInterface.BUTTON_POSITIVE, "取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();//显示对话框
     }
 
     private void Upload() {
@@ -170,13 +181,13 @@ public class parkservice_yuanei_tousu extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject();
                     jsonObject.put("uid", "1");
-                    jsonObject.put("stay_park",textView.getText());
-                    jsonObject.put("region",bangongquyu.getText());
-                    jsonObject.put("stay_company",gongsimingcheng.getText());
-                    jsonObject.put("tid",textView1.getText());
-                    jsonObject.put("obj",tousuduixiang.getText());
-                    jsonObject.put("name",liangxiren.getText());
-                    jsonObject.put("tel",liangxidianhua.getText());
+                    jsonObject.put("stay_park", textView.getText());
+                    jsonObject.put("region", bangongquyu.getText());
+                    jsonObject.put("stay_company", gongsimingcheng.getText());
+                    jsonObject.put("tid", textView1.getText());
+                    jsonObject.put("obj", tousuduixiang.getText());
+                    jsonObject.put("name", liangxiren.getText());
+                    jsonObject.put("tel", liangxidianhua.getText());
                     OkHttpClient okHttpClient = new OkHttpClient();
                     RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), String.valueOf(jsonObject));
                     Request request = new Request.Builder().url("http://192.168.11.165/index/Property/complaint").post(requestBody).build();
