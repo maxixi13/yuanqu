@@ -3,11 +3,11 @@ package com.example.maxixi.yuanqu.cloud.qiyefuwu;
 public class Cloud_qiyefuwu_bean {
     private int image;
     private String qid;
-    private int average_cost;
-    private int park_use_rate;
-    private int average_time;
+    private String average_cost;
+    private String park_use_rate;
+    private String average_time;
 
-    public Cloud_qiyefuwu_bean(int image,String qid,int average_cost,int park_use_rate,int average_time){
+    public Cloud_qiyefuwu_bean(int image,String qid,String average_cost,String park_use_rate,String average_time){
         this.image=image;
         this.qid=qid;
         this.average_cost=average_cost;
@@ -22,15 +22,15 @@ public class Cloud_qiyefuwu_bean {
         return qid;
     }
 
-    public int getAverage_cost(){
+    public String getAverage_cost(){
         return average_cost;
     }
 
-    public int getPark_use_rate(){
+    public String getPark_use_rate(){
         return park_use_rate;
     }
 
-    public int getAverage_time(){
+    public String getAverage_time(){
         return average_time;
     }
 

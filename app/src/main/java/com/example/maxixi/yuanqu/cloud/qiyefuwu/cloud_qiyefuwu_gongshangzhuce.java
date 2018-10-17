@@ -30,14 +30,14 @@ public class cloud_qiyefuwu_gongshangzhuce extends AppCompatActivity {
             }
         });
 
-        RelativeLayout first_gongshangzhuce=(RelativeLayout)findViewById(R.id.first_gongshangzhuce);
-        first_gongshangzhuce.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(cloud_qiyefuwu_gongshangzhuce.this,cloud_qiyefuwu_gongshangzhuceSQ.class);
-                startActivity(intent);
-            }
-        });
+//        RelativeLayout first_gongshangzhuce=(RelativeLayout)findViewById(R.id.first_gongshangzhuce);
+//        first_gongshangzhuce.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(cloud_qiyefuwu_gongshangzhuce.this,cloud_qiyefuwu_gongshangzhuceSQ.class);
+//                startActivity(intent);
+//            }
+//        });
 
         initList();
         RecyclerView recyclerView=(RecyclerView)findViewById(R.id.cloud_qiyefuwu_gongshangzhuce_recycler);
@@ -48,15 +48,15 @@ public class cloud_qiyefuwu_gongshangzhuce extends AppCompatActivity {
     }
 
     private void initList() {
-        Cloud_qiyefuwu_bean madada=new Cloud_qiyefuwu_bean(R.drawable.qiyefuwu_gongshangzhuce_icon,"XXXXX工商注册",123,123,123);
+        Cloud_qiyefuwu_bean madada=new Cloud_qiyefuwu_bean(R.drawable.qiyefuwu_gongshangzhuce_icon,"XXXXX工商注册","125","454421","123124");
         qiyefuwulist.add(madada);
-        Cloud_qiyefuwu_bean madada1=new Cloud_qiyefuwu_bean(R.drawable.qiyefuwu_gongshangzhuce_icon,"XXXXX工商注册",123,123,123);
+        Cloud_qiyefuwu_bean madada1=new Cloud_qiyefuwu_bean(R.drawable.qiyefuwu_gongshangzhuce_icon,"XXXXX工商注册","125","454421","123124");
         qiyefuwulist.add(madada1);
-        Cloud_qiyefuwu_bean madada2=new Cloud_qiyefuwu_bean(R.drawable.qiyefuwu_gongshangzhuce_icon,"XXXXX工商注册",123,123,123);
+        Cloud_qiyefuwu_bean madada2=new Cloud_qiyefuwu_bean(R.drawable.qiyefuwu_gongshangzhuce_icon,"XXXXX工商注册","125","454421","123124");
         qiyefuwulist.add(madada2);
-        Cloud_qiyefuwu_bean madada3=new Cloud_qiyefuwu_bean(R.drawable.qiyefuwu_gongshangzhuce_icon,"XXXXX工商注册",123,123,123);
+        Cloud_qiyefuwu_bean madada3=new Cloud_qiyefuwu_bean(R.drawable.qiyefuwu_gongshangzhuce_icon,"XXXXX工商注册","125","454421","123124");
         qiyefuwulist.add(madada3);
-        Cloud_qiyefuwu_bean madada4=new Cloud_qiyefuwu_bean(R.drawable.qiyefuwu_gongshangzhuce_icon,"XXXXX工商注册",123,123,123);
+        Cloud_qiyefuwu_bean madada4=new Cloud_qiyefuwu_bean(R.drawable.qiyefuwu_gongshangzhuce_icon,"XXXXX工商注册","125","454421","123124");
         qiyefuwulist.add(madada4);
     }
 }
