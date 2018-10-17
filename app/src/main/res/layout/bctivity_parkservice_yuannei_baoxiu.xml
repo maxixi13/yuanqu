@@ -32,7 +32,8 @@
         android:layout_marginEnd="17dp"
         android:layout_marginStart="17dp"
         android:layout_marginTop="11dp"
-        android:background="@drawable/personal_yuanjiaojuxingsuo">
+        android:background="@drawable/personal_yuanjiaojuxingsuo"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -144,6 +145,7 @@
                 android:background="@color/dddddd" />
 
             <EditText
+                android:id="@+id/baoxiu_bangongquyu_textview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -159,6 +161,7 @@
                 android:background="@color/dddddd" />
 
             <EditText
+                android:id="@+id/baoxiu_gongsimingcheng_textview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -206,6 +209,7 @@
                 android:background="@color/dddddd" />
 
             <EditText
+                android:id="@+id/baoxiu_baoxiuduixiang_textview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -221,6 +225,7 @@
                 android:background="@color/dddddd" />
 
             <EditText
+                android:id="@+id/baoxiu_lianxiren_textview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -236,6 +241,7 @@
                 android:background="@color/dddddd" />
 
             <EditText
+                android:id="@+id/baoxiu_lianxidianhua_textview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -257,6 +263,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/baoxiu_tijiao_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="center"

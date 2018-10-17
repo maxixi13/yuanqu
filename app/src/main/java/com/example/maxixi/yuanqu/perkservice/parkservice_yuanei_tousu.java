@@ -136,19 +136,19 @@ public class parkservice_yuanei_tousu extends AppCompatActivity {
                     String responseData = response.body().string();
                     JSONObject jsonObject = new JSONObject(responseData);
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
-                    List<String> str=new ArrayList<>();
-                    for (int i=0;i<jsonArray.length();++i){
-                        JSONObject jsonObjectcl=jsonArray.getJSONObject(i);
+                    List<String> str = new ArrayList<>();
+                    for (int i = 0; i < jsonArray.length(); ++i) {
+                        JSONObject jsonObjectcl = jsonArray.getJSONObject(i);
                         str.add(jsonObjectcl.getString("type_name"));
                     }
-                    final String[] strArray= str.toArray(new String[str.size()]);
+                    final String[] strArray = str.toArray(new String[str.size()]);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             final AlertDialog.Builder builder = new AlertDialog.Builder(parkservice_yuanei_tousu.this);//实例化builder
                             builder.setTitle("请选择投诉类型");//设置标题
                             //设置单选列表
-                            builder.setSingleChoiceItems( strArray, 0, new DialogInterface.OnClickListener() {
+                            builder.setSingleChoiceItems(strArray, 0, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     textView1.setText(strArray[which]);
