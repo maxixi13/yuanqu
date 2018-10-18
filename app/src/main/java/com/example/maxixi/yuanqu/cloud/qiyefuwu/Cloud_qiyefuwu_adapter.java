@@ -15,6 +15,15 @@ public class Cloud_qiyefuwu_adapter extends RecyclerView.Adapter<Cloud_qiyefuwu_
 
     private List<Cloud_qiyefuwu_bean> myqiyefuwulist;
 
+    //点击事件
+    private OnItemClickListener mOnItemClickListener;
+    public void setmOnItemClickListener(OnItemClickListener mOnItemClickListener) {
+        this.mOnItemClickListener = mOnItemClickListener;
+    }
+    public interface OnItemClickListener{
+        void onItemClick(View view,int position);
+    }
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         RelativeLayout relativeLayout;
         TextView qid;
@@ -46,13 +55,25 @@ public class Cloud_qiyefuwu_adapter extends RecyclerView.Adapter<Cloud_qiyefuwu_
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         Cloud_qiyefuwu_bean cloud_qiyefuwu_bean = myqiyefuwulist.get(position);
         holder.relativeLayout.setBackgroundResource(cloud_qiyefuwu_bean.getImage());
         holder.qid.setText(cloud_qiyefuwu_bean.getQid());
         holder.average_cost.setText(cloud_qiyefuwu_bean.getAverage_cost());
         holder.park_use_rate.setText(cloud_qiyefuwu_bean.getPark_use_rate());
         holder.average_time.setText(cloud_qiyefuwu_bean.getAverage_time());
+
+        //判断是否设置了监听器 点击事件
+        if(mOnItemClickListener != null){
+            //为ItemView设置监听器
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = holder.getLayoutPosition(); // 1
+                    mOnItemClickListener.onItemClick(holder.itemView,position); // 2
+                }
+            });
+        }
     }
 
     @Override

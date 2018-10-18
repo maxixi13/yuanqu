@@ -73,15 +73,15 @@ public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adap
                 Toast.makeText(parent.getContext(), "||"+cloud_zhidao_lei.getname()+"||", Toast.LENGTH_SHORT).show();
                 if (cloud_zhidao_lei.getname() == "芈租界大新闻") {
                     Intent intent = new Intent(parent.getContext(), cloud_chuangye_chuangye.class);
-                    intent.putExtra("mizujie", "http://www.mzujie.com");
+                    intent.putExtra("mizujie", R.string.mizujie_url);
                     parent.getContext().startActivity(intent);
                 } else if (cloud_zhidao_lei.getname().equals("test3")) {
                     Intent intent = new Intent(parent.getContext(), cloud_jingrong_jinrong.class);
-                    intent.putExtra("baidu", "https://www.baidu.com");
+                    intent.putExtra("baidu", R.string.baidu_url);
                     parent.getContext().startActivity(intent);
                 }else if(position==0){
                     Intent intent=new Intent(parent.getContext(),cloud_zhengfu_zhengfu.class);
-                    intent.putExtra("mizujie", "http://www.mzujie.com");
+                    intent.putExtra("mizujie", R.string.mizujie_url);
                     parent.getContext().startActivity(intent);
                 }
 

@@ -32,7 +32,7 @@ public class cloud_zuling extends AppCompatActivity {
                 //Intent zupcIntent=new Intent();
                 //zupcIntent.setClass(cloud_zuling.this,cloud_zuling_zupc.class);
                 //startActivity(zupcIntent);
-                Uri uri = Uri.parse("https://www.baidu.com");
+                Uri uri = Uri.parse(getString(R.string.baidu_url));
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
@@ -46,7 +46,7 @@ public class cloud_zuling extends AppCompatActivity {
                 //mizujieInten.setClass(cloud_zuling.this,cloud_zuling_mizu.class);
                 //mizujieInten.putExtra("data","http://www.mzujie.com");
                 //startActivity(mizujieInten);
-                Uri uri = Uri.parse("http://www.mzujie.com");
+                Uri uri = Uri.parse(getString(R.string.mizujie_url));
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }

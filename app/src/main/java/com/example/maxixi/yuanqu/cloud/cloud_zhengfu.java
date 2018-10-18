@@ -61,7 +61,7 @@ public class cloud_zhengfu extends AppCompatActivity {
                 try {
                     OkHttpClient client = new OkHttpClient();
                     FormBody formBody = new FormBody.Builder().add("page", String.valueOf(page)).build();
-                    Request request = new Request.Builder().url("http://192.168.11.121/index/Consultationdetails/government_list").post(formBody).build();
+                    Request request = new Request.Builder().url(getString(R.string.zhengfuzixun_url)).post(formBody).build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
                     try {

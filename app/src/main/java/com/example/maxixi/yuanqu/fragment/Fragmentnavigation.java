@@ -120,7 +120,7 @@ public class Fragmentnavigation extends Fragment {
             public void run() {
                 try {
                     OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder().url("http://192.168.11.165/index").build();
+                    Request request = new Request.Builder().url(getString(R.string.shouye_url)).build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
                     try {
@@ -131,7 +131,7 @@ public class Fragmentnavigation extends Fragment {
                         JSONArray arraybanner = jsonObjectget.getJSONArray("banner");
                         for (int i = 0; i < arraybanner.length(); i++) {
                             JSONObject jsonObjectin = arraybanner.getJSONObject(i);
-                            imagesBanner.add("http://192.168.11.165" + jsonObjectin.getString("path"));
+                            imagesBanner.add(getString(R.string.shouye_image_url) + jsonObjectin.getString("path"));
                             bannerurl=jsonObjectin.getString("url");
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
@@ -145,7 +145,7 @@ public class Fragmentnavigation extends Fragment {
                         JSONArray array = jsonObjectget.getJSONArray("activity");
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject jsonObjectin = array.getJSONObject(i);
-                            final hdxx madada = new hdxx(jsonObjectin.getString("title"), jsonObjectin.getString("simple"), "http://192.168.11.165" + jsonObjectin.getString("path"));
+                            final hdxx madada = new hdxx(jsonObjectin.getString("title"), jsonObjectin.getString("simple"), getString(R.string.shouye_image_url) + jsonObjectin.getString("path"));
                             hdxxList.add(madada);
                             final hdxxAdapter adapterhdxx = new hdxxAdapter(hdxxList);
                             getActivity().runOnUiThread(new Runnable() {
@@ -166,7 +166,7 @@ public class Fragmentnavigation extends Fragment {
                         JSONArray arrayzcxx = jsonObjectget.getJSONArray("policy");
                         for (int i = 0; i < arrayzcxx.length(); i++) {
                             JSONObject jsonObjectin = arrayzcxx.getJSONObject(i);
-                            hdxx madada = new hdxx(jsonObjectin.getString("title"), jsonObjectin.getString("simple"), "http://192.168.11.165" + jsonObjectin.getString("path"));
+                            hdxx madada = new hdxx(jsonObjectin.getString("title"), jsonObjectin.getString("simple"), getString(R.string.shouye_image_url) + jsonObjectin.getString("path"));
                             zcxxList.add(madada);
                             final hdxxAdapter adapterzcxx = new hdxxAdapter(zcxxList);
                             getActivity().runOnUiThread(new Runnable() {

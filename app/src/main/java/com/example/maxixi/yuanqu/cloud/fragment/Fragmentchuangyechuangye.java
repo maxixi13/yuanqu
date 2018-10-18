@@ -59,7 +59,7 @@ public class Fragmentchuangyechuangye extends Fragment {
                 try {
                     OkHttpClient client = new OkHttpClient();
                     FormBody formBody = new FormBody.Builder().add("type", "1").add("page", String.valueOf(page)).build();
-                    Request request = new Request.Builder().url("http://192.168.11.121/index/Consultationdetails/entrepreneurship_list").post(formBody).build();
+                    Request request = new Request.Builder().url(getString(R.string.chuangyefuwu_url)).post(formBody).build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
                     try {
@@ -70,20 +70,20 @@ public class Fragmentchuangyechuangye extends Fragment {
                             JSONObject jsonObjectchil = array.getJSONObject(i);
                             cloud_zhidao_lei madada = new cloud_zhidao_lei(jsonObjectchil.getString("title"), jsonObjectchil.getString("ctime"));
                             zhidaoList.add(madada);
-                            final cloud_zhidao_adapter cloud_zhidao_adapter = new cloud_zhidao_adapter(zhidaoList);
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    recyclerView.setAdapter(cloud_zhidao_adapter);
-                                    cloud_zhidao_adapter.setOnItemClickListener(new cloud_zhidao_adapter.OnItemClickListener() {
-                                        @Override
-                                        public void onItemClick(View view, int position) {
-                                            Toast.makeText(getContext(), "click " + zhidaoList.get(position), Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                                }
-                            });
                         }
+                        final cloud_zhidao_adapter cloud_zhidao_adapter = new cloud_zhidao_adapter(zhidaoList);
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                recyclerView.setAdapter(cloud_zhidao_adapter);
+                                cloud_zhidao_adapter.setOnItemClickListener(new cloud_zhidao_adapter.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(View view, int position) {
+                                        Toast.makeText(getContext(), "click " + zhidaoList.get(position), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        });
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

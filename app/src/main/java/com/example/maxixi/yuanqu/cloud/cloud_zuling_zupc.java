@@ -25,7 +25,7 @@ public class cloud_zuling_zupc extends AppCompatActivity {
         });
 
         WebView zupc = (WebView) findViewById(R.id.webview_zupc);
-        zupc.loadUrl("https://www.baidu.com");
+        zupc.loadUrl(getString(R.string.baidu_url));
         //WebSettings zupcSetting=zupc.getSettings();
         // zupcSetting.set
     }

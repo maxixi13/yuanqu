@@ -131,7 +131,7 @@ public class parkservice_yuanei_tousu extends AppCompatActivity {
             public void run() {
                 try {
                     OkHttpClient okHttpClient = new OkHttpClient();
-                    Request request = new Request.Builder().url("http://192.168.11.165/index/Property/complaint_type").build();
+                    Request request = new Request.Builder().url(getString(R.string.tousuleixing_url)).build();
                     Response response = okHttpClient.newCall(request).execute();
                     String responseData = response.body().string();
                     JSONObject jsonObject = new JSONObject(responseData);
@@ -190,7 +190,7 @@ public class parkservice_yuanei_tousu extends AppCompatActivity {
                     jsonObject.put("tel", liangxidianhua.getText());
                     OkHttpClient okHttpClient = new OkHttpClient();
                     RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), String.valueOf(jsonObject));
-                    Request request = new Request.Builder().url("http://192.168.11.165/index/Property/complaint").post(requestBody).build();
+                    Request request = new Request.Builder().url(getString(R.string.tianjiatousujianyi_url)).post(requestBody).build();
                     try {
                         Response response = okHttpClient.newCall(request).execute();
                         //判断请求是否成功

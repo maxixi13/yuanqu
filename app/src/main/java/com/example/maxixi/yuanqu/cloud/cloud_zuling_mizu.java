@@ -27,7 +27,7 @@ public class cloud_zuling_mizu extends AppCompatActivity {
         });
 
         WebView webView = (WebView) findViewById(R.id.webview_mizujie);
-        webView.loadUrl("http://www.mzujie.com");
+        webView.loadUrl(getString(R.string.mizujie_url));
         //String date= getIntent().getStringExtra("data");
         //Log.i("FragmentActivity", date);
         WebSettings webSettings = webView.getSettings();

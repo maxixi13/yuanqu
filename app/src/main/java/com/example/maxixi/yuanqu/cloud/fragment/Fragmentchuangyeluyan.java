@@ -57,7 +57,7 @@ public class Fragmentchuangyeluyan extends Fragment {
                 try {
                     OkHttpClient client = new OkHttpClient();
                     FormBody formBody = new FormBody.Builder().add("type","2").add("page", String.valueOf(page)).build();
-                    Request request = new Request.Builder().url("http://192.168.11.121/index/Consultationdetails/entrepreneurship_list").post(formBody).build();
+                    Request request = new Request.Builder().url(getString(R.string.chuangyefuwu_url)).post(formBody).build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
                     try {

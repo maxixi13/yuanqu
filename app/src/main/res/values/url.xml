@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="shouye_image_url">http://192.168.11.165</string>
+    <string name="waimaishouye_image_url">http://192.168.11.165</string>
+    <string name="shouye_url">http://192.168.11.165/index</string>
+    <string name="chuangyefuwu_url">http://192.168.11.121/index/Consultationdetails/entrepreneurship_list</string>
+    <string name="jinrongfuwu_url">http://192.168.11.121/index/Consultationdetails/finance_list</string>
+    <string name="qiyefuwu_url">http://192.168.11.121/index/Consultationdetails/enterprise_list</string>
+    <string name="zhengfuzixun_url">http://192.168.11.121/index/Consultationdetails/government_list</string>
+    <string name="tianjiawaimaidizhi_url">http://192.168.11.165/index/Menu/doaddress</string>
+    <string name="waimaishouye_url">http://192.168.11.165/index/Menu/menu</string>
+    <string name="gerenzhongxinyunfuwu_url">http://192.168.11.121/index/Consultationdetails/cloud_apply</string>
+    <string name="tianjiatousujianyi_url">http://192.168.11.165/index/Property/complaint</string>
+    <string name="tousuleixing_url">http://192.168.11.165/index/Property/complaint_type</string>
+    <string name="tianjiabaoxiu_url">http://192.168.11.165/index/Property/repair</string>
+    <string name="baoxiuleixing_url">http://192.168.11.165/index/Property/repair_type</string>
+
+    //网络地址
+    <string name="mizujie_url">http://www.mzujie.com</string>
+    <string name="baidu_url">https://www.baidu.com</string>
+</resources>

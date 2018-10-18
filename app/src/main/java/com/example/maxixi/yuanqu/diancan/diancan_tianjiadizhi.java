@@ -99,7 +99,7 @@ public class diancan_tianjiadizhi extends AppCompatActivity {
                     jsonObject.put("status", "1");
                     OkHttpClient okHttpClient = new OkHttpClient();
                     RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), String.valueOf(jsonObject));
-                    Request request = new Request.Builder().url("http://192.168.11.165/index/Menu/doaddress").post(requestBody).build();
+                    Request request = new Request.Builder().url(getString(R.string.tianjiawaimaidizhi_url)).post(requestBody).build();
 
                     try {
                         Response response = okHttpClient.newCall(request).execute();

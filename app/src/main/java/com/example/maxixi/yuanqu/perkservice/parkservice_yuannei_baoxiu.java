@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.HttpUrl;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -128,7 +129,7 @@ public class parkservice_yuannei_baoxiu extends AppCompatActivity {
             public void run() {
                 try {
                     OkHttpClient okHttpClient = new OkHttpClient();
-                    Request request = new Request.Builder().url("http://192.168.11.165/index/Property/repair_type").build();
+                    Request request = new Request.Builder().url(getString(R.string.baoxiuleixing_url)).build();
                     Response response = okHttpClient.newCall(request).execute();
                     String responseData = response.body().string();
                     JSONObject jsonObject = new JSONObject(responseData);
@@ -188,7 +189,7 @@ public class parkservice_yuannei_baoxiu extends AppCompatActivity {
                     jsonObject.put("tel", lianxidianhua.getText());
                     OkHttpClient okHttpClient = new OkHttpClient();
                     RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), String.valueOf(jsonObject));
-                    Request request = new Request.Builder().url("http://192.168.11.165/index/Property/repair").post(requestBody).build();
+                    Request request = new Request.Builder().url(getString(R.string.tianjiabaoxiu_url)).post(requestBody).build();
                     try {
                         Response response = okHttpClient.newCall(request).execute();
                         //判断请求是否成功
