@@ -24,10 +24,12 @@
                 android:src="@drawable/login_shoujihaoicon" />
 
             <EditText
+                android:id="@+id/login_denglu_shoujihao_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
-                android:hint="@string/qingshurushoujihao" />
+                android:hint="@string/qingshurushoujihao"
+                android:singleLine="true"/>
         </LinearLayout>
 
         <ImageView
@@ -50,10 +52,12 @@
                 android:src="@drawable/login_mimaicon" />
 
             <EditText
+                android:id="@+id/login_denglu_mima_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
-                android:hint="@string/qingshurumima" />
+                android:hint="@string/qingshurumima"
+                android:singleLine="true"/>
         </LinearLayout>
 
         <ImageView
@@ -76,6 +80,7 @@
                 android:src="@drawable/login_yanzhengmaicon" />
 
             <EditText
+                android:id="@+id/login_denglu_yanzhengma_text"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -90,7 +95,8 @@
                 android:layout_marginEnd="30dp"
                 android:background="@drawable/login_huisebeijing"
                 android:text="@string/huoquyanzhengma"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:singleLine="true"/>
         </LinearLayout>
 
 
@@ -107,6 +113,13 @@
         android:text="@string/denglu"
         android:textColor="@android:color/white"
         android:textSize="20sp" />
+
+
+    <Button
+        android:id="@+id/ceshi"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="@color/top_blue"/>
 
 
 </LinearLayout>

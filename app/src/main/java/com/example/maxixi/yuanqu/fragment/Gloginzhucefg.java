@@ -1,6 +1,7 @@
 package com.example.maxixi.yuanqu.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -21,12 +22,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
+import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class Gloginzhucefg extends Fragment {
 
@@ -36,6 +42,7 @@ public class Gloginzhucefg extends Fragment {
     private EditText yonghuming;
     private EditText yanzhengmatx;
     private int clicktest = 1;
+    private int code = 404;
 
 
     @Override
@@ -77,6 +84,12 @@ public class Gloginzhucefg extends Fragment {
             }
         });
 
+        Button chengweiqiyeButton = (Button) view.findViewById(R.id.login_zhuce_zhuceqiye_button);
+        chengweiqiyeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
 
         return view;
     }
@@ -117,21 +130,28 @@ public class Gloginzhucefg extends Fragment {
                     jsonObject.put("tel", shoujihao.getText());
                     jsonObject.put("code", yanzhengmatx.getText());
                     OkHttpClient okHttpClient = new OkHttpClient();
+
+                    //保持session
+                    //首先从SharedPreferences中获取sessionid
+                    SharedPreferences share = getContext().getSharedPreferences("Session", MODE_PRIVATE);
+                    String sessionid = share.getString("sessionid", null);
+
                     RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), String.valueOf(jsonObject));
-                    Request request = new Request.Builder().url(getString(R.string.yonghuzhuce_url)).post(requestBody).build();
+                    Request request = new Request.Builder().url(getString(R.string.yonghuzhuce_url)).addHeader("cookie", sessionid).post(requestBody).build();
                     try {
                         Response response = okHttpClient.newCall(request).execute();
                         String responsedata = response.body().string();
-                        //判断请求是否成功
                         if (response.isSuccessful()) {
-                            //打印服务端返回结果
-                            Log.e("------","--"+responsedata);
+                            Log.e("----", responsedata);
                             JSONObject jsonObjectget = new JSONObject(responsedata);
-                            JSONObject jsonObjectgetid=jsonObjectget.getJSONObject("data");
-                            SharedPreferences.Editor editor = getContext().getSharedPreferences("userdata", Context.MODE_PRIVATE).edit();
-                            editor.putString("uid",jsonObjectgetid.getString("uid"));
-                            editor.putInt("code", jsonObjectget.getInt("code"));
+                            code = jsonObjectget.getInt("code");
+                            final JSONObject jsonObjectgetid = jsonObjectget.getJSONObject("data");
+
+                            //保存用户id
+                            SharedPreferences.Editor editor = getContext().getSharedPreferences("userdata", MODE_PRIVATE).edit();
+                            editor.putString("uid", jsonObjectgetid.getString("uid"));
                             editor.apply();
+
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -139,6 +159,26 @@ public class Gloginzhucefg extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (code == 200) {
+                            Toast.makeText(getContext(), "注册成功", Toast.LENGTH_SHORT).show();
+                            Intent intent = getActivity().getIntent();
+                            getActivity().finish();
+                            startActivity(intent);
+                            SharedPreferences share = getContext().getSharedPreferences("Session", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = share.edit();
+                            editor.clear().apply();
+                        } else if (code == 0) {
+                            Toast.makeText(getContext(), "该手机号已被注册", Toast.LENGTH_SHORT).show();
+                        } else if (code == 1) {
+                            Toast.makeText(getContext(), "验证码不正确，请重新输入", Toast.LENGTH_SHORT).show();
+                        } else if (code == 404) {
+                            Toast.makeText(getContext(), "网络连接失败", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
             }
         }).start();
@@ -157,6 +197,17 @@ public class Gloginzhucefg extends Fragment {
                     try {
                         Response response = okHttpClient.newCall(request).execute();
                         //判断请求是否成功
+
+                        //保持session
+                        Headers headers = response.headers();
+                        List<String> cookieStringList = headers.values("Set-Cookie");
+                        String cookieString = cookieStringList.get(0);
+                        String sessionid = cookieString.substring(0, cookieString.indexOf(";"));
+                        SharedPreferences share = getContext().getSharedPreferences("Session", MODE_PRIVATE);
+                        SharedPreferences.Editor edit = share.edit();//编辑文件
+                        edit.putString("sessionid", sessionid);
+                        edit.apply();
+
                         if (response.isSuccessful()) {
                             //打印服务端返回结果
                             Log.e("------", response.body().string());

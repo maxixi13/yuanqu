@@ -16,6 +16,7 @@
     <string name="baoxiuleixing_url">http://192.168.11.165/index/Property/repair_type</string>
     <string name="yonghuzhuce_url">http://192.168.11.121/index/User/register</string>
     <string name="huoquyanzhengma_url">http://192.168.11.121/index/user/alidayu</string>
+    <string name="yonghudenglu_url">http://192.168.11.121/index/User/login</string>
 
     //网络地址
     <string name="mizujie_url">http://www.mzujie.com</string>
