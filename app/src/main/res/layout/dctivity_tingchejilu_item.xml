@@ -7,7 +7,7 @@
     android:layout_height="140dp"
     android:layout_marginEnd="17dp"
     android:layout_marginStart="17dp"
-    android:layout_marginTop="11dp"
+    android:layout_marginBottom="11dp"
     android:background="@drawable/personal_yuanjiaojuxingsuo"
     android:orientation="horizontal">
 
