@@ -38,7 +38,6 @@ public class cloud_chuangye_shenqing extends AppCompatActivity {
     private EditText lianxiren;
     private EditText lianxidianhua;
     private String lid;
-    private TextView textView11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,7 @@ public class cloud_chuangye_shenqing extends AppCompatActivity {
 
         //view
         textView = (TextView) findViewById(R.id.chuangye_chuangye_shengqing_fuwu_text);
-        textView11 = (TextView) findViewById(R.id.chuangye_chuangye_shengqing_yuanqu_text);
+        textView1 = (TextView) findViewById(R.id.chuangye_chuangye_shengqing_yuanqu_text);
         gongsimingcheng = (EditText) findViewById(R.id.chuangye_chuangye_shengqing_gongsimingcheng_text);
         lianxiren = (EditText) findViewById(R.id.chuangye_chuangye_shengqing_lianxiren_text);
         lianxidianhua = (EditText) findViewById(R.id.chuangye_chuangye_shengqing_lianxidianhua_text);
@@ -74,7 +73,7 @@ public class cloud_chuangye_shenqing extends AppCompatActivity {
             }
         });
 
-        Button tijiaobutton = (Button) findViewById(R.id.zhengfu_zhengfu_shengqing_tijiao_button);
+        Button tijiaobutton = (Button) findViewById(R.id.chuangye_chuangye_shengqing_tijiao_button);
         tijiaobutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,8 +133,8 @@ public class cloud_chuangye_shenqing extends AppCompatActivity {
         builder.setSingleChoiceItems(strArray, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                textView11.setText(strArray[which]);
-                textView11.setTextColor(Color.parseColor("#666666"));
+                textView1.setText(strArray[which]);
+                textView1.setTextColor(Color.parseColor("#666666"));
                 dialog.dismiss();
             }
         });
