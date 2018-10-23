@@ -1,5 +1,6 @@
 package com.example.maxixi.yuanqu.cloud.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +16,9 @@ import com.example.maxixi.yuanqu.R;
 
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_adapter;
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_lei;
+import com.example.maxixi.yuanqu.cloud.cloud_chuangye_chuangye;
+import com.example.maxixi.yuanqu.cloud.cloud_zhengfu;
+import com.example.maxixi.yuanqu.cloud.cloud_zhengfu_zhengfu;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -80,6 +84,15 @@ public class Fragmentchuangyechuangye extends Fragment {
                                     @Override
                                     public void onItemClick(View view, int position) {
                                         Toast.makeText(getContext(), "click " + zhidaoList.get(position), Toast.LENGTH_SHORT).show();
+                                        cloud_zhidao_adapter.setOnItemClickListener(new cloud_zhidao_adapter.OnItemClickListener() {
+                                            @Override
+                                            public void onItemClick(View view, int position) {
+                                                Intent intent=new Intent(getContext(),cloud_chuangye_chuangye.class);
+                                                intent.putExtra("lid",zhidaoList.get(position).getLid());
+                                                intent.putExtra("title",zhidaoList.get(position).getname());
+                                                startActivity(intent);
+                                            }
+                                        });
                                     }
                                 });
                             }

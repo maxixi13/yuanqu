@@ -104,7 +104,7 @@ public class cloud_jinrong_shenqing extends AppCompatActivity {
                     jsonObject.put("phone", liangxidianhua.getText());
                     OkHttpClient okHttpClient = new OkHttpClient();
                     RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), String.valueOf(jsonObject));
-                    Request request = new Request.Builder().url(getString(R.string.zhengfuzixunshenqing_url)).post(requestBody).build();
+                    Request request = new Request.Builder().url(getString(R.string.jinrongfuwushenqing_url)).post(requestBody).build();
                     try {
                         Response response = okHttpClient.newCall(request).execute();
                         //判断请求是否成功

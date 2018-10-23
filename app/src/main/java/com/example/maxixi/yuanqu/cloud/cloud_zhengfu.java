@@ -90,16 +90,6 @@ public class cloud_zhengfu extends AppCompatActivity {
                                             startActivity(intent);
                                         }
                                     });
-//                                    yunfuwujiluadapter.setOnItemClickListener(new Yunfuwujiluadapter.OnItemClickListener() {
-//                                        @Override
-//                                        public void onItemClick(View view, int position) {
-//                                            Intent intent=new Intent(getContext(),Yfuwushenqinglist.class);
-//                                            intent.putExtra("cid",yunfuwuList.get(position).getCid());
-//                                            intent.putExtra("type","1");
-//                                            intent.putExtra("title",yunfuwuList.get(position).getTitle());
-//                                            startActivity(intent);
-//                                        }
-//                                    });
                                 }
                             });
                         }
