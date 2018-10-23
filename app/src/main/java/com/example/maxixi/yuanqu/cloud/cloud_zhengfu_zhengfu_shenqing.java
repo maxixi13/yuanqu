@@ -1,23 +1,59 @@
 package com.example.maxixi.yuanqu.cloud;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class cloud_zhengfu_zhengfu_shenqing extends AppCompatActivity {
+
+    private TextView textView;
+    private TextView textView1;
+    private EditText gongsimingcheng;
+    private EditText lianxiren;
+    private EditText lianxidianhua;
+    private String lid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cctivity_cloud_zhengfu_zhengfu_shenqing);
+
+        //view
+        textView = (TextView) findViewById(R.id.zhengfu_zhengfu_shengqing_fuwu_text);
+        textView1 = (TextView) findViewById(R.id.zhengfu_zhengfu_shengqing_yuanqu_text);
+        gongsimingcheng = (EditText) findViewById(R.id.zhengfu_zhengfu_shengqing_gongsimingcheng_text);
+        lianxiren = (EditText) findViewById(R.id.zhengfu_zhengfu_shengqing_lianxiren_text);
+        lianxidianhua = (EditText) findViewById(R.id.zhengfu_zhengfu_shengqing_lianxidianhua_text);
+
+        Intent intent = getIntent();
+        lid = intent.getStringExtra("lid");
+        final String title = intent.getStringExtra("title");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.cloud_zhengfu_zhengfu_shenqing_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -27,15 +63,7 @@ public class cloud_zhengfu_zhengfu_shenqing extends AppCompatActivity {
             }
         });
 
-        //服务
-        LinearLayout fuwuxuanzelayout = (LinearLayout) findViewById(R.id.zhengfu_zhengfu_shengqing_fuwu_layout);
-        fuwuxuanzelayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Dialog();
-            }
-        });
-
+        textView.setText(title);
 
         //园区
         LinearLayout yuanquxuanzelayout = (LinearLayout) findViewById(R.id.zhengfu_zhengfu_shengqing_yuanqu_layout);
@@ -46,37 +74,21 @@ public class cloud_zhengfu_zhengfu_shenqing extends AppCompatActivity {
             }
         });
 
-
-    }
-
-    //政府政策
-    private void Dialog() {
-        //初始化字符串数组
-        final String[] strArray = new String[]{"科技补助金", "文创补助金", "借钱"};
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);//实例化builder
-        builder.setTitle("请选择政府政策");//设置标题
-        //设置单选列表
-        builder.setSingleChoiceItems(strArray, 0, new DialogInterface.OnClickListener() {
+        Button tijiaobutton = (Button) findViewById(R.id.zhengfu_zhengfu_shengqing_tijiao_button);
+        tijiaobutton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                TextView textView = (TextView) findViewById(R.id.zhengfu_zhengfu_shengqing_fuwu_text);
-                textView.setText(strArray[which]);
-                textView.setTextColor(Color.parseColor("#666666"));
-                dialog.dismiss();
+            public void onClick(View v) {
+                if (textView1.getText().toString().length()!=0 && gongsimingcheng.getText().toString().length()!=0 && lianxiren.getText().toString().length()!=0 && lianxidianhua.getText().toString().length()!=0 ){
+                    Upload();
+                    Toast.makeText(cloud_zhengfu_zhengfu_shenqing.this, "提交成功", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(cloud_zhengfu_zhengfu_shenqing.this, "请填写完整", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-        //创建对话框
-        AlertDialog dialog = builder.create();
-        dialog.setButton(DialogInterface.BUTTON_POSITIVE, "取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();//显示对话框
+
+
     }
-
-
 
     //园区
     private void Dialog1() {
@@ -88,9 +100,8 @@ public class cloud_zhengfu_zhengfu_shenqing extends AppCompatActivity {
         builder.setSingleChoiceItems(strArray, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                TextView textView = (TextView) findViewById(R.id.zhengfu_zhengfu_shengqing_yuanqu_text);
-                textView.setText(strArray[which]);
-                textView.setTextColor(Color.parseColor("#666666"));
+                textView1.setText(strArray[which]);
+                textView1.setTextColor(Color.parseColor("#666666"));
                 dialog.dismiss();
             }
         });
@@ -103,5 +114,40 @@ public class cloud_zhengfu_zhengfu_shenqing extends AppCompatActivity {
             }
         });
         dialog.show();//显示对话框
+    }
+
+    private void Upload() {
+        SharedPreferences sharedPreferences = getSharedPreferences("userdata", Context.MODE_PRIVATE);
+        final String uid = sharedPreferences.getString("uid", null);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("uid", uid);
+                    jsonObject.put("sid", lid);
+                    jsonObject.put("stay_park", textView1.getText());
+                    jsonObject.put("stay_company", gongsimingcheng.getText());
+                    jsonObject.put("name", lianxiren.getText());
+                    jsonObject.put("phone", lianxidianhua.getText());
+                    OkHttpClient okHttpClient = new OkHttpClient();
+                    RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), String.valueOf(jsonObject));
+                    Request request = new Request.Builder().url(getString(R.string.zhengfuzixunshenqing_url)).post(requestBody).build();
+                    try {
+                        Response response = okHttpClient.newCall(request).execute();
+                        //判断请求是否成功
+                        if (response.isSuccessful()) {
+                            //打印服务端返回结果
+                            Thread.sleep(1000);
+                            cloud_zhengfu_zhengfu_shenqing.this.finish();
+                        }
+                    } catch (IOException | InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

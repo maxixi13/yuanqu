@@ -1,7 +1,9 @@
 package com.example.maxixi.yuanqu.perkservice;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.icu.lang.UProperty;
 import android.support.v7.app.AppCompatActivity;
@@ -175,12 +177,14 @@ public class parkservice_yuanei_tousu extends AppCompatActivity {
     }
 
     private void Upload() {
+        SharedPreferences sharedPreferences=getSharedPreferences("userdata",Context.MODE_PRIVATE);
+        final String uid=sharedPreferences.getString("uid",null);
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("uid", "1");
+                    jsonObject.put("uid", uid);
                     jsonObject.put("stay_park", textView.getText());
                     jsonObject.put("region", bangongquyu.getText());
                     jsonObject.put("stay_company", gongsimingcheng.getText());

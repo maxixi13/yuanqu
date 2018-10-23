@@ -5,12 +5,14 @@ public class yunfuwujilulei {
     private String zhuangtai;
     private String xiangmu;
     private String time;
+    private String cid;
 
-    public yunfuwujilulei(String title,String zhuangtai,String xiangmu,String time){
+    public yunfuwujilulei(String title,String zhuangtai,String xiangmu,String time,String cid){
         this.title=title;
         this.zhuangtai=zhuangtai;
         this.xiangmu=xiangmu;
         this.time=time;
+        this.cid=cid;
     }
 
     public String getTitle() {
@@ -27,5 +29,9 @@ public class yunfuwujilulei {
 
     public String getTime() {
         return time;
+    }
+
+    public String getCid() {
+        return cid;
     }
 }

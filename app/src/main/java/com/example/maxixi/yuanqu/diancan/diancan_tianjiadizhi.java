@@ -1,5 +1,7 @@
 package com.example.maxixi.yuanqu.diancan;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -87,12 +89,14 @@ public class diancan_tianjiadizhi extends AppCompatActivity {
     }
 
     private void Upload() {
+        SharedPreferences sharedPreferences=getSharedPreferences("userdata",Context.MODE_PRIVATE);
+        final String uid=sharedPreferences.getString("uid",null);
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("uid", "1");
+                    jsonObject.put("uid", uid);
                     jsonObject.put("name", lianxiren.getText());
                     jsonObject.put("tel", lianxidianhua.getText());
                     jsonObject.put("address", dizhi.getText());

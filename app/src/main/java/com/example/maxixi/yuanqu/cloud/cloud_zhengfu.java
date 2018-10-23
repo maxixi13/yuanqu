@@ -1,15 +1,19 @@
 package com.example.maxixi.yuanqu.cloud;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_adapter;
 import com.example.maxixi.yuanqu.cloud.cloud_adapter.cloud_zhidao_lei;
+import com.example.maxixi.yuanqu.personal.yunfuwushenqingfuwu.Yfuwushenqinglist;
+import com.example.maxixi.yuanqu.personal.yunfuwushenqingfuwu.Yunfuwujiluadapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -70,13 +74,32 @@ public class cloud_zhengfu extends AppCompatActivity {
                         JSONArray array = jsonObject.getJSONArray("data");
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject jsonObjectchil = array.getJSONObject(i);
-                            cloud_zhidao_lei madada = new cloud_zhidao_lei(jsonObjectchil.getString("title"), jsonObjectchil.getString("ctime"));
+                            cloud_zhidao_lei madada = new cloud_zhidao_lei(jsonObjectchil.getString("title"), jsonObjectchil.getString("ctime"),jsonObjectchil.getString("lid"));
                             zhidaoList.add(madada);
                             final cloud_zhidao_adapter cloud_zhidao_adapter = new cloud_zhidao_adapter(zhidaoList);
                             cloud_zhengfu.this.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     recyclerView.setAdapter(cloud_zhidao_adapter);
+                                    cloud_zhidao_adapter.setOnItemClickListener(new cloud_zhidao_adapter.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(View view, int position) {
+                                            Intent intent=new Intent(cloud_zhengfu.this,cloud_zhengfu_zhengfu.class);
+                                            intent.putExtra("lid",zhidaoList.get(position).getLid());
+                                            intent.putExtra("title",zhidaoList.get(position).getname());
+                                            startActivity(intent);
+                                        }
+                                    });
+//                                    yunfuwujiluadapter.setOnItemClickListener(new Yunfuwujiluadapter.OnItemClickListener() {
+//                                        @Override
+//                                        public void onItemClick(View view, int position) {
+//                                            Intent intent=new Intent(getContext(),Yfuwushenqinglist.class);
+//                                            intent.putExtra("cid",yunfuwuList.get(position).getCid());
+//                                            intent.putExtra("type","1");
+//                                            intent.putExtra("title",yunfuwuList.get(position).getTitle());
+//                                            startActivity(intent);
+//                                        }
+//                                    });
                                 }
                             });
                         }

@@ -1,5 +1,8 @@
 package com.example.maxixi.yuanqu.personal.yunfuwushenqingfuwu;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -45,12 +48,14 @@ public class Yfuwuchuangyefg extends Fragment {
     private int page = 0;
 
     private void sendRequestWithOkHttp(final int page_value) {
+        SharedPreferences sharedPreferences=getActivity().getSharedPreferences("userdata",Context.MODE_PRIVATE);
+        final String uid=sharedPreferences.getString("uid",null);
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     OkHttpClient client = new OkHttpClient();
-                    FormBody formBody = new FormBody.Builder().add("type", "3").add("page", String.valueOf(page)).build();
+                    FormBody formBody = new FormBody.Builder().add("type", "3").add("id",uid).add("page", String.valueOf(page)).build();
                     Request request = new Request.Builder().url(getString(R.string.gerenzhongxinyunfuwu_url)).post(formBody).build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
@@ -60,13 +65,23 @@ public class Yfuwuchuangyefg extends Fragment {
                         JSONArray array = jsonObject.getJSONArray("data");
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject jsonObjectchil = array.getJSONObject(i);
-                            yunfuwujilulei madada = new yunfuwujilulei(jsonObjectchil.getString("type"), "已完成", "申请公司", jsonObjectchil.getString("ctime"));
+                            yunfuwujilulei madada = new yunfuwujilulei(jsonObjectchil.getString("type"), jsonObjectchil.getString("state"), jsonObjectchil.getString("title"), jsonObjectchil.getString("ctime"),jsonObjectchil.getString("cid"));
                             yunfuwuList.add(madada);
                             final Yunfuwujiluadapter yunfuwujiluadapter = new Yunfuwujiluadapter(yunfuwuList);
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     recyclerView.setAdapter(yunfuwujiluadapter);
+                                    yunfuwujiluadapter.setOnItemClickListener(new Yunfuwujiluadapter.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(View view, int position) {
+                                            Intent intent=new Intent(getContext(),Yfuwushenqinglist.class);
+                                            intent.putExtra("cid",yunfuwuList.get(position).getCid());
+                                            intent.putExtra("type","1");
+                                            intent.putExtra("title",yunfuwuList.get(position).getTitle());
+                                            startActivity(intent);
+                                        }
+                                    });
                                 }
                             });
                         }

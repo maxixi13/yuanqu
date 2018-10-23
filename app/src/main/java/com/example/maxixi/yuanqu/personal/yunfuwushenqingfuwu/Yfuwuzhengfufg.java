@@ -1,5 +1,8 @@
 package com.example.maxixi.yuanqu.personal.yunfuwushenqingfuwu;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -9,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.maxixi.yuanqu.R;
 
@@ -48,12 +52,14 @@ public class Yfuwuzhengfufg extends Fragment {
     private int page = 0;
 
     private void sendRequestWithOkHttp(final int page_value) {
+        SharedPreferences sharedPreferences=getActivity().getSharedPreferences("userdata",Context.MODE_PRIVATE);
+        final String uid=sharedPreferences.getString("uid",null);
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     OkHttpClient client = new OkHttpClient();
-                    FormBody formBody = new FormBody.Builder().add("type", "1").add("page", String.valueOf(page)).build();
+                    FormBody formBody = new FormBody.Builder().add("type", "1").add("id",uid).add("page", String.valueOf(page)).build();
                     Request request = new Request.Builder().url(getString(R.string.gerenzhongxinyunfuwu_url)).post(formBody).build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
@@ -62,14 +68,24 @@ public class Yfuwuzhengfufg extends Fragment {
                         code = jsonObject.getInt("code");
                         JSONArray array = jsonObject.getJSONArray("data");
                         for (int i = 0; i < array.length(); i++) {
-                            JSONObject jsonObjectchil = array.getJSONObject(i);
-                            yunfuwujilulei madada = new yunfuwujilulei("政府政策", "已完成", "申请公司", jsonObjectchil.getString("ctime"));
+                            final JSONObject jsonObjectchil = array.getJSONObject(i);
+                            yunfuwujilulei madada = new yunfuwujilulei(jsonObjectchil.getString("type"), jsonObjectchil.getString("state"), jsonObjectchil.getString("title"), jsonObjectchil.getString("ctime"),jsonObjectchil.getString("cid"));
                             yunfuwuList.add(madada);
                             final Yunfuwujiluadapter yunfuwujiluadapter = new Yunfuwujiluadapter(yunfuwuList);
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     recyclerView.setAdapter(yunfuwujiluadapter);
+                                    yunfuwujiluadapter.setOnItemClickListener(new Yunfuwujiluadapter.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(View view, int position) {
+                                            Intent intent=new Intent(getContext(),Yfuwushenqinglist.class);
+                                            intent.putExtra("cid",yunfuwuList.get(position).getCid());
+                                            intent.putExtra("type","1");
+                                            intent.putExtra("title",yunfuwuList.get(position).getTitle());
+                                            startActivity(intent);
+                                        }
+                                    });
                                 }
                             });
                         }

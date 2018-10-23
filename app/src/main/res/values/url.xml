@@ -17,6 +17,9 @@
     <string name="yonghuzhuce_url">http://192.168.11.121/index/User/register</string>
     <string name="huoquyanzhengma_url">http://192.168.11.121/index/user/alidayu</string>
     <string name="yonghudenglu_url">http://192.168.11.121/index/User/login</string>
+    <string name="yonghuchakanyunfuwushenqing_url">http://192.168.11.121/index/Consultationdetails/view_record</string>
+    <string name="zhengfuzhixunxiangqing_url">http://192.168.11.121/index/consultationdetails/government_details</string>
+    <string name="zhengfuzixunshenqing_url">http://192.168.11.121/index/consultationdetails/government_apply</string>
 
     //网络地址
     <string name="mizujie_url">http://www.mzujie.com</string>

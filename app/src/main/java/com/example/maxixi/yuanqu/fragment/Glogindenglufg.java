@@ -202,9 +202,9 @@ public class Glogindenglufg extends Fragment {
                         String cookieString = cookieStringList.get(0);
                         String sessionid = cookieString.substring(0, cookieString.indexOf(";"));
                         SharedPreferences share = getContext().getSharedPreferences("Session", MODE_PRIVATE);
-                        SharedPreferences.Editor edit = share.edit();//编辑文件
-                        edit.putString("sessionid", sessionid);
-                        edit.apply();
+                        SharedPreferences.Editor editor = share.edit();//编辑文件
+                        editor.putString("sessionid", sessionid);
+                        editor.apply();
 
                         if (response.isSuccessful()) {
                             //打印服务端返回结果

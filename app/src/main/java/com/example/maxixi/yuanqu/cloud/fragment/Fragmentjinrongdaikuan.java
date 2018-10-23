@@ -65,7 +65,7 @@ public class Fragmentjinrongdaikuan extends Fragment {
                         JSONArray array = jsonObject.getJSONArray("data");
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject jsonObjectchil = array.getJSONObject(i);
-                            cloud_zhidao_lei madada = new cloud_zhidao_lei(jsonObjectchil.getString("title"), jsonObjectchil.getString("ctime"));
+                            cloud_zhidao_lei madada = new cloud_zhidao_lei(jsonObjectchil.getString("title"), jsonObjectchil.getString("ctime"),jsonObjectchil.getString("lid"));
                             zhidaoList.add(madada);
                             final cloud_zhidao_adapter cloud_zhidao_adapter = new cloud_zhidao_adapter(zhidaoList);
                             getActivity().runOnUiThread(new Runnable() {

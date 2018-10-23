@@ -92,7 +92,8 @@
         <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_caiwudaili" />
         <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_caiwudailiSQ" />
         <activity android:name=".personal.yuanneifuwujilu.Yuanqutousulist" />
-        <activity android:name=".personal.yuanneifuwujilu.Yuanqubaoxiulist"></activity>
+        <activity android:name=".personal.yuanneifuwujilu.Yuanqubaoxiulist" />
+        <activity android:name=".personal.yunfuwushenqingfuwu.Yfuwushenqinglist"></activity>
     </application>
 
 </manifest><!--
