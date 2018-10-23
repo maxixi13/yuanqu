@@ -65,29 +65,6 @@ public class cloud_zhidao_adapter extends RecyclerView.Adapter<cloud_zhidao_adap
     public ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cctivity_cloud_chuangye_zhidao_item, parent, false);
         final ViewHolder holder = new ViewHolder(view);
-//        holder.adapterview.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int position = holder.getAdapterPosition();
-//                cloud_zhidao_lei cloud_zhidao_lei = myzhidaolist.get(position);
-//                Toast.makeText(parent.getContext(), "||"+cloud_zhidao_lei.getname()+"||", Toast.LENGTH_SHORT).show();
-//                if (cloud_zhidao_lei.getname() == "芈租界大新闻") {
-//                    Intent intent = new Intent(parent.getContext(), cloud_chuangye_chuangye.class);
-//                    intent.putExtra("mizujie", R.string.mizujie_url);
-//                    parent.getContext().startActivity(intent);
-//                } else if (cloud_zhidao_lei.getname().equals("test3")) {
-//                    Intent intent = new Intent(parent.getContext(), cloud_jingrong_jinrong.class);
-//                    intent.putExtra("baidu", R.string.baidu_url);
-//                    parent.getContext().startActivity(intent);
-//                }else if(position==0){
-//                    Intent intent=new Intent(parent.getContext(),cloud_zhengfu_zhengfu.class);
-//                    intent.putExtra("mizujie", R.string.mizujie_url);
-//                    parent.getContext().startActivity(intent);
-//                }
-//
-//            }
-//        });
-
 
         return holder;
     }

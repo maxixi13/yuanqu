@@ -12,19 +12,28 @@ import com.example.maxixi.yuanqu.R;
 
 public class cloud_jingrong_jinrong extends AppCompatActivity {
 
+    private String lid;
+    private String title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cctivity_cloud_jingrong_jinrong);
 
 
+        Intent intent = getIntent();
+        lid = intent.getStringExtra("lid");
+        title = intent.getStringExtra("title");
+
         //申请页面
         TextView shenqingText = (TextView) findViewById(R.id.cloud_jinrong_jinrong_shenqing);
         shenqingText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent shengqingpage = new Intent(cloud_jingrong_jinrong.this, cloud_jinrong_shenqing.class);
-                startActivity(shengqingpage);
+                Intent intent = new Intent(cloud_jingrong_jinrong.this, cloud_jinrong_shenqing.class);
+                intent.putExtra("lid", lid);
+                intent.putExtra("title", title);
+                startActivity(intent);
             }
         });
 
@@ -36,11 +45,11 @@ public class cloud_jingrong_jinrong extends AppCompatActivity {
             }
         });
 
-
+        String postdata = "id=" + lid;
         WebView webView=(WebView)findViewById(R.id.jinrong_jingrong_web);
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setLoadWithOverviewMode(true);
-        webView.loadUrl(getIntent().getStringExtra("baidu"));
+        webView.postUrl(getString(R.string.jinrongfuwuxiangqing_url),postdata.getBytes());
 
 
     }
