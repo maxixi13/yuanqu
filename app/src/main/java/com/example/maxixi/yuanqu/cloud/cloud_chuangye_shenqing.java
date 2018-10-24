@@ -23,6 +23,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -53,9 +54,6 @@ public class cloud_chuangye_shenqing extends AppCompatActivity {
 
         Intent intent = getIntent();
         lid = intent.getStringExtra("lid");
-        final String title = intent.getStringExtra("title");
-
-        textView.setText(title);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.cloud_chuangye_shenqing_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -85,6 +83,8 @@ public class cloud_chuangye_shenqing extends AppCompatActivity {
                 }
             }
         });
+
+        sendOkhttp();
 
     }
 
@@ -151,5 +151,23 @@ public class cloud_chuangye_shenqing extends AppCompatActivity {
         dialog.show();//显示对话框
     }
 
+    private void sendOkhttp(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient=new OkHttpClient();
+                FormBody formBody=new FormBody.Builder().add("lid",lid).build();
+                Request request=new Request.Builder().url(getString(R.string.fanhuichuangyefuwubiaoti_url)).post(formBody).build();
+                try {
+                    Response response=okHttpClient.newCall(request).execute();
+                    String responseData=response.body().string();
+                    JSONObject jsonObject=new JSONObject(responseData);
+                    textView.setText(jsonObject.getString("data"));
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
 
 }

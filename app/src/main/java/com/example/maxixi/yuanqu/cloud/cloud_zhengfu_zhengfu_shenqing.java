@@ -24,6 +24,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -53,7 +54,6 @@ public class cloud_zhengfu_zhengfu_shenqing extends AppCompatActivity {
 
         Intent intent = getIntent();
         lid = intent.getStringExtra("lid");
-        final String title = intent.getStringExtra("title");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.cloud_zhengfu_zhengfu_shenqing_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -63,7 +63,7 @@ public class cloud_zhengfu_zhengfu_shenqing extends AppCompatActivity {
             }
         });
 
-        textView.setText(title);
+        sendOkhttp();
 
         //园区
         LinearLayout yuanquxuanzelayout = (LinearLayout) findViewById(R.id.zhengfu_zhengfu_shengqing_yuanqu_layout);
@@ -145,6 +145,25 @@ public class cloud_zhengfu_zhengfu_shenqing extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    private void sendOkhttp(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient=new OkHttpClient();
+                FormBody formBody=new FormBody.Builder().add("lid",lid).build();
+                Request request=new Request.Builder().url(getString(R.string.fanhuizhengfuzixunbiaoti_url)).post(formBody).build();
+                try {
+                    Response response=okHttpClient.newCall(request).execute();
+                    String responseData=response.body().string();
+                    JSONObject jsonObject=new JSONObject(responseData);
+                    textView.setText(jsonObject.getString("data"));
+                } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
             }

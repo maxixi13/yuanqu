@@ -82,7 +82,6 @@ public class Fragmentjingrongfengxian extends Fragment {
                                         public void onItemClick(View view, int position) {
                                             Intent intent=new Intent(getContext(),cloud_jingrong_jinrong.class);
                                             intent.putExtra("lid",zhidaoList.get(position).getLid());
-                                            intent.putExtra("title",zhidaoList.get(position).getname());
                                             startActivity(intent);
                                         }
                                     });

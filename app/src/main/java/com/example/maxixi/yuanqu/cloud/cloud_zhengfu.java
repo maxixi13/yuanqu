@@ -86,7 +86,6 @@ public class cloud_zhengfu extends AppCompatActivity {
                                         public void onItemClick(View view, int position) {
                                             Intent intent=new Intent(cloud_zhengfu.this,cloud_zhengfu_zhengfu.class);
                                             intent.putExtra("lid",zhidaoList.get(position).getLid());
-                                            intent.putExtra("title",zhidaoList.get(position).getname());
                                             startActivity(intent);
                                         }
                                     });

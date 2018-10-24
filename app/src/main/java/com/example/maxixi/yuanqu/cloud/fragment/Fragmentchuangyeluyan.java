@@ -82,7 +82,6 @@ public class Fragmentchuangyeluyan extends Fragment {
                                         public void onItemClick(View view, int position) {
                                             Intent intent=new Intent(getContext(),cloud_chuangye_chuangye.class);
                                             intent.putExtra("lid",zhidaoList.get(position).getLid());
-                                            intent.putExtra("title",zhidaoList.get(position).getname());
                                             startActivity(intent);
                                         }
                                     });
