@@ -73,7 +73,7 @@ public class cloud_qiyefuwu_gongshangzhuce extends AppCompatActivity {
                     JSONArray jsonArray=jsonObject.getJSONArray("data");
                     for (int i=0;i<jsonArray.length();++i){
                         JSONObject jsonObjectcl=jsonArray.getJSONObject(i);
-                        Cloud_qiyefuwu_bean bean=new Cloud_qiyefuwu_bean(R.drawable.qiyefuwu_gongshangzhuce_icon,jsonObjectcl.getString("qid"),"平均费用"+jsonObjectcl.getString("average_cost")+"元","园区使用频率"+jsonObjectcl.getString("park_use_rate")+"%","平均申请时间"+jsonObjectcl.getString("average_time")+"天");
+                        Cloud_qiyefuwu_bean bean=new Cloud_qiyefuwu_bean(R.drawable.qiyefuwu_gongshangzhuce_icon,jsonObjectcl.getString("qid"),"平均费用"+jsonObjectcl.getString("average_cost")+"元","园区使用频率"+jsonObjectcl.getString("park_use_rate")+"%","平均申请时间"+jsonObjectcl.getString("average_time")+"天",jsonObjectcl.getString("lid"));
                         qiyefuwulist.add(bean);
                     }
                     final Cloud_qiyefuwu_adapter cloud_qiyefuwu_adapter=new Cloud_qiyefuwu_adapter(qiyefuwulist);
@@ -81,6 +81,16 @@ public class cloud_qiyefuwu_gongshangzhuce extends AppCompatActivity {
                         @Override
                         public void run() {
                             recyclerView.setAdapter(cloud_qiyefuwu_adapter);
+                            cloud_qiyefuwu_adapter.setmOnItemClickListener(new Cloud_qiyefuwu_adapter.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(View view, int position) {
+                                    Intent intent=new Intent(cloud_qiyefuwu_gongshangzhuce.this,cloud_qiyefuwu_gongshangzhuceSQ.class);
+                                    intent.putExtra("lid",qiyefuwulist.get(position).getLid());
+                                    intent.putExtra("title",qiyefuwulist.get(position).getQid());
+                                    intent.putExtra("toolbartitle","工商注册");
+                                    startActivity(intent);
+                                }
+                            });
                         }
                     });
 //                    if (code != -1 && code !=201){

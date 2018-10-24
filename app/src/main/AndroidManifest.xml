@@ -86,11 +86,8 @@
         <activity android:name=".personal.yuanneifuwujilu.Yuanqufujilu" />
         <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_gongshangzhuceSQ" />
         <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_zhishichanquan" />
-        <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_zhishichuanquanSQ" />
         <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_shejiyinshua" />
-        <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_shejiyinshuaSQ" />
         <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_caiwudaili" />
-        <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_caiwudailiSQ" />
         <activity android:name=".personal.yuanneifuwujilu.Yuanqutousulist" />
         <activity android:name=".personal.yuanneifuwujilu.Yuanqubaoxiulist" />
         <activity android:name=".personal.yunfuwushenqingfuwu.Yfuwushenqinglist"></activity>

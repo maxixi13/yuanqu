@@ -24,6 +24,8 @@
     <string name="jinrongfuwushenqing_url">http://192.168.11.121/index/consultationdetails/finance_apply</string>
     <string name="chuangyefuwuxiangqing_url">http://192.168.11.121/index/consultationdetails/entrepreneurship_details</string>
     <string name="chuangyefuwushenqing_url">http://192.168.11.121/index/consultationdetails/entrepreneurship_apply</string>
+    <string name="qiyefuwuxiangqing_url">http://192.168.11.121/index/consultationdetails/enterprise_details</string>
+    <string name="qiyefuwushenqing_url">http://192.168.11.121/index/consultationdetails/enterprise_apply</string>
 
     //网络地址
     <string name="mizujie_url">http://www.mzujie.com</string>

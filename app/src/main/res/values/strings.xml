@@ -143,4 +143,6 @@
     <string name="xiangce">相册</string>
     <string name="wuyeString">Lorem ipsum dolor sit amet,consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et vivierra justo commodo.</string>
     <string name="shenqingneirong">申请内容</string>
+    <string name="suoxuanfuwu">所选服务</string>
+    <string name="lijibanli">立即办理</string>
 </resources>
