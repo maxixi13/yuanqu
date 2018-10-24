@@ -96,6 +96,7 @@
 
 
             <EditText
+                android:id="@+id/personal_renzheng_qiyemingcheng_text"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -113,6 +114,7 @@
                 android:background="@color/dddddd" />
 
             <EditText
+                android:id="@+id/personal_renzheng_xingming_text"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -129,6 +131,7 @@
                 android:background="@color/dddddd" />
 
             <EditText
+                android:id="@+id/personal_renzheng_lianxifangshi_text"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -145,6 +148,7 @@
                 android:background="@color/dddddd" />
 
             <EditText
+                android:id="@+id/personal_renzheng_xinyongdaima_text"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -181,7 +185,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/personal_renzheng_tijiao"
+        android:id="@+id/personal_renzheng_tijiao_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="center"

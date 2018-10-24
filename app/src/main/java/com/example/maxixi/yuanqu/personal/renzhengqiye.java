@@ -25,6 +25,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -34,6 +35,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import okhttp3.OkHttpClient;
+
 
 public class renzhengqiye extends AppCompatActivity {
 
@@ -42,12 +45,22 @@ public class renzhengqiye extends AppCompatActivity {
     private Uri imageUri;
     private AlertDialog dialog;
     private static final int CHOSSE_PHOTO=2;
+    private TextView qiyemingcheng;
+    private TextView xingming;
+    private TextView lianxifangshi;
+    private TextView xinyongdaima;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dctivity_renzhengqiye);
+
+        //view
+        qiyemingcheng = (TextView)findViewById(R.id.personal_renzheng_qiyemingcheng_text);
+        xingming = (TextView)findViewById(R.id.personal_renzheng_xingming_text);
+        lianxifangshi = (TextView)findViewById(R.id.personal_renzheng_lianxifangshi_text);
+        xinyongdaima = (TextView)findViewById(R.id.personal_renzheng_xinyongdaima_text);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.personal_renzhengqiye_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -65,6 +78,24 @@ public class renzhengqiye extends AppCompatActivity {
 
             }
         });
+
+        Button tijiao=(Button)findViewById(R.id.personal_renzheng_tijiao_button);
+        tijiao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendOkhttp();
+            }
+        });
+    }
+
+    private void sendOkhttp() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient=new OkHttpClient();
+                
+            }
+        }).start();
     }
 
 
