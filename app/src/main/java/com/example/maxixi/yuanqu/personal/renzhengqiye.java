@@ -205,7 +205,7 @@ public class renzhengqiye extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-
+                break;
             case CHOSSE_PHOTO:
                 if (resultCode==RESULT_OK){
                     //判断手机版本号
