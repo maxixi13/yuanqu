@@ -128,7 +128,7 @@ public class Glogindenglufg extends Fragment {
             public void run() {
                 try {
                     JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("username", shoujihao.getText());
+                    jsonObject.put("tel", shoujihao.getText());
                     jsonObject.put("password", mima.getText());
                     jsonObject.put("code", yanzhengmatx.getText());
                     OkHttpClient okHttpClient = new OkHttpClient();

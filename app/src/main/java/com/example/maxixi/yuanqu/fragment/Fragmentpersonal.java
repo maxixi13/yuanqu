@@ -1,6 +1,8 @@
 package com.example.maxixi.yuanqu.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -95,6 +97,10 @@ public class Fragmentpersonal extends Fragment {
             public void onClick(View v) {
                 Intent intent=new Intent(getContext(), Loginpage.class);
                 startActivity(intent);
+                SharedPreferences sharedPreferences=getActivity().getSharedPreferences("userrdata",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                editor.clear();
+                editor.apply();
             }
         });
 

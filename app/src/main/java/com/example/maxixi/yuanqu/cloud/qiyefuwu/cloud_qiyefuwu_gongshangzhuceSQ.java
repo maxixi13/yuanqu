@@ -93,7 +93,6 @@ public class cloud_qiyefuwu_gongshangzhuceSQ extends AppCompatActivity {
             public void onClick(View v) {
                 if (textView1.getText().toString().length()!=0 && gongsimingcheng.getText().toString().length()!=0 && lianxiren.getText().toString().length()!=0 && lianxidianhua.getText().toString().length()!=0 ){
                     Upload();
-                    Toast.makeText(cloud_qiyefuwu_gongshangzhuceSQ.this, "提交成功", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(cloud_qiyefuwu_gongshangzhuceSQ.this, "请填写完整", Toast.LENGTH_SHORT).show();
                 }
@@ -152,7 +151,20 @@ public class cloud_qiyefuwu_gongshangzhuceSQ extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             //打印服务端返回结果
                             Thread.sleep(1000);
-                            cloud_qiyefuwu_gongshangzhuceSQ.this.finish();
+                            String responseData=response.body().string();
+                            JSONObject jsonObjectgetcode=new JSONObject(responseData);
+                            String code=jsonObjectgetcode.getString("code");
+                            if (code.equals("200")){
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(cloud_qiyefuwu_gongshangzhuceSQ.this,"提交成功",Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                cloud_qiyefuwu_gongshangzhuceSQ.this.finish();
+                            }else {
+                                Toast.makeText(cloud_qiyefuwu_gongshangzhuceSQ.this,"提交失败",Toast.LENGTH_SHORT).show();
+                            }
                         }
                     } catch (IOException | InterruptedException e) {
                         e.printStackTrace();

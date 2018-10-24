@@ -61,12 +61,11 @@ public class cloud_zhengfu_zhengfu extends AppCompatActivity {
             public void onClick(View v) {
                 String urlcheck=webView.getUrl();
                 if (!urlcheck.contains("id=")){
-                    Log.e("----","---"+lid);
+                    sendOkhttp();
                 }else {
                     lid=urlcheck.substring(urlcheck.indexOf("id=")+3);
-                    Log.e("----","----"+lid);
+                    sendOkhttp();
                 }
-                sendOkhttp();
             }
         });
 
