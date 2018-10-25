@@ -145,4 +145,8 @@
     <string name="shenqingneirong">申请内容</string>
     <string name="suoxuanfuwu">所选服务</string>
     <string name="lijibanli">立即办理</string>
+    <string name="gerenxinxi">个人信息</string>
+    <string name="shangchuantouxiang">上传头像</string>
+    <string name="yonghuming">用户名</string>
+    <string name="wodeqianming">我的签名</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.example.maxixi.yuanqu.personal;
 
-
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -13,10 +12,8 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.BitmapRegionDecoder;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -28,20 +25,16 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -51,32 +44,27 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+public class usermsset extends AppCompatActivity {
 
-public class renzhengqiye extends AppCompatActivity {
-
+    private String uid;
+    private AlertDialog dialog;
+    private Uri imageUri;
     private static final int TAKE_PHOTO = 1;
     private static final int CHOSSE_PHOTO = 2;
-    private ImageView picture;
-    private Uri imageUri;
-    private AlertDialog dialog;
-    private TextView qiyemingcheng;
-    private TextView xingming;
-    private TextView lianxifangshi;
-    private TextView xinyongdaima;
-
+    private CircleImageView circleImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dctivity_renzhengqiye);
+        setContentView(R.layout.dctivity_usermsset);
+
+        SharedPreferences sharedPreferences =getSharedPreferences("userdata", Context.MODE_PRIVATE);
+        uid = sharedPreferences.getString("uid", null);
 
         //view
-        qiyemingcheng = (TextView) findViewById(R.id.personal_renzheng_qiyemingcheng_text);
-        xingming = (TextView) findViewById(R.id.personal_renzheng_xingming_text);
-        lianxifangshi = (TextView) findViewById(R.id.personal_renzheng_lianxifangshi_text);
-        xinyongdaima = (TextView) findViewById(R.id.personal_renzheng_xinyongdaima_text);
+        circleImageView=(CircleImageView) findViewById(R.id.personal_usermsset_touxiang_circleimageview);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.personal_renzhengqiye_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.personal_usermsset_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,78 +72,26 @@ public class renzhengqiye extends AppCompatActivity {
             }
         });
 
-        picture = (ImageView) findViewById(R.id.personal_renzheng_upimgview);
-        picture.setOnClickListener(new View.OnClickListener() {
+        Button shangchuantouxiang=(Button)findViewById(R.id.personal_usermsset_shangchuan_button);
+        shangchuantouxiang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Dialog();
             }
         });
 
-        Button tijiao = (Button) findViewById(R.id.personal_renzheng_tijiao_button);
+        Button tijiao=(Button)findViewById(R.id.personal_usermsset_tijiao_button);
         tijiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (qiyemingcheng.getText().toString().length()!=0 && xingming.getText().toString().length()!=0 && lianxifangshi.getText().toString().length()!=0 && xinyongdaima.getText().toString().length()!=0 ){
-                    sendOkhttp();
-                }else {
-                    Toast.makeText(renzhengqiye.this,"请填写完整",Toast.LENGTH_SHORT).show();
-                }
+                sendupimage();
             }
         });
+
+
     }
 
-    private void sendOkhttp() {
-        SharedPreferences sharedPreferences = getSharedPreferences("userdata", Context.MODE_PRIVATE);
-        final String uid = sharedPreferences.getString("uid", null);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                    String enter_name=qiyemingcheng.getText().toString();
-                    String person=xingming.getText().toString();
-                    String person_tel=lianxifangshi.getText().toString();
-                    String credit=xinyongdaima.getText().toString();
-
-                    OkHttpClient okHttpClient = new OkHttpClient();
-                    File file = new File(getExternalCacheDir(), "output_image.jpg");
-                    MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM)
-                            .addFormDataPart("uid", uid)
-                            .addFormDataPart("enter_name", enter_name)
-                            .addFormDataPart("img", "output_image.jpg", RequestBody.create(MediaType.parse("image/png"), file))
-                            .addFormDataPart("person",person)
-                            .addFormDataPart("person_tel",person_tel)
-                            .addFormDataPart("credit",credit);
-                    RequestBody requestBody =builder.build();
-                    Request request = new Request.Builder().url(getString(R.string.chengweiqiyeyonghu_url)).post(requestBody).build();
-                    Call call = okHttpClient.newCall(request);
-                    call.enqueue(new Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                            Log.e("--", "onFailure: " + e);
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(renzhengqiye.this, "失败", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException {
-                            Log.e("--", "成功" + response);
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(renzhengqiye.this, "提交成功", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        }
-                    });
-            }
-        }).start();
-    }
-
-
+    //头像设定
     private void Dialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         dialog = builder.create();
@@ -174,8 +110,8 @@ public class renzhengqiye extends AppCompatActivity {
         album.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(renzhengqiye.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(renzhengqiye.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                if (ContextCompat.checkSelfPermission(usermsset.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(usermsset.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                 } else {
                     openAlbum();
                 }
@@ -198,7 +134,7 @@ public class renzhengqiye extends AppCompatActivity {
 
     private void camera_take_photo() {
         //创建File，用于储存拍照后的图片
-        File outputImage = new File(getExternalCacheDir(), "output_image.jpg");
+        File outputImage = new File(getExternalCacheDir(), "user_image.jpg");
         try {
             if (outputImage.exists()) {
                 outputImage.delete();
@@ -208,12 +144,12 @@ public class renzhengqiye extends AppCompatActivity {
             e.printStackTrace();
         }
         if (Build.VERSION.SDK_INT >= 24) {
-            imageUri = FileProvider.getUriForFile(renzhengqiye.this, "com.example.cameraalbumtest.fileprovider", outputImage);
+            imageUri = FileProvider.getUriForFile(usermsset.this, "com.example.cameraalbumtest.fileprovider", outputImage);
         } else {
             imageUri = Uri.fromFile(outputImage);
         }
-        if (ContextCompat.checkSelfPermission(renzhengqiye.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions((Activity) renzhengqiye.this, new String[]{Manifest.permission.CAMERA}, TAKE_PHOTO);
+        if (ContextCompat.checkSelfPermission(usermsset.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions((Activity) this, new String[]{Manifest.permission.CAMERA}, TAKE_PHOTO);
             Toast.makeText(this, "请打开相机权限", Toast.LENGTH_SHORT).show();
         } else {
             //启动相机程序
@@ -247,7 +183,7 @@ public class renzhengqiye extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case TAKE_PHOTO:
@@ -255,7 +191,7 @@ public class renzhengqiye extends AppCompatActivity {
                     try {
                         //拍摄照片显示出来
                         Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
-                        picture.setImageBitmap(bitmap);
+                        circleImageView.setImageBitmap(bitmap);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -313,7 +249,7 @@ public class renzhengqiye extends AppCompatActivity {
     private String getImagePath(Uri uri, String selection) {
         String path = null;
         //通过Uri和selection来获取真是的图片路径
-        Cursor cursor = getContentResolver().query(uri, null, selection, null, null);
+        Cursor cursor = this.getContentResolver().query(uri, null, selection, null, null);
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
@@ -326,11 +262,50 @@ public class renzhengqiye extends AppCompatActivity {
     private void displayImage(String imagePath) {
         if (imagePath != null) {
             Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
-            picture.setImageBitmap(bitmap);
+            circleImageView.setImageBitmap(bitmap);
         } else {
             Toast.makeText(this, "获取图片失败", Toast.LENGTH_SHORT).show();
         }
     }
 
 
+    private void sendupimage() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient=new OkHttpClient();
+                File file = new File(getExternalCacheDir(), "user_image.jpg");
+                MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                        .addFormDataPart("uid",uid)
+                        .addFormDataPart("img", "user_image.jpg", RequestBody.create(MediaType.parse("image/png"), file));
+                RequestBody requestBody =builder.build();
+                Request request = new Request.Builder().url(getString(R.string.yonghushangchuantouxiang_url)).post(requestBody).build();
+                Call call=okHttpClient.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("--", "onFailure: " + e);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(usermsset.this, "失败", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        Log.e("--", "成功" + response);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(usermsset.this, "提交成功", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        });
+                    }
+                });
+            }
+        }).start();
+    }
 }

@@ -92,7 +92,8 @@
         <activity android:name=".cloud.qiyefuwu.cloud_qiyefuwu_caiwudaili" />
         <activity android:name=".personal.yuanneifuwujilu.Yuanqutousulist" />
         <activity android:name=".personal.yuanneifuwujilu.Yuanqubaoxiulist" />
-        <activity android:name=".personal.yunfuwushenqingfuwu.Yfuwushenqinglist"></activity>
+        <activity android:name=".personal.yunfuwushenqingfuwu.Yfuwushenqinglist" />
+        <activity android:name=".personal.usermsset"></activity>
     </application>
 
 </manifest><!--
@@ -103,4 +104,36 @@
     singleTask：如果启动的Activity不存在就创建Activity，如果存在直接跳转到指定的Activity所在位置
     　　注:在其上面的Activity会被移出栈,也就是一个栈中不能有重复的Activity
     singleInstance：如果启动的Activity不存在就创建一个Activity同时创建一个栈，如果存在就将指定的Activity存在的栈移动到栈顶
+--><!--
+//
+//                       _oo0oo_
+//                      o8888888o
+//                      88" . "88
+//                      (| -_- |)
+//                      0\  =  /0
+//                    ___/` - '\___
+//                  .' \\|     |// '.
+//                 / \\|||  :  |||// \
+//                / _||||| -:- |||||- \
+//               |   | \\\  -  /// |   |
+//               | \_|  ''\ - /''  |_/ |
+//               \  .-\__  '-'  ___/-. /
+//             ___'. .'  / -.- \  `. .'___
+//          ."" '<  `.___\_<|>_/___.' >' "".
+//         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+//         \  \ `_.   \_ __\ /__ _/   .-` /  /
+//     =====`-.____`.___ \_____/___.-`___.-'=====
+//                        `=-='
+//
+//                    www.mzujie.com
+//
+//             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//               佛祖保佑         永无BUG
+//               服务器稳         永不宕机
+//               流量翻倍         来路精准
+//               下单多多         万世长存
+//             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -->

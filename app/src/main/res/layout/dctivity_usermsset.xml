@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/beijingf5f5f5"
+    tools:context=".personal.usermsset">
+
+    <Toolbar
+        android:id="@+id/personal_usermsset_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:navigationIcon="@drawable/back_button"
+        android:title=""
+        android:titleTextColor="@android:color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/gerenxinxi"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+    </Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginEnd="17dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="11dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/personal_usermsset_touxiang_circleimageview"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:src="@drawable/texttouxiang"
+            app:civ_border_color="@color/top_blue"
+            app:civ_border_width="2dp" />
+
+        <Button
+            android:id="@+id/personal_usermsset_shangchuan_button"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_marginStart="11dp"
+            android:text="@string/shangchuantouxiang"
+            android:background="@drawable/personal_yuanjiaojuxingsuo"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/personal_usermsset_tijiao_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="17dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/personal_yuanjiaojuxingsuoblue"
+        android:text="@string/tijiao"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+
+
+</LinearLayout>
