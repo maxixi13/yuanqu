@@ -42,6 +42,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tingchejiaofei_yueka_cartype_text"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -89,6 +90,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tingchejiaofei_yueka_brand_text"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -96,6 +98,7 @@
                         android:text="法拉利" />
 
                     <TextView
+                        android:id="@+id/tingchejiaofei_yueka_model_text"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -103,6 +106,7 @@
                         android:text="488" />
 
                     <TextView
+                        android:id="@+id/tingchejiaofei_yueka_license_plate_text"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -126,6 +130,7 @@
                 android:textAlignment="viewEnd" />
 
             <TextView
+                android:id="@+id/tingchejiaofei_yueka_day_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="28天"
@@ -135,6 +140,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tingchejiaofei_yueka_status_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="bottom|right"
@@ -190,6 +196,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tingchejiaofei_yueka_indatatime_text"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -197,6 +204,7 @@
                 android:text="2018/07/09" />
 
             <TextView
+                android:id="@+id/tingchejiaofei_yueka_time_text"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -205,6 +213,8 @@
                 android:textColor="@color/top_blue" />
 
             <TextView
+
+                android:id="@+id/tingchejiaofei_yueka_carendindata_text"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"

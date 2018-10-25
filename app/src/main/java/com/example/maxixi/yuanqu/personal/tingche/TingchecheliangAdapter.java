@@ -77,7 +77,8 @@ public class TingchecheliangAdapter extends RecyclerView.Adapter<Tingchecheliang
         holder.platenum.setText(tingchecheliang.getPlatenum());
         holder.time.setText(tingchecheliang.getTime());
         holder.state.setText(tingchecheliang.getState());
-        if (tingchecheliang.getState() == "停车状态：停车中") holder.state.setTextColor(Color.parseColor("#09affb"));
+        if (!tingchecheliang.getState().contains("停车中")) holder.state.setTextColor(Color.parseColor("#09affb"));
+        if (tingchecheliang.getTime().contains("0"))holder.time.setTextColor(Color.parseColor("#FFF13D46"));
 
 
         //判断是否设置了监听器 点击事件

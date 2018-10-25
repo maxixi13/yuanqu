@@ -38,6 +38,9 @@
     <string name="yanzhengqiyeyonghushifouzhuce_url">http://192.168.11.121/index/User/register_enter</string>
     <string name="yonghushangchuantouxiang_url">http://192.168.11.121/index/User/user_route</string>
     <string name="yonghugerenxinxi_url">http://192.168.11.121/index/User/userinfo</string>
+    <string name="yonghutingcheshoufeiliebiao_url">http://192.168.11.165/index/Car/parking</string>
+    <string name="tianjiacheliang_url">http://192.168.11.165/index/Car/addcar</string>
+    <string name="cheliangtingcheshoufeixiangqing_url">http://192.168.11.165/index/Car/card</string>
 
 
     //网络地址

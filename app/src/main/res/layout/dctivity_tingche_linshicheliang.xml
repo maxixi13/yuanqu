@@ -42,6 +42,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tingchejiaofei_linshi_cartype_text"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -96,6 +97,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tingchejiaofei_linshi_brand_text"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -103,6 +105,7 @@
                         android:text="法拉利" />
 
                     <TextView
+                        android:id="@+id/tingchejiaofei_linshi_model_text"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -110,6 +113,7 @@
                         android:text="488" />
 
                     <TextView
+                        android:id="@+id/tingchejiaofei_linshi_license_plate_text"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -117,6 +121,7 @@
                         android:text="沪A8888" />
 
                     <TextView
+                        android:id="@+id/tingchejiaofei_linshi_indatatime2_text"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -141,6 +146,7 @@
                 android:textAlignment="viewEnd" />
 
             <TextView
+                android:id="@+id/tingchejiaofei_linshi_day_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="50次"
@@ -150,6 +156,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tingchejiaofei_linshi_status_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
@@ -211,6 +218,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tingchejiaofei_linshi_indatatime_text"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -218,6 +226,7 @@
                 android:text="2018/07/09" />
 
             <TextView
+                android:id="@+id/tingchejiaofei_lisnhi_time_text"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -239,6 +248,7 @@
                     android:textColor="@color/red" />
 
                 <TextView
+                    android:id="@+id/tingchejiaofei_lisnhi_sumfee_text"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="5000"
@@ -262,6 +272,7 @@
 
 
                 <TextView
+                    android:id="@+id/tingchejiaofei_lisnhi_fee_text"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="50"

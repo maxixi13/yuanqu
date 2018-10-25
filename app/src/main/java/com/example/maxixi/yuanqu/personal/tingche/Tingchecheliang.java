@@ -7,14 +7,16 @@ public class Tingchecheliang {
     private String platenum;
     private String time;
     private String state;
+    private String cid;
 
-    public Tingchecheliang(String type,String carname,String model,String platenum,String time,String state){
+    public Tingchecheliang(String type,String carname,String model,String platenum,String time,String state,String cid){
         this.type=type;
         this.carname=carname;
         this.model=model;
         this.platenum=platenum;
         this.time=time;
         this.state=state;
+        this.cid=cid;
     }
 
     public String getType() {
@@ -39,5 +41,9 @@ public class Tingchecheliang {
 
     public String getState() {
         return state;
+    }
+
+    public String getCid(){
+        return cid;
     }
 }
