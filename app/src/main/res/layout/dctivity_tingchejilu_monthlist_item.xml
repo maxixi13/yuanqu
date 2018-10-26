@@ -8,27 +8,28 @@
         android:id="@+id/tingchejilujilu_timeday"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:gravity="center"
         android:text="2018/08/23"
         android:textColor="@color/black"
         android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/tingchejilujilu_timetime"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center|start"
-        android:text="20:00-23:00"
-        android:textSize="16sp" />
+    <!--<TextView-->
+        <!--android:id="@+id/tingchejilujilu_timetime"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--android:gravity="center|start"-->
+        <!--android:text="20:00-23:00"-->
+        <!--android:textSize="16sp" />-->
 
     <LinearLayout
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center|end"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginEnd="11dp">
 
         <TextView
             android:layout_width="wrap_content"

@@ -1,6 +1,7 @@
 package com.example.maxixi.yuanqu.personal.tingche;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,7 +33,6 @@ public class tingche_linshicheliang extends AppCompatActivity {
     private TextView status;
     private TextView indatatime;
     private TextView time;
-    private TextView carendindata;
     private TextView sumfee;
     private TextView fee;
     private TextView indatatime2;
@@ -47,15 +47,14 @@ public class tingche_linshicheliang extends AppCompatActivity {
         cid = intent.getStringExtra("cid");
 
         //view
-        cartype = (TextView)findViewById(R.id.tingchejiaofei_yueka_cartype_text);
-        brand = (TextView)findViewById(R.id.tingchejiaofei_yueka_brand_text);
-        model = (TextView)findViewById(R.id.tingchejiaofei_yueka_model_text);
-        license_plate = (TextView)findViewById(R.id.tingchejiaofei_yueka_license_plate_text);
-        day = (TextView)findViewById(R.id.tingchejiaofei_yueka_day_text);
-        status = (TextView)findViewById(R.id.tingchejiaofei_yueka_status_text);
-        indatatime = (TextView)findViewById(R.id.tingchejiaofei_yueka_indatatime_text);
-        time = (TextView)findViewById(R.id.tingchejiaofei_yueka_time_text);
-        carendindata = (TextView)findViewById(R.id.tingchejiaofei_yueka_carendindata_text);
+        cartype = (TextView)findViewById(R.id.tingchejiaofei_linshi_cartype_text);
+        brand = (TextView)findViewById(R.id.tingchejiaofei_linshi_brand_text);
+        model = (TextView)findViewById(R.id.tingchejiaofei_linshi_model_text);
+        license_plate = (TextView)findViewById(R.id.tingchejiaofei_linshi_license_plate_text);
+        day = (TextView)findViewById(R.id.tingchejiaofei_linshi_day_text);
+        status = (TextView)findViewById(R.id.tingchejiaofei_linshi_status_text);
+        indatatime = (TextView)findViewById(R.id.tingchejiaofei_linshi_indatatime_text);
+        time = (TextView)findViewById(R.id.tingchejiaofei_linshi_time_text);
         sumfee=(TextView)findViewById(R.id.tingchejiaofei_lisnhi_sumfee_text);
         fee=(TextView)findViewById(R.id.tingchejiaofei_lisnhi_fee_text);
         indatatime2=(TextView)findViewById(R.id.tingchejiaofei_linshi_indatatime2_text);
@@ -100,13 +99,12 @@ public class tingche_linshicheliang extends AppCompatActivity {
                                         model.setText(jsonObjectcl.getString("model"));
                                         license_plate.setText(jsonObjectcl.getString("license_plate"));
                                         day.setText(jsonObjectcl.getString("day"));
-                                        String statusstr= "tingche"+jsonObjectcl.getString("status");
+                                        String statusstr= "停车状态："+jsonObjectcl.getString("status");
                                         status.setText(statusstr);
-//                                        if (status.getText().toString().contains("停车中")) status.setTextColor(Color.parseColor("#09affb"));
-//                                        if (day.getText().toString().contains("0"))day.setTextColor(Color.parseColor("#FFF13D46"));
+                                        if (status.getText().toString().contains("停车中")) status.setTextColor(Color.parseColor("#FFF13D46"));
+                                        if (day.getText().toString().contains("0"))day.setTextColor(Color.parseColor("#FFF13D46"));
                                         indatatime.setText(jsonObjectcl.getString("InDateTime"));
                                         time.setText(jsonObjectcl.getString("time"));
-                                        carendindata.setText(jsonObjectcl.getString("CarEndIndate"));
                                         sumfee.setText(jsonObjectcl.getString("sumfee"));
                                         fee.setText(jsonObjectcl.getString("fee"));
                                         indatatime2.setText(jsonObjectcl.getString("InDateTime"));

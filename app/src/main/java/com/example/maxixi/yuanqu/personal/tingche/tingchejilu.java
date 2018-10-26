@@ -73,7 +73,6 @@ public class tingchejilu extends AppCompatActivity {
             }
         });
 
-//        inittingchecheliangList();
         recyclerView = (RecyclerView) findViewById(R.id.tingchejilu_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);

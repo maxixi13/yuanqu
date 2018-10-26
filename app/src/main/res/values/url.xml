@@ -41,6 +41,9 @@
     <string name="yonghutingcheshoufeiliebiao_url">http://192.168.11.165/index/Car/parking</string>
     <string name="tianjiacheliang_url">http://192.168.11.165/index/Car/addcar</string>
     <string name="cheliangtingcheshoufeixiangqing_url">http://192.168.11.165/index/Car/card</string>
+    <string name="stingcheshoufeijilu_url">http://192.168.11.165/index/Car/carding</string>
+    <string name="shanggeyuetingcheshoufeijilu_rul">http://192.168.11.165/index/Car/last_month</string>
+    <string name="shangshanggeyuetingcheshoufeijilu_rul">http://192.168.11.165/index/Car/later_month</string>
 
 
     //网络地址

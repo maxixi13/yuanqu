@@ -15,13 +15,13 @@ public class tingchejiluadapter extends RecyclerView.Adapter<tingchejiluadapter.
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView jilutimeday;
-        TextView jilutimetime;
+//        TextView jilutimetime;
         TextView jilumoney;
 
         public ViewHolder(View view){
             super(view);
             jilutimeday=(TextView)view.findViewById(R.id.tingchejilujilu_timeday);
-            jilutimetime=(TextView)view.findViewById(R.id.tingchejilujilu_timetime);
+//            jilutimetime=(TextView)view.findViewById(R.id.tingchejilujilu_timetime);
             jilumoney=(TextView)view.findViewById(R.id.tingchejilujilu_money);
         }
     }
@@ -41,7 +41,7 @@ public class tingchejiluadapter extends RecyclerView.Adapter<tingchejiluadapter.
     public void onBindViewHolder(ViewHolder holder,int position){
         tingchejilulei tingchejilulei=mylist.get(position);
         holder.jilutimeday.setText(tingchejilulei.getTimeday());
-        holder.jilutimetime.setText(tingchejilulei.getTimetime());
+//        holder.jilutimetime.setText(tingchejilulei.getTimetime());
         holder.jilumoney.setText(tingchejilulei.getMoney());
     }
 

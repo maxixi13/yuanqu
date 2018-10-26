@@ -155,7 +155,7 @@ public class Fragmentpersonal extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), Loginpage.class);
                 startActivity(intent);
-                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userrdata", Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userdata", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.clear();
                 editor.apply();

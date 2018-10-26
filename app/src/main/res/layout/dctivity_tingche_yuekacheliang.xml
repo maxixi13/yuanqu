@@ -133,7 +133,7 @@
                 android:id="@+id/tingchejiaofei_yueka_day_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="28天"
+                android:text="00天"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/top_blue"
                 android:textSize="32sp"
@@ -145,7 +145,7 @@
                 android:layout_height="match_parent"
                 android:gravity="bottom|right"
                 android:text="停车状态：未停车"
-                android:textColor="@color/red"
+                android:textColor="@color/top_blue"
                 android:layout_marginBottom="5dp"/>
         </LinearLayout>
     </LinearLayout>
@@ -201,7 +201,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center|end"
-                android:text="2018/07/09" />
+                android:text="0000/00/00" />
 
             <TextView
                 android:id="@+id/tingchejiaofei_yueka_time_text"
@@ -209,7 +209,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center|end"
-                android:text="4小时"
+                android:text="0小时"
                 android:textColor="@color/top_blue" />
 
             <TextView
@@ -219,7 +219,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center|end"
-                android:text="2018/07/09" />
+                android:text="0000/00/00" />
 
 
 
@@ -230,6 +230,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/tingchejiaofei_yueka_yuekaxufei_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="center"
