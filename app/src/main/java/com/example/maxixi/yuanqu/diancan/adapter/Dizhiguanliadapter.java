@@ -17,8 +17,20 @@ import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.diancan.diancan_tianjiadizhi;
 import com.example.maxixi.yuanqu.diancan.model.Dizhiguanlilei;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 import static android.support.constraint.Constraints.TAG;
 
@@ -26,6 +38,19 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
 
     private List<Dizhiguanlilei> mydizhiguanliList;
     private int selector=-1;
+    private int sb=404;
+
+    private OnItemClickListener mOnItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener mOnItemClickListener) {
+        this.mOnItemClickListener = mOnItemClickListener;
+    }
+
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -33,7 +58,6 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
         TextView dianhua;
         TextView dizhi;
         LinearLayout linearLayout;
-        View morendizhiselect;
         ImageView imageView;
 
         public ViewHolder(View view) {
@@ -42,9 +66,7 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
             dianhua = (TextView) view.findViewById(R.id.diancan_queren_dizhiguanli_dianhua);
             dizhi = (TextView) view.findViewById(R.id.diancan_queren_dizhiguanli_dizhi);
             linearLayout = (LinearLayout) view.findViewById(R.id.diancan_queren_dizhiguanli_bianji);
-            morendizhiselect = view;
             imageView = (ImageView) view.findViewById(R.id.diancan_queren_dizhiguanli_selectorimage);
-
         }
     }
 
@@ -58,25 +80,11 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ectivity_diancan_queren_dizhiguanli_item, parent, false);
         final Dizhiguanliadapter.ViewHolder holder = new Dizhiguanliadapter.ViewHolder(view);
 
-
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(parent.getContext(), diancan_tianjiadizhi.class);
                 parent.getContext().startActivity(intent);
-            }
-        });
-
-
-        holder.morendizhiselect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int position = holder.getAdapterPosition();
-                Dizhiguanlilei dizhiguanlilei = mydizhiguanliList.get(position);
-                selector=position;
-                Toast.makeText(parent.getContext(),"输出:"+selector,Toast.LENGTH_SHORT).show();
-                notifyDataSetChanged();
-
             }
         });
 
@@ -90,12 +98,32 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
         holder.name.setText(dizhiguanlilei.getName());
         holder.dianhua.setText(dizhiguanlilei.getDianhua());
         holder.dizhi.setText(dizhiguanlilei.getDizhi());
+        sb=mydizhiguanliList.get(position).getStatus();
 
-        if (selector==position){
-            holder.imageView.setSelected(true);
-        }else {
-            holder.imageView.setSelected(false);
+
+        //判断是否设置了监听器 点击事件
+        if(mOnItemClickListener != null){
+            //为ItemView设置监听器
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    int position = holder.getLayoutPosition(); // 1
+                    mOnItemClickListener.onItemClick(holder.itemView,position); // 2
+                    selector=position;
+                    notifyDataSetChanged();
+                    if (selector==position){
+                        holder.imageView.setSelected(true);
+                    }
+                }
+            });
         }
+        if (selector!=position)
+        holder.imageView.setSelected(false);
+        if (sb==1 ){
+            holder.imageView.setSelected(true);
+        }
+
 
 
 
@@ -105,7 +133,5 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
     public int getItemCount() {
         return mydizhiguanliList.size();
     }
-
-
 
 }
