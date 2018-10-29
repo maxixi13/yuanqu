@@ -284,7 +284,7 @@ public class AliPay {
          * @param content 待签名订单信息
          */
         private String sign(String content) {
-            return SignUtils.sign(content, RSA_PRIVATE);
+            return SignUtils.sign(content, RSA_PRIVATE,true);
         }
 
         /**
