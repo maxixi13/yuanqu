@@ -64,12 +64,13 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(diancan_queren_dizhiguanli.this, diancan_tianjiadizhi.class);
+                intent.putExtra("getid", "uid");
+                intent.putExtra("getva", uid);
                 startActivity(intent);
                 finish();
             }
         });
 
-        senddizhi();
     }
 
     private void senddizhi() {
@@ -77,7 +78,7 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
             @Override
             public void run() {
                 OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("uid", "1").build();
+                FormBody formBody = new FormBody.Builder().add("uid", uid).build();
                 Request requestu = new Request.Builder().url(getString(R.string.waimaidizhiguanli_url)).post(formBody).build();
                 Call call = okHttpClient.newCall(requestu);
                 call.enqueue(new Callback() {
@@ -94,7 +95,7 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
                             JSONArray jsonArray = jsonObject.getJSONArray("data");
                             for (int i = 0; i < jsonArray.length(); ++i) {
                                 JSONObject jsonObjectcl = jsonArray.getJSONObject(i);
-                                Dizhiguanlilei dizhiguanlilei = new Dizhiguanlilei(jsonObjectcl.getString("name"), jsonObjectcl.getString("tel"), jsonObjectcl.getString("address"), jsonObjectcl.getString("aid"),jsonObjectcl.getInt("status"));
+                                Dizhiguanlilei dizhiguanlilei = new Dizhiguanlilei(jsonObjectcl.getString("name"), jsonObjectcl.getString("tel"), jsonObjectcl.getString("address"), jsonObjectcl.getString("aid"), jsonObjectcl.getInt("status"));
                                 dizhiguanlileiList.add(dizhiguanlilei);
                             }
                             final Dizhiguanliadapter dizhiguanliadapter = new Dizhiguanliadapter(dizhiguanlileiList);
@@ -103,7 +104,28 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
                                 public void onItemClick(View view, int position) {
                                     aid = dizhiguanlileiList.get(position).getAid();
                                     sendmorendizhi();
-                                    senddizhi();
+                                }
+                            });
+                            dizhiguanliadapter.setOnlinearClickListener(new Dizhiguanliadapter.OnlinearClickListener() {
+                                @Override
+                                public void onLinearItem(View view, int position) {
+//
+
+
+
+
+
+
+                                }
+                            });
+                            dizhiguanliadapter.setmOnbianjiClickListener(new Dizhiguanliadapter.OnbianjiClickListener() {
+                                @Override
+                                public void onbianjiItem(View view, int position) {
+                                    Intent intent = new Intent(diancan_queren_dizhiguanli.this, diancan_tianjiadizhi.class);
+                                    intent.putExtra("getid", "aid");
+                                    intent.putExtra("getva", dizhiguanlileiList.get(position).getAid());
+                                    startActivity(intent);
+                                    finish();
                                 }
                             });
                             runOnUiThread(new Runnable() {
@@ -126,7 +148,7 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
             @Override
             public void run() {
                 OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("uid", "1").add("aid", aid).build();
+                FormBody formBody = new FormBody.Builder().add("uid", uid).add("aid", aid).build();
                 Request requestu = new Request.Builder().url(getString(R.string.xiugaimorendizhi_url)).post(formBody).build();
                 Call call = okHttpClient.newCall(requestu);
                 call.enqueue(new Callback() {
@@ -140,9 +162,15 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(diancan_queren_dizhiguanli.this,"设置默认地址成功",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(diancan_queren_dizhiguanli.this, "设置默认地址成功", Toast.LENGTH_SHORT).show();
                             }
                         });
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        refresh();
                     }
                 });
             }

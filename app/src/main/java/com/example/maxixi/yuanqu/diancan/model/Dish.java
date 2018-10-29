@@ -9,15 +9,20 @@ public class Dish implements Serializable {
     private int dishAmount;
     private int dishRemain;
     private String dishImage;
+    private String mid;
 
-    public Dish(String dishName, double dishPrice, int dishAmount,String dishImage){
+    public Dish(String dishName, double dishPrice, int dishAmount,String dishImage,String mid){
         this.dishName = dishName;
         this.dishPrice = dishPrice;
         this.dishAmount = dishAmount;
         this.dishRemain = dishAmount;
         this.dishImage=dishImage;
+        this.mid=mid;
     }
 
+    public String getMid(){
+        return mid;
+    }
 
     public String getDishName() {
         return dishName;

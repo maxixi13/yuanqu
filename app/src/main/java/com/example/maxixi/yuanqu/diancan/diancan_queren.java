@@ -25,10 +25,6 @@ import org.json.JSONObject;
 
 public class diancan_queren extends AppCompatActivity {
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

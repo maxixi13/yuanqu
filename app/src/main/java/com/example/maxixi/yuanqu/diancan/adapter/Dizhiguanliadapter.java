@@ -37,21 +37,35 @@ import static android.support.constraint.Constraints.TAG;
 public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.ViewHolder> {
 
     private List<Dizhiguanlilei> mydizhiguanliList;
-    private int selector=-1;
-    private int sb=404;
+    private int sb = 404;
 
     private OnItemClickListener mOnItemClickListener;
+    private OnlinearClickListener mOnlinearClickListener;
+    private OnbianjiClickListener mOnbianjiClickListener;
+
+    public void setmOnbianjiClickListener(OnbianjiClickListener mOnbianjiClickListener){
+        this.mOnbianjiClickListener=mOnbianjiClickListener;
+    }
+
+    public interface OnbianjiClickListener{
+        void onbianjiItem(View view,int position);
+    }
+
+    public void setOnlinearClickListener(OnlinearClickListener mOnlinearClickListener) {
+        this.mOnlinearClickListener = mOnlinearClickListener;
+    }
+
+    public interface OnlinearClickListener {
+        void onLinearItem(View view, int position);
+    }
 
     public void setOnItemClickListener(OnItemClickListener mOnItemClickListener) {
         this.mOnItemClickListener = mOnItemClickListener;
     }
 
-
     public interface OnItemClickListener {
         void onItemClick(View view, int position);
     }
-
-
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
@@ -59,6 +73,7 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
         TextView dizhi;
         LinearLayout linearLayout;
         ImageView imageView;
+        LinearLayout linearLayout_big;
 
         public ViewHolder(View view) {
             super(view);
@@ -67,6 +82,7 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
             dizhi = (TextView) view.findViewById(R.id.diancan_queren_dizhiguanli_dizhi);
             linearLayout = (LinearLayout) view.findViewById(R.id.diancan_queren_dizhiguanli_bianji);
             imageView = (ImageView) view.findViewById(R.id.diancan_queren_dizhiguanli_selectorimage);
+            linearLayout_big = (LinearLayout) view.findViewById(R.id.diancan_queren_dizhiguanli_layout);
         }
     }
 
@@ -80,15 +96,6 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ectivity_diancan_queren_dizhiguanli_item, parent, false);
         final Dizhiguanliadapter.ViewHolder holder = new Dizhiguanliadapter.ViewHolder(view);
 
-        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(parent.getContext(), diancan_tianjiadizhi.class);
-                parent.getContext().startActivity(intent);
-            }
-        });
-
-
         return holder;
     }
 
@@ -98,33 +105,56 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
         holder.name.setText(dizhiguanlilei.getName());
         holder.dianhua.setText(dizhiguanlilei.getDianhua());
         holder.dizhi.setText(dizhiguanlilei.getDizhi());
-        sb=mydizhiguanliList.get(position).getStatus();
+        sb = mydizhiguanliList.get(position).getStatus();
 
 
-        //判断是否设置了监听器 点击事件
-        if(mOnItemClickListener != null){
-            //为ItemView设置监听器
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
+        //为ItemView设置监听器
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View v) {
-                    int position = holder.getLayoutPosition(); // 1
-                    mOnItemClickListener.onItemClick(holder.itemView,position); // 2
-                    selector=position;
-                    notifyDataSetChanged();
-                    if (selector==position){
-                        holder.imageView.setSelected(true);
-                    }
-                }
-            });
-        }
-        if (selector!=position)
-        holder.imageView.setSelected(false);
-        if (sb==1 ){
+            @Override
+            public void onClick(View v) {
+                int position = holder.getLayoutPosition(); // 1
+                mOnItemClickListener.onItemClick(holder.imageView, position); // 2
+//                    selector=position;
+//                    notifyDataSetChanged();
+//                    if (selector==position){
+//                        holder.imageView.setSelected(true);
+//                    }
+            }
+        });
+
+        holder.linearLayout_big.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getLayoutPosition(); // 1
+                mOnlinearClickListener.onLinearItem(holder.linearLayout_big, position); // 2
+            }
+        });
+
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getLayoutPosition();
+                mOnbianjiClickListener.onbianjiItem(holder.linearLayout,position);
+            }
+        });
+
+
+//            holder.imageView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    int position = holder.getLayoutPosition(); // 1
+//                    mOnItemClickListener.onItemClick(holder.linearLayout,position);
+//                    Log.e("-----",mydizhiguanliList.get(position).getAid());
+//                }
+//            });
+
+
+//        if (selector!=position)
+//        holder.imageView.setSelected(false);
+        if (sb == 1) {
             holder.imageView.setSelected(true);
         }
-
-
 
 
     }

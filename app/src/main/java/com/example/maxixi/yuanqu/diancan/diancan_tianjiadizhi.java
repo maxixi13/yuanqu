@@ -1,6 +1,7 @@
 package com.example.maxixi.yuanqu.diancan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +33,9 @@ public class diancan_tianjiadizhi extends AppCompatActivity {
     private EditText lianxiren;
     private EditText lianxidianhua;
     private EditText dizhi;
+    private int status;
+    private String getid;
+    private String getva;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,10 @@ public class diancan_tianjiadizhi extends AppCompatActivity {
             }
         });
 
+        Intent intent=getIntent();
+        getid = intent.getStringExtra("getid");
+        getva = intent.getStringExtra("getva");
+
         final ImageView shiView = (ImageView) findViewById(R.id.diancan_tianjiadizhi_shi);
         final ImageView fouView = (ImageView) findViewById(R.id.diancan_tianjiadizhi_fou);
         shiView.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +61,7 @@ public class diancan_tianjiadizhi extends AppCompatActivity {
             public void onClick(View v) {
                 shiView.setSelected(true);
                 fouView.setSelected(false);
+                status = 1;
             }
         });
         fouView.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +69,7 @@ public class diancan_tianjiadizhi extends AppCompatActivity {
             public void onClick(View v) {
                 fouView.setSelected(true);
                 shiView.setSelected(false);
+                status = 0;
             }
         });
 
@@ -89,35 +99,38 @@ public class diancan_tianjiadizhi extends AppCompatActivity {
     }
 
     private void Upload() {
-        SharedPreferences sharedPreferences=getSharedPreferences("userdata",Context.MODE_PRIVATE);
-        final String uid=sharedPreferences.getString("uid",null);
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("uid", uid);
+                    jsonObject.put(getid, getva);
                     jsonObject.put("name", lianxiren.getText());
                     jsonObject.put("tel", lianxidianhua.getText());
                     jsonObject.put("address", dizhi.getText());
-                    jsonObject.put("status", "1");
+                    jsonObject.put("status", status);
                     OkHttpClient okHttpClient = new OkHttpClient();
                     RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), String.valueOf(jsonObject));
                     Request request = new Request.Builder().url(getString(R.string.tianjiawaimaidizhi_url)).post(requestBody).build();
-
                     try {
                         Response response = okHttpClient.newCall(request).execute();
                         //判断请求是否成功
                         if (response.isSuccessful()) {
                             //打印服务端返回结果
-//                            Log.e("------", response.body().string());
-
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(diancan_tianjiadizhi.this,"保存成功",Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            Thread.sleep(1000);
+                            finish();
+                            Intent intent=new Intent(diancan_tianjiadizhi.this,diancan_queren_dizhiguanli.class);
+                            startActivity(intent);
                         }
-                    } catch (IOException e) {
+                    } catch (IOException | InterruptedException e) {
                         e.printStackTrace();
                     }
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
