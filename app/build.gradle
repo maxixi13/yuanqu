@@ -46,5 +46,7 @@ dependencies {
     implementation 'se.emilsjolander:stickylistheaders:2.7.0'//详情联动列表stickylistheaders 点餐
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'//请求网络
 
+    implementation files('libs/alipaySdk-20180601.jar')
+
 
 }
