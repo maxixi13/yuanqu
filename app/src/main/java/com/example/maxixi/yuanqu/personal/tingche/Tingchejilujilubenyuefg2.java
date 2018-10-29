@@ -1,5 +1,6 @@
 package com.example.maxixi.yuanqu.personal.tingche;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,11 +31,15 @@ public class Tingchejilujilubenyuefg2 extends Fragment {
 
     private List<tingchejilulei> jilulist = new ArrayList<>();
     private RecyclerView recyclerView;
+    private String pid;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         View view = inflater.inflate(R.layout.dctivity_tingchejilu_monthlist2, container, false);
 
+
+        Intent intent=getActivity().getIntent();
+        pid = intent.getStringExtra("pid");
 
         recyclerView = (RecyclerView) view.findViewById(R.id.tingche_monthlist_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -50,7 +55,7 @@ public class Tingchejilujilubenyuefg2 extends Fragment {
             @Override
             public void run() {
                 OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("pid", "皖").build();
+                FormBody formBody = new FormBody.Builder().add("pid", pid).build();
                 Request request = new Request.Builder().url(getString(R.string.shangshanggeyuetingcheshoufeijilu_rul)).post(formBody).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {

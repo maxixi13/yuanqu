@@ -54,6 +54,7 @@ public class diancan_tianjiadizhi extends AppCompatActivity {
         getid = intent.getStringExtra("getid");
         getva = intent.getStringExtra("getva");
 
+
         final ImageView shiView = (ImageView) findViewById(R.id.diancan_tianjiadizhi_shi);
         final ImageView fouView = (ImageView) findViewById(R.id.diancan_tianjiadizhi_fou);
         shiView.setOnClickListener(new View.OnClickListener() {
@@ -99,11 +100,16 @@ public class diancan_tianjiadizhi extends AppCompatActivity {
     }
 
     private void Upload() {
+        SharedPreferences sharedPreferences=getSharedPreferences("userdata",MODE_PRIVATE);
+        final String uid=sharedPreferences.getString("uid",null);
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     JSONObject jsonObject = new JSONObject();
+                    if (getid.contains("aid")) {
+                        jsonObject.put("uid",uid);
+                    }
                     jsonObject.put(getid, getva);
                     jsonObject.put("name", lianxiren.getText());
                     jsonObject.put("tel", lianxidianhua.getText());

@@ -42,6 +42,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/personal_tingchejilujilu_type_text"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -89,6 +90,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/personal_tingchejilujilu_carname_text"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -96,6 +98,7 @@
                         android:text="法拉利" />
 
                     <TextView
+                        android:id="@+id/personal_tingchejilujilu_model_text"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -103,6 +106,7 @@
                         android:text="488" />
 
                     <TextView
+                        android:id="@+id/personal_tingchejilujilu_platenum_text"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -126,21 +130,23 @@
                 android:textAlignment="viewEnd" />
 
             <TextView
+                android:id="@+id/personal_tingchejilujilu_time_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="28天"
+                android:text="888天"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/top_blue"
                 android:textSize="32sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/personal_tingchejilujilu_status_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:gravity="bottom|right"
                 android:text="停车状态：未停车"
-                android:textColor="@color/red" />
+                android:textColor="@color/top_blue" />
         </LinearLayout>
     </LinearLayout>
 

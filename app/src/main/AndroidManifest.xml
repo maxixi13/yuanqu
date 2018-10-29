@@ -93,7 +93,8 @@
         <activity android:name=".personal.yuanneifuwujilu.Yuanqutousulist" />
         <activity android:name=".personal.yuanneifuwujilu.Yuanqubaoxiulist" />
         <activity android:name=".personal.yunfuwushenqingfuwu.Yfuwushenqinglist" />
-        <activity android:name=".personal.usermsset"></activity>
+        <activity android:name=".personal.usermsset" />
+        <activity android:name=".personal.tingche.tingchejilu_personal_list"></activity>
     </application>
 
 </manifest><!--

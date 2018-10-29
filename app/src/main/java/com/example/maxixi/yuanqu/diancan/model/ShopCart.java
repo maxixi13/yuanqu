@@ -1,7 +1,5 @@
 package com.example.maxixi.yuanqu.diancan.model;
 
-import android.util.Log;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;

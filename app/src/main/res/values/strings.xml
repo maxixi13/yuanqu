@@ -151,4 +151,5 @@
     <string name="wodeqianming">我的签名</string>
     <string name="weixinzhifu">微信支付</string>
     <string name="zhifubaozhifu">支付宝支付</string>
+    <string name="tingchejilu">停车记录</string>
 </resources>
