@@ -1,38 +1,28 @@
 package com.example.maxixi.yuanqu.personal.tingche;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-import com.alipay.sdk.app.PayTask;
 import com.example.maxixi.yuanqu.R;
-import com.example.maxixi.yuanqu.util.AliPay;
-import com.example.maxixi.yuanqu.util.OrderInfoUtil2_0;
-import com.example.maxixi.yuanqu.util.PayResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -123,25 +113,7 @@ public class tingche_yuekacheliang extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                AliPay.Builder builder=new AliPay.Builder(tingche_yuekacheliang.this);
-                builder.setSELLER(APPID)//商户收款账号//2018101561708246
-                        .setPARTNER(PID)//设置商户PID
-                        .setRSA_PRIVATE(RSA_PRIVATE)//商户密钥，pkcs
-                        //设置支付宝支付成功后通知的地址，可以填写你公司的地址 .setNotifyURL()
-                        .setOrderTitle("测试商品名字")
-                        .setSubTitle("这是商品详情")
-                        .setPrice("0.01")
-                        .setPayCallBackListener(new AliPay.Builder.PayCallBackListener() {
-                            @Override
-                            public void onPayCallBack(int status, String resultStatus, String progress) {
-                                //Toast.makeText(getParent(),progress,Toast.LENGTH_SHORT).show();
-                                Log.e("debug",resultStatus+":"+progress);
-                            }
-                        });
-                Log.e("--","seller"+builder);
-                builder.pay();
-
-                //zhifuDialog();
+                zhifuDialog();
             }
         });
     }
@@ -163,23 +135,6 @@ public class tingche_yuekacheliang extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-                AliPay.Builder builder=new AliPay.Builder(getParent());
-                builder.setSELLER("zhanren@mijietech.com")//商户收款账号 //zhanren@mijietech.com
-                        .setPARTNER("2088231581027432")//设置商户PID
-                        .setRSA_PRIVATE("MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDjUXTN7h/wshSfQ8J7Oa+0Rf/+Kxw0bNRHoY9uNWeoLKdkjP9mpeEBWV6+Y/G8H09mMwGtCxMJrtbg/M3f6e4u6VbJWc4a5GbEgogQPb+HFDwjG7YZk8zYD1NHkIYWlz1R1BDvNAgoUcpQlQLqI0UV5zkKuBEWY98JAnflLQol6tOP4IgAZUpy7ZIg2Cuj0+1N6FHo1MjvCN1k3srWFiRlHsaEjNJaC7xg17PQxMYc/axfN+7INL7YVOmRndqHVYuGL3d9asJjZiaJzzwu1pmZEcg/5/CUMtiBFPL921RNU+k1zeXDMCVePVgauEzduxv81t+BMnwGfGabvXVIg3x9AgMBAAECggEBAISKRhScNztcWfHSzF6U8AGonu5PrI5UtiFd7gdQVDQWdTOHkpMDPQJQXZGdLKGHkAAC1YNT5bHLo7ZjMJbSCvKHUvbryeScL998TGFL35SfE8FUswSOzO1dYi1j8wrQ/AvuHkGakPcRWWlKuPxTvEBdJUE+uZfYe38BVW7mp/garhY1cYi8TxcqKImk+rFVkV3F6qeQ35iywXOVowV3VHRGKQzTmGf8rP4RIBSXzlORe8oexltOW+vVZuJlEEkGc3dKkP3VzTPcXvIGZbcPYFlcHuP5nMLzMyqfi7HfnPz1g9nf//8otW2/Xl+twyVAP98Xvsr/yqWY+9J653i7SQECgYEA8zXuAIdZY3fRAytdoLzCkU+5xDwgAzibYZvtPnDQkfhJu1AVR5G7alvh2eySMoWIqxUbqaeRfOd50BEKBXcgHnro2ikrbslClJZVe49FJUqCnQcqyf/3RIma6LJe/PSum2gso1QhzJEl0uhjTLQsQYEPCTtQf3c+VS1LfziHVQ0CgYEA70WVitWzf02xt6OucqKSGuDlhsA32KXuZMbVJusH7IyLGX64MnWilVE2f//1/ml//xg/zQFp1b5ArA+m0GLxMf8mS2Dnb58c4O9ksOj10PgNdyqIWp3hVd0knrEieAJQIodd7kRxVZGmHGWD2ebPAAFDaob1G/UTqhNeJPzpyTECgYEA7+pOOpVJ13ZVZ6P6u1oZMRENdoe9KJBJrvMLCGJvTN85lJ5+L1iSIWw8EiZtXYsec23iGOyk9yq8nkSAtz15ILgsRTEBmErO9BaMgtOk6RFkYRS14AgxWpnHhy6Vx0BzkfgkuIWAxfSU9EWr1vmRApkWRQwO736orYt+AyS3U20CgYEAouexZRESYL45HVqnzwy4hOxR2WjNnQd8Q8jMHu8uOfOGURlht5k31ImynXtbtJeHudp8tcscj5Y02fDeFksHBI8/N1sGt4yRUOQsnfY+RsRcBqJCq8+KN7eU0yau3R5WCOw5G5wlvaioe/TxzE3E6a/ygnjYMOyvMsB0/KHlWkECgYAcObcpCdRHaaznvUVzzSNiiugn9Q+DM1zKGLRTVWwH3Socb6C5GAs7swvwuODKj/ZhDAfxLGHjm9G7begz8CmTkB246QErWjhqhvlctzSu/dkjTu8713Ul5JG3gQBTvlqW0w6UkjB6Iu4F5JD9isrl1jsv0QZUz2RTHXap3VSRrg==")//商户密钥，pkcs
-                        //设置支付宝支付成功后通知的地址，可以填写你公司的地址
-                        .setOrderTitle("测试商品名字")
-                        .setSubTitle("这是商品详情")
-                        .setPrice("0.01")
-                        .setPayCallBackListener(new AliPay.Builder.PayCallBackListener() {
-                            @Override
-                            public void onPayCallBack(int status, String resultStatus, String progress) {
-                                Toast.makeText(getParent(),progress,Toast.LENGTH_SHORT).show();
-                                Log.e("debug",resultStatus+":"+progress);
-                            }
-                        });
-                builder.pay();
 
 
 
