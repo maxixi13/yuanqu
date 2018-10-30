@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.alipay.sdk.app.PayTask;
 
@@ -19,7 +20,6 @@ import java.util.Map;
 import java.util.Random;
 
 public class AliPay {
-
     public static class Builder {
         private Activity mActivity;
 
@@ -172,10 +172,14 @@ public class AliPay {
                 e.printStackTrace();
             }
 
+            Log.e("---","sign"+sign);
+
             /**
              * 完整的符合支付宝参数规范的订单信息
              */
             final String payInfo = orderInfo + "&sign=\"" + sign + "\"&" + getSignType();
+            Log.e("--","payInfo"+payInfo);
+//            final String payInfo =orderInfo + "&" + sign;
 
             Runnable payRunnable = new Runnable() {
 
