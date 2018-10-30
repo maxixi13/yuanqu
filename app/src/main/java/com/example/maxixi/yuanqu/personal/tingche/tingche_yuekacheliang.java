@@ -18,6 +18,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
+import com.example.maxixi.yuanqu.util.zhifubao.zhifubaolei;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,11 +46,7 @@ public class tingche_yuekacheliang extends AppCompatActivity {
     private String cid;
     private String uid;
     private AlertDialog dialog;
-    private String APPID="zhanren@mijietech.com";
-    private String PID="2088231581027432";
-    private String RSA_PRIVATE="MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDjUXTN7h/wshSfQ8J7Oa+0Rf/+Kxw0bNRHoY9uNWeoLKdkjP9mpeEBWV6+Y/G8H09mMwGtCxMJrtbg/M3f6e4u6VbJWc4a5GbEgogQPb+HFDwjG7YZk8zYD1NHkIYWlz1R1BDvNAgoUcpQlQLqI0UV5zkKuBEWY98JAnflLQol6tOP4IgAZUpy7ZIg2Cuj0+1N6FHo1MjvCN1k3srWFiRlHsaEjNJaC7xg17PQxMYc/axfN+7INL7YVOmRndqHVYuGL3d9asJjZiaJzzwu1pmZEcg/5/CUMtiBFPL921RNU+k1zeXDMCVePVgauEzduxv81t+BMnwGfGabvXVIg3x9AgMBAAECggEBAISKRhScNztcWfHSzF6U8AGonu5PrI5UtiFd7gdQVDQWdTOHkpMDPQJQXZGdLKGHkAAC1YNT5bHLo7ZjMJbSCvKHUvbryeScL998TGFL35SfE8FUswSOzO1dYi1j8wrQ/AvuHkGakPcRWWlKuPxTvEBdJUE+uZfYe38BVW7mp/garhY1cYi8TxcqKImk+rFVkV3F6qeQ35iywXOVowV3VHRGKQzTmGf8rP4RIBSXzlORe8oexltOW+vVZuJlEEkGc3dKkP3VzTPcXvIGZbcPYFlcHuP5nMLzMyqfi7HfnPz1g9nf//8otW2/Xl+twyVAP98Xvsr/yqWY+9J653i7SQECgYEA8zXuAIdZY3fRAytdoLzCkU+5xDwgAzibYZvtPnDQkfhJu1AVR5G7alvh2eySMoWIqxUbqaeRfOd50BEKBXcgHnro2ikrbslClJZVe49FJUqCnQcqyf/3RIma6LJe/PSum2gso1QhzJEl0uhjTLQsQYEPCTtQf3c+VS1LfziHVQ0CgYEA70WVitWzf02xt6OucqKSGuDlhsA32KXuZMbVJusH7IyLGX64MnWilVE2f//1/ml//xg/zQFp1b5ArA+m0GLxMf8mS2Dnb58c4O9ksOj10PgNdyqIWp3hVd0knrEieAJQIodd7kRxVZGmHGWD2ebPAAFDaob1G/UTqhNeJPzpyTECgYEA7+pOOpVJ13ZVZ6P6u1oZMRENdoe9KJBJrvMLCGJvTN85lJ5+L1iSIWw8EiZtXYsec23iGOyk9yq8nkSAtz15ILgsRTEBmErO9BaMgtOk6RFkYRS14AgxWpnHhy6Vx0BzkfgkuIWAxfSU9EWr1vmRApkWRQwO736orYt+AyS3U20CgYEAouexZRESYL45HVqnzwy4hOxR2WjNnQd8Q8jMHu8uOfOGURlht5k31ImynXtbtJeHudp8tcscj5Y02fDeFksHBI8/N1sGt4yRUOQsnfY+RsRcBqJCq8+KN7eU0yau3R5WCOw5G5wlvaioe/TxzE3E6a/ygnjYMOyvMsB0/KHlWkECgYAcObcpCdRHaaznvUVzzSNiiugn9Q+DM1zKGLRTVWwH3Socb6C5GAs7swvwuODKj/ZhDAfxLGHjm9G7begz8CmTkB246QErWjhqhvlctzSu/dkjTu8713Ul5JG3gQBTvlqW0w6UkjB6Iu4F5JD9isrl1jsv0QZUz2RTHXap3VSRrg==";
 
-    private static final int SDK_PAY_FLAG = 1001;
     public final static int REQUEST_READ_PHONE_STATE = 1;
 
     @Override
@@ -127,29 +124,24 @@ public class tingche_yuekacheliang extends AppCompatActivity {
         dialog.setView(view, 0, 0, 0, 0);// 设置边距为0,保证在2.x的版本上运行没问题
 
         TextView weixin = (TextView) view.findViewById(R.id.zhifu_dialog_weixin_text);
-        TextView zhifubao = (TextView) view.findViewById(R.id.zhifu_dialog_zhifubao_text);
+        final TextView zhifubao = (TextView) view.findViewById(R.id.zhifu_dialog_zhifubao_text);
 
         weixin.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View v) {
-
-
-
-
                 dialog.dismiss();
             }
         });
         zhifubao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                zhifubaolei zhifubaolei=new zhifubaolei(tingche_yuekacheliang.this,tingche_yuekacheliang.this,"0.01","月卡车");
+                zhifubaolei.payV2(getWindow().getDecorView());
                 dialog.dismiss();
             }
         });
 
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);//透明
-
         dialog.show();
 
     }
