@@ -96,7 +96,7 @@
         <activity android:name=".cloud.cloud_jingrong_jinrong" />
         <activity android:name=".cloud.cloud_jinrong_shenqing" />
         <activity android:name=".diancan.diancan_tianjiadizhi" />
-        <activity android:name=".personal.waimaijilu" />
+        <activity android:name=".personal.waimaijilu.waimaijilu" />
         <activity
             android:name=".personal.tingche.tingchejilu"
             android:launchMode="singleTop" />

@@ -1,34 +1,14 @@
 package com.example.maxixi.yuanqu.fragment;
 
-import android.Manifest;
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.DocumentsContract;
-import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
-import android.transition.CircularPropagation;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -40,31 +20,23 @@ import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.diancan.diancan_queren_dizhiguanli;
 import com.example.maxixi.yuanqu.personal.renzhengqiye;
 import com.example.maxixi.yuanqu.personal.tingche.tingchejilu_personal_list;
-import com.example.maxixi.yuanqu.personal.tingche.tingchejilujilu;
 import com.example.maxixi.yuanqu.personal.usermsset;
-import com.example.maxixi.yuanqu.personal.waimaijilu;
+import com.example.maxixi.yuanqu.personal.waimaijilu.waimaijilu;
 import com.example.maxixi.yuanqu.personal.yuanneifuwujilu.Yuanqufujilu;
 import com.example.maxixi.yuanqu.personal.yunfuwushenqingfuwu.yunfuwushenqingfuwu;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
-
-import static android.app.Activity.RESULT_OK;
 
 
 public class Fragmentpersonal extends Fragment {
@@ -81,7 +53,8 @@ public class Fragmentpersonal extends Fragment {
         username = (TextView)view.findViewById(R.id.personal_username_text);
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userdata", Context.MODE_PRIVATE);
-        uid = sharedPreferences.getString("uid", null);
+        uid = sharedPreferences.getString("uid", "null");
+
 
         circleImageView = (CircleImageView)view.findViewById(R.id.personal_touxiang_circleimageview);
         circleImageView.setOnClickListener(new View.OnClickListener() {

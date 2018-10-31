@@ -268,16 +268,16 @@ public class tingche_yuekacheliang extends AppCompatActivity {
                 request.timeStamp = timeStamp;
                 request.sign=sign;
 
-                //开始将6个字段进行数据封装
-                LinkedList<NameValuePair> signParams = new LinkedList<NameValuePair>();
-                signParams.add(new BasicNameValuePair("appid", request.appId));
-                signParams.add(new BasicNameValuePair("noncestr", request.nonceStr));
-                signParams.add(new BasicNameValuePair("package", request.packageValue));
-                signParams.add(new BasicNameValuePair("partnerid", request.partnerId));
-                signParams.add(new BasicNameValuePair("prepayid", request.prepayId));//这个字段服务器签名的时候没用到，客户端签名的时候记得加上
-                signParams.add(new BasicNameValuePair("timestamp", request.timeStamp));
-
-                request.sign = genAppSign(signParams);
+//                //开始将6个字段进行数据封装
+//                LinkedList<NameValuePair> signParams = new LinkedList<NameValuePair>();
+//                signParams.add(new BasicNameValuePair("appid", request.appId));
+//                signParams.add(new BasicNameValuePair("noncestr", request.nonceStr));
+//                signParams.add(new BasicNameValuePair("package", request.packageValue));
+//                signParams.add(new BasicNameValuePair("partnerid", request.partnerId));
+//                signParams.add(new BasicNameValuePair("prepayid", request.prepayId));//这个字段服务器签名的时候没用到，客户端签名的时候记得加上
+//                signParams.add(new BasicNameValuePair("timestamp", request.timeStamp));
+//
+//                request.sign = genAppSign(signParams);
 
 
 
@@ -322,19 +322,19 @@ public class tingche_yuekacheliang extends AppCompatActivity {
             /**
              * 生成签名
              */
-            private static String genAppSign(LinkedList<NameValuePair> list) {
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < list.size(); i++) {
-                    sb.append(list.get(i).getName());
-                    sb.append('=');
-                    sb.append(list.get(i).getValue());
-                    sb.append('&');
-                }
-                sb.append("key=");
-                sb.append(WX_MCH_KEY);//此处为商户的appkey  此处也要核对  在微信商户后台获取
-                String appSign = getMessageDigest(sb.toString()).toUpperCase();
-                return appSign;
-            }
+//            private static String genAppSign(LinkedList<NameValuePair> list) {
+//                StringBuilder sb = new StringBuilder();
+//                for (int i = 0; i < list.size(); i++) {
+//                    sb.append(list.get(i).getName());
+//                    sb.append('=');
+//                    sb.append(list.get(i).getValue());
+//                    sb.append('&');
+//                }
+//                sb.append("key=");
+//                sb.append(WX_MCH_KEY);//此处为商户的appkey  此处也要核对  在微信商户后台获取
+//                String appSign = getMessageDigest(sb.toString()).toUpperCase();
+//                return appSign;
+//            }
 
 
 
