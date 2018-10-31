@@ -41,6 +41,20 @@
             android:screenOrientation="behind">
         </activity>
 
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:scheme="wx3b685e9343096c49"/>
+            </intent-filter>
+        </activity>
+
+
         <!-- 注册容器 -->
         <provider
             android:name="android.support.v4.content.FileProvider"

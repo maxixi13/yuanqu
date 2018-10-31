@@ -46,7 +46,12 @@ dependencies {
     implementation 'se.emilsjolander:stickylistheaders:2.7.0'//详情联动列表stickylistheaders 点餐
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'//请求网络
 
+    //支付宝
     implementation files('libs/alipaySdk-20180601.jar')
+    //微信
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.1.6'
+
+
 
 
 }
