@@ -19,11 +19,16 @@ import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.util.zhifubao.zhifubaolei;
+import com.tencent.mm.opensdk.modelpay.PayReq;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -46,6 +51,7 @@ public class tingche_yuekacheliang extends AppCompatActivity {
     private String cid;
     private String uid;
     private AlertDialog dialog;
+    private IWXAPI iwxapi;
 
     public final static int REQUEST_READ_PHONE_STATE = 1;
 
@@ -107,10 +113,7 @@ public class tingche_yuekacheliang extends AppCompatActivity {
         Button yuekaxufei = (Button) findViewById(R.id.tingchejiaofei_yueka_yuekaxufei_button);
         yuekaxufei.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
-
-                zhifuDialog();
+            public void onClick(View v) { zhifuDialog();
             }
         });
     }
@@ -130,6 +133,7 @@ public class tingche_yuekacheliang extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+                getwxappid();
             }
         });
         zhifubao.setOnClickListener(new View.OnClickListener() {
@@ -214,5 +218,128 @@ public class tingche_yuekacheliang extends AppCompatActivity {
                 }
             }
         }).start();
+    }
+
+    private void getwxappid(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient=new OkHttpClient();
+                FormBody formBody=new FormBody.Builder().add("money","0.1").add("out_trade_no","cd131").build();
+                Request request=new Request.Builder().url(getString(R.string.weixinappid_url)).post(formBody).build();
+                Call call=okHttpClient.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("错误：", String.valueOf(e));
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String responseData=response.body().string();
+                        try {
+                            JSONObject jsonObject=new JSONObject(responseData);
+                            toWXPay(jsonObject.getString("appid"),jsonObject.getString("partnerid"),jsonObject.getString("prepayid"),jsonObject.getString("package"),jsonObject.getString("noncestr"),jsonObject.getString("timestamp"),jsonObject.getString("sign"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        }).start();
+    }
+
+    private void toWXPay(final String appId, final String partnerId, final String prepayId, final String packageValue, final String nonceStr, final String timeStamp, final String sign) {
+        iwxapi = WXAPIFactory.createWXAPI(tingche_yuekacheliang.this, null); //初始化微信api
+        iwxapi.registerApp(appId); //注册appid  appid可以在开发平台获取
+
+
+        Runnable payRunnable = new Runnable() {
+            //这里注意要放在子线程
+            @Override
+            public void run() {
+                PayReq request = new PayReq(); //调起微信APP的对象
+                //下面是设置必要的参数，也就是前面说的参数,这几个参数从何而来请看上面说明
+                request.appId = appId;
+                request.partnerId = partnerId;
+                request.prepayId = prepayId;
+                request.packageValue =packageValue;
+                request.nonceStr = nonceStr;
+                request.timeStamp = timeStamp;
+                request.sign=sign;
+
+                //开始将6个字段进行数据封装
+                LinkedList<NameValuePair> signParams = new LinkedList<NameValuePair>();
+                signParams.add(new BasicNameValuePair("appid", request.appId));
+                signParams.add(new BasicNameValuePair("noncestr", request.nonceStr));
+                signParams.add(new BasicNameValuePair("package", request.packageValue));
+                signParams.add(new BasicNameValuePair("partnerid", request.partnerId));
+                signParams.add(new BasicNameValuePair("prepayid", request.prepayId));//这个字段服务器签名的时候没用到，客户端签名的时候记得加上
+                signParams.add(new BasicNameValuePair("timestamp", request.timeStamp));
+
+                request.sign = genAppSign(signParams);
+
+
+
+
+
+//
+//                List<NameValuePair> signParams = new LinkedList<NameValuePair>();
+//                signParams.add(new BasicNameValuePair("appid", req.appId));
+//                signParams.add(new BasicNameValuePair("noncestr", req.nonceStr));
+//                signParams.add(new BasicNameValuePair("package", req.packageValue));
+//                signParams.add(new BasicNameValuePair("partnerid", req.partnerId));
+//                signParams.add(new BasicNameValuePair("prepayid", req.prepayId));
+//                signParams.add(new BasicNameValuePair("timestamp", req.timeStamp));
+//
+//                    StringBuilder sb = new StringBuilder();
+//
+//                    for (int i = 0; i < params.size(); i++) {
+//                        sb.append(params.get(i).getName());
+//                        sb.append('=');
+//                        sb.append(params.get(i).getValue());
+//                        sb.append('&');
+//                    }
+//                    sb.append("key=");
+//                    sb.append(Constants.API_KEY);
+//
+//                    this.sb.append("sign str\n"+sb.toString()+"\n\n");
+//                    String appSign = MD5.getMessageDigest(sb.toString().getBytes());
+//                    Log.e("Simon","----"+appSign);
+//                    return appSign;
+
+
+
+
+
+
+
+
+
+                iwxapi.sendReq(request);//发送调起微信的请求
+            }
+
+            /**
+             * 生成签名
+             */
+            private static String genAppSign(LinkedList<NameValuePair> list) {
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < list.size(); i++) {
+                    sb.append(list.get(i).getName());
+                    sb.append('=');
+                    sb.append(list.get(i).getValue());
+                    sb.append('&');
+                }
+                sb.append("key=");
+                sb.append(WX_MCH_KEY);//此处为商户的appkey  此处也要核对  在微信商户后台获取
+                String appSign = getMessageDigest(sb.toString()).toUpperCase();
+                return appSign;
+            }
+
+
+
+        };
+        Thread payThread = new Thread(payRunnable);
+        payThread.start();
     }
 }

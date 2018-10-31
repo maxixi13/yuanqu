@@ -2,7 +2,7 @@ package com.example.maxixi.yuanqu.util.weixin;
 
 public class Constants {
     //appid 微信分配的公众账号ID
-    public static final String APP_ID = "wx9a54f3a908a4acf2";
+    public static final String APP_ID = "wx3b685e9343096c49";
 
     //商户号 微信分配的公众账号ID
     public static final String MCH_ID = "1490297722";
