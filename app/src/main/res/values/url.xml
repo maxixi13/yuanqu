@@ -47,6 +47,7 @@
     <string name="waimaidizhiguanli_url">http://192.168.11.165/index/Menu/address</string>
     <string name="xiugaimorendizhi_url">http://192.168.11.165/index/Menu/address_status</string>
     <string name="weixinappid_url">http://192.168.11.121/index/Wechat/unified_order</string>
+    <string name="diancaishoufei_url">http://192.168.11.165/index/Menu/order_pay</string>
 
 
     //网络地址

@@ -21,15 +21,17 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
 
 
 	private static final String TAG = "MicroMsg.SDKSample.WXPayEntryActivity";
-	
-    private IWXAPI api;
+	private static final String APP_ID = "wx3b685e9343096c49";
+
+
+	private IWXAPI api;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pay_result);
         
-    	api = WXAPIFactory.createWXAPI(this,Constants.APP_ID);
+    	api = WXAPIFactory.createWXAPI(this,APP_ID);
         api.handleIntent(getIntent(), this);
     }
 

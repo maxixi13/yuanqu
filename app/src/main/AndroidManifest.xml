@@ -42,14 +42,12 @@
         </activity>
 
         <activity
-            android:name=".wxapi.WXPayEntryActivity"
+            android:name="com.example.maxixi.yuanqu.wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
-
                 <category android:name="android.intent.category.DEFAULT"/>
-
                 <data android:scheme="wx3b685e9343096c49"/>
             </intent-filter>
         </activity>
@@ -125,7 +123,7 @@
         <activity android:name=".personal.yuanneifuwujilu.Yuanqubaoxiulist" />
         <activity android:name=".personal.yunfuwushenqingfuwu.Yfuwushenqinglist" />
         <activity android:name=".personal.usermsset" />
-        <activity android:name=".personal.tingche.tingchejilu_personal_list"></activity>
+        <activity android:name=".personal.tingche.tingchejilu_personal_list"/>
     </application>
 
 </manifest><!--
