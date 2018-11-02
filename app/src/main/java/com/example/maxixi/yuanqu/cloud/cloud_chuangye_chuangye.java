@@ -73,7 +73,7 @@ public class cloud_chuangye_chuangye extends AppCompatActivity {
 
     private void sendOkhttp(){
         SharedPreferences sharedPreferences=getSharedPreferences("userdata", Context.MODE_PRIVATE);
-        final String uid = sharedPreferences.getString("uid", null);
+        final String uid = sharedPreferences.getString("uid", "null");
         new Thread(new Runnable() {
             @Override
             public void run() {

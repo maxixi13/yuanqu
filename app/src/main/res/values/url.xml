@@ -49,6 +49,10 @@
     <string name="weixinappid_url">http://192.168.11.121/index/Wechat/unified_order</string>
     <string name="diancaishoufei_url">http://192.168.11.165/index/Menu/order_pay</string>
     <string name="yuekachongzhi_url">http://192.168.11.165/index/Car/mcard</string>
+    <string name="tingchejiaofei_url">http://192.168.11.165/index/Car/park_fee</string>
+    <string name="yuekaxufei_url">http://192.168.11.165/index/Car/card_renewal</string>
+    <string name="querenshouhuo_url">http://192.168.11.165/index/Menu/order_complete</string>
+    <string name="diancanshoufei_url">http://192.168.11.165/index/Menu/order_pay</string>
 
 
     //网络地址

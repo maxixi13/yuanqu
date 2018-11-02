@@ -59,7 +59,7 @@ public class usermsset extends AppCompatActivity {
         setContentView(R.layout.dctivity_usermsset);
 
         SharedPreferences sharedPreferences =getSharedPreferences("userdata", Context.MODE_PRIVATE);
-        uid = sharedPreferences.getString("uid", null);
+        uid = sharedPreferences.getString("uid", "null");
 
         //view
         circleImageView=(CircleImageView) findViewById(R.id.personal_usermsset_touxiang_circleimageview);

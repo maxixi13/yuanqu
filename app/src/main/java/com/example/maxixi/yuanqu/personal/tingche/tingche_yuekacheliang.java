@@ -92,7 +92,7 @@ public class tingche_yuekacheliang extends AppCompatActivity {
         cid = intent.getStringExtra("cid");
 
         SharedPreferences sharedPreferences = getSharedPreferences("userdata", MODE_PRIVATE);
-        uid = sharedPreferences.getString("uid", null);
+        uid = sharedPreferences.getString("uid", "null");
 
         //view
         cartype = (TextView) findViewById(R.id.tingchejiaofei_yueka_cartype_text);
@@ -211,6 +211,48 @@ public class tingche_yuekacheliang extends AppCompatActivity {
         }).start();
     }
 
+    private void zhifubaozhifu() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient = new OkHttpClient();
+                FormBody formBody = new FormBody.Builder().add("uid", "1").add("carNo", String.valueOf(license_plate.getText())).add("money", "0.01").add("paytype", "支付宝").build();
+                Request request = new Request.Builder().url(getString(R.string.yuekachongzhi_url)).post(formBody).build();
+                Call call = okHttpClient.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("错误", String.valueOf(e));
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String responseData = response.body().string();
+                        try {
+                            JSONObject jsonObject=new JSONObject(responseData);
+                            final String outoder=jsonObject.getString("data");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    zhifubaolei zhifubaolei = new zhifubaolei(tingche_yuekacheliang.this, tingche_yuekacheliang.this, "0.01", "月卡费用",outoder,getString(R.string.yuekachongzhi_url));
+                                    zhifubaolei.payV2(getWindow().getDecorView());
+                                }
+                            });
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        }).start();
+    }
+
+
+
+
+
+
+
 
 
 
@@ -316,42 +358,5 @@ public class tingche_yuekacheliang extends AppCompatActivity {
 
     }
 
-
-
-
-
-
-
-
-    private void zhifubaozhifu() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("uid", "1").add("carNo", String.valueOf(license_plate.getText())).add("money", "0.01").add("paytype", "支付宝").build();
-                Request request = new Request.Builder().url(getString(R.string.yuekachongzhi_url)).post(formBody).build();
-                Call call = okHttpClient.newCall(request);
-                call.enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        Log.e("错误", String.valueOf(e));
-                    }
-
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        String responseData = response.body().string();
-                        try {
-                            JSONObject jsonObject=new JSONObject(responseData);
-                            String outoder=jsonObject.getString("data");
-                            zhifubaolei zhifubaolei = new zhifubaolei(tingche_yuekacheliang.this, tingche_yuekacheliang.this, "0.01", "月卡费用",outoder,getString(R.string.yuekachongzhi_url));
-                            zhifubaolei.payV2(getWindow().getDecorView());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            }
-        }).start();
-    }
 
 }

@@ -101,7 +101,7 @@ public class diancan_tianjiadizhi extends AppCompatActivity {
 
     private void Upload() {
         SharedPreferences sharedPreferences=getSharedPreferences("userdata",MODE_PRIVATE);
-        final String uid=sharedPreferences.getString("uid",null);
+        final String uid=sharedPreferences.getString("uid","null");
         new Thread(new Runnable() {
             @Override
             public void run() {

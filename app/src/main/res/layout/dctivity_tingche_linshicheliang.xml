@@ -303,6 +303,7 @@
             android:textSize="20sp" />
 
         <ImageView
+            android:id="@+id/linshijiaofei_lijijiaofei_button"
             android:layout_width="183dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"

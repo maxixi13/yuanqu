@@ -1,15 +1,19 @@
 package com.example.maxixi.yuanqu.personal.tingche;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
+import com.example.maxixi.yuanqu.util.zhifubao.zhifubaolei;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,6 +41,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
     private TextView fee;
     private TextView indatatime2;
     private String cid;
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,9 @@ public class tingche_linshicheliang extends AppCompatActivity {
 
         Intent intent=getIntent();
         cid = intent.getStringExtra("cid");
+
+        SharedPreferences sharedPreferences=getSharedPreferences("userdata",MODE_PRIVATE);
+        uid = sharedPreferences.getString("uid","null");
 
         //view
         cartype = (TextView)findViewById(R.id.tingchejiaofei_linshi_cartype_text);
@@ -64,6 +72,14 @@ public class tingche_linshicheliang extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        ImageView linshijiaofeibutton=(ImageView)findViewById(R.id.linshijiaofei_lijijiaofei_button);
+        linshijiaofeibutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                zhifubaozhifu();
             }
         });
 
@@ -117,6 +133,43 @@ public class tingche_linshicheliang extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
+                    }
+                });
+            }
+        }).start();
+    }
+
+
+    private void zhifubaozhifu() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient = new OkHttpClient();
+                FormBody formBody = new FormBody.Builder().add("uid", uid).add("carNo", String.valueOf(license_plate.getText())).add("money", sumfee.getText().toString()).add("paytype", "支付宝").build();
+                Request request = new Request.Builder().url(getString(R.string.tingchejiaofei_url)).post(formBody).build();
+                Call call = okHttpClient.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("错误", String.valueOf(e));
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String responseData = response.body().string();
+                        try {
+                            JSONObject jsonObject=new JSONObject(responseData);
+                            final String outoder=jsonObject.getString("data");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    zhifubaolei zhifubaolei = new zhifubaolei(tingche_linshicheliang.this, tingche_linshicheliang.this, sumfee.getText().toString(), "临时缴费",outoder,getString(R.string.tingchejiaofei_url));
+                                    zhifubaolei.payV2(getWindow().getDecorView());
+                                }
+                            });
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
             }

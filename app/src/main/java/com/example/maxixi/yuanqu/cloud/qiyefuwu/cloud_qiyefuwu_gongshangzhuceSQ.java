@@ -130,7 +130,7 @@ public class cloud_qiyefuwu_gongshangzhuceSQ extends AppCompatActivity {
 
     private void Upload() {
         SharedPreferences sharedPreferences = getSharedPreferences("userdata", Context.MODE_PRIVATE);
-        final String uid = sharedPreferences.getString("uid", null);
+        final String uid = sharedPreferences.getString("uid", "null");
         new Thread(new Runnable() {
             @Override
             public void run() {

@@ -41,7 +41,7 @@ public class tingchejilu_personal_list extends AppCompatActivity {
 
 
         SharedPreferences sharedPreferences = getSharedPreferences("userdata", Context.MODE_PRIVATE);
-        uid = sharedPreferences.getString("uid", null);
+        uid = sharedPreferences.getString("uid", "null");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.personal_tingchejilu_personal_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

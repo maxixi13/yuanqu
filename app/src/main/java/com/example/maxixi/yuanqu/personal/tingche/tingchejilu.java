@@ -55,7 +55,7 @@ public class tingchejilu extends AppCompatActivity {
         setContentView(R.layout.dctivity_tingchejilu);
 
         SharedPreferences sharedPreferences = getSharedPreferences("userdata", Context.MODE_PRIVATE);
-        uid = sharedPreferences.getString("uid", null);
+        uid = sharedPreferences.getString("uid", "null");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.personal_tingchejiaofei_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -163,7 +163,7 @@ public class tingchejilu extends AppCompatActivity {
             @Override
             public void run() {
                 OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("uid", "1").build();
+                FormBody formBody = new FormBody.Builder().add("uid", "null").build();
                 Request request = new Request.Builder().url(getString(R.string.yonghutingcheshoufeiliebiao_url)).post(formBody).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {

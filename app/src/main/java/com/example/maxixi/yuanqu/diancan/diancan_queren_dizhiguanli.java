@@ -44,7 +44,7 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
         setContentView(R.layout.ectivity_diancan_queren_dizhiguanli);
 
         SharedPreferences sharedPreferences = getSharedPreferences("userdata", MODE_PRIVATE);
-        uid = sharedPreferences.getString("uid", null);
+        uid = sharedPreferences.getString("uid", "null");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.diancan_queren_dizhiguanli_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
