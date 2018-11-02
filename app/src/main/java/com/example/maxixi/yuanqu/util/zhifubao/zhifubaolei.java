@@ -14,7 +14,15 @@ import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
 
+import java.io.IOException;
 import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class zhifubaolei {
 
@@ -22,13 +30,16 @@ public class zhifubaolei {
     private Activity activity;
     private String sum;
     private String title;
-    private View view;
+    private String pid;
+    private String backurl;
 
-    public zhifubaolei(Context context,Activity activity,String sum,String title){
+    public zhifubaolei(Context context,Activity activity,String sum,String title,String pid,String backurl){
         this.context=context;
         this.activity=activity;
         this.sum=sum;
         this.title=title;
+        this.pid=pid;
+        this.backurl=backurl;
     }
 
 
@@ -68,6 +79,7 @@ public class zhifubaolei {
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
                         Toast.makeText(context, "支付成功", Toast.LENGTH_SHORT).show();
+                        //sendfanhui();
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
                         Toast.makeText(context, "支付失败", Toast.LENGTH_SHORT).show();
@@ -79,6 +91,31 @@ public class zhifubaolei {
             }
         }
     };
+
+    private void sendfanhui() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient=new OkHttpClient();
+                FormBody formBody=new FormBody.Builder().add("pid",pid).add("money",sum).build();
+                final Request request=new Request.Builder().url(backurl).post(formBody).build();
+                Call call=okHttpClient.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("错误", String.valueOf(e));
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        Log.e("成功",response.body().string());
+                    }
+                });
+
+            }
+        }).start();
+    }
+
 
     /**
      * 支付宝支付业务

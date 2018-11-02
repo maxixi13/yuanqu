@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/beijingf5f5f5"
     android:orientation="vertical"
-    tools:context=".personal.tingche.tingchejilujilu"
-    android:background="@color/beijingf5f5f5">
+    tools:context=".personal.tingche.tingchejilujilu">
 
     <Toolbar
         android:id="@+id/personal_tingchejilujilu_toolbar"
@@ -26,196 +26,208 @@
             android:textSize="20sp" />
     </Toolbar>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="11dp"
-        android:background="@drawable/personal_yuanjiaojuxingsuo"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="3"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/personal_tingchejilujilu_type_text"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="@string/zuiguideyuekahuiyuan"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
+                android:layout_height="140dp"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="17dp"
+                android:background="@drawable/personal_yuanjiaojuxingsuo"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="3"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/personal_tingchejilujilu_type_text"
+                        android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/cheliangpinpai" />
+                        android:text="@string/zuiguideyuekahuiyuan"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/cheliangxinghao" />
+                        android:layout_weight="3"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/cheliangpaizhao" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="@string/cheliangpinpai" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="@string/cheliangxinghao" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="@string/cheliangpaizhao" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="11dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/personal_tingchejilujilu_carname_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="法拉利" />
+
+                            <TextView
+                                android:id="@+id/personal_tingchejilujilu_model_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="488" />
+
+                            <TextView
+                                android:id="@+id/personal_tingchejilujilu_platenum_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="沪A8888" />
+                        </LinearLayout>
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="11dp"
+                    android:layout_weight="2"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/personal_tingchejilujilu_carname_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="法拉利" />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/shengyutianshu"
+                        android:textAlignment="viewEnd" />
 
                     <TextView
-                        android:id="@+id/personal_tingchejilujilu_model_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="488" />
+                        android:id="@+id/personal_tingchejilujilu_time_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="888天"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/top_blue"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/personal_tingchejilujilu_platenum_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="沪A8888" />
+                        android:id="@+id/personal_tingchejilujilu_status_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="bottom|right"
+                        android:text="停车状态：未停车"
+                        android:textColor="@color/top_blue" />
                 </LinearLayout>
             </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:orientation="vertical">
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/shengyutianshu"
-                android:textAlignment="viewEnd" />
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="17dp"
+                android:background="@drawable/personal_yuanjiaojuxingsuo"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/personal_tingchejilujilu_time_text"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <Button
+                        android:id="@+id/tingchejilu_navigation_left"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/chuangyefuwuselector"
+                        android:text="@string/benyuenei"
+                        android:textColor="@drawable/textselectcolor"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/tingchejilu_navigation_mid"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/chuangyefuwuselector"
+                        android:text="@string/liangyuenei"
+                        android:textColor="@drawable/textselectcolor"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/tingchejilu_navigation_right"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/chuangyefuwuselector"
+                        android:text="@string/sanyuenei"
+                        android:textColor="@drawable/textselectcolor"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dddddd" />
+
+                <FrameLayout
+                    android:id="@+id/tingchejilujilu_fg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <Button
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="888天"
-                android:textAlignment="viewEnd"
-                android:textColor="@color/top_blue"
-                android:textSize="32sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/personal_tingchejilujilu_status_text"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="5dp"
-                android:gravity="bottom|right"
-                android:text="停车状态：未停车"
-                android:textColor="@color/top_blue" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="17dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="11dp"
-        android:background="@drawable/personal_yuanjiaojuxingsuo"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <Button
-                android:id="@+id/tingchejilu_navigation_left"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/chuangyefuwuselector"
-                android:textColor="@drawable/textselectcolor"
-                android:text="@string/benyuenei"
-                android:textSize="16sp"/>
-
-            <Button
-                android:id="@+id/tingchejilu_navigation_mid"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/chuangyefuwuselector"
-                android:textColor="@drawable/textselectcolor"
-                android:text="@string/liangyuenei"
-                android:textSize="16sp"/>
-
-            <Button
-                android:id="@+id/tingchejilu_navigation_right"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/chuangyefuwuselector"
-                android:textColor="@drawable/textselectcolor"
-                android:text="@string/sanyuenei"
-                android:textSize="16sp"/>
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="17dp"
+                android:background="@drawable/personal_yuanjiaojuxingsuoblue"
+                android:text="@string/yuekaxufei"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/dddddd" />
-
-        <FrameLayout
-            android:id="@+id/tingchejilujilu_fg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginEnd="17dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="45dp"
-        android:background="@drawable/personal_yuanjiaojuxingsuoblue"
-        android:text="@string/yuekaxufei"
-        android:textColor="@android:color/white"
-        android:textSize="20sp" />
+    </ScrollView>
 
 
 </LinearLayout>

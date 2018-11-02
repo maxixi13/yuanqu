@@ -139,15 +139,15 @@ public class tingche_yuekacheliang extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+                Toast.makeText(tingche_yuekacheliang.this,"未开放",Toast.LENGTH_SHORT).show();
                 //getoutoder();
-                getwxappid();
+                //getwxappid();
             }
         });
         zhifubao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                zhifubaolei zhifubaolei = new zhifubaolei(tingche_yuekacheliang.this, tingche_yuekacheliang.this, "0.01", "月卡车");
-                zhifubaolei.payV2(getWindow().getDecorView());
+                zhifubaozhifu();
                 dialog.dismiss();
             }
         });
@@ -210,6 +210,13 @@ public class tingche_yuekacheliang extends AppCompatActivity {
             }
         }).start();
     }
+
+
+
+
+
+
+
 
     private void updatajiaofei() {
         new Thread(new Runnable() {
@@ -310,12 +317,18 @@ public class tingche_yuekacheliang extends AppCompatActivity {
     }
 
 
-    private void getoutoder() {
+
+
+
+
+
+
+    private void zhifubaozhifu() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("uid", "1").add("carNo", "沪").add("money", "0.01").add("paytype", "微信").build();
+                FormBody formBody = new FormBody.Builder().add("uid", "1").add("carNo", String.valueOf(license_plate.getText())).add("money", "0.01").add("paytype", "支付宝").build();
                 Request request = new Request.Builder().url(getString(R.string.yuekachongzhi_url)).post(formBody).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
@@ -330,6 +343,8 @@ public class tingche_yuekacheliang extends AppCompatActivity {
                         try {
                             JSONObject jsonObject=new JSONObject(responseData);
                             String outoder=jsonObject.getString("data");
+                            zhifubaolei zhifubaolei = new zhifubaolei(tingche_yuekacheliang.this, tingche_yuekacheliang.this, "0.01", "月卡费用",outoder,getString(R.string.yuekachongzhi_url));
+                            zhifubaolei.payV2(getWindow().getDecorView());
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
