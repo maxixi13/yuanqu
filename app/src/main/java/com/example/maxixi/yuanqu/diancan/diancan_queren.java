@@ -1,8 +1,6 @@
 package com.example.maxixi.yuanqu.diancan;
 
 
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,28 +14,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.diancan.adapter.QuerenAdapter;
+import com.example.maxixi.yuanqu.diancan.model.Dish;
 import com.example.maxixi.yuanqu.diancan.model.ShopCart;
-import com.example.maxixi.yuanqu.util.weixin.MD5;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import java.util.Iterator;
+import java.util.Map;
 
 public class diancan_queren extends AppCompatActivity {
 
@@ -70,10 +57,20 @@ public class diancan_queren extends AppCompatActivity {
         ShopCart shopCart=(ShopCart) intent.getSerializableExtra("shopcart");
         RecyclerView recyclerView=(RecyclerView)findViewById(R.id.qurendingdan_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setNestedScrollingEnabled(false);
         QuerenAdapter dishAdapter = new QuerenAdapter(this,shopCart);
         recyclerView.setAdapter(dishAdapter);
         Log.e("---","---"+shopCart.getDishAccount()+"---"+shopCart.getShoppingAccount()+"---"+shopCart.getShoppingSingleMap()+"---"+shopCart.getShoppingTotalPrice());
 
+        Map<Dish, Integer> ssss =shopCart.getShoppingSingleMap();
+        Iterator<Map.Entry<Dish, Integer>> it = ssss.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<Dish, Integer> entry = it.next();
+            Dish entryKey= entry.getKey();
+            String name=entryKey.getDishName();
+            String mid=entryKey.getMid();
+            Log.e("--",name+"|||"+mid);
+        }
 
         LinearLayout dizhiguanli=(LinearLayout)findViewById(R.id.querendingdan_dizhilayout);
         dizhiguanli.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +89,6 @@ public class diancan_queren extends AppCompatActivity {
         querenbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getwxappid();
             }
         });
 
@@ -116,95 +112,6 @@ public class diancan_queren extends AppCompatActivity {
         AlertDialog dialog=builder.create();
         dialog.show();
     }
-
-
-    private void getwxappid(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                OkHttpClient okHttpClient=new OkHttpClient();
-                FormBody formBody=new FormBody.Builder().add("money","0.1").add("out_trade_no","123").build();
-                Request request=new Request.Builder().url(getString(R.string.diancaishoufei_url)).post(formBody).build();
-                Call call=okHttpClient.newCall(request);
-                call.enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        Log.e("错误：", String.valueOf(e));
-                    }
-
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        String responseData=response.body().string();
-                        try {
-                            JSONObject jsonObject=new JSONObject(responseData);
-                            toWXPay(jsonObject.getString("appid"),jsonObject.getString("partnerid"),jsonObject.getString("prepayid"),jsonObject.getString("package"),jsonObject.getString("noncestr"),jsonObject.getString("timestamp"),jsonObject.getString("sign"));
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            }
-        }).start();
-    }
-
-    private void toWXPay(final String appId, final String partnerId, final String prepayId, final String packageValue, final String nonceStr, final String timeStamp, final String sign) {
-        iwxapi = WXAPIFactory.createWXAPI(diancan_queren.this,appId,false); //初始化微信api
-        iwxapi.registerApp(appId); //注册appid  appid可以在开发平台获取
-
-
-//        Runnable payRunnable = new Runnable() {
-//            //这里注意要放在子线程
-//            @Override
-//            public void run() {
-        //调起微信APP的对象
-        request = new PayReq();
-        //下面是设置必要的参数，也就是前面说的参数,这几个参数从何而来请看上面说明
-        request.appId = appId;
-        request.nonceStr = nonceStr;
-        request.packageValue =packageValue;
-        request.partnerId = partnerId;
-        request.prepayId = prepayId;
-        request.timeStamp = timeStamp;
-
-        request.sign=sign;
-        //request.sign=genPayReq();
-
-        iwxapi.sendReq(request);//发送调起微信的请求
-
-    }
-
-    /**
-     * 生成签名
-     */
-
-    // 246055aabecbfd2d48f61218e33f1d66
-
-
-
-//        };
-//        Thread payThread = new Thread(payRunnable);
-//        payThread.start();
-//    }
-
-
-
-
-    private String genPayReq() {
-
-        ContentValues contentValues=new ContentValues();
-        contentValues.put("appid", request.appId);
-        contentValues.put("noncestr", request.nonceStr);
-        contentValues.put("package", request.packageValue);
-        contentValues.put("partnerid", request.partnerId);
-        contentValues.put("prepayid", request.prepayId);
-        contentValues.put("timestamp", request.timeStamp);
-
-        String sb="appid="+request.appId+"&noncestr="+request.nonceStr+"&package="+request.packageValue+"&partnerid="+request.partnerId+"&prepayid="+request.partnerId+"&timestamp="+request.timeStamp;
-        String appSign=MD5.getMessageDigest(sb.getBytes());
-        return appSign;
-
-    }
-
 
 
 }
