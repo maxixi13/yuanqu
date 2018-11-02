@@ -118,7 +118,8 @@ public class tingche_yuekacheliang extends AppCompatActivity {
         Button yuekaxufei = (Button) findViewById(R.id.tingchejiaofei_yueka_yuekaxufei_button);
         yuekaxufei.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { zhifuDialog();
+            public void onClick(View v) {
+                zhifuDialog();
             }
         });
     }
@@ -138,13 +139,14 @@ public class tingche_yuekacheliang extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+                //getoutoder();
                 getwxappid();
             }
         });
         zhifubao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                zhifubaolei zhifubaolei=new zhifubaolei(tingche_yuekacheliang.this,tingche_yuekacheliang.this,"0.01","月卡车");
+                zhifubaolei zhifubaolei = new zhifubaolei(tingche_yuekacheliang.this, tingche_yuekacheliang.this, "0.01", "月卡车");
                 zhifubaolei.payV2(getWindow().getDecorView());
                 dialog.dismiss();
             }
@@ -225,14 +227,14 @@ public class tingche_yuekacheliang extends AppCompatActivity {
         }).start();
     }
 
-    private void getwxappid(){
+    private void getwxappid() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                OkHttpClient okHttpClient=new OkHttpClient();
-                FormBody formBody=new FormBody.Builder().add("money","0.1").add("out_trade_no","cd135").build();
-                Request request=new Request.Builder().url(getString(R.string.weixinappid_url)).post(formBody).build();
-                Call call=okHttpClient.newCall(request);
+                OkHttpClient okHttpClient = new OkHttpClient();
+                FormBody formBody = new FormBody.Builder().add("money", "0.1").add("out_trade_no", "cd138").build();
+                Request request = new Request.Builder().url(getString(R.string.weixinappid_url)).post(formBody).build();
+                Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
@@ -241,10 +243,10 @@ public class tingche_yuekacheliang extends AppCompatActivity {
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        String responseData=response.body().string();
+                        String responseData = response.body().string();
                         try {
-                            JSONObject jsonObject=new JSONObject(responseData);
-                            toWXPay(jsonObject.getString("appid"),jsonObject.getString("partnerid"),jsonObject.getString("prepayid"),jsonObject.getString("package"),jsonObject.getString("noncestr"),jsonObject.getString("timestamp"),jsonObject.getString("sign"));
+                            JSONObject jsonObject = new JSONObject(responseData);
+                            toWXPay(jsonObject);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -254,65 +256,87 @@ public class tingche_yuekacheliang extends AppCompatActivity {
         }).start();
     }
 
-    private void toWXPay(final String appId, final String partnerId, final String prepayId, final String packageValue, final String nonceStr, final String timeStamp, final String sign) {
-        iwxapi = WXAPIFactory.createWXAPI(tingche_yuekacheliang.this,appId,false); //初始化微信api
-        iwxapi.registerApp(appId); //注册appid  appid可以在开发平台获取
+    private void toWXPay(JSONObject jsonObject) throws JSONException {
+        iwxapi = WXAPIFactory.createWXAPI(tingche_yuekacheliang.this,null); //初始化微信api
+        iwxapi.registerApp(Constants.APP_ID); //注册appid  appid可以在开发平台获取
 
 
 //        Runnable payRunnable = new Runnable() {
 //            //这里注意要放在子线程
 //            @Override
 //            public void run() {
-                //调起微信APP的对象
-                request = new PayReq();
-                //下面是设置必要的参数，也就是前面说的参数,这几个参数从何而来请看上面说明
-                request.appId = appId;
-                request.nonceStr = nonceStr;
-                request.packageValue =packageValue;
-                request.partnerId = partnerId;
-                request.prepayId = prepayId;
-                request.timeStamp = timeStamp;
+        //调起微信APP的对象
+        request = new PayReq();
+        //下面是设置必要的参数，也就是前面说的参数,这几个参数从何而来请看上面说明
+        request.appId = jsonObject.getString("appid");
+        request.nonceStr = jsonObject.getString("noncestr");
+        request.packageValue = jsonObject.getString("package");
+        request.partnerId = jsonObject.getString("partnerid");
+        request.prepayId = jsonObject.getString("prepayid");
+        request.timeStamp = jsonObject.getString("timestamp");
 
-                request.sign=sign;
-                //request.sign=genPayReq();
+        //request.sign=jsonObject.getString("sign");
+        request.sign = genPayReq();
 
-                iwxapi.sendReq(request);//发送调起微信的请求
+        iwxapi.sendReq(request);//发送调起微信的请求
 
-            }
+    }
 
-            /**
-             * 生成签名
-             */
+    /**
+     * 生成签名
+     */
 
-            // 246055aabecbfd2d48f61218e33f1d66
-
+    // 246055aabecbfd2d48f61218e33f1d66
 
 
 //        };
 //        Thread payThread = new Thread(payRunnable);
 //        payThread.start();
 //    }
+    private String genPayReq() {
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("appid", request.appId);
+        contentValues.put("noncestr", request.nonceStr);
+        contentValues.put("package", request.packageValue);
+        contentValues.put("partnerid", request.partnerId);
+        contentValues.put("prepayid", request.prepayId);
+        contentValues.put("timestamp", request.timeStamp);
+
+        String sb = "appid=" + request.appId + "&noncestr=" + request.nonceStr + "&package=" + request.packageValue + "&partnerid=" + request.partnerId + "&prepayid=" + request.partnerId + "&timestamp=" + request.timeStamp+"&key="+Constants.API_KEY;
+        String appSign = MD5.getMessageDigest(sb.getBytes());
+        return appSign;
+
+    }
 
 
+    private void getoutoder() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient = new OkHttpClient();
+                FormBody formBody = new FormBody.Builder().add("uid", "1").add("carNo", "沪").add("money", "0.01").add("paytype", "微信").build();
+                Request request = new Request.Builder().url(getString(R.string.yuekachongzhi_url)).post(formBody).build();
+                Call call = okHttpClient.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("错误", String.valueOf(e));
+                    }
 
-
-            private String genPayReq() {
-
-                ContentValues contentValues=new ContentValues();
-                contentValues.put("appid", request.appId);
-                contentValues.put("noncestr", request.nonceStr);
-                contentValues.put("package", request.packageValue);
-                contentValues.put("partnerid", request.partnerId);
-                contentValues.put("prepayid", request.prepayId);
-                contentValues.put("timestamp", request.timeStamp);
-
-                String sb="appid="+request.appId+"&noncestr="+request.nonceStr+"&package="+request.packageValue+"&partnerid="+request.partnerId+"&prepayid="+request.partnerId+"&timestamp="+request.timeStamp;
-                String appSign=MD5.getMessageDigest(sb.getBytes());
-                return appSign;
-
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String responseData = response.body().string();
+                        try {
+                            JSONObject jsonObject=new JSONObject(responseData);
+                            String outoder=jsonObject.getString("data");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
-
-
-
+        }).start();
+    }
 
 }
