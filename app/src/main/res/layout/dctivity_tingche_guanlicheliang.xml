@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".personal.tingche.tingche_guanlicheliang"
+    android:orientation="vertical">
+
+    <Toolbar
+        android:id="@+id/personal_guanlicheliang_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:navigationIcon="@drawable/back_button"
+        android:title=""
+        android:titleTextColor="@android:color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/guanliwodecheliang"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </Toolbar>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/personal_guanlicheliang_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
