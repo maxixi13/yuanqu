@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
@@ -53,6 +54,15 @@ public class Parkservice_yuannei extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(Parkservice_yuannei.this,parkservice_yuannei_baoxiu.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton yuanqujieshao=(ImageButton)findViewById(R.id.yuanei_yuanqujieshao);
+        yuanqujieshao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Parkservice_yuannei.this,parkservice_yuannei_yuanqujieshao.class);
                 startActivity(intent);
             }
         });

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.example.maxixi.yuanqu.diancan.diancan;
 import com.example.maxixi.yuanqu.perkservice.Parkservice_yuannei;
@@ -20,8 +21,8 @@ public class Fragmentpark extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         final View view = inflater.inflate(R.layout.bctivity_parkservice, container, false);
 
-        ImageButton imageButton = (ImageButton) view.findViewById(R.id.parkservice_yuannei);
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        ImageButton yuanneijieshao = (ImageButton) view.findViewById(R.id.parkservice_yuannei);
+        yuanneijieshao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), Parkservice_yuannei.class);
@@ -47,6 +48,7 @@ public class Fragmentpark extends Fragment {
 
             }
         });
+
 
         return view;
     }

@@ -13,7 +13,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 读取SD卡的权限:打开相册选取图片所必须的权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -27,31 +26,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
-            android:screenOrientation="behind">
-        </activity>
+            android:screenOrientation="behind"/>
         <activity
             android:name="com.alipay.sdk.auth.AuthActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
-            android:screenOrientation="behind">
-        </activity>
-
+            android:screenOrientation="behind"/>
         <activity
-            android:name="com.example.maxixi.yuanqu.wxapi.WXPayEntryActivity"
+            android:name=".wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="wx3b685e9343096c49"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="wx3b685e9343096c49" />
             </intent-filter>
         </activity>
-
 
         <!-- 注册容器 -->
         <provider
@@ -123,7 +119,8 @@
         <activity android:name=".personal.yuanneifuwujilu.Yuanqubaoxiulist" />
         <activity android:name=".personal.yunfuwushenqingfuwu.Yfuwushenqinglist" />
         <activity android:name=".personal.usermsset" />
-        <activity android:name=".personal.tingche.tingchejilu_personal_list"/>
+        <activity android:name=".personal.tingche.tingchejilu_personal_list" />
+        <activity android:name=".perkservice.parkservice_yuannei_yuanqujieshao"></activity>
     </application>
 
 </manifest><!--

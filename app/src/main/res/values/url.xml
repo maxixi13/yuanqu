@@ -59,6 +59,7 @@
     <string name="baoxiuxiangqing_url">http://192.168.11.165/index/Property/complaint_details</string>
     <string name="tousuliebiao_url">http://192.168.11.165/index/Property/complaint_list</string>
     <string name="tousuxiangqing_url">http://192.168.11.165/index/Property/complaint_details</string>
+    <string name="yuanqujieshao_url">http://47.100.228.227/index/banner/park_introduce</string>
 
 
     //网络地址
