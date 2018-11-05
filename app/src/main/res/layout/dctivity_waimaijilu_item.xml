@@ -28,10 +28,11 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/waimaijilu_item_ctime_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center|right"
-                android:text="2018/09/31 10:20"
+                android:text="8888/88/88 88:88"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -71,6 +72,7 @@
                 android:textSize="20sp" />
 
             <Button
+                android:id="@+id/waimaijilu_item_queren_button"
                 android:layout_width="80dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"

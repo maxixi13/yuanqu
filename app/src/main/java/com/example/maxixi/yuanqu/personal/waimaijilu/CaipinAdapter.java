@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.maxixi.yuanqu.R;
 
 import java.util.List;
@@ -54,7 +55,7 @@ public class CaipinAdapter extends RecyclerView.Adapter<CaipinAdapter.ViewHolder
         holder.dishname.setText(caipinbean.getDishname());
         holder.dishamount.setText(caipinbean.getDishamount());
         holder.totalprice.setText(caipinbean.getTotalprice());
-        holder.dishimage.setImageResource(caipinbean.getDishimage());
+        Glide.with(holder.dishimage).load(caipinbean.getDishimage()).into(holder.dishimage);
 
     }
 

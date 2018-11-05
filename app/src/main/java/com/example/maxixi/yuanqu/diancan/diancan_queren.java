@@ -245,6 +245,11 @@ public class diancan_queren extends AppCompatActivity {
                     public void onResponse(Call call, Response response) throws IOException {
                         String responseData=response.body().string();
                         Log.e("--","111"+responseData);
+                        try {
+                            JSONObject jsonObject=new JSONObject(responseData);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                         //zhifubaozhifu();
                     }
                 });
@@ -252,27 +257,27 @@ public class diancan_queren extends AppCompatActivity {
         }).start();
     }
 
-//    private void zhifubaozhifu(){
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                OkHttpClient okHttpClient=new OkHttpClient();
-//                FormBody formBody=new FormBody.Builder().add().add().build();
-//                Request request=new Request.Builder().url().post(formBody).build();
-//                Call call=okHttpClient.newCall(request);
-//                call.enqueue(new Callback() {
-//                    @Override
-//                    public void onFailure(Call call, IOException e) {
-//                        Log.e("错误", String.valueOf(e));
-//                    }
-//
-//                    @Override
-//                    public void onResponse(Call call, Response response) throws IOException {
-//                        Log.e("success",response.body().string());
-//                    }
-//                });
-//            }
-//        }).start();
-//    }
+    private void zhifubaozhifu(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient=new OkHttpClient();
+                FormBody formBody=new FormBody.Builder().add("oder","oder").add("money","0.01").build();
+                Request request=new Request.Builder().url(getString(R.string.diancanshoufei_url)).post(formBody).build();
+                Call call=okHttpClient.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("错误", String.valueOf(e));
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        Log.e("success",response.body().string());
+                    }
+                });
+            }
+        }).start();
+    }
 
 }

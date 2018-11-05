@@ -1,19 +1,19 @@
 package com.example.maxixi.yuanqu.personal.waimaijilu;
 
 public class Caipinbean {
-    private int dishimage;
+    private String dishimage;
     private String dishname;
     private String dishamount;
     private String totalprice;
 
 
-    public Caipinbean(int dishimage,String dishname,String dishamount,String totalprice){
+    public Caipinbean(String dishimage,String dishname,String dishamount,String totalprice){
         this.dishimage=dishimage;
         this.dishname=dishname;
         this.dishamount=dishamount;
         this.totalprice=totalprice;
     }
-    public int getDishimage()
+    public String getDishimage()
     {
         return dishimage;
     }

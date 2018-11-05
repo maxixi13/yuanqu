@@ -264,6 +264,7 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/tousushenqing_lijilianxi_button"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="center"

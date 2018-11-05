@@ -65,4 +65,5 @@
     //网络地址
     <string name="mizujie_url">http://www.mzujie.com</string>
     <string name="baidu_url">https://www.baidu.com</string>
+    <string name="tel">02157885000</string>
 </resources>
