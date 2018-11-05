@@ -31,17 +31,23 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+import static java.lang.Integer.parseInt;
+
 public class diancan_queren_dizhiguanli extends AppCompatActivity {
 
     private List<Dizhiguanlilei> dizhiguanlileiList = new ArrayList<>();
     private String uid;
     private RecyclerView recyclerViewzcxx;
     private String aid;
+    private int signal =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ectivity_diancan_queren_dizhiguanli);
+
+        Intent intent = getIntent();
+        signal = parseInt(intent.getStringExtra("signal"));
 
         SharedPreferences sharedPreferences = getSharedPreferences("userdata", MODE_PRIVATE);
         uid = sharedPreferences.getString("uid", "null");
@@ -110,8 +116,15 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
                                 @Override
                                 public void onLinearItem(View view, int position) {
 //
-
-
+                                    if (signal==1){
+                                        Intent intent=new Intent();
+                                        intent.putExtra("aid",dizhiguanlileiList.get(position).getAid());
+                                        intent.putExtra("name",dizhiguanlileiList.get(position).getName());
+                                        intent.putExtra("tel",dizhiguanlileiList.get(position).getDianhua());
+                                        intent.putExtra("address",dizhiguanlileiList.get(position).getDizhi());
+                                        setResult(RESULT_OK,intent);
+                                        finish();
+                                    }
 
 
 
@@ -170,7 +183,9 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        refresh();
+                        //refresh();
+                        dizhiguanlileiList.clear();
+                        senddizhi();
                     }
                 });
             }

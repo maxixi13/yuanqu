@@ -40,9 +40,9 @@
     <string name="clear">清空</string>
     <string name="tijiaodingdan">提交订单</string>
     <string name="querendingdan">确认订单</string>
-    <string name="teststring">王大姐</string>
-    <string name="teststring1">13616464664</string>
-    <string name="textstring2">上海市宝山区大王路XXXX弄18号</string>
+    <string name="teststring">XXX</string>
+    <string name="teststring1">13888888888</string>
+    <string name="textstring2">正在获取地址</string>
     <string name="dongdashijian">送达时间</string>
     <string name="zhifufangshi">支付方式</string>
     <string name="weixin">微信</string>
@@ -152,4 +152,6 @@
     <string name="weixinzhifu">微信支付</string>
     <string name="zhifubaozhifu">支付宝支付</string>
     <string name="tingchejilu">停车记录</string>
+    <string name="tiaoguo">跳过</string>
+    <string name="shenqingshijian">申请时间</string>
 </resources>

@@ -109,6 +109,7 @@ public class Fragmentpersonal extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), diancan_queren_dizhiguanli.class);
+                intent.putExtra("signal","2");
                 startActivity(intent);
             }
         });

@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
@@ -87,10 +88,14 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
         tijiaodingdanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent tijiaodingdanIntent = new Intent();
-                tijiaodingdanIntent.setClass(diancan.this, diancan_queren.class);
-                tijiaodingdanIntent.putExtra("shopcart", shopCart );
-                startActivity(tijiaodingdanIntent);
+                if (shopCart!=null) {
+                    Intent tijiaodingdanIntent = new Intent();
+                    tijiaodingdanIntent.setClass(diancan.this, diancan_queren.class);
+                    tijiaodingdanIntent.putExtra("shopcart", shopCart);
+                    startActivity(tijiaodingdanIntent);
+                }else {
+                    Toast.makeText(diancan.this,"请选择菜品",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

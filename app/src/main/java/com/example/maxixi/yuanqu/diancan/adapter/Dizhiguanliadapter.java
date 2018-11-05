@@ -82,7 +82,7 @@ public class Dizhiguanliadapter extends RecyclerView.Adapter<Dizhiguanliadapter.
             dizhi = (TextView) view.findViewById(R.id.diancan_queren_dizhiguanli_dizhi);
             linearLayout = (LinearLayout) view.findViewById(R.id.diancan_queren_dizhiguanli_bianji);
             imageView = (ImageView) view.findViewById(R.id.diancan_queren_dizhiguanli_selectorimage);
-            linearLayout_big = (LinearLayout) view.findViewById(R.id.diancan_queren_dizhiguanli_layout);
+            linearLayout_big = (LinearLayout) view.findViewById(R.id.diancan_queren_dizhiguanli_item_layout);
         }
     }
 

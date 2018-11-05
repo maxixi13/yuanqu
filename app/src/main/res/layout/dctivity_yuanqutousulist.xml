@@ -60,7 +60,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="360dp"
+                android:layout_height="415dp"
                 android:layout_marginEnd="17dp"
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="11dp"
@@ -134,6 +134,14 @@
                         android:text="@string/lianxidianhua"
                         android:textColor="#666666"
                         android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/shenqingshijian"
+                        android:textColor="#666666"
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -145,6 +153,7 @@
 
 
                     <TextView
+                        android:id="@+id/tousushenqing_suozaiyuanqu_text"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -157,6 +166,7 @@
                         android:background="@color/dddddd" />
 
                     <TextView
+                        android:id="@+id/tousushenqing_bangongquyu_text"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -169,6 +179,7 @@
                         android:background="@color/dddddd" />
 
                     <TextView
+                        android:id="@+id/tousushenqing_gongsimingcheng_text"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -182,6 +193,7 @@
 
 
                     <TextView
+                        android:id="@+id/tousushenqing_tousuleixing_text"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -195,6 +207,7 @@
                         android:background="@color/dddddd" />
 
                     <TextView
+                        android:id="@+id/tousushenqing_tousuduixiang_text"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -207,6 +220,7 @@
                         android:background="@color/dddddd" />
 
                     <TextView
+                        android:id="@+id/tousushenqing_lianxiren_text"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -219,6 +233,19 @@
                         android:background="@color/dddddd" />
 
                     <TextView
+                        android:id="@+id/tousushenqing_lianxidianhua_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/dddddd" />
+                    <TextView
+                        android:id="@+id/tousushenqing_shenqingshijian_text"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
