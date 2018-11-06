@@ -201,8 +201,8 @@ public class Fragmentnavigation extends Fragment {
 
                         //政策信息
                         JSONArray arrayzcxx = jsonObjectget.getJSONArray("policy");
-                        for (int i = 1; i < arrayzcxx.length()-1; i++) {
-                            final JSONObject jsonObjectout=array.getJSONObject(0);
+                        for (int i = 1; i < arrayzcxx.length(); i++) {
+                            final JSONObject jsonObjectout=arrayzcxx.getJSONObject(0);
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {

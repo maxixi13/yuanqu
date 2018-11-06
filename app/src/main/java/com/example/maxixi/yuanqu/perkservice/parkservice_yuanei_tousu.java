@@ -101,7 +101,7 @@ public class parkservice_yuanei_tousu extends AppCompatActivity {
     //园区选择dialog
     private void Dialog() {
         //初始化字符串数组
-        final String[] strArray = new String[]{"芈展服务园", "上海园区", "浙江园区", "北京园区", "广东园区"};
+        final String[] strArray = new String[]{"芈展服务园"};
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);//实例化builder
         builder.setTitle("请选择所在园区");//设置标题
         //设置单选列表

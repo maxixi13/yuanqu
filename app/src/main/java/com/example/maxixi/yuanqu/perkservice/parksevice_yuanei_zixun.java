@@ -34,7 +34,7 @@ public class parksevice_yuanei_zixun extends AppCompatActivity {
         });
 
         TextView yuanneizixundianhua = (TextView) findViewById(R.id.yuannei_zixun_dianhuatext);
-        SpannableString spannableString = new SpannableString("如果您有问题要解决，请拨打201-66828839");
+        SpannableString spannableString = new SpannableString("如果您有问题要解决，请拨打021-57885000");
         spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#09affb")), 13, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         yuanneizixundianhua.setText(spannableString);
 

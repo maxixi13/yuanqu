@@ -92,7 +92,7 @@ public class cloud_zhengfu_zhengfu_shenqing extends AppCompatActivity {
     //园区
     private void Dialog1() {
         //初始化字符串数组
-        final String[] strArray = new String[]{"芈展服务园", "离离原上草", "一岁一枯荣", "野火烧不尽", "春风吹又生"};
+        final String[] strArray = new String[]{"芈展服务园"};
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);//实例化builder
         builder.setTitle("请选择所在园区");//设置标题
         //设置单选列表
