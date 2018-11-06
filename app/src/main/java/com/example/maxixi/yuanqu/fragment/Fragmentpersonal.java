@@ -19,6 +19,7 @@ import com.example.maxixi.yuanqu.Loginpage;
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.diancan.diancan_queren_dizhiguanli;
 import com.example.maxixi.yuanqu.personal.renzhengqiye;
+import com.example.maxixi.yuanqu.personal.tingche.tingche_guanlicheliang;
 import com.example.maxixi.yuanqu.personal.tingche.tingchejilu_personal_list;
 import com.example.maxixi.yuanqu.personal.usermsset;
 import com.example.maxixi.yuanqu.personal.waimaijilu.waimaijilu;
@@ -99,6 +100,15 @@ public class Fragmentpersonal extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), Yuanqufujilu.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView gunanliwodecheliang=(TextView)view.findViewById(R.id.personal_guanliwodecheliang);
+        gunanliwodecheliang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(),tingche_guanlicheliang.class);
                 startActivity(intent);
             }
         });

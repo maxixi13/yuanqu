@@ -43,6 +43,7 @@ public class tingche_guanlicheliang extends AppCompatActivity {
     private EditText carnametext;
     private EditText modeltext;
     private EditText platenumtext;
+    private String cid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +100,7 @@ public class tingche_guanlicheliang extends AppCompatActivity {
                                 @Override
                                 public void onItemClick(View view, int position) {
                                     tianjiacheliangDialog();
+                                    cid = tingchecheliangList.get(position).getCid();
                                 }
                             });
                             runOnUiThread(new Runnable() {
@@ -125,9 +127,10 @@ public class tingche_guanlicheliang extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject();
                 try {
                     jsonObject.put("uid", uid);
-                    jsonObject.put("license", platenumtext);
-                    jsonObject.put("model", modeltext);
-                    jsonObject.put("brand", carnametext);
+                    jsonObject.put("cid",cid);
+                    jsonObject.put("license", platenumtext.getText());
+                    jsonObject.put("model", modeltext.getText());
+                    jsonObject.put("brand", carnametext.getText());
                     OkHttpClient okHttpClient = new OkHttpClient();
                     RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), String.valueOf(jsonObject));
                     Request request = new Request.Builder().url(getString(R.string.tianjiacheliang_url)).post(requestBody).build();
@@ -146,6 +149,8 @@ public class tingche_guanlicheliang extends AppCompatActivity {
                                 public void run() {
                                     dialog.dismiss();
                                     Toast.makeText(tingche_guanlicheliang.this, "提交成功", Toast.LENGTH_SHORT).show();
+                                    tingchecheliangList.clear();
+                                    getchelianglist();
                                 }
                             });
                         }

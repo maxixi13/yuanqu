@@ -51,6 +51,9 @@ public class Glogindenglufg extends Fragment {
         ceshi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences.Editor editor = getContext().getSharedPreferences("userdata", Context.MODE_PRIVATE).edit();//测试完删除ddd
+                editor.putString("uid","1");
+                editor.apply();
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 getActivity().finish();
                 startActivity(intent);

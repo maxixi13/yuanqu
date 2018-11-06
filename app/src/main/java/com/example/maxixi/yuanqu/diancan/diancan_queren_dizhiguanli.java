@@ -126,9 +126,6 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
                                         finish();
                                     }
 
-
-
-
                                 }
                             });
                             dizhiguanliadapter.setmOnbianjiClickListener(new Dizhiguanliadapter.OnbianjiClickListener() {

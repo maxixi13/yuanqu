@@ -151,7 +151,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center|right"
-                            android:text="@string/weixin"
+                            android:text="@string/zhifubao"
                             android:textColor="@color/black"
                             android:textSize="17sp" />
                     </LinearLayout>

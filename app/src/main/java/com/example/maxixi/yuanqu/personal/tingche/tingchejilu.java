@@ -124,9 +124,9 @@ public class tingchejilu extends AppCompatActivity {
                 JSONObject jsonObject=new JSONObject();
                 try {
                     jsonObject.put("uid",uid);
-                    jsonObject.put("license",platenumtext);
-                    jsonObject.put("model",modeltext);
-                    jsonObject.put("brand",carnametext);
+                    jsonObject.put("license",platenumtext.getText());
+                    jsonObject.put("model",modeltext.getText());
+                    jsonObject.put("brand",carnametext.getText());
                     OkHttpClient okHttpClient=new OkHttpClient();
                     RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), String.valueOf(jsonObject));
                     Request request=new Request.Builder().url(getString(R.string.tianjiacheliang_url)).post(requestBody).build();
@@ -163,7 +163,7 @@ public class tingchejilu extends AppCompatActivity {
             @Override
             public void run() {
                 OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("uid", "null").build();
+                FormBody formBody = new FormBody.Builder().add("uid", uid).build();
                 Request request = new Request.Builder().url(getString(R.string.yonghutingcheshoufeiliebiao_url)).post(formBody).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {

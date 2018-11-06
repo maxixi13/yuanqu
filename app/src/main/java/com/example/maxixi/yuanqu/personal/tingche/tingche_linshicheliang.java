@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
@@ -80,6 +81,14 @@ public class tingche_linshicheliang extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 zhifubaozhifu();
+            }
+        });
+
+        Button yuekachongzhi=(Button)findViewById(R.id.linshijiaofei_chongzhiyueka_button);
+        yuekachongzhi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                zhifubaozhifuyuekajiaofei();
             }
         });
 
@@ -164,6 +173,42 @@ public class tingche_linshicheliang extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     zhifubaolei zhifubaolei = new zhifubaolei(tingche_linshicheliang.this, tingche_linshicheliang.this, sumfee.getText().toString(), "临时缴费",outoder,getString(R.string.tingchejiaofei_url));
+                                    zhifubaolei.payV2(getWindow().getDecorView());
+                                }
+                            });
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        }).start();
+    }
+
+    private void zhifubaozhifuyuekajiaofei() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient = new OkHttpClient();
+                FormBody formBody = new FormBody.Builder().add("uid", uid).add("carNo", String.valueOf(license_plate.getText())).add("money", "0.01").add("paytype", "支付宝").build();
+                Request request = new Request.Builder().url(getString(R.string.yuekachongzhi_url)).post(formBody).build();
+                Call call = okHttpClient.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("错误", String.valueOf(e));
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String responseData = response.body().string();
+                        try {
+                            JSONObject jsonObject=new JSONObject(responseData);
+                            final String outoder=jsonObject.getString("data");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    zhifubaolei zhifubaolei = new zhifubaolei(tingche_linshicheliang.this, tingche_linshicheliang.this, "0.01", "月卡充值",outoder,getString(R.string.yuekachongzhi_url));
                                     zhifubaolei.payV2(getWindow().getDecorView());
                                 }
                             });

@@ -3,7 +3,7 @@
     <string name="shouye_image_url">http://192.168.11.165</string>
     <string name="waimaishouye_image_url">http://192.168.11.165</string>
     <string name="touxiang_image_url">http://192.168.11.122</string>
-    <string name="shouye_url">http://192.168.11.165/index</string>
+    <string name="shouye_url">http://192.168.11.165/index/index/index1</string>
     <string name="chuangyefuwu_url">http://192.168.11.122/index/Consultationdetails/entrepreneurship_list</string>
     <string name="jinrongfuwu_url">http://192.168.11.122/index/Consultationdetails/finance_list</string>
     <string name="qiyefuwu_url">http://192.168.11.122/index/Consultationdetails/enterprise_list</string>

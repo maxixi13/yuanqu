@@ -216,8 +216,8 @@ public class tingche_yuekacheliang extends AppCompatActivity {
             @Override
             public void run() {
                 OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("uid", "1").add("carNo", String.valueOf(license_plate.getText())).add("money", "0.01").add("paytype", "支付宝").build();
-                Request request = new Request.Builder().url(getString(R.string.yuekachongzhi_url)).post(formBody).build();
+                FormBody formBody = new FormBody.Builder().add("uid", uid).add("carNo", String.valueOf(license_plate.getText())).add("money", "150").add("paytype", "支付宝").build();
+                Request request = new Request.Builder().url(getString(R.string.yuekaxufei_url)).post(formBody).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
                     @Override
@@ -234,7 +234,7 @@ public class tingche_yuekacheliang extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    zhifubaolei zhifubaolei = new zhifubaolei(tingche_yuekacheliang.this, tingche_yuekacheliang.this, "0.01", "月卡费用",outoder,getString(R.string.yuekachongzhi_url));
+                                    zhifubaolei zhifubaolei = new zhifubaolei(tingche_yuekacheliang.this, tingche_yuekacheliang.this, "150", "月卡费用",outoder,getString(R.string.yuekaxufei_url));
                                     zhifubaolei.payV2(getWindow().getDecorView());
                                 }
                             });

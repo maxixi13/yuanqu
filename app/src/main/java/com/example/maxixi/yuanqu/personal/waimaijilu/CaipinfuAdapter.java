@@ -69,6 +69,7 @@ public class CaipinfuAdapter extends RecyclerView.Adapter<CaipinfuAdapter.ViewHo
         holder.recyclerView.setLayoutManager(layoutManager);
         holder.recyclerView.setAdapter(caipinAdapter);
 
+
         //判断是否设置了监听器 点击事件
         if (mOnItemClickListener != null) {
             //为ItemView设置监听器
@@ -80,6 +81,12 @@ public class CaipinfuAdapter extends RecyclerView.Adapter<CaipinfuAdapter.ViewHo
                 }
             });
         }
+
+        if (caipinfubean.getStatus()==1){
+            holder.querenbutton.setVisibility(View.GONE);
+        }
+
+
 
     }
 

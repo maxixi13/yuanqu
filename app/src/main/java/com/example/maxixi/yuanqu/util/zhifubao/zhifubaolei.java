@@ -5,14 +5,23 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
+import com.example.maxixi.yuanqu.MainActivity;
+import com.example.maxixi.yuanqu.R;
+import com.example.maxixi.yuanqu.personal.tingche.tingche_yuekacheliang;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Map;
@@ -32,6 +41,10 @@ public class zhifubaolei {
     private String title;
     private String pid;
     private String backurl;
+    private String backpid;
+    private AlertDialog dialog;
+    private TextView zhifumassage;
+    private Button queren;
 
     public zhifubaolei(Context context,Activity activity,String sum,String title,String pid,String backurl){
         this.context=context;
@@ -75,9 +88,18 @@ public class zhifubaolei {
                      */
                     String resultInfo = payResult.getResult();// 同步返回需要验证的信息
                     String resultStatus = payResult.getResultStatus();
+                    try {
+                        JSONObject jsonObject=new JSONObject(resultInfo);
+                        JSONObject jsonObjectcl=jsonObject.getJSONObject("alipay_trade_app_pay_response");
+                        backpid = jsonObjectcl.getString("out_trade_no");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
+                        zhifuDialog();
+                        zhifumassage.setText("支付成功");
                         Toast.makeText(context, "支付成功", Toast.LENGTH_SHORT).show();
                         sendfanhui();
                     } else {
@@ -97,7 +119,7 @@ public class zhifubaolei {
             @Override
             public void run() {
                 OkHttpClient okHttpClient=new OkHttpClient();
-                FormBody formBody=new FormBody.Builder().add("pid",pid).add("money",sum).build();
+                FormBody formBody=new FormBody.Builder().add("pid",backpid).add("money",sum).build();
                 final Request request=new Request.Builder().url(backurl).post(formBody).build();
                 Call call=okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
@@ -141,7 +163,7 @@ public class zhifubaolei {
          * orderInfo的获取必须来自服务端；
          */
         boolean rsa2 = (RSA2_PRIVATE.length() > 0);
-        Map<String, String> params = OrderInfoUtil2_0.buildOrderParamMap(APPID, rsa2,sum,title);
+        Map<String, String> params = OrderInfoUtil2_0.buildOrderParamMap(APPID, rsa2,sum,title,pid);
         String orderParam = OrderInfoUtil2_0.buildOrderParam(params);
 
         String privateKey = rsa2 ? RSA2_PRIVATE : RSA_PRIVATE;
@@ -154,7 +176,9 @@ public class zhifubaolei {
             public void run() {
                 PayTask alipay = new PayTask(activity);
                 Map<String, String> result = alipay.payV2(orderInfo, true);
-                Log.i("msp", result.toString());
+                Log.e("msp",result.toString());
+
+                //out_trade_no
 
                 Message msg = new Message();
                 msg.what = SDK_PAY_FLAG;
@@ -165,5 +189,29 @@ public class zhifubaolei {
 
         Thread payThread = new Thread(payRunnable);
         payThread.start();
+    }
+
+    private void zhifuDialog() {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        dialog = builder.create();
+        final View view = View.inflate(context, R.layout.pay_dialog, null);
+        dialog.setView(view, 0, 0, 0, 0);// 设置边距为0,保证在2.x的版本上运行没问题
+
+        zhifumassage = (TextView)view.findViewById(R.id.pay_dialog_text);
+        queren = (Button)view.findViewById(R.id.pay_dialog_button);
+
+        queren.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context,MainActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);//透明
+        dialog.show();
+
     }
 }

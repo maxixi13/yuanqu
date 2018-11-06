@@ -16,6 +16,8 @@ import com.example.maxixi.yuanqu.GlideImageLoader;
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.RecyclerViewGroup.hdxx;
 import com.example.maxixi.yuanqu.RecyclerViewGroup.hdxxAdapter;
+import com.example.maxixi.yuanqu.cloud.cloud_chuangye_chuangye;
+import com.example.maxixi.yuanqu.cloud.cloud_zhengfu_zhengfu;
 import com.example.maxixi.yuanqu.diancan.diancan;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
@@ -145,7 +147,7 @@ public class Fragmentnavigation extends Fragment {
                         JSONArray array = jsonObjectget.getJSONArray("activity");
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject jsonObjectin = array.getJSONObject(i);
-                            final hdxx madada = new hdxx(jsonObjectin.getString("title"), jsonObjectin.getString("simple"), getString(R.string.shouye_image_url) + jsonObjectin.getString("path"));
+                            final hdxx madada = new hdxx(jsonObjectin.getString("title"), jsonObjectin.getString("simple"), getString(R.string.shouye_image_url) + jsonObjectin.getString("path"),jsonObjectin.getString("vid"));
                             hdxxList.add(madada);
                             final hdxxAdapter adapterhdxx = new hdxxAdapter(hdxxList);
                             getActivity().runOnUiThread(new Runnable() {
@@ -155,7 +157,9 @@ public class Fragmentnavigation extends Fragment {
                                     adapterhdxx.setOnItemClickListener(new hdxxAdapter.OnItemClickListener() {
                                         @Override
                                         public void onItemClick(View view, int position) {
-                                            Toast.makeText(getContext(), "哈哈哈" + hdxxList.get(position), Toast.LENGTH_SHORT).show();
+                                            Intent intent=new Intent(getContext(),cloud_chuangye_chuangye.class);
+                                            intent.putExtra("lid",hdxxList.get(position).getId());
+                                            startActivity(intent);
                                         }
                                     });
                                 }
@@ -166,9 +170,17 @@ public class Fragmentnavigation extends Fragment {
                         JSONArray arrayzcxx = jsonObjectget.getJSONArray("policy");
                         for (int i = 0; i < arrayzcxx.length(); i++) {
                             JSONObject jsonObjectin = arrayzcxx.getJSONObject(i);
-                            hdxx madada = new hdxx(jsonObjectin.getString("title"), jsonObjectin.getString("simple"), getString(R.string.shouye_image_url) + jsonObjectin.getString("path"));
+                            hdxx madada = new hdxx(jsonObjectin.getString("title"), jsonObjectin.getString("simple"), getString(R.string.shouye_image_url) + jsonObjectin.getString("path"),jsonObjectin.getString("pid"));
                             zcxxList.add(madada);
                             final hdxxAdapter adapterzcxx = new hdxxAdapter(zcxxList);
+                            adapterzcxx.setOnItemClickListener(new hdxxAdapter.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(View view, int position) {
+                                    Intent intent=new Intent(getContext(),cloud_zhengfu_zhengfu.class);
+                                    intent.putExtra("lid",zcxxList.get(position).getId());
+                                    startActivity(intent);
+                                }
+                            });
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {

@@ -82,6 +82,17 @@
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 
+            <Button
+                android:id="@+id/waimaijilu_item_yiqueren_button"
+                android:layout_width="80dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="80dp"
+                android:background="@drawable/personal_yuanjiaojuxingsuosuogray"
+                android:text="@string/yisongda"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
 
         </LinearLayout>
     </LinearLayout>

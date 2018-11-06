@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
@@ -61,7 +62,7 @@ public class waimaijilu extends AppCompatActivity {
             @Override
             public void run() {
                 OkHttpClient okHttpClient=new OkHttpClient();
-                FormBody formBody=new FormBody.Builder().add("uid","1").build();
+                FormBody formBody=new FormBody.Builder().add("uid",uid).build();
                 Request request=new Request.Builder().url(getString(R.string.dingdanliebiao_url)).post(formBody).build();
                 Call call=okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
@@ -93,7 +94,16 @@ public class waimaijilu extends AppCompatActivity {
                             caipinfuAdapter.setOnItemClickListener(new CaipinfuAdapter.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(View view, int position) {
-                                    Log.e("--","--"+caipinfubeanList.get(position).getOid());
+                                    if (caipinfubeanList.get(position).getStatus()==1){
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Toast.makeText(waimaijilu.this,"已确认",Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                    }else {
+                                        qurendongda(caipinfubeanList.get(position).getOid());
+                                    }
                                 }
                             });
                             runOnUiThread(new Runnable() {
@@ -106,6 +116,36 @@ public class waimaijilu extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                    }
+                });
+            }
+        }).start();
+    }
+
+    private void qurendongda(final String oid) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient=new OkHttpClient();
+                FormBody formBody=new FormBody.Builder().add("oid",oid).build();
+                Request request=new Request.Builder().url(getString(R.string.querenshouhuo_url)).post(formBody).build();
+                Call call=okHttpClient.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("fail", String.valueOf(e));
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(waimaijilu.this,"已确认",Toast.LENGTH_SHORT).show();
+                                caipinfubeanList.clear();
+                                getjilulist();
+                            }
+                        });
                     }
                 });
             }

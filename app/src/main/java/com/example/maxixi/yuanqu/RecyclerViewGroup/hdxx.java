@@ -4,11 +4,13 @@ public class hdxx {
     private String name;
     private String nametext;
     private String imageId;
+    private String id;
 
-    public hdxx(String name, String nametext, String imageId) {
+    public hdxx(String name, String nametext, String imageId,String id) {
         this.name = name;
         this.nametext = nametext;
         this.imageId = imageId;
+        this.id=id;
     }
 
     public String getname() {
@@ -21,5 +23,9 @@ public class hdxx {
 
     public String getimageId() {
         return imageId;
+    }
+
+    public String getId(){
+        return id;
     }
 }
