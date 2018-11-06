@@ -47,18 +47,18 @@ public class Glogindenglufg extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         View view = inflater.inflate(R.layout.activity_loginpage_denglu, container, false);
-        Button ceshi=(Button)view.findViewById(R.id.ceshi);
-        ceshi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences.Editor editor = getContext().getSharedPreferences("userdata", Context.MODE_PRIVATE).edit();//测试完删除ddd
-                editor.putString("uid","5");
-                editor.apply();
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                getActivity().finish();
-                startActivity(intent);
-            }
-        });
+//        Button ceshi=(Button)view.findViewById(R.id.ceshi);
+//        ceshi.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                SharedPreferences.Editor editor = getContext().getSharedPreferences("userdata", Context.MODE_PRIVATE).edit();//测试完删除ddd
+//                editor.putString("uid","5");
+//                editor.apply();
+//                Intent intent = new Intent(getContext(), MainActivity.class);
+//                getActivity().finish();
+//                startActivity(intent);
+//            }
+//        });
         //view
         shoujihao = (EditText) view.findViewById(R.id.login_denglu_shoujihao_text);
         mima = (EditText) view.findViewById(R.id.login_denglu_mima_text);
