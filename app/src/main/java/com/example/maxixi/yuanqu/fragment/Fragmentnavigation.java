@@ -10,8 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.maxixi.yuanqu.GlideImageLoader;
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.RecyclerViewGroup.hdxx;
@@ -45,6 +48,10 @@ public class Fragmentnavigation extends Fragment {
     private RecyclerView recyclerViewzcxx;
     private List<String> imagesBanner = new ArrayList<>();
     private String bannerurl;
+    private ImageView zcxximg;
+    private ImageView hdxximg;
+    private TextView zcxxtitletext;
+    private TextView hdxxtitletext;
 
 
     @Override
@@ -52,6 +59,11 @@ public class Fragmentnavigation extends Fragment {
         View view = inflater.inflate(R.layout.activity_home, container, false);
 
         //viewlist
+        zcxximg = (ImageView)view.findViewById(R.id.zcxx_image);
+        hdxximg = (ImageView)view.findViewById(R.id.hdxx_image);
+        zcxxtitletext=(TextView)view.findViewById(R.id.zcxx_title_text);
+        hdxxtitletext=(TextView)view.findViewById(R.id.hdxx_title_text);
+
         recyclerView = (RecyclerView) view.findViewById(R.id.relativelayout_hdxx);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
@@ -145,7 +157,28 @@ public class Fragmentnavigation extends Fragment {
 
                         //活动信息
                         JSONArray array = jsonObjectget.getJSONArray("activity");
-                        for (int i = 0; i < array.length(); i++) {
+                        for (int i = 1; i < array.length(); i++) {
+                            final JSONObject jsonObjectout=array.getJSONObject(0);
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        Glide.with(getContext()).load(getString(R.string.shouye_image_url)+jsonObjectout.getString("path")).into(hdxximg);
+                                        final String vid=jsonObjectout.getString("vid");
+                                        hdxxtitletext.setText(jsonObjectout.getString("title"));
+                                        hdxximg.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Intent intent=new Intent(getContext(),cloud_chuangye_chuangye.class);
+                                                intent.putExtra("lid",vid);
+                                                startActivity(intent);
+                                            }
+                                        });
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
                             JSONObject jsonObjectin = array.getJSONObject(i);
                             final hdxx madada = new hdxx(jsonObjectin.getString("title"), jsonObjectin.getString("simple"), getString(R.string.shouye_image_url) + jsonObjectin.getString("path"),jsonObjectin.getString("vid"));
                             hdxxList.add(madada);
@@ -168,7 +201,28 @@ public class Fragmentnavigation extends Fragment {
 
                         //政策信息
                         JSONArray arrayzcxx = jsonObjectget.getJSONArray("policy");
-                        for (int i = 0; i < arrayzcxx.length(); i++) {
+                        for (int i = 1; i < arrayzcxx.length()-1; i++) {
+                            final JSONObject jsonObjectout=array.getJSONObject(0);
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        Glide.with(getContext()).load(getString(R.string.shouye_image_url)+jsonObjectout.getString("path")).into(zcxximg);
+                                        zcxxtitletext.setText(jsonObjectout.getString("title"));
+                                        final String pid=jsonObjectout.getString("pid");
+                                        zcxximg.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Intent intent=new Intent(getContext(),cloud_zhengfu_zhengfu.class);
+                                                intent.putExtra("lid",pid);
+                                                startActivity(intent);
+                                            }
+                                        });
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
                             JSONObject jsonObjectin = arrayzcxx.getJSONObject(i);
                             hdxx madada = new hdxx(jsonObjectin.getString("title"), jsonObjectin.getString("simple"), getString(R.string.shouye_image_url) + jsonObjectin.getString("path"),jsonObjectin.getString("pid"));
                             zcxxList.add(madada);
