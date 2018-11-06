@@ -52,7 +52,7 @@ public class Glogindenglufg extends Fragment {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = getContext().getSharedPreferences("userdata", Context.MODE_PRIVATE).edit();//测试完删除ddd
-                editor.putString("uid","1");
+                editor.putString("uid","5");
                 editor.apply();
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 getActivity().finish();

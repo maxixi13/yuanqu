@@ -173,7 +173,7 @@ public class Fragmentpersonal extends Fragment {
                         try {
                             JSONObject jsonObject = new JSONObject(responseData);
                             int code = jsonObject.getInt("code");
-                            if (code == 202) {
+                            if (code == -1) {
                                 Intent intent = new Intent(getContext(), renzhengqiye.class);
                                 startActivity(intent);
                             } else if (code == 200) {
@@ -184,23 +184,24 @@ public class Fragmentpersonal extends Fragment {
                                         Toast.makeText(getContext(),"您已申请过",Toast.LENGTH_SHORT).show();
                                     }
                                 });
-                            } else if (code==-1) {
-                                Log.e("sendcheckqiye", String.valueOf(code));
-                                getActivity().runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Toast.makeText(getContext(),"待审核状态",Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            } else if (code == -2) {
-                                Log.e("sendcheckqiye", String.valueOf(code));
-                                getActivity().runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Toast.makeText(getContext(),"审核中状态",Toast.LENGTH_SHORT).show();
-                                    }
-                                });
                             }
+//                            else if (code==202) {
+//                                Log.e("sendcheckqiye", String.valueOf(code));
+//                                getActivity().runOnUiThread(new Runnable() {
+//                                    @Override
+//                                    public void run() {
+//                                        Toast.makeText(getContext(),"待审核状态",Toast.LENGTH_SHORT).show();
+//                                    }
+//                                });
+//                            } else if (code == -2) {
+//                                Log.e("sendcheckqiye", String.valueOf(code));
+//                                getActivity().runOnUiThread(new Runnable() {
+//                                    @Override
+//                                    public void run() {
+//                                        Toast.makeText(getContext(),"审核中状态",Toast.LENGTH_SHORT).show();
+//                                    }
+//                                });
+//                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

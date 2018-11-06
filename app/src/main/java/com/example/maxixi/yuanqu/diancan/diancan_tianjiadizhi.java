@@ -132,6 +132,7 @@ public class diancan_tianjiadizhi extends AppCompatActivity {
                             Thread.sleep(1000);
                             finish();
                             Intent intent=new Intent(diancan_tianjiadizhi.this,diancan_queren_dizhiguanli.class);
+                            intent.putExtra("signal","2");
                             startActivity(intent);
                         }
                     } catch (IOException | InterruptedException e) {
