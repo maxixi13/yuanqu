@@ -39,7 +39,7 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
     private String uid;
     private RecyclerView recyclerViewzcxx;
     private String aid;
-    private int signal =0;
+    private String signal ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
         setContentView(R.layout.ectivity_diancan_queren_dizhiguanli);
 
         Intent intent = getIntent();
-        signal = parseInt(intent.getStringExtra("signal"));
+        signal =intent.getStringExtra("signal");
 
         SharedPreferences sharedPreferences = getSharedPreferences("userdata", MODE_PRIVATE);
         uid = sharedPreferences.getString("uid", "null");
@@ -72,6 +72,7 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
                 Intent intent = new Intent(diancan_queren_dizhiguanli.this, diancan_tianjiadizhi.class);
                 intent.putExtra("getid", "uid");
                 intent.putExtra("getva", uid);
+                intent.putExtra("signal",signal);
                 startActivity(intent);
                 finish();
             }
@@ -116,8 +117,8 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
                                 @Override
                                 public void onLinearItem(View view, int position) {
 //
-                                    if (signal==1){
-                                        Intent intent=new Intent();
+                                    if (signal.equals("1")){
+                                        Intent intent=new Intent(diancan_queren_dizhiguanli.this,diancan_queren.class);
                                         intent.putExtra("aid",dizhiguanlileiList.get(position).getAid());
                                         intent.putExtra("name",dizhiguanlileiList.get(position).getName());
                                         intent.putExtra("tel",dizhiguanlileiList.get(position).getDianhua());
@@ -134,6 +135,7 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
                                     Intent intent = new Intent(diancan_queren_dizhiguanli.this, diancan_tianjiadizhi.class);
                                     intent.putExtra("getid", "aid");
                                     intent.putExtra("getva", dizhiguanlileiList.get(position).getAid());
+                                    intent.putExtra("signal",signal);
                                     startActivity(intent);
                                     finish();
                                 }

@@ -28,6 +28,8 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import static java.lang.Integer.parseInt;
+
 public class diancan_tianjiadizhi extends AppCompatActivity {
 
     private EditText lianxiren;
@@ -36,6 +38,7 @@ public class diancan_tianjiadizhi extends AppCompatActivity {
     private int status;
     private String getid;
     private String getva;
+    private String signal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ public class diancan_tianjiadizhi extends AppCompatActivity {
         Intent intent=getIntent();
         getid = intent.getStringExtra("getid");
         getva = intent.getStringExtra("getva");
+        signal = intent.getStringExtra("signal");
 
 
         final ImageView shiView = (ImageView) findViewById(R.id.diancan_tianjiadizhi_shi);
@@ -130,10 +134,10 @@ public class diancan_tianjiadizhi extends AppCompatActivity {
                                 }
                             });
                             Thread.sleep(1000);
-                            finish();
                             Intent intent=new Intent(diancan_tianjiadizhi.this,diancan_queren_dizhiguanli.class);
-                            intent.putExtra("signal","2");
+                            intent.putExtra("signal",signal);
                             startActivity(intent);
+                            finish();
                         }
                     } catch (IOException | InterruptedException e) {
                         e.printStackTrace();

@@ -83,7 +83,6 @@ public class Fragmentchuangyechuangye extends Fragment {
                                 cloud_zhidao_adapter.setOnItemClickListener(new cloud_zhidao_adapter.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(View view, int position) {
-                                        Toast.makeText(getContext(), "click " + zhidaoList.get(position), Toast.LENGTH_SHORT).show();
                                         cloud_zhidao_adapter.setOnItemClickListener(new cloud_zhidao_adapter.OnItemClickListener() {
                                             @Override
                                             public void onItemClick(View view, int position) {

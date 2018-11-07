@@ -47,6 +47,9 @@ public class Glogindenglufg extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         View view = inflater.inflate(R.layout.activity_loginpage_denglu, container, false);
+
+
+//
 //        Button ceshi=(Button)view.findViewById(R.id.ceshi);
 //        ceshi.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -59,6 +62,9 @@ public class Glogindenglufg extends Fragment {
 //                startActivity(intent);
 //            }
 //        });
+
+
+
         //view
         shoujihao = (EditText) view.findViewById(R.id.login_denglu_shoujihao_text);
         mima = (EditText) view.findViewById(R.id.login_denglu_mima_text);
