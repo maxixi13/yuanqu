@@ -27,20 +27,22 @@
 
             <ImageButton
                 android:id="@+id/banner_tingche"
-                android:layout_width="171dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="60dp"
                 android:layout_marginBottom="6dp"
                 android:layout_marginEnd="6dp"
-                android:background="@drawable/banner_buttontingche"
-                android:scaleType="fitXY" />
+                android:layout_marginStart="12dp"
+                android:background="@drawable/banner_buttontingche" />
 
             <ImageButton
                 android:id="@+id/banner_diancan"
-                android:layout_width="171dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="60dp"
                 android:layout_marginBottom="6dp"
                 android:layout_marginStart="6dp"
-                android:scaleType="fitXY"
+                android:layout_marginEnd="12dp"
                 android:background="@drawable/banner_buttondiancan" />
 
         </LinearLayout>
