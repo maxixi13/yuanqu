@@ -43,14 +43,6 @@
                 android:background="@drawable/button_diancan" />
 
             <ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="135dp"
-                android:layout_marginLeft="17dp"
-                android:layout_marginTop="11dp"
-                android:layout_marginRight="17dp"
-                android:background="@drawable/button_changdi" />
-
-            <ImageButton
                 android:id="@+id/parkservice_yuannei"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
@@ -58,6 +50,14 @@
                 android:layout_marginTop="11dp"
                 android:layout_marginRight="17dp"
                 android:background="@drawable/button_fuwu" />
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginRight="17dp"
+                android:background="@drawable/button_changdi" />
 
         </LinearLayout>
     </ScrollView>

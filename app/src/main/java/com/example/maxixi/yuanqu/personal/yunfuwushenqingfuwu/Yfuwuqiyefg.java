@@ -65,7 +65,7 @@ public class Yfuwuqiyefg extends Fragment {
                         JSONArray array = jsonObject.getJSONArray("data");
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject jsonObjectchil = array.getJSONObject(i);
-                            yunfuwujilulei madada = new yunfuwujilulei(jsonObjectchil.getString("type"), jsonObjectchil.getString("state"), jsonObjectchil.getString("title"), jsonObjectchil.getString("ctime"),jsonObjectchil.getString("cid"));
+                            yunfuwujilulei madada = new yunfuwujilulei(jsonObjectchil.getString("type"), jsonObjectchil.getString("state"), jsonObjectchil.getString("qid"), jsonObjectchil.getString("ctime"),jsonObjectchil.getString("cid"));
                             yunfuwuList.add(madada);
                             final Yunfuwujiluadapter yunfuwujiluadapter = new Yunfuwujiluadapter(yunfuwuList);
                             getActivity().runOnUiThread(new Runnable() {

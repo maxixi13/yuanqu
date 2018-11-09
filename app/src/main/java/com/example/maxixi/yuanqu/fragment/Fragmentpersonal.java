@@ -51,17 +51,17 @@ public class Fragmentpersonal extends Fragment {
         View view = inflater.inflate(R.layout.dctivity_personal, container, false);
 
         //view
-        username = (TextView)view.findViewById(R.id.personal_username_text);
+        username = (TextView) view.findViewById(R.id.personal_username_text);
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userdata", Context.MODE_PRIVATE);
         uid = sharedPreferences.getString("uid", "null");
 
 
-        circleImageView = (CircleImageView)view.findViewById(R.id.personal_touxiang_circleimageview);
+        circleImageView = (CircleImageView) view.findViewById(R.id.personal_touxiang_circleimageview);
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getContext(),usermsset.class);
+                Intent intent = new Intent(getContext(), usermsset.class);
                 startActivity(intent);
             }
         });
@@ -104,11 +104,11 @@ public class Fragmentpersonal extends Fragment {
             }
         });
 
-        TextView gunanliwodecheliang=(TextView)view.findViewById(R.id.personal_guanliwodecheliang);
+        TextView gunanliwodecheliang = (TextView) view.findViewById(R.id.personal_guanliwodecheliang);
         gunanliwodecheliang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getContext(),tingche_guanlicheliang.class);
+                Intent intent = new Intent(getContext(), tingche_guanlicheliang.class);
                 startActivity(intent);
             }
         });
@@ -119,7 +119,7 @@ public class Fragmentpersonal extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), diancan_queren_dizhiguanli.class);
-                intent.putExtra("signal","2");
+                intent.putExtra("signal", "2");
                 startActivity(intent);
             }
         });
@@ -181,7 +181,7 @@ public class Fragmentpersonal extends Fragment {
                                 getActivity().runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Toast.makeText(getContext(),"您已申请过",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), "您已申请过", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
@@ -211,14 +211,14 @@ public class Fragmentpersonal extends Fragment {
         }).start();
     }
 
-    private void getuserms(){
+    private void getuserms() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                OkHttpClient okHttpClient=new OkHttpClient();
-                FormBody formBody=new FormBody.Builder().add("uid",uid).build();
-                Request request=new Request.Builder().url(getString(R.string.yonghugerenxinxi_url)).post(formBody).build();
-                Call call=okHttpClient.newCall(request);
+                OkHttpClient okHttpClient = new OkHttpClient();
+                FormBody formBody = new FormBody.Builder().add("uid", uid).build();
+                Request request = new Request.Builder().url(getString(R.string.yonghugerenxinxi_url)).post(formBody).build();
+                Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
@@ -227,21 +227,23 @@ public class Fragmentpersonal extends Fragment {
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        String responseData=response.body().string();
+                        String responseData = response.body().string();
                         try {
-                            JSONObject jsonObject=new JSONObject(responseData);
-                            JSONObject jsonObjectcl=jsonObject.getJSONObject("data");
-                            final String usernameget=jsonObjectcl.getString("username");
-                            final String touxiangurl=jsonObjectcl.getString("route");
-                            if (touxiangurl.length()!=0) {
-                                getActivity().runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        username.setText(usernameget);
+                            JSONObject jsonObject = new JSONObject(responseData);
+                            JSONObject jsonObjectcl = jsonObject.getJSONObject("data");
+                            final String usernameget = jsonObjectcl.getString("username");
+                            final String touxiangurl = jsonObjectcl.getString("route");
+
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    username.setText(usernameget);
+                                    if (touxiangurl.length() != 0) {
                                         Glide.with(getContext()).load(getString(R.string.touxiang_image_url) + touxiangurl).into(circleImageView);
                                     }
-                                });
-                            }
+                                }
+                            });
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

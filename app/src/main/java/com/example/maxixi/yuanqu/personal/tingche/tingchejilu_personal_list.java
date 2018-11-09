@@ -62,7 +62,7 @@ public class tingchejilu_personal_list extends AppCompatActivity {
             @Override
             public void run() {
                 OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("uid", "1").build();
+                FormBody formBody = new FormBody.Builder().add("uid", uid).build();
                 Request request = new Request.Builder().url(getString(R.string.yonghutingcheshoufeiliebiao_url)).post(formBody).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {

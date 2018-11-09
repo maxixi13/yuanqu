@@ -275,6 +275,7 @@ public class usermsset extends AppCompatActivity {
             public void run() {
                 OkHttpClient okHttpClient=new OkHttpClient();
                 File file = new File(getExternalCacheDir(), "user_image.jpg");
+                Log.e("---", String.valueOf(file));
                 MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM)
                         .addFormDataPart("uid",uid)
                         .addFormDataPart("img", "user_image.jpg", RequestBody.create(MediaType.parse("image/png"), file));
@@ -295,7 +296,7 @@ public class usermsset extends AppCompatActivity {
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        Log.e("--", "成功" + response);
+                        Log.e("--", "成功" + response.body().string());
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
