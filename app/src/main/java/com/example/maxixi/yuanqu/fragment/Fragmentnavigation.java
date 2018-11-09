@@ -121,8 +121,6 @@ public class Fragmentnavigation extends Fragment {
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                Toast.makeText(getActivity(), "嘿哈"+position+bannerurl, Toast.LENGTH_SHORT).show();
-
             }
         });
         banner.start();
