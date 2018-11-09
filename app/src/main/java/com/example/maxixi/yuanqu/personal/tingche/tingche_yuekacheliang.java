@@ -140,7 +140,6 @@ public class tingche_yuekacheliang extends AppCompatActivity {
             public void onClick(View v) {
                 dialog.dismiss();
                 Toast.makeText(tingche_yuekacheliang.this,"未开放",Toast.LENGTH_SHORT).show();
-                //getoutoder();
                 //getwxappid();
             }
         });
@@ -251,37 +250,12 @@ public class tingche_yuekacheliang extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
-
-    private void updatajiaofei() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                JSONObject jsonObject = new JSONObject();
-                try {
-                    jsonObject.put("uid", uid);
-                    jsonObject.put("carNo", license_plate.getText().toString());
-                    jsonObject.put("money", "150");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }
-
     private void getwxappid() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("money", "0.1").add("out_trade_no", "cd138").build();
+                FormBody formBody = new FormBody.Builder().add("money", "0.1").add("out_trade_no", "001").build();
                 Request request = new Request.Builder().url(getString(R.string.weixinappid_url)).post(formBody).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
@@ -324,16 +298,11 @@ public class tingche_yuekacheliang extends AppCompatActivity {
         request.prepayId = jsonObject.getString("prepayid");
         request.timeStamp = jsonObject.getString("timestamp");
 
-        //request.sign=jsonObject.getString("sign");
-        request.sign = genPayReq();
+        request.sign=jsonObject.getString("sign");
 
         iwxapi.sendReq(request);//发送调起微信的请求
 
     }
-
-    /**
-     * 生成签名
-     */
 
     // 246055aabecbfd2d48f61218e33f1d66
 
@@ -342,21 +311,21 @@ public class tingche_yuekacheliang extends AppCompatActivity {
 //        Thread payThread = new Thread(payRunnable);
 //        payThread.start();
 //    }
-    private String genPayReq() {
-
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("appid", request.appId);
-        contentValues.put("noncestr", request.nonceStr);
-        contentValues.put("package", request.packageValue);
-        contentValues.put("partnerid", request.partnerId);
-        contentValues.put("prepayid", request.prepayId);
-        contentValues.put("timestamp", request.timeStamp);
-
-        String sb = "appid=" + request.appId + "&noncestr=" + request.nonceStr + "&package=" + request.packageValue + "&partnerid=" + request.partnerId + "&prepayid=" + request.partnerId + "&timestamp=" + request.timeStamp+"&key="+Constants.API_KEY;
-        String appSign = MD5.getMessageDigest(sb.getBytes());
-        return appSign;
-
-    }
+//    private String genPayReq() {
+//
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put("appid", request.appId);
+//        contentValues.put("noncestr", request.nonceStr);
+//        contentValues.put("package", request.packageValue);
+//        contentValues.put("partnerid", request.partnerId);
+//        contentValues.put("prepayid", request.prepayId);
+//        contentValues.put("timestamp", request.timeStamp);
+//
+//        String sb = "appid=" + request.appId + "&noncestr=" + request.nonceStr + "&package=" + request.packageValue + "&partnerid=" + request.partnerId + "&prepayid=" + request.partnerId + "&timestamp=" + request.timeStamp+"&key="+Constants.API_KEY;
+//        String appSign = MD5.getMessageDigest(sb.getBytes());
+//        return appSign;
+//
+//    }
 
 
 }
