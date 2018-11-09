@@ -190,7 +190,7 @@ public class cloud_qiyefuwu_gongshangzhuceSQ extends AppCompatActivity {
                     JSONObject jsonObjectcl=jsonObject.getJSONObject("data");
                     String simple=jsonObjectcl.getString("simple")+jsonObjectcl.getString("telephone");
                     SpannableString spannableString = new SpannableString(simple);
-                    spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#09affb")), spannableString.length()-11,spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    //spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#09affb")), spannableString.length()-11,spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     simpletext.setText(simple);
                     simpletext.setText(spannableString);
 
