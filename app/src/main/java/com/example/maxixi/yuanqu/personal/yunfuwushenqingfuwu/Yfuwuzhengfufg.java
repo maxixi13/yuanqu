@@ -59,7 +59,7 @@ public class Yfuwuzhengfufg extends Fragment {
             public void run() {
                 try {
                     OkHttpClient client = new OkHttpClient();
-                    FormBody formBody = new FormBody.Builder().add("type", "1").add("id",uid).add("page", String.valueOf(page)).build();
+                    FormBody formBody = new FormBody.Builder().add("type", "1").add("uid",uid).add("page", String.valueOf(page)).build();
                     Request request = new Request.Builder().url(getString(R.string.gerenzhongxinyunfuwu_url)).post(formBody).build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();

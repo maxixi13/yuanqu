@@ -88,7 +88,7 @@
     <string name="tianjiacheliang">添加车辆</string>
     <string name="tianjiaxincheliang">添加新车辆</string>
     <string name="qingshurucheliangpinpai">请输入车辆品牌</string>
-    <string name="qingshurucheliangxinghao">请输入车辆信号</string>
+    <string name="qingshurucheliangxinghao">请输入车辆型号</string>
     <string name="qingshurucheliangpaizhao">请输入车辆牌照</string>
     <string name="quxiao">取消</string>
     <string name="linshijiaofei">临时缴费</string>

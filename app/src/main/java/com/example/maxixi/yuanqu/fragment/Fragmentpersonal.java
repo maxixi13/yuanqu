@@ -233,13 +233,15 @@ public class Fragmentpersonal extends Fragment {
                             JSONObject jsonObjectcl=jsonObject.getJSONObject("data");
                             final String usernameget=jsonObjectcl.getString("username");
                             final String touxiangurl=jsonObjectcl.getString("route");
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    username.setText(usernameget);
-                                    Glide.with(getContext()).load(getString(R.string.touxiang_image_url)+touxiangurl).into(circleImageView);
-                                }
-                            });
+                            if (touxiangurl.length()!=0) {
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        username.setText(usernameget);
+                                        Glide.with(getContext()).load(getString(R.string.touxiang_image_url) + touxiangurl).into(circleImageView);
+                                    }
+                                });
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
