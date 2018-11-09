@@ -57,7 +57,8 @@
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:hint="@string/qingshurumima"
-                android:singleLine="true"/>
+                android:singleLine="true"
+                android:inputType="textPassword"/>
         </LinearLayout>
 
         <ImageView

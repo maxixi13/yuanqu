@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -11,57 +10,57 @@
         android:layout_height="?android:actionBarSize"
         android:background="?attr/colorPrimary"
         android:title="@string/title_park"
-        android:titleTextColor="@android:color/white">
-    </Toolbar>
+        android:titleTextColor="@android:color/white"/>
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="?android:actionBarSize">
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="?android:attr/actionBarSize"
-        android:background="@color/beijingf5f5f5">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?android:actionBarSize">
 
-        <ImageButton
-            android:id="@+id/parkservice_tingchejiaofei"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="135dp"
-            android:layout_marginLeft="17dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginRight="17dp"
-            android:background="@drawable/button_tingche" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="?android:attr/actionBarSize"
+            android:background="@color/beijingf5f5f5"
+            android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/parkservice_yuanneidiancan"
-            android:layout_width="match_parent"
-            android:layout_height="135dp"
-            android:layout_marginLeft="17dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginRight="17dp"
-            android:background="@drawable/button_diancan" />
+            <ImageButton
+                android:id="@+id/parkservice_tingchejiaofei"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginRight="17dp"
+                android:background="@drawable/button_tingche" />
 
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="135dp"
-            android:layout_marginLeft="17dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginRight="17dp"
-            android:background="@drawable/button_changdi" />
+            <ImageButton
+                android:id="@+id/parkservice_yuanneidiancan"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginRight="17dp"
+                android:background="@drawable/button_diancan" />
 
-        <ImageButton
-            android:id="@+id/parkservice_yuannei"
-            android:layout_width="match_parent"
-            android:layout_height="135dp"
-            android:layout_marginLeft="17dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginRight="17dp"
-            android:background="@drawable/button_fuwu" />
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginRight="17dp"
+                android:background="@drawable/button_changdi" />
 
-    </LinearLayout>
-</ScrollView>
+            <ImageButton
+                android:id="@+id/parkservice_yuannei"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginRight="17dp"
+                android:background="@drawable/button_fuwu" />
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </android.support.constraint.ConstraintLayout>

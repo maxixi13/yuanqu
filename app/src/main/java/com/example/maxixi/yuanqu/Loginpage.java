@@ -1,5 +1,7 @@
 package com.example.maxixi.yuanqu;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -27,17 +29,17 @@ public class Loginpage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginpage);
 
-        CountDownTimer countDownTimer=new CountDownTimer(60*1000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-        }.start();
+//        CountDownTimer countDownTimer=new CountDownTimer(60*1000,1000) {
+//            @Override
+//            public void onTick(long millisUntilFinished) {
+//
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//
+//            }
+//        }.start();
 
 
         denglubutton=(TextView)findViewById(R.id.login_denglutext);
@@ -75,6 +77,15 @@ public class Loginpage extends AppCompatActivity {
         transaction = fragmentManager.beginTransaction().add(R.id.login_fg, glogindenglufg);
         fragment = glogindenglufg;
         transaction.commit();
+
+        SharedPreferences sharedPreferences=getSharedPreferences("userdata",MODE_PRIVATE);
+        String uid=sharedPreferences.getString("uid","null");
+        if (uid!=("null")){
+            Intent intent = new Intent(Loginpage.this, MainActivity.class);
+            finish();
+            startActivity(intent);
+        }
+
     }
 
 

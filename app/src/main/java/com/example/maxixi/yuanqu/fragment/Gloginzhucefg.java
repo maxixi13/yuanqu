@@ -148,9 +148,9 @@ public class Gloginzhucefg extends Fragment {
                             final JSONObject jsonObjectgetid = jsonObjectget.getJSONObject("data");
 
                             //保存用户id
-                            SharedPreferences.Editor editor = getContext().getSharedPreferences("userdata", MODE_PRIVATE).edit();
-                            editor.putString("uid", jsonObjectgetid.getString("uid"));
-                            editor.apply();
+//                            SharedPreferences.Editor editor = getContext().getSharedPreferences("userdata", MODE_PRIVATE).edit();
+//                            editor.putString("uid", jsonObjectgetid.getString("uid"));
+//                            editor.apply();
 
                         }
                     } catch (IOException e) {

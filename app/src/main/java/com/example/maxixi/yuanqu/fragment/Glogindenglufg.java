@@ -173,11 +173,11 @@ public class Glogindenglufg extends Fragment {
                         if (code == 200) {
                             Toast.makeText(getContext(), "登陆成功", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getContext(), MainActivity.class);
-                            getActivity().finish();
                             startActivity(intent);
                             SharedPreferences share = getContext().getSharedPreferences("Session", MODE_PRIVATE);
                             SharedPreferences.Editor editor = share.edit();
                             editor.clear().apply();
+                            getActivity().finish();
                         } else if (code == -2) {
                             Toast.makeText(getContext(), "用户密码错误", Toast.LENGTH_SHORT).show();
                         } else if (code == -1) {
