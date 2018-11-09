@@ -134,7 +134,7 @@ public class Gloginzhucefg extends Fragment {
                     //保持session
                     //首先从SharedPreferences中获取sessionid
                     SharedPreferences share = getContext().getSharedPreferences("Session", MODE_PRIVATE);
-                    String sessionid = share.getString("sessionid", null);
+                    String sessionid = share.getString("sessionid", "null");
 
                     RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), String.valueOf(jsonObject));
                     Request request = new Request.Builder().url(getString(R.string.yonghuzhuce_url)).addHeader("cookie", sessionid).post(requestBody).build();
