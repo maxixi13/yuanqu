@@ -151,7 +151,7 @@ public class Glogindenglufg extends Fragment {
                         //判断请求是否成功
                         if (response.isSuccessful()) {
                             //打印服务端返回结果
-                            Log.e("------", "--" + responsedata);
+                            Log.e("success",responsedata);
                             JSONObject jsonObjectget = new JSONObject(responsedata);
                             code = jsonObjectget.getInt("code");
                             JSONObject jsonObjectgetid = jsonObjectget.getJSONObject("data");
@@ -186,6 +186,9 @@ public class Glogindenglufg extends Fragment {
                             Toast.makeText(getContext(), "网络连接失败", Toast.LENGTH_SHORT).show();
                         } else if (code == 1) {
                             Toast.makeText(getContext(), "验证码错误", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (code == 500) {
+                            Toast.makeText(getContext(), "网络链接错误", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
