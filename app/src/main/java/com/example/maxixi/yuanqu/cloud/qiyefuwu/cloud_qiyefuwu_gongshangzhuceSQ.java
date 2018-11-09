@@ -188,11 +188,18 @@ public class cloud_qiyefuwu_gongshangzhuceSQ extends AppCompatActivity {
                     String responseData=response.body().string();
                     JSONObject jsonObject=new JSONObject(responseData);
                     JSONObject jsonObjectcl=jsonObject.getJSONObject("data");
-                    String simple=jsonObjectcl.getString("simple")+jsonObjectcl.getString("telephone");
-                    SpannableString spannableString = new SpannableString(simple);
+                    final String simple=jsonObjectcl.getString("simple")+jsonObjectcl.getString("telephone");
+                    final SpannableString spannableString = new SpannableString(simple);
                     //spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#09affb")), spannableString.length()-11,spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    simpletext.setText(simple);
-                    simpletext.setText(spannableString);
+
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            simpletext.setText(simple);
+                            simpletext.setText(spannableString);
+                        }
+                    });
 
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();

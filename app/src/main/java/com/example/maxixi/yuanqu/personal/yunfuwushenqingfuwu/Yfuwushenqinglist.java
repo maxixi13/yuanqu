@@ -99,9 +99,15 @@ public class Yfuwushenqinglist extends AppCompatActivity {
                     lianxiren.setText(jsonObjectcl.getString("name"));
                     lianxidianhua.setText(jsonObjectcl.getString("phone"));
 
-                    SpannableString spannableString = new SpannableString(jsonObjectcl.getString("simple"));
+                    final SpannableString spannableString = new SpannableString(jsonObjectcl.getString("simple"));
                     //spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#09affb")), spannableString.length()-4,spannableString.length()-1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    yuanneizixundianhua.setText(spannableString);
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            yuanneizixundianhua.setText(spannableString);
+                        }
+                    });
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
