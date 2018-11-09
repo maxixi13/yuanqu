@@ -187,9 +187,6 @@ public class Glogindenglufg extends Fragment {
                         } else if (code == 1) {
                             Toast.makeText(getContext(), "验证码错误", Toast.LENGTH_SHORT).show();
                         }
-                        else if (code == 500) {
-                            Toast.makeText(getContext(), "网络链接错误", Toast.LENGTH_SHORT).show();
-                        }
                     }
                 });
             }
