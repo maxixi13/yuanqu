@@ -14,56 +14,54 @@
         android:titleTextColor="@android:color/white">
     </Toolbar>
 
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="?android:actionBarSize">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="?android:attr/actionBarSize"
-        android:layout_marginBottom="?android:actionBarSize"
         android:background="@color/beijingf5f5f5">
 
         <ImageButton
             android:id="@+id/parkservice_tingchejiaofei"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="135dp"
             android:layout_marginLeft="17dp"
-            android:layout_marginRight="17dp"
             android:layout_marginTop="11dp"
+            android:layout_marginRight="17dp"
             android:background="@drawable/button_tingche" />
 
         <ImageButton
             android:id="@+id/parkservice_yuanneidiancan"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="135dp"
             android:layout_marginLeft="17dp"
-            android:layout_marginRight="17dp"
             android:layout_marginTop="11dp"
+            android:layout_marginRight="17dp"
             android:background="@drawable/button_diancan" />
 
         <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="135dp"
             android:layout_marginLeft="17dp"
-            android:layout_marginRight="17dp"
             android:layout_marginTop="11dp"
+            android:layout_marginRight="17dp"
             android:background="@drawable/button_changdi" />
 
         <ImageButton
             android:id="@+id/parkservice_yuannei"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="135dp"
             android:layout_marginLeft="17dp"
-            android:layout_marginRight="17dp"
             android:layout_marginTop="11dp"
-            android:layout_marginBottom="11dp"
+            android:layout_marginRight="17dp"
             android:background="@drawable/button_fuwu" />
 
     </LinearLayout>
+</ScrollView>
 
 
 </android.support.constraint.ConstraintLayout>
