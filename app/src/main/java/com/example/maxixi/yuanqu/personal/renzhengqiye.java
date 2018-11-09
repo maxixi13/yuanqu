@@ -33,13 +33,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.example.maxixi.yuanqu.MainActivity;
 import com.example.maxixi.yuanqu.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -63,6 +66,9 @@ public class renzhengqiye extends AppCompatActivity {
     private TextView xingming;
     private TextView lianxifangshi;
     private TextView xinyongdaima;
+    private Bitmap bitmapxiangce;
+    private Bitmap bitmapxiangji;
+    private Bitmap bitmapshangchuan;
 
 
     @Override
@@ -96,10 +102,11 @@ public class renzhengqiye extends AppCompatActivity {
         tijiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (qiyemingcheng.getText().toString().length()!=0 && xingming.getText().toString().length()!=0 && lianxifangshi.getText().toString().length()!=0 && xinyongdaima.getText().toString().length()!=0 ){
+                if (qiyemingcheng.getText().toString().length() != 0 && xingming.getText().toString().length() != 0 && lianxifangshi.getText().toString().length() != 0 && xinyongdaima.getText().toString().length() != 0) {
+                    Toast.makeText(renzhengqiye.this,"正在提交请稍后",Toast.LENGTH_SHORT).show();
                     sendOkhttp();
-                }else {
-                    Toast.makeText(renzhengqiye.this,"请填写完整",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(renzhengqiye.this, "请填写完整", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -111,21 +118,28 @@ public class renzhengqiye extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                    String enter_name=qiyemingcheng.getText().toString();
-                    String person=xingming.getText().toString();
-                    String person_tel=lianxifangshi.getText().toString();
-                    String credit=xinyongdaima.getText().toString();
-
-                    OkHttpClient okHttpClient = new OkHttpClient();
-                    File file = new File(getExternalCacheDir(), "output_image.jpg");
+                String enter_name = qiyemingcheng.getText().toString();
+                String person = xingming.getText().toString();
+                String person_tel = lianxifangshi.getText().toString();
+                String credit = xinyongdaima.getText().toString();
+                OkHttpClient okHttpClient = new OkHttpClient();
+                if (bitmapshangchuan == null) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(renzhengqiye.this, "请选择图片", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    File updatafile = makefile(bitmapshangchuan);
                     MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM)
                             .addFormDataPart("uid", uid)
                             .addFormDataPart("enter_name", enter_name)
-                            .addFormDataPart("img", "output_image.jpg", RequestBody.create(MediaType.parse("image/png"), file))
-                            .addFormDataPart("person",person)
-                            .addFormDataPart("person_tel",person_tel)
-                            .addFormDataPart("credit",credit);
-                    RequestBody requestBody =builder.build();
+                            .addFormDataPart("img", "updata_image.jpg", RequestBody.create(MediaType.parse("image/png"), updatafile))
+                            .addFormDataPart("person", person)
+                            .addFormDataPart("person_tel", person_tel)
+                            .addFormDataPart("credit", credit);
+                    RequestBody requestBody = builder.build();
                     Request request = new Request.Builder().url(getString(R.string.chengweiqiyeyonghu_url)).post(requestBody).build();
                     Call call = okHttpClient.newCall(request);
                     call.enqueue(new Callback() {
@@ -147,10 +161,14 @@ public class renzhengqiye extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     Toast.makeText(renzhengqiye.this, "提交成功", Toast.LENGTH_SHORT).show();
+                                    Intent intent=new Intent(renzhengqiye.this,MainActivity.class);
+                                    startActivity(intent);
                                 }
                             });
                         }
                     });
+                }
+
             }
         }).start();
     }
@@ -208,7 +226,7 @@ public class renzhengqiye extends AppCompatActivity {
             e.printStackTrace();
         }
         if (Build.VERSION.SDK_INT >= 24) {
-            imageUri = FileProvider.getUriForFile(renzhengqiye.this, "com.example.cameraalbumtest.fileprovider", outputImage);
+            imageUri = FileProvider.getUriForFile(renzhengqiye.this, "com.example.maxixi.yuanqu.fileprovider", outputImage);
         } else {
             imageUri = Uri.fromFile(outputImage);
         }
@@ -254,8 +272,8 @@ public class renzhengqiye extends AppCompatActivity {
                 if (resultCode == RESULT_OK) {
                     try {
                         //拍摄照片显示出来
-                        Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
-                        picture.setImageBitmap(bitmap);
+                        bitmapxiangji = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+                        picture.setImageBitmap(bitmapxiangji);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -325,11 +343,25 @@ public class renzhengqiye extends AppCompatActivity {
 
     private void displayImage(String imagePath) {
         if (imagePath != null) {
-            Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
-            picture.setImageBitmap(bitmap);
+            bitmapxiangce = BitmapFactory.decodeFile(imagePath);
+            picture.setImageBitmap(bitmapxiangce);
         } else {
             Toast.makeText(this, "获取图片失败", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    //生成file
+    public File makefile(Bitmap bitmap) {
+        File file = new File(getExternalCacheDir(), "updata_image.jpg");
+        try {
+            BufferedOutputStream baos = new BufferedOutputStream(new FileOutputStream(file));
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            baos.flush();
+            baos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return file;
     }
 
 

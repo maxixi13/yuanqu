@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.DocumentsContract;
@@ -25,13 +26,20 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.example.maxixi.yuanqu.MainActivity;
 import com.example.maxixi.yuanqu.R;
+import com.example.maxixi.yuanqu.fragment.Fragmentpersonal;
 
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -52,17 +60,21 @@ public class usermsset extends AppCompatActivity {
     private static final int TAKE_PHOTO = 1;
     private static final int CHOSSE_PHOTO = 2;
     private CircleImageView circleImageView;
+    private Bitmap bitmapxiangce;
+    private Bitmap bitmapxiangji;
+    private Bitmap bitmapshangchuan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dctivity_usermsset);
 
-        SharedPreferences sharedPreferences =getSharedPreferences("userdata", Context.MODE_PRIVATE);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("userdata", Context.MODE_PRIVATE);
         uid = sharedPreferences.getString("uid", "null");
 
         //view
-        circleImageView=(CircleImageView) findViewById(R.id.personal_usermsset_touxiang_circleimageview);
+        circleImageView = (CircleImageView) findViewById(R.id.personal_usermsset_touxiang_circleimageview);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.personal_usermsset_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -72,7 +84,7 @@ public class usermsset extends AppCompatActivity {
             }
         });
 
-        Button shangchuantouxiang=(Button)findViewById(R.id.personal_usermsset_shangchuan_button);
+        Button shangchuantouxiang = (Button) findViewById(R.id.personal_usermsset_shangchuan_button);
         shangchuantouxiang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,10 +92,11 @@ public class usermsset extends AppCompatActivity {
             }
         });
 
-        Button tijiao=(Button)findViewById(R.id.personal_usermsset_tijiao_button);
+        Button tijiao = (Button) findViewById(R.id.personal_usermsset_tijiao_button);
         tijiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(usermsset.this,"正在提交请稍后",Toast.LENGTH_SHORT).show();
                 sendupimage();
             }
         });
@@ -144,7 +157,7 @@ public class usermsset extends AppCompatActivity {
             e.printStackTrace();
         }
         if (Build.VERSION.SDK_INT >= 24) {
-            imageUri = FileProvider.getUriForFile(usermsset.this, "com.example.cameraalbumtest.fileprovider", outputImage);
+            imageUri = FileProvider.getUriForFile(usermsset.this, "com.example.maxixi.yuanqu.fileprovider", outputImage);
         } else {
             imageUri = Uri.fromFile(outputImage);
         }
@@ -190,8 +203,9 @@ public class usermsset extends AppCompatActivity {
                 if (resultCode == RESULT_OK) {
                     try {
                         //拍摄照片显示出来
-                        Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
-                        circleImageView.setImageBitmap(bitmap);
+                        bitmapxiangji = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+                        circleImageView.setImageBitmap(bitmapxiangji);
+                        bitmapshangchuan = bitmapxiangji;
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -261,8 +275,9 @@ public class usermsset extends AppCompatActivity {
 
     private void displayImage(String imagePath) {
         if (imagePath != null) {
-            Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
-            circleImageView.setImageBitmap(bitmap);
+            bitmapxiangce = BitmapFactory.decodeFile(imagePath);
+            circleImageView.setImageBitmap(bitmapxiangce);
+            bitmapshangchuan = bitmapxiangce;
         } else {
             Toast.makeText(this, "获取图片失败", Toast.LENGTH_SHORT).show();
         }
@@ -273,40 +288,86 @@ public class usermsset extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                OkHttpClient okHttpClient=new OkHttpClient();
-                File file = new File(getExternalCacheDir(), "user_image.jpg");
-                Log.e("---", String.valueOf(file));
-                MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM)
-                        .addFormDataPart("uid",uid)
-                        .addFormDataPart("img", "user_image.jpg", RequestBody.create(MediaType.parse("image/png"), file));
-                RequestBody requestBody =builder.build();
-                Request request = new Request.Builder().url(getString(R.string.yonghushangchuantouxiang_url)).post(requestBody).build();
-                Call call=okHttpClient.newCall(request);
-                call.enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        Log.e("--", "onFailure: " + e);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(usermsset.this, "失败", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
+                OkHttpClient okHttpClient = new OkHttpClient();
+                if (bitmapshangchuan == null) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(usermsset.this, "请选择图片", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    File updatafile =makefile(yansuo(bitmapshangchuan));
+                    MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                            .addFormDataPart("uid", uid)
+                            .addFormDataPart("img", "updata_image.jpg", RequestBody.create(MediaType.parse("image/png"), updatafile));
+                    RequestBody requestBody = builder.build();
+                    Request request = new Request.Builder().url(getString(R.string.yonghushangchuantouxiang_url)).post(requestBody).build();
+                    Call call = okHttpClient.newCall(request);
+                    call.enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            Log.e("--", "onFailure: " + e);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(usermsset.this, "失败", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
 
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        Log.e("--", "成功" + response.body().string());
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(usermsset.this, "提交成功", Toast.LENGTH_SHORT).show();
-                                finish();
-                            }
-                        });
-                    }
-                });
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            Log.e("--", "成功" + response.body().string());
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(usermsset.this, "提交成功", Toast.LENGTH_SHORT).show();
+                                    Intent intent=new Intent(usermsset.this,MainActivity.class);
+                                    startActivity(intent);
+                                }
+                            });
+                        }
+                    });
+                }
             }
         }).start();
+    }
+
+
+    //图片压缩
+
+    /**
+     * 质量压缩方法
+     *
+     * @param image
+     * @return
+     */
+    public static Bitmap yansuo(Bitmap image) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
+        int options = 90;
+        while (baos.toByteArray().length / 1024 > 400) { // 循环判断如果压缩后图片是否大于100kb,大于继续压缩
+            baos.reset(); // 重置baos即清空baos
+            image.compress(Bitmap.CompressFormat.JPEG, options, baos);// 这里压缩options%，把压缩后的数据存放到baos中
+            options -= 10;// 每次都减少10
+        }
+        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());// 把压缩后的数据baos存放到ByteArrayInputStream中
+        Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);// 把ByteArrayInputStream数据生成图片
+        return bitmap;
+    }
+
+    //生成file
+    public File makefile(Bitmap bitmap) {
+        File file = new File(getExternalCacheDir(), "updata_image.jpg");
+        try {
+            BufferedOutputStream baos = new BufferedOutputStream(new FileOutputStream(file));
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            baos.flush();
+            baos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return file;
     }
 }
