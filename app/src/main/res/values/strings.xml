@@ -160,4 +160,6 @@
     <string name="zhifubao">支付宝</string>
     <string name="queren">确认</string>
     <string name="dengdaizhifujieguo">等待支付结果</string>
+    <string name="huodong">活动</string>
+    <string name="zhengce">政策</string>
 </resources>

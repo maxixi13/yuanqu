@@ -85,7 +85,8 @@
         <activity
             android:name=".diancan.diancan_queren"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".diancan.diancan_queren_dizhiguanli" />
+        <activity android:name=".diancan.diancan_queren_dizhiguanli"
+            android:launchMode="singleTask"/>
         <activity android:name=".cloud.cloud_jinrong" />
         <activity android:name=".cloud.cloud_jingrong_jinrong" />
         <activity android:name=".cloud.cloud_jinrong_shenqing" />
@@ -121,7 +122,7 @@
         <activity android:name=".personal.usermsset" />
         <activity android:name=".personal.tingche.tingchejilu_personal_list" />
         <activity android:name=".perkservice.parkservice_yuannei_yuanqujieshao" />
-        <activity android:name=".personal.tingche.tingche_guanlicheliang"></activity>
+        <activity android:name=".personal.tingche.tingche_guanlicheliang"/>
     </application>
 
 </manifest><!--

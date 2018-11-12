@@ -73,8 +73,13 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
                 intent.putExtra("getid", "uid");
                 intent.putExtra("getva", uid);
                 intent.putExtra("signal",signal);
-                startActivity(intent);
-                finish();
+                startActivityForResult(intent,1);
+//                if(signal.equals("1")){
+//                    startActivityForResult(intent,1);
+//                }else {
+//
+//                }
+//                finish();
             }
         });
 
@@ -191,9 +196,14 @@ public class diancan_queren_dizhiguanli extends AppCompatActivity {
         }).start();
     }
 
-    public void refresh() {
-        finish();
-        Intent intent = new Intent(diancan_queren_dizhiguanli.this, diancan_queren_dizhiguanli.class);
-        startActivity(intent);
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intentdata){
+        senddizhi();
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent intentdata){
+//
+//    }
 }
