@@ -153,8 +153,8 @@ public class diancan_queren extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (textView.getText().equals("微信")){
-                    getwxappid();
-                    //Toast.makeText(diancan_queren.this,"暂不支持",Toast.LENGTH_SHORT).show();
+                    //getwxappid();
+                    Toast.makeText(diancan_queren.this,"暂不支持",Toast.LENGTH_SHORT).show();
                 }else {
                     shengchengdingdan();
                 }
@@ -291,7 +291,7 @@ public class diancan_queren extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                zhifubaolei zhifubaolei=new zhifubaolei(diancan_queren.this, diancan_queren.this, "0.01", "餐品费用",oid,getString(R.string.diancanshoufei_url));
+                                zhifubaolei zhifubaolei=new zhifubaolei(diancan_queren.this, diancan_queren.this, totalprice, "餐品费用",oid,getString(R.string.diancanshoufei_url));
                                 zhifubaolei.payV2(getWindow().getDecorView());
                             }
                         });
@@ -306,7 +306,7 @@ public class diancan_queren extends AppCompatActivity {
             @Override
             public void run() {
                 OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("money", "0.1").add("out_trade_no", "10090").build();
+                FormBody formBody = new FormBody.Builder().add("money", "0.2").add("out_trade_no", "10091").build();
                 Request request = new Request.Builder().url(getString(R.string.weixinappid_url)).post(formBody).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
