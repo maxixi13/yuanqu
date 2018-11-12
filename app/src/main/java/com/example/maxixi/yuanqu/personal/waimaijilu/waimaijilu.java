@@ -102,7 +102,7 @@ public class waimaijilu extends AppCompatActivity {
                                             }
                                         });
                                     }else {
-                                        qurendongda(caipinfubeanList.get(position).getOid());
+                                        querendongda(caipinfubeanList.get(position).getOid());
                                     }
                                 }
                             });
@@ -122,7 +122,7 @@ public class waimaijilu extends AppCompatActivity {
         }).start();
     }
 
-    private void qurendongda(final String oid) {
+    private void querendongda(final String oid) {
         new Thread(new Runnable() {
             @Override
             public void run() {

@@ -153,6 +153,7 @@ public class tingche_guanlicheliang extends AppCompatActivity {
                                     getchelianglist();
                                 }
                             });
+                            getchelianglist();
                         }
                     });
                 } catch (JSONException e) {

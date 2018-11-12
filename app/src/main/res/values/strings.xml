@@ -4,8 +4,8 @@
     <string name="title_park">园内服务</string>
     <string name="title_cloud">云服务</string>
     <string name="title_personal">个人中心</string>
-    <string name="title_zhengcexinxi">政策信息</string>
-    <string name="title_huodongxinxi">活动信息</string>
+    <string name="title_zhengcexinxi">最新政策</string>
+    <string name="title_huodongxinxi">热门活动</string>
     <string name="title_gengduofuwu">------更多服务持续上线------</string>
     <string name="title_activity_parkservice">parkservice</string>
     <string name="title_dashboard">Dashboard</string>
@@ -160,6 +160,4 @@
     <string name="zhifubao">支付宝</string>
     <string name="queren">确认</string>
     <string name="dengdaizhifujieguo">等待支付结果</string>
-    <string name="huodong">活动</string>
-    <string name="zhengce">政策</string>
 </resources>
