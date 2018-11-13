@@ -21,6 +21,7 @@ import android.widget.Toolbar;
 import com.example.maxixi.yuanqu.R;
 import com.example.maxixi.yuanqu.util.weixin.Constants;
 import com.example.maxixi.yuanqu.util.weixin.MD5;
+import com.example.maxixi.yuanqu.util.weixin.weixinzhifu;
 import com.example.maxixi.yuanqu.util.zhifubao.zhifubaolei;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
@@ -55,10 +56,8 @@ public class tingche_yuekacheliang extends AppCompatActivity {
     private String cid;
     private String uid;
     private AlertDialog dialog;
-    private IWXAPI iwxapi;
 
     public final static int REQUEST_READ_PHONE_STATE = 1;
-    private PayReq request;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
@@ -113,7 +112,7 @@ public class tingche_yuekacheliang extends AppCompatActivity {
             }
         });
 
-        sendokhttp();
+        getcheliangxinxi();
 
         Button yuekaxufei = (Button) findViewById(R.id.tingchejiaofei_yueka_yuekaxufei_button);
         yuekaxufei.setOnClickListener(new View.OnClickListener() {
@@ -138,9 +137,8 @@ public class tingche_yuekacheliang extends AppCompatActivity {
         weixin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                weixinzhifu();
                 dialog.dismiss();
-                Toast.makeText(tingche_yuekacheliang.this,"未开放",Toast.LENGTH_SHORT).show();
-                //getwxappid();
             }
         });
         zhifubao.setOnClickListener(new View.OnClickListener() {
@@ -156,7 +154,7 @@ public class tingche_yuekacheliang extends AppCompatActivity {
 
     }
 
-    private void sendokhttp() {
+    private void getcheliangxinxi() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -227,6 +225,7 @@ public class tingche_yuekacheliang extends AppCompatActivity {
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         String responseData = response.body().string();
+                        Log.e("success", responseData);
                         try {
                             JSONObject jsonObject=new JSONObject(responseData);
                             final String outoder=jsonObject.getString("data");
@@ -246,30 +245,29 @@ public class tingche_yuekacheliang extends AppCompatActivity {
         }).start();
     }
 
-
-
-
-
-    private void getwxappid() {
+    private void weixinzhifu() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("money", "0.1").add("out_trade_no", "001").build();
-                Request request = new Request.Builder().url(getString(R.string.weixinappid_url)).post(formBody).build();
+                FormBody formBody = new FormBody.Builder().add("uid", uid).add("carNo", String.valueOf(license_plate.getText())).add("money", "150").add("paytype", "微信").build();
+                Request request = new Request.Builder().url(getString(R.string.yuekaxufei_url)).post(formBody).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        Log.e("错误：", String.valueOf(e));
+                        Log.e("错误", String.valueOf(e));
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         String responseData = response.body().string();
+                        Log.e("success", responseData);
                         try {
-                            JSONObject jsonObject = new JSONObject(responseData);
-                            toWXPay(jsonObject);
+                            JSONObject jsonObject=new JSONObject(responseData);
+                            final String outoder=jsonObject.getString("data");
+                            weixinzhifu weixinzhifu=new weixinzhifu(tingche_yuekacheliang.this,outoder,"150");
+                            weixinzhifu.tongyixiadan();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -278,54 +276,4 @@ public class tingche_yuekacheliang extends AppCompatActivity {
             }
         }).start();
     }
-
-    private void toWXPay(JSONObject jsonObject) throws JSONException {
-        iwxapi = WXAPIFactory.createWXAPI(tingche_yuekacheliang.this,null); //初始化微信api
-        iwxapi.registerApp(Constants.APP_ID); //注册appid  appid可以在开发平台获取
-
-
-//        Runnable payRunnable = new Runnable() {
-//            //这里注意要放在子线程
-//            @Override
-//            public void run() {
-        //调起微信APP的对象
-        request = new PayReq();
-        //下面是设置必要的参数，也就是前面说的参数,这几个参数从何而来请看上面说明
-        request.appId = jsonObject.getString("appid");
-        request.nonceStr = jsonObject.getString("noncestr");
-        request.packageValue = jsonObject.getString("package");
-        request.partnerId = jsonObject.getString("partnerid");
-        request.prepayId = jsonObject.getString("prepayid");
-        request.timeStamp = jsonObject.getString("timestamp");
-
-        request.sign=jsonObject.getString("sign");
-
-        iwxapi.sendReq(request);//发送调起微信的请求
-
-    }
-
-    // 246055aabecbfd2d48f61218e33f1d66
-
-
-//        };
-//        Thread payThread = new Thread(payRunnable);
-//        payThread.start();
-//    }
-//    private String genPayReq() {
-//
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put("appid", request.appId);
-//        contentValues.put("noncestr", request.nonceStr);
-//        contentValues.put("package", request.packageValue);
-//        contentValues.put("partnerid", request.partnerId);
-//        contentValues.put("prepayid", request.prepayId);
-//        contentValues.put("timestamp", request.timeStamp);
-//
-//        String sb = "appid=" + request.appId + "&noncestr=" + request.nonceStr + "&package=" + request.packageValue + "&partnerid=" + request.partnerId + "&prepayid=" + request.partnerId + "&timestamp=" + request.timeStamp+"&key="+Constants.API_KEY;
-//        String appSign = MD5.getMessageDigest(sb.getBytes());
-//        return appSign;
-//
-//    }
-
-
 }

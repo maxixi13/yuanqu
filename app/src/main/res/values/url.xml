@@ -47,6 +47,7 @@
     <string name="waimaidizhiguanli_url">http://mizhanzc.com/index/Menu/address</string>
     <string name="xiugaimorendizhi_url">http://mizhanzc.com/index/Menu/address_status</string>
     <string name="weixinappid_url">http://mizhanzc.com/index/Wechat/unified_order</string>
+    <string name="weixinappid_queren_url">http://mizhanzc.com/index/Wechat/query_order</string>
     <string name="diancaishoufei_url">http://mizhanzc.com/index/Menu/order_pay</string>
     <string name="yuekachongzhi_url">http://mizhanzc.com/index/Car/mcard</string>
     <string name="tingchejiaofei_url">http://mizhanzc.com/index/Car/park_fee</string>

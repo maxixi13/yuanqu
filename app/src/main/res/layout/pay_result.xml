@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/NavPage">
+    android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<Toolbar
+		android:id="@+id/weixinzhifuback_toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="?android:actionBarSize"
+		android:background="?attr/colorPrimary"
+		android:title=""
+		android:titleTextColor="@android:color/white"
+		android:navigationIcon="@drawable/back_button">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:text="@string/weixinzhifu"
+			android:textColor="@android:color/white"
+			android:textSize="20sp"/>
+	</Toolbar>
     
 	<TextView
+		android:id="@+id/weixinzhifuback_text"
 	    android:layout_width="fill_parent"
 	 	android:layout_height="fill_parent"
 		android:gravity="center"
 	 	android:textColor="#ff000000"
-	 	android:textSize="20dp"
-	 	android:text="这个界面用于显示第三方app通过微信支付的结果"/>
+	 	android:textSize="20sp"
+	 	android:text="@string/dengdaizhifujieguo"/>
 	
 </LinearLayout>

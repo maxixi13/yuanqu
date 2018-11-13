@@ -160,8 +160,4 @@
     <string name="zhifubao">支付宝</string>
     <string name="queren">确认</string>
     <string name="dengdaizhifujieguo">等待支付结果</string>
-
-
-
-    <string name="pay_result_callback_msg" formatted="false">微信支付结果：%s</string>
 </resources>

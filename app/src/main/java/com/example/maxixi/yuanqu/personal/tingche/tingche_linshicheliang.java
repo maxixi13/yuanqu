@@ -1,5 +1,6 @@
 package com.example.maxixi.yuanqu.personal.tingche;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
+import com.example.maxixi.yuanqu.util.weixin.weixinzhifu;
 import com.example.maxixi.yuanqu.util.zhifubao.zhifubaolei;
 
 import org.json.JSONException;
@@ -43,6 +45,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
     private TextView indatatime2;
     private String cid;
     private String uid;
+    private AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +83,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
         linshijiaofeibutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                zhifubaozhifu();
+                zhifuDialog();
             }
         });
 
@@ -88,14 +91,77 @@ public class tingche_linshicheliang extends AppCompatActivity {
         yuekachongzhi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                zhifubaozhifuyuekajiaofei();
+                zhifuDialogyuekajiaofei();
             }
         });
 
-        sendokhttp();
+        getcheliangxinxi();
     }
 
-    private void sendokhttp() {
+
+    private void zhifuDialog() {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        dialog = builder.create();
+
+        final View view = View.inflate(this, R.layout.dctivity_tingche_zhifu_item, null);
+        dialog.setView(view, 0, 0, 0, 0);// 设置边距为0,保证在2.x的版本上运行没问题
+
+        TextView weixin = (TextView) view.findViewById(R.id.zhifu_dialog_weixin_text);
+        final TextView zhifubao = (TextView) view.findViewById(R.id.zhifu_dialog_zhifubao_text);
+
+        weixin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                weixinzhifu();
+                dialog.dismiss();
+            }
+        });
+        zhifubao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                zhifubaozhifu();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);//透明
+        dialog.show();
+
+    }
+
+    private void zhifuDialogyuekajiaofei() {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        dialog = builder.create();
+
+        final View view = View.inflate(this, R.layout.dctivity_tingche_zhifu_item, null);
+        dialog.setView(view, 0, 0, 0, 0);// 设置边距为0,保证在2.x的版本上运行没问题
+
+        TextView weixin = (TextView) view.findViewById(R.id.zhifu_dialog_weixin_text);
+        final TextView zhifubao = (TextView) view.findViewById(R.id.zhifu_dialog_zhifubao_text);
+
+        weixin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                weixinzhifuyuekajiaofei();
+                dialog.dismiss();
+            }
+        });
+        zhifubao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                zhifubaozhifuyuekajiaofei();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);//透明
+        dialog.show();
+
+    }
+
+    private void getcheliangxinxi() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -220,4 +286,67 @@ public class tingche_linshicheliang extends AppCompatActivity {
             }
         }).start();
     }
+
+    private void weixinzhifu() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient = new OkHttpClient();
+                FormBody formBody = new FormBody.Builder().add("uid", uid).add("carNo", String.valueOf(license_plate.getText())).add("money", sumfee.getText().toString()).add("paytype", "微信").build();
+                Request request = new Request.Builder().url(getString(R.string.tingchejiaofei_url)).post(formBody).build();
+                Call call = okHttpClient.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("错误", String.valueOf(e));
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String responseData = response.body().string();
+                        try {
+                            JSONObject jsonObject=new JSONObject(responseData);
+                            final String outoder=jsonObject.getString("data");
+                            weixinzhifu weixinzhifu=new weixinzhifu(tingche_linshicheliang.this,outoder, sumfee.getText().toString());
+                            weixinzhifu.tongyixiadan();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        }).start();
+    }
+
+    private void weixinzhifuyuekajiaofei() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient = new OkHttpClient();
+                FormBody formBody = new FormBody.Builder().add("uid", uid).add("carNo", String.valueOf(license_plate.getText())).add("money", "150").add("paytype", "微信").build();
+                Request request = new Request.Builder().url(getString(R.string.yuekachongzhi_url)).post(formBody).build();
+                Call call = okHttpClient.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("错误", String.valueOf(e));
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String responseData = response.body().string();
+                        try {
+                            JSONObject jsonObject=new JSONObject(responseData);
+                            final String outoder=jsonObject.getString("data");
+                            weixinzhifu weixinzhifu=new weixinzhifu(tingche_linshicheliang.this,outoder,"150");
+                            weixinzhifu.tongyixiadan();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        }).start();
+    }
+
 }

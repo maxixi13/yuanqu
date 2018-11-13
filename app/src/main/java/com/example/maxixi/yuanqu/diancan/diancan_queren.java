@@ -25,6 +25,7 @@ import com.example.maxixi.yuanqu.diancan.model.Dish;
 import com.example.maxixi.yuanqu.diancan.model.ShopCart;
 import com.example.maxixi.yuanqu.personal.tingche.tingche_yuekacheliang;
 import com.example.maxixi.yuanqu.util.weixin.Constants;
+import com.example.maxixi.yuanqu.util.weixin.weixinzhifu;
 import com.example.maxixi.yuanqu.util.zhifubao.zhifubaolei;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.modelpay.PayReq;
@@ -151,12 +152,7 @@ public class diancan_queren extends AppCompatActivity {
         querenbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textView.getText().equals("微信")){
-                    getwxappid();
-                    //Toast.makeText(diancan_queren.this,"暂不支持",Toast.LENGTH_SHORT).show();
-                }else {
-                    shengchengdingdan();
-                }
+                shengchengdingdan();
             }
         });
 
@@ -245,7 +241,7 @@ public class diancan_queren extends AppCompatActivity {
             public void run() {
                 OkHttpClient okHttpClient = new OkHttpClient();//Accept-Language: zh-CN
                 RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), String.valueOf(jsonObject));
-                Request request = new Request.Builder().url(getString(R.string.shengchengdingdan_url)).header("Accept-Language:", "zh-CN").post(requestBody).build();
+                Request request = new Request.Builder().url(getString(R.string.shengchengdingdan_url)).post(requestBody).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
                     @Override
@@ -259,8 +255,20 @@ public class diancan_queren extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(responseData);
                             JSONObject jsonObjectgetdata = jsonObject.getJSONObject("data");
-                            String oid = jsonObjectgetdata.getString("id");
-                            zhifubaozhifu(oid);
+                            String oid = "or"+jsonObjectgetdata.getString("id");
+                            if (textView.getText().equals("支付宝")){
+                                zhifubaozhifu(oid);
+                            } else if (textView.getText().equals("微信")){
+                                weixinzhifu weixinzhifu=new weixinzhifu(diancan_queren.this,oid,totalprice);
+                                weixinzhifu.tongyixiadan();
+                            } else {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(diancan_queren.this,"错误支付方式",Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -299,53 +307,5 @@ public class diancan_queren extends AppCompatActivity {
             }
         }).start();
     }
-
-    private void getwxappid() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("money", "0.01").add("out_trade_no", "10097").build();
-                Request request = new Request.Builder().url(getString(R.string.weixinappid_url)).post(formBody).build();
-                Call call = okHttpClient.newCall(request);
-                call.enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        Log.e("错误：", String.valueOf(e));
-                    }
-
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        String responseData = response.body().string();
-                        try {
-                            JSONObject jsonObject = new JSONObject(responseData);
-                            toWXPay(jsonObject);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            }
-        }).start();
-    }
-
-    private void toWXPay(JSONObject jsonObject) throws JSONException {
-        IWXAPI wxapi = WXAPIFactory.createWXAPI(diancan_queren.this,null); //初始化微信api
-        wxapi.registerApp(Constants.APP_ID); //注册appid  appid可以在开发平台获取
-        //调起微信APP的对象
-        PayReq req = new PayReq();
-        //下面是设置必要的参数，也就是前面说的参数,这几个参数从何而来请看上面说明
-        req.appId = jsonObject.getString("appid");
-        req.partnerId = jsonObject.getString("partnerid");
-        req.prepayId = jsonObject.getString("prepayid");
-        req.nonceStr = jsonObject.getString("noncestr");
-        req.timeStamp = jsonObject.getString("timestamp");
-        req.packageValue = jsonObject.getString("package");
-        req.sign=jsonObject.getString("sign");
-        req.extData			= "app data";
-        wxapi.sendReq(req);//发送调起微信的请求
-
-    }
-
 
 }
