@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
@@ -24,7 +25,7 @@ public class cloud_qiyefuwu extends AppCompatActivity {
             }
         });
 
-        ImageButton gongshangzhuce=(ImageButton)findViewById(R.id.qiyefuwu_gongshangzhuce);
+        LinearLayout gongshangzhuce=(LinearLayout)findViewById(R.id.qiyefuwu_gongshangzhuce);
         gongshangzhuce.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,7 +34,7 @@ public class cloud_qiyefuwu extends AppCompatActivity {
             }
         });
 
-        ImageButton zhishichanquan=(ImageButton)findViewById(R.id.qiyefuwu_zhishichanquan);
+        LinearLayout zhishichanquan=(LinearLayout)findViewById(R.id.qiyefuwu_zhishichanquan);
         zhishichanquan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,7 +42,7 @@ public class cloud_qiyefuwu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ImageButton shejiyinshua=(ImageButton)findViewById(R.id.qiyefuwu_shejiyinshua);
+        LinearLayout shejiyinshua=(LinearLayout)findViewById(R.id.qiyefuwu_shejiyinshua);
         shejiyinshua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +50,7 @@ public class cloud_qiyefuwu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ImageButton caiwudaili=(ImageButton)findViewById(R.id.qiyefuwu_caiwudaili);
+        LinearLayout caiwudaili=(LinearLayout)findViewById(R.id.qiyefuwu_caiwudaili);
         caiwudaili.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

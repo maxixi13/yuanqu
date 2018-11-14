@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
@@ -30,39 +31,38 @@ public class Parkservice_yuannei extends AppCompatActivity {
             }
         });
 
-        ImageButton wuyezixun=(ImageButton)findViewById(R.id.yuannei_wuyezixun);
+        LinearLayout wuyezixun = (LinearLayout) findViewById(R.id.yuannei_wuyezixun);
         wuyezixun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Parkservice_yuannei.this,parksevice_yuanei_zixun.class);
+                Intent intent = new Intent(Parkservice_yuannei.this, parksevice_yuanei_zixun.class);
                 startActivity(intent);
             }
         });
 
-        ImageButton tousujianyi=(ImageButton)findViewById(R.id.yuannei_tousujianyi);
+        LinearLayout tousujianyi = (LinearLayout) findViewById(R.id.yuannei_tousujianyi);
         tousujianyi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Parkservice_yuannei.this,parkservice_yuanei_tousu.class);
+                Intent intent = new Intent(Parkservice_yuannei.this, parkservice_yuanei_tousu.class);
                 startActivity(intent);
             }
         });
 
-        ImageButton wuyebaoxiu=(ImageButton)
-                findViewById(R.id.yuannei_wuyebaoxiu);
+        LinearLayout wuyebaoxiu = (LinearLayout) findViewById(R.id.yuannei_wuyebaoxiu);
         wuyebaoxiu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Parkservice_yuannei.this,parkservice_yuannei_baoxiu.class);
+                Intent intent = new Intent(Parkservice_yuannei.this, parkservice_yuannei_baoxiu.class);
                 startActivity(intent);
             }
         });
 
-        ImageButton yuanqujieshao=(ImageButton)findViewById(R.id.yuanei_yuanqujieshao);
+        LinearLayout yuanqujieshao = (LinearLayout) findViewById(R.id.yuanei_yuanqujieshao);
         yuanqujieshao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Parkservice_yuannei.this,parkservice_yuannei_yuanqujieshao.class);
+                Intent intent = new Intent(Parkservice_yuannei.this, parkservice_yuannei_yuanqujieshao.class);
                 startActivity(intent);
             }
         });

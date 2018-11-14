@@ -35,41 +35,81 @@
             android:background="@color/beijingf5f5f5"
             android:orientation="vertical">
 
-            <ImageButton
+            <LinearLayout
                 android:id="@+id/yuannei_wuyezixun"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:layout_marginLeft="17dp"
                 android:layout_marginTop="11dp"
                 android:layout_marginRight="17dp"
-                android:background="@drawable/button_park_zixun" />
+                android:background="@drawable/button_park_zixun" >
 
-            <ImageButton
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="50dp"
+                    android:text="@string/wuyezixun"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/yuannei_tousujianyi"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:layout_marginLeft="17dp"
                 android:layout_marginTop="11dp"
                 android:layout_marginRight="17dp"
-                android:background="@drawable/button_park_jianyi" />
+                android:background="@drawable/button_park_jianyi" >
 
-            <ImageButton
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="50dp"
+                    android:text="@string/tousujianyi"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/yuannei_wuyebaoxiu"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:layout_marginLeft="17dp"
                 android:layout_marginTop="11dp"
                 android:layout_marginRight="17dp"
-                android:background="@drawable/button_park_baoxiu" />
+                android:background="@drawable/button_park_baoxiu" >
 
-            <ImageButton
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="50dp"
+                    android:text="@string/wuyebaoxiu"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/yuanei_yuanqujieshao"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:layout_marginLeft="17dp"
                 android:layout_marginTop="11dp"
                 android:layout_marginRight="17dp"
-                android:background="@drawable/button_park_jieshao" />
+                android:background="@drawable/button_park_jieshao" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="50dp"
+                    android:text="@string/yuanqujieshao"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

@@ -11,7 +11,7 @@
         android:layout_height="?android:actionBarSize"
         android:background="?attr/colorPrimary"
         android:title="@string/title_park"
-        android:titleTextColor="@android:color/white"/>
+        android:titleTextColor="@android:color/white" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,40 +24,88 @@
             android:background="@color/beijingf5f5f5"
             android:orientation="vertical">
 
-            <ImageButton
+            <LinearLayout
                 android:id="@+id/parkservice_tingchejiaofei"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:layout_marginLeft="17dp"
                 android:layout_marginTop="11dp"
                 android:layout_marginRight="17dp"
-                android:background="@drawable/button_tingche" />
+                android:background="@drawable/button_tingche">
 
-            <ImageButton
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="50dp"
+                    android:text="@string/tingchejiaofei"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/parkservice_yuanneidiancan"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:layout_marginLeft="17dp"
                 android:layout_marginTop="11dp"
                 android:layout_marginRight="17dp"
-                android:background="@drawable/button_diancan" />
+                android:background="@drawable/button_diancan">
 
-            <ImageButton
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="50dp"
+                    android:text="@string/yuanneidiancan"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/parkservice_yuannei"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:layout_marginLeft="17dp"
                 android:layout_marginTop="11dp"
                 android:layout_marginRight="17dp"
-                android:background="@drawable/button_fuwu" />
+                android:background="@drawable/button_fuwu">
 
-            <ImageButton
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="50dp"
+                    android:text="@string/yuanneifuwu"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:layout_marginLeft="17dp"
                 android:layout_marginTop="11dp"
                 android:layout_marginRight="17dp"
-                android:background="@drawable/button_changdi" />
+                android:background="@drawable/button_changdi">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="50dp"
+                    android:text="@string/changdiyuyue"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/weikaifang"
+                    android:textSize="18sp" />
+
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

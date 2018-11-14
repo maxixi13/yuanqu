@@ -7,8 +7,8 @@
         android:id="@+id/scrollview_cloud"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="?android:actionBarSize"
-        android:layout_marginTop="?android:attr/actionBarSize">
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:layout_marginBottom="?android:actionBarSize">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -16,51 +16,102 @@
             android:background="@color/beijingf5f5f5"
             android:orientation="vertical">
 
-            <ImageButton
+            <LinearLayout
                 android:id="@+id/cloud_zhengfu"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:layout_marginLeft="17dp"
-                android:layout_marginRight="17dp"
                 android:layout_marginTop="11dp"
-                android:background="@drawable/cloud_zhengfu" />
+                android:layout_marginRight="17dp"
+                android:background="@drawable/cloud_zhengfu">
 
-            <ImageButton
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="50dp"
+                    android:text="@string/zhengfuzixun"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/cloud_jinrong"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:layout_marginLeft="17dp"
-                android:layout_marginRight="17dp"
                 android:layout_marginTop="11dp"
-                android:background="@drawable/cloud_jinrong" />
+                android:layout_marginRight="17dp"
+                android:background="@drawable/cloud_jinrong">
 
-            <ImageButton
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="50dp"
+                    android:text="@string/jinrongfuwu"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/cloud_zuling"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:layout_marginLeft="17dp"
-                android:layout_marginRight="17dp"
                 android:layout_marginTop="11dp"
-                android:background="@drawable/cloud_zuling" />
+                android:layout_marginRight="17dp"
+                android:background="@drawable/cloud_zuling">
 
-            <ImageButton
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="50dp"
+                    android:text="@string/qiyezuling"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/cloud_chuangye"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
                 android:layout_marginLeft="17dp"
-                android:layout_marginRight="17dp"
                 android:layout_marginTop="11dp"
-                android:background="@drawable/cloud_chuangye" />
+                android:layout_marginRight="17dp"
+                android:background="@drawable/cloud_chuangye">
 
-            <ImageButton
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="50dp"
+                    android:text="@string/chuangyefuwu"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/cloud_fuwu"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
-                android:layout_marginBottom="11dp"
                 android:layout_marginLeft="17dp"
-                android:layout_marginRight="17dp"
                 android:layout_marginTop="11dp"
-                android:background="@drawable/cloud_qiye" />
+                android:layout_marginRight="17dp"
+                android:layout_marginBottom="11dp"
+                android:background="@drawable/cloud_qiye">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="50dp"
+                    android:text="@string/qiyefuwu"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -73,6 +124,6 @@
         android:layout_height="?android:actionBarSize"
         android:background="?attr/colorPrimary"
         android:title="@string/title_cloud"
-        android:titleTextColor="@android:color/white"/>
+        android:titleTextColor="@android:color/white" />
 
 </android.support.constraint.ConstraintLayout>

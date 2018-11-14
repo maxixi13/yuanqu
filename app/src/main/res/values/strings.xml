@@ -160,4 +160,10 @@
     <string name="zhifubao">支付宝</string>
     <string name="queren">确认</string>
     <string name="dengdaizhifujieguo">等待支付结果</string>
+    <string name="qiyezuling">企业租赁</string>
+    <string name="chuangyefuwu">创业服务</string>
+    <string name="weikaifang">(未开放)</string>
+    <string name="changdiyuyue">场地预约</string>
+    <string name="yuanneidiancan">园内点餐</string>
+    <string name="yuanneifuwu">园内服务</string>
 </resources>
