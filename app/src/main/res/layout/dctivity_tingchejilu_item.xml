@@ -22,7 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="@string/zuiguideyuekahuiyuan"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -70,24 +69,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="法拉利" />
+                    android:gravity="center" />
 
                 <TextView
                     android:id="@+id/tingche_model"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="488" />
+                    android:gravity="center"/>
 
                 <TextView
                     android:id="@+id/tingche_platenum"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="沪A8888" />
+                    android:gravity="center" />
             </LinearLayout>
         </LinearLayout>
 
@@ -110,7 +106,6 @@
             android:id="@+id/tingche_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="28天"
             android:textAlignment="viewEnd"
             android:textColor="@color/top_blue"
             android:textSize="32sp"
@@ -122,7 +117,6 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="5dp"
             android:gravity="bottom|right"
-            android:text="停车状态：未停车"
             android:textColor="@color/red" />
     </LinearLayout>
 </LinearLayout>
