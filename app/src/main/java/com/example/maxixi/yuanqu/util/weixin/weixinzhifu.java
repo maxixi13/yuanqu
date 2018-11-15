@@ -27,11 +27,13 @@ public class weixinzhifu {
     private Context context;
     private String oid;
     private String totalprice;
+    private String huidiaourl;
 
-    public weixinzhifu(Context context,String oid,String totalprice) {
+    public weixinzhifu(Context context,String oid,String totalprice,String huidiaourl) {
         this.context = context;
         this.oid=oid;
         this.totalprice=totalprice;
+        this.huidiaourl=huidiaourl;
     }
 
     public void tongyixiadan() {
@@ -67,6 +69,7 @@ public class weixinzhifu {
         SharedPreferences sharedPreferences=context.getSharedPreferences("wxpayoid",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
         editor.putString("oid",oid);
+        editor.putString("huidiaourl",huidiaourl);
         editor.apply();
         IWXAPI wxapi = WXAPIFactory.createWXAPI(context, null); //初始化微信api
         wxapi.registerApp(Constants.APP_ID); //注册appid  appid可以在开发平台获取

@@ -119,18 +119,18 @@ public class zhifubaolei {
             @Override
             public void run() {
                 OkHttpClient okHttpClient=new OkHttpClient();
-                FormBody formBody=new FormBody.Builder().add("pid",backpid).add("money",sum).build();
+                FormBody formBody=new FormBody.Builder().add("pid",backpid).build();
                 final Request request=new Request.Builder().url(backurl).post(formBody).build();
                 Call call=okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        Log.e("错误", String.valueOf(e));
+                        Log.e("file", String.valueOf(e));
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        Log.e("成功",response.body().string());
+                        Log.e("success",response.body().string());
                     }
                 });
 

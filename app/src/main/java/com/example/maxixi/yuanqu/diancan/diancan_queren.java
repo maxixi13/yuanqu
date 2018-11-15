@@ -259,7 +259,7 @@ public class diancan_queren extends AppCompatActivity {
                             if (textView.getText().equals("支付宝")){
                                 zhifubaozhifu(oid);
                             } else if (textView.getText().equals("微信")){
-                                weixinzhifu weixinzhifu=new weixinzhifu(diancan_queren.this,oid,totalprice);
+                                weixinzhifu weixinzhifu=new weixinzhifu(diancan_queren.this,oid,totalprice,getString(R.string.shengchengdingdan_url));
                                 weixinzhifu.tongyixiadan();
                             } else {
                                 runOnUiThread(new Runnable() {

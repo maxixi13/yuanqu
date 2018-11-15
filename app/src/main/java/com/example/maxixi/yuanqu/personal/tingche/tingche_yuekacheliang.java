@@ -266,7 +266,7 @@ public class tingche_yuekacheliang extends AppCompatActivity {
                         try {
                             JSONObject jsonObject=new JSONObject(responseData);
                             final String outoder=jsonObject.getString("data");
-                            weixinzhifu weixinzhifu=new weixinzhifu(tingche_yuekacheliang.this,outoder,"150");
+                            weixinzhifu weixinzhifu=new weixinzhifu(tingche_yuekacheliang.this,outoder,"150",getString(R.string.yuekaxufei_url));
                             weixinzhifu.tongyixiadan();
                         } catch (JSONException e) {
                             e.printStackTrace();

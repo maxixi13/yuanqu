@@ -42,11 +42,17 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
     private IWXAPI api;
     private TextView weixinzhifufanhui;
     private int code;
+    private String oid;
+    private String huidiaourl;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pay_result);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("wxpayoid", MODE_PRIVATE);
+        oid = sharedPreferences.getString("oid", "null");
+        huidiaourl = sharedPreferences.getString("huidiaourl","null");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.weixinzhifuback_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -90,8 +96,6 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
     }
 
     private void payqueren() {
-        SharedPreferences sharedPreferences = getSharedPreferences("wxpayoid", MODE_PRIVATE);
-        final String oid = sharedPreferences.getString("oid", "null");
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -102,7 +106,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                 call.enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        Log.e("错误", String.valueOf(e));
+                        Log.e("file", String.valueOf(e));
                     }
 
                     @Override
@@ -117,6 +121,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                         Log.e("response", responsedata);
                         if (code == 200) {
                             weixinzhifufanhui.setText("支付成功,轻触返回");
+                            huidiao();
                         } else if (code == 201) {
                             weixinzhifufanhui.setText("未完成支付,请返回重新支付");
                         } else if (code == 203) {
@@ -129,4 +134,29 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
             }
         }).start();
     }
+
+    private void huidiao() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient = new OkHttpClient();
+                FormBody formBody = new FormBody.Builder().add("pid", oid).build();
+                Request request = new Request.Builder().url(huidiaourl).post(formBody).build();
+                Call call = okHttpClient.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("file", String.valueOf(e));
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String responsedata = response.body().string();
+                        Log.e("huidiao_success",responsedata);
+                    }
+                });
+            }
+        }).start();
+    }
+
 }

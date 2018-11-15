@@ -83,7 +83,7 @@ public class TingchecheliangAdapter extends RecyclerView.Adapter<Tingchecheliang
         if (tingchecheliang.getTime().contains("0"))holder.time.setTextColor(Color.parseColor("#FFF13D46"));
 
         String gettimelinshi=tingchecheliang.getTime()+"次";
-        String gettimeyueka=tingchecheliang.getTime()+"月";
+        String gettimeyueka=tingchecheliang.getTime()+"天";
         if (tingchecheliang.getType().contains("临")){
             holder.shengyu.setText("停车次数");
             holder.time.setText(gettimelinshi);

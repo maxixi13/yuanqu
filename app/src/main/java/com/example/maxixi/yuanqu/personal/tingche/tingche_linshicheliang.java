@@ -320,7 +320,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(responseData);
                             final String outoder = jsonObject.getString("data");
-                            weixinzhifu weixinzhifu = new weixinzhifu(tingche_linshicheliang.this, outoder, sumfee.getText().toString());
+                            weixinzhifu weixinzhifu = new weixinzhifu(tingche_linshicheliang.this, outoder, sumfee.getText().toString(),getString(R.string.tingchejiaofei_url));
                             weixinzhifu.tongyixiadan();
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -351,7 +351,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(responseData);
                             final String outoder = jsonObject.getString("data");
-                            weixinzhifu weixinzhifu = new weixinzhifu(tingche_linshicheliang.this, outoder, "150");
+                            weixinzhifu weixinzhifu = new weixinzhifu(tingche_linshicheliang.this, outoder, "0.01",getString(R.string.yuekachongzhi_url));
                             weixinzhifu.tongyixiadan();
                         } catch (JSONException e) {
                             e.printStackTrace();
