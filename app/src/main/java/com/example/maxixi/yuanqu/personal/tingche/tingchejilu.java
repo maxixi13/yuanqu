@@ -145,6 +145,7 @@ public class tingchejilu extends AppCompatActivity {
                                 public void run() {
                                     dialog.dismiss();
                                     Toast.makeText(tingchejilu.this,"提交成功",Toast.LENGTH_SHORT).show();
+                                    tingchecheliangList.clear();
                                     sendtinghce();
                                 }
                             });

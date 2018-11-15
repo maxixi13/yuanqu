@@ -40,6 +40,7 @@ public class TingchecheliangAdapter extends RecyclerView.Adapter<Tingchecheliang
         TextView platenum;
         TextView time;
         TextView state;
+        TextView shengyu;
 
 
         public ViewHolder(View view) {
@@ -50,6 +51,7 @@ public class TingchecheliangAdapter extends RecyclerView.Adapter<Tingchecheliang
             platenum = (TextView) view.findViewById(R.id.tingche_platenum);
             time = (TextView) view.findViewById(R.id.tingche_time);
             state = (TextView) view.findViewById(R.id.tingche_state);
+            shengyu=(TextView)view.findViewById(R.id.tingchejilu_item_shengyu);
 
         }
 
@@ -75,10 +77,19 @@ public class TingchecheliangAdapter extends RecyclerView.Adapter<Tingchecheliang
         holder.carname.setText(tingchecheliang.getCarname());
         holder.model.setText(tingchecheliang.getModel());
         holder.platenum.setText(tingchecheliang.getPlatenum());
-        holder.time.setText(tingchecheliang.getTime());
+//        holder.time.setText(tingchecheliang.getTime());
         holder.state.setText(tingchecheliang.getState());
         if (!tingchecheliang.getState().contains("停车中")) holder.state.setTextColor(Color.parseColor("#09affb"));
         if (tingchecheliang.getTime().contains("0"))holder.time.setTextColor(Color.parseColor("#FFF13D46"));
+
+        String gettimelinshi=tingchecheliang.getTime()+"次";
+        String gettimeyueka=tingchecheliang.getTime()+"月";
+        if (tingchecheliang.getType().contains("临")){
+            holder.shengyu.setText("剩余次数");
+            holder.time.setText(gettimelinshi);
+        }else if(tingchecheliang.getType().contains("月")){
+            holder.time.setText(gettimeyueka);
+        }
 
 
         //判断是否设置了监听器 点击事件

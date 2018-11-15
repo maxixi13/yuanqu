@@ -100,6 +100,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tingchejilu_item_shengyu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/shengyutianshu"

@@ -68,7 +68,6 @@ public class weixinzhifu {
         SharedPreferences.Editor editor=sharedPreferences.edit();
         editor.putString("oid",oid);
         editor.apply();
-
         IWXAPI wxapi = WXAPIFactory.createWXAPI(context, null); //初始化微信api
         wxapi.registerApp(Constants.APP_ID); //注册appid  appid可以在开发平台获取
         //调起微信APP的对象

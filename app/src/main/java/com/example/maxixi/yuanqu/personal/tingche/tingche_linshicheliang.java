@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -79,7 +80,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
             }
         });
 
-        ImageView linshijiaofeibutton=(ImageView)findViewById(R.id.linshijiaofei_lijijiaofei_button);
+        LinearLayout linshijiaofeibutton=(LinearLayout)findViewById(R.id.linshijiaofei_lijijiaofei_button);
         linshijiaofeibutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -304,6 +305,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         String responseData = response.body().string();
+                        Log.e("success",responseData);
                         try {
                             JSONObject jsonObject=new JSONObject(responseData);
                             final String outoder=jsonObject.getString("data");
