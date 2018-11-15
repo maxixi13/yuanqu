@@ -85,7 +85,7 @@ public class TingchecheliangAdapter extends RecyclerView.Adapter<Tingchecheliang
         String gettimelinshi=tingchecheliang.getTime()+"次";
         String gettimeyueka=tingchecheliang.getTime()+"月";
         if (tingchecheliang.getType().contains("临")){
-            holder.shengyu.setText("剩余次数");
+            holder.shengyu.setText("停车次数");
             holder.time.setText(gettimelinshi);
         }else if(tingchecheliang.getType().contains("月")){
             holder.time.setText(gettimeyueka);
