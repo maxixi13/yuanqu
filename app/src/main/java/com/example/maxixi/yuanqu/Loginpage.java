@@ -78,13 +78,14 @@ public class Loginpage extends AppCompatActivity {
         fragment = glogindenglufg;
         transaction.commit();
 
-//        SharedPreferences sharedPreferences=getSharedPreferences("userdata",MODE_PRIVATE);
-//        String uid=sharedPreferences.getString("uid","null");
-//        if (uid!=("null")){
-//            Intent intent = new Intent(Loginpage.this, MainActivity.class);
-//            finish();
-//            startActivity(intent);
-//        }
+        SharedPreferences sharedPreferences=getSharedPreferences("userdata",MODE_PRIVATE);
+        String uid=sharedPreferences.getString("uid","null");
+        String tel=sharedPreferences.getString("tel","null");
+        if (!uid.equals("null") && !tel.equals("null")){
+            Intent intent = new Intent(Loginpage.this, MainActivity.class);
+            finish();
+            startActivity(intent);
+        }
 
     }
 

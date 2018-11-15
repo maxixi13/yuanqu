@@ -157,6 +157,7 @@ public class Glogindenglufg extends Fragment {
                             JSONObject jsonObjectgetid = jsonObjectget.getJSONObject("data");
                             SharedPreferences.Editor editor = getContext().getSharedPreferences("userdata", Context.MODE_PRIVATE).edit();
                             editor.putString("uid", jsonObjectgetid.getString("uid"));
+                            editor.putString("tel",shoujihao.getText().toString());
                             editor.apply();
 
 
