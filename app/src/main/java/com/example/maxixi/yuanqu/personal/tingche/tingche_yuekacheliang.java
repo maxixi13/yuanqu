@@ -56,6 +56,7 @@ public class tingche_yuekacheliang extends AppCompatActivity {
     private String cid;
     private String uid;
     private AlertDialog dialog;
+    private String yuekapay="150";
 
     public final static int REQUEST_READ_PHONE_STATE = 1;
 
@@ -213,7 +214,7 @@ public class tingche_yuekacheliang extends AppCompatActivity {
             @Override
             public void run() {
                 OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("uid", uid).add("carNo", String.valueOf(license_plate.getText())).add("money", "150").add("paytype", "支付宝").build();
+                FormBody formBody = new FormBody.Builder().add("uid", uid).add("carNo", String.valueOf(license_plate.getText())).add("money", yuekapay).add("paytype", "支付宝").build();
                 Request request = new Request.Builder().url(getString(R.string.yuekaxufei_url)).post(formBody).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
@@ -232,7 +233,7 @@ public class tingche_yuekacheliang extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    zhifubaolei zhifubaolei = new zhifubaolei(tingche_yuekacheliang.this, tingche_yuekacheliang.this, "150", "月卡费用",outoder,getString(R.string.yuekaxufei_url));
+                                    zhifubaolei zhifubaolei = new zhifubaolei(tingche_yuekacheliang.this, tingche_yuekacheliang.this, yuekapay, "月卡费用",outoder,getString(R.string.yuekaxufei_url));
                                     zhifubaolei.payV2(getWindow().getDecorView());
                                 }
                             });
@@ -250,7 +251,7 @@ public class tingche_yuekacheliang extends AppCompatActivity {
             @Override
             public void run() {
                 OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("uid", uid).add("carNo", String.valueOf(license_plate.getText())).add("money", "150").add("paytype", "微信").build();
+                FormBody formBody = new FormBody.Builder().add("uid", uid).add("carNo", String.valueOf(license_plate.getText())).add("money", yuekapay).add("paytype", "微信").build();
                 Request request = new Request.Builder().url(getString(R.string.yuekaxufei_url)).post(formBody).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
@@ -266,7 +267,7 @@ public class tingche_yuekacheliang extends AppCompatActivity {
                         try {
                             JSONObject jsonObject=new JSONObject(responseData);
                             final String outoder=jsonObject.getString("data");
-                            weixinzhifu weixinzhifu=new weixinzhifu(tingche_yuekacheliang.this,outoder,"150",getString(R.string.yuekaxufei_url));
+                            weixinzhifu weixinzhifu=new weixinzhifu(tingche_yuekacheliang.this,outoder,yuekapay,getString(R.string.yuekaxufei_url));
                             weixinzhifu.tongyixiadan();
                         } catch (JSONException e) {
                             e.printStackTrace();
