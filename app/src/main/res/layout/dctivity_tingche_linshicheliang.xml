@@ -101,32 +101,28 @@
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="法拉利" />
+                        android:gravity="center" />
 
                     <TextView
                         android:id="@+id/tingchejiaofei_linshi_model_text"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="488" />
+                        android:gravity="center" />
 
                     <TextView
                         android:id="@+id/tingchejiaofei_linshi_license_plate_text"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="沪A8888" />
+                        android:gravity="center" />
 
                     <TextView
                         android:id="@+id/tingchejiaofei_linshi_indatatime2_text"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="18/07/10 17:50" />
+                        android:gravity="center" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -149,7 +145,7 @@
                 android:id="@+id/tingchejiaofei_linshi_day_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="50次"
+                android:text="@string/zhengzaijiazai"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/top_blue"
                 android:textSize="32sp"
@@ -161,7 +157,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:gravity="bottom|right"
-                android:text="停车状态：停车中"
                 android:textColor="@color/top_blue" />
         </LinearLayout>
     </LinearLayout>
@@ -231,7 +226,6 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center|end"
-                android:text="4小时"
                 android:textColor="@color/top_blue" />
 
             <LinearLayout
@@ -252,7 +246,6 @@
                     android:id="@+id/tingchejiaofei_lisnhi_sumfee_text"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="5000"
                     android:textColor="@color/red"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -277,7 +270,6 @@
                     android:id="@+id/tingchejiaofei_lisnhi_fee_text"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="50"
                     android:textColor="@color/red"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -286,7 +278,7 @@
 
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="17dp"
@@ -296,45 +288,44 @@
 
         <Button
             android:id="@+id/linshijiaofei_chongzhiyueka_button"
-            android:layout_width="183dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/personal_yuanjiaojuxingbluebian"
             android:text="@string/chongzhiyueka"
             android:textColor="@color/top_blue"
             android:textSize="20sp" />
 
-        <ImageView
+        <LinearLayout
             android:id="@+id/linshijiaofei_lijijiaofei_button"
-            android:layout_width="183dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:background="@drawable/personal_yuanjiaojuxingblue" />
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/personal_yuanjiaojuxingblue"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tingche_linshicheliang_lijijiaofei_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="53dp"
-            android:text="@string/lijijiaofei"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/tingche_linshicheliang_lijijiaofei_button"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="@string/lijijiaofei"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/yixiaoshihouchongxinjifei"
-            android:textColor="@color/white" />
-    </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="@string/yixiaoshihouchongxinjifei"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
 
 
 </LinearLayout>
