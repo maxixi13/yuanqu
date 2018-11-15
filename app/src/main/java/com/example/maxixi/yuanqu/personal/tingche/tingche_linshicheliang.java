@@ -48,7 +48,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
     private String cid;
     private String uid;
     private AlertDialog dialog;
-    private String yuekapay="150";
+    private String yuekapay="0.01";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +116,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
         weixin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (sumfee.getText().toString().equals("0")){
+                if (fee.getText().toString().equals("0")){
                             Toast.makeText(tingche_linshicheliang.this,"您无需缴费",Toast.LENGTH_SHORT).show();
                 }else {
                     weixinzhifu();
@@ -127,7 +127,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
         zhifubao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (sumfee.getText().toString().equals("0")){
+                if (fee.getText().toString().equals("0")){
                     Toast.makeText(tingche_linshicheliang.this,"您无需缴费",Toast.LENGTH_SHORT).show();
                 }else {
                     zhifubaozhifu();
@@ -233,7 +233,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
             @Override
             public void run() {
                 OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("uid", uid).add("carNo", String.valueOf(license_plate.getText())).add("money", sumfee.getText().toString()).add("paytype", "支付宝").build();
+                FormBody formBody = new FormBody.Builder().add("uid", uid).add("carNo", String.valueOf(license_plate.getText())).add("money", fee.getText().toString()).add("paytype", "支付宝").build();
                 Request request = new Request.Builder().url(getString(R.string.tingchejiaofei_url)).post(formBody).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
@@ -251,7 +251,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    zhifubaolei zhifubaolei = new zhifubaolei(tingche_linshicheliang.this, tingche_linshicheliang.this, sumfee.getText().toString(), "临时缴费", outoder, getString(R.string.tingchejiaofei_url));
+                                    zhifubaolei zhifubaolei = new zhifubaolei(tingche_linshicheliang.this, tingche_linshicheliang.this, fee.getText().toString(), "临时缴费", outoder, getString(R.string.tingchejiaofei_url));
                                     zhifubaolei.payV2(getWindow().getDecorView());
                                 }
                             });
@@ -305,7 +305,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
             @Override
             public void run() {
                 OkHttpClient okHttpClient = new OkHttpClient();
-                FormBody formBody = new FormBody.Builder().add("uid", uid).add("carNo", String.valueOf(license_plate.getText())).add("money", sumfee.getText().toString()).add("paytype", "微信").build();
+                FormBody formBody = new FormBody.Builder().add("uid", uid).add("carNo", String.valueOf(license_plate.getText())).add("money", fee.getText().toString()).add("paytype", "微信").build();
                 Request request = new Request.Builder().url(getString(R.string.tingchejiaofei_url)).post(formBody).build();
                 Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
@@ -321,7 +321,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(responseData);
                             final String outoder = jsonObject.getString("data");
-                            weixinzhifu weixinzhifu = new weixinzhifu(tingche_linshicheliang.this, outoder, sumfee.getText().toString(),getString(R.string.tingchejiaofei_url));
+                            weixinzhifu weixinzhifu = new weixinzhifu(tingche_linshicheliang.this, outoder, fee.getText().toString(),getString(R.string.tingchejiaofei_url));
                             weixinzhifu.tongyixiadan();
                         } catch (JSONException e) {
                             e.printStackTrace();
