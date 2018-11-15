@@ -1,6 +1,7 @@
 package com.example.maxixi.yuanqu.personal.waimaijilu;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import com.example.maxixi.yuanqu.R;
 
 import java.util.List;
+
+import static com.example.maxixi.yuanqu.R.color.blackgray;
 
 public class CaipinfuAdapter extends RecyclerView.Adapter<CaipinfuAdapter.ViewHolder>{
 
@@ -31,6 +34,7 @@ public class CaipinfuAdapter extends RecyclerView.Adapter<CaipinfuAdapter.ViewHo
         TextView ctime;
         RecyclerView recyclerView;
         Button querenbutton;
+        TextView zhuangtaitext;
 
 
         public ViewHolder(View view) {
@@ -39,6 +43,7 @@ public class CaipinfuAdapter extends RecyclerView.Adapter<CaipinfuAdapter.ViewHo
             ctime=(TextView) view.findViewById(R.id.waimaijilu_item_ctime_text);
             recyclerView=(RecyclerView)view.findViewById(R.id.waimaijilu_item_recycler);
             querenbutton=(Button)view.findViewById(R.id.waimaijilu_item_queren_button);
+            zhuangtaitext=(TextView)view.findViewById(R.id.waimaijilu_item_zhuangtai_text);
         }
 
     }
@@ -82,8 +87,24 @@ public class CaipinfuAdapter extends RecyclerView.Adapter<CaipinfuAdapter.ViewHo
             });
         }
 
-        if (caipinfubean.getStatus()==1){
+        if (caipinfubean.getStatus()==-1){
             holder.querenbutton.setVisibility(View.GONE);
+            holder.zhuangtaitext.setText("已取消");
+            holder.zhuangtaitext.setTextColor(context.getColor(R.color.gray));
+        }else if (caipinfubean.getStatus()==0){
+            holder.querenbutton.setVisibility(View.GONE);
+            holder.zhuangtaitext.setText("未支付");
+            holder.zhuangtaitext.setTextColor(context.getColor(R.color.red));
+        }else if (caipinfubean.getStatus()==1){
+            holder.querenbutton.setVisibility(View.GONE);
+            holder.zhuangtaitext.setText("待接单");
+        }else if (caipinfubean.getStatus()==2){
+            holder.zhuangtaitext.setText("配送中");
+        }else if (caipinfubean.getStatus()==3){
+            holder.querenbutton.setBackground(context.getDrawable(R.drawable.personal_yuanjiaojuxingsuosuogray));
+            holder.querenbutton.setText("已完成");
+            holder.zhuangtaitext.setText("已完成");
+            holder.zhuangtaitext.setTextColor(context.getColor(R.color.gray));
         }
 
 

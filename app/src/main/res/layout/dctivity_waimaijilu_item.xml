@@ -64,35 +64,38 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/waimaijilu_item_zhuangtai_text"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="@string/peisongzhong"
                 android:textColor="@color/top_blue"
                 android:textSize="20sp" />
 
-            <Button
-                android:id="@+id/waimaijilu_item_queren_button"
-                android:layout_width="80dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="80dp"
-                android:background="@drawable/personal_yuanjiaojuxingsuosuoblue"
-                android:text="@string/querensongda"
-                android:textColor="@color/white"
-                android:textSize="15sp" />
+            <!--<Button-->
+            <!--android:id="@+id/waimaijilu_item_yiqueren_button"-->
+            <!--android:layout_width="80dp"-->
+            <!--android:layout_height="25dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_marginStart="80dp"-->
+            <!--android:background="@drawable/personal_yuanjiaojuxingsuosuogray"-->
+            <!--android:text="@string/yisongda"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="15sp" />-->
 
-            <Button
-                android:id="@+id/waimaijilu_item_yiqueren_button"
-                android:layout_width="80dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="80dp"
-                android:background="@drawable/personal_yuanjiaojuxingsuosuogray"
-                android:text="@string/yisongda"
-                android:textColor="@color/white"
-                android:textSize="15sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|end">
 
+                <Button
+                    android:id="@+id/waimaijilu_item_queren_button"
+                    android:layout_width="80dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/personal_yuanjiaojuxingsuosuoblue"
+                    android:text="@string/querensongda"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

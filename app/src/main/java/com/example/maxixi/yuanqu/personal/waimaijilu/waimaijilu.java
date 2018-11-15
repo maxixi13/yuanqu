@@ -30,7 +30,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class waimaijilu extends AppCompatActivity {
-    private List<Caipinfubean> caipinfubeanList=new ArrayList<>();
+    private List<Caipinfubean> caipinfubeanList = new ArrayList<>();
     private String uid;
     private RecyclerView recyclerView;
 
@@ -39,8 +39,8 @@ public class waimaijilu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dctivity_waimaijilu);
 
-        SharedPreferences sharedPreferences=getSharedPreferences("userdata",MODE_PRIVATE);
-        uid = sharedPreferences.getString("uid","null");
+        SharedPreferences sharedPreferences = getSharedPreferences("userdata", MODE_PRIVATE);
+        uid = sharedPreferences.getString("uid", "null");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.waimaijilu_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -50,21 +50,21 @@ public class waimaijilu extends AppCompatActivity {
             }
         });
 
-        recyclerView = (RecyclerView)findViewById(R.id.waimaijilu_recycler);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(waimaijilu.this);
+        recyclerView = (RecyclerView) findViewById(R.id.waimaijilu_recycler);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(waimaijilu.this);
         recyclerView.setLayoutManager(layoutManager);
         getjilulist();
 
     }
 
-    private void getjilulist(){
+    private void getjilulist() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                OkHttpClient okHttpClient=new OkHttpClient();
-                FormBody formBody=new FormBody.Builder().add("uid",uid).build();
-                Request request=new Request.Builder().url(getString(R.string.dingdanliebiao_url)).post(formBody).build();
-                Call call=okHttpClient.newCall(request);
+                OkHttpClient okHttpClient = new OkHttpClient();
+                FormBody formBody = new FormBody.Builder().add("uid", uid).build();
+                Request request = new Request.Builder().url(getString(R.string.dingdanliebiao_url)).post(formBody).build();
+                Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
@@ -73,37 +73,34 @@ public class waimaijilu extends AppCompatActivity {
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        String responseData=response.body().string();
+                        String responseData = response.body().string();
                         try {
-                            JSONObject jsonObject=new JSONObject(responseData);
-                            JSONArray jsonArray=jsonObject.getJSONArray("data");
-                            for (int i=0;i<jsonArray.length();++i){
-                                JSONObject jsonObjectcl=jsonArray.getJSONObject(i);
+                            JSONObject jsonObject = new JSONObject(responseData);
+                            JSONArray jsonArray = jsonObject.getJSONArray("data");
+                            for (int i = 0; i < jsonArray.length(); ++i) {
+                                JSONObject jsonObjectcl = jsonArray.getJSONObject(i);
 
-                                JSONArray jsonArraycl=jsonObjectcl.getJSONArray("menu");
-                                List<Caipinbean> caipinbeanList=new ArrayList<>();
-                                for (int j=0;j<jsonArraycl.length();++j){
-                                    JSONObject jsonObjectsz=jsonArraycl.getJSONObject(j);
-                                    Caipinbean caipinbean=new Caipinbean(getString(R.string.waimaishouye_image_url)+jsonObjectsz.getString("food_img"),jsonObjectsz.getString("name"),jsonObjectsz.getString("number"),jsonObjectsz.getString("price"));
+                                JSONArray jsonArraycl = jsonObjectcl.getJSONArray("menu");
+                                List<Caipinbean> caipinbeanList = new ArrayList<>();
+                                for (int j = 0; j < jsonArraycl.length(); ++j) {
+                                    JSONObject jsonObjectsz = jsonArraycl.getJSONObject(j);
+                                    Caipinbean caipinbean = new Caipinbean(getString(R.string.waimaishouye_image_url) + jsonObjectsz.getString("food_img"), jsonObjectsz.getString("name"), jsonObjectsz.getString("number"), jsonObjectsz.getString("price"));
                                     caipinbeanList.add(caipinbean);
                                 }
-                                Caipinfubean caipinfubean=new Caipinfubean(jsonObjectcl.getString("stay_park"),jsonObjectcl.getString("ctime"),jsonObjectcl.getInt("status"),jsonObjectcl.getString("oid"),caipinbeanList);
+                                Caipinfubean caipinfubean = new Caipinfubean(jsonObjectcl.getString("stay_park"), jsonObjectcl.getString("ctime"), jsonObjectcl.getInt("status"), jsonObjectcl.getString("oid"), caipinbeanList);
                                 caipinfubeanList.add(caipinfubean);
                             }
-                            final CaipinfuAdapter caipinfuAdapter=new CaipinfuAdapter(waimaijilu.this,caipinfubeanList);
+                            final CaipinfuAdapter caipinfuAdapter = new CaipinfuAdapter(waimaijilu.this, caipinfubeanList);
                             caipinfuAdapter.setOnItemClickListener(new CaipinfuAdapter.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(View view, int position) {
-                                    if (caipinfubeanList.get(position).getStatus()==1){
-                                        runOnUiThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                Toast.makeText(waimaijilu.this,"已确认",Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
-                                    }else {
-                                        querendongda(caipinfubeanList.get(position).getOid());
-                                    }
+                                    querendongda(caipinfubeanList.get(position).getOid());
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(waimaijilu.this,"已确认",Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                 }
                             });
                             runOnUiThread(new Runnable() {
@@ -126,10 +123,10 @@ public class waimaijilu extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                OkHttpClient okHttpClient=new OkHttpClient();
-                FormBody formBody=new FormBody.Builder().add("oid",oid).build();
-                Request request=new Request.Builder().url(getString(R.string.querenshouhuo_url)).post(formBody).build();
-                Call call=okHttpClient.newCall(request);
+                OkHttpClient okHttpClient = new OkHttpClient();
+                FormBody formBody = new FormBody.Builder().add("oid", oid).build();
+                Request request = new Request.Builder().url(getString(R.string.querenshouhuo_url)).post(formBody).build();
+                Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
@@ -141,7 +138,7 @@ public class waimaijilu extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(waimaijilu.this,"已确认",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(waimaijilu.this, "已确认", Toast.LENGTH_SHORT).show();
                                 caipinfubeanList.clear();
                                 getjilulist();
                             }

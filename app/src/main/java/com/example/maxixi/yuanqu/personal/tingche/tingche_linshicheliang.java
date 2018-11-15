@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.maxixi.yuanqu.R;
@@ -53,24 +54,24 @@ public class tingche_linshicheliang extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dctivity_tingche_linshicheliang);
 
-        Intent intent=getIntent();
+        Intent intent = getIntent();
         cid = intent.getStringExtra("cid");
 
-        SharedPreferences sharedPreferences=getSharedPreferences("userdata",MODE_PRIVATE);
-        uid = sharedPreferences.getString("uid","null");
+        SharedPreferences sharedPreferences = getSharedPreferences("userdata", MODE_PRIVATE);
+        uid = sharedPreferences.getString("uid", "null");
 
         //view
-        cartype = (TextView)findViewById(R.id.tingchejiaofei_linshi_cartype_text);
-        brand = (TextView)findViewById(R.id.tingchejiaofei_linshi_brand_text);
-        model = (TextView)findViewById(R.id.tingchejiaofei_linshi_model_text);
-        license_plate = (TextView)findViewById(R.id.tingchejiaofei_linshi_license_plate_text);
-        day = (TextView)findViewById(R.id.tingchejiaofei_linshi_day_text);
-        status = (TextView)findViewById(R.id.tingchejiaofei_linshi_status_text);
-        indatatime = (TextView)findViewById(R.id.tingchejiaofei_linshi_indatatime_text);
-        time = (TextView)findViewById(R.id.tingchejiaofei_linshi_time_text);
-        sumfee=(TextView)findViewById(R.id.tingchejiaofei_lisnhi_sumfee_text);
-        fee=(TextView)findViewById(R.id.tingchejiaofei_lisnhi_fee_text);
-        indatatime2=(TextView)findViewById(R.id.tingchejiaofei_linshi_indatatime2_text);
+        cartype = (TextView) findViewById(R.id.tingchejiaofei_linshi_cartype_text);
+        brand = (TextView) findViewById(R.id.tingchejiaofei_linshi_brand_text);
+        model = (TextView) findViewById(R.id.tingchejiaofei_linshi_model_text);
+        license_plate = (TextView) findViewById(R.id.tingchejiaofei_linshi_license_plate_text);
+        day = (TextView) findViewById(R.id.tingchejiaofei_linshi_day_text);
+        status = (TextView) findViewById(R.id.tingchejiaofei_linshi_status_text);
+        indatatime = (TextView) findViewById(R.id.tingchejiaofei_linshi_indatatime_text);
+        time = (TextView) findViewById(R.id.tingchejiaofei_linshi_time_text);
+        sumfee = (TextView) findViewById(R.id.tingchejiaofei_lisnhi_sumfee_text);
+        fee = (TextView) findViewById(R.id.tingchejiaofei_lisnhi_fee_text);
+        indatatime2 = (TextView) findViewById(R.id.tingchejiaofei_linshi_indatatime2_text);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.personal_tingchejiaofei_linshi_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -80,7 +81,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
             }
         });
 
-        LinearLayout linshijiaofeibutton=(LinearLayout)findViewById(R.id.linshijiaofei_lijijiaofei_button);
+        LinearLayout linshijiaofeibutton = (LinearLayout) findViewById(R.id.linshijiaofei_lijijiaofei_button);
         linshijiaofeibutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +89,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
             }
         });
 
-        Button yuekachongzhi=(Button)findViewById(R.id.linshijiaofei_chongzhiyueka_button);
+        Button yuekachongzhi = (Button) findViewById(R.id.linshijiaofei_chongzhiyueka_button);
         yuekachongzhi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,14 +115,22 @@ public class tingche_linshicheliang extends AppCompatActivity {
         weixin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                weixinzhifu();
+                if (sumfee.getText().toString().equals("0")){
+                            Toast.makeText(tingche_linshicheliang.this,"您无需缴费",Toast.LENGTH_SHORT).show();
+                }else {
+                    weixinzhifu();
+                }
                 dialog.dismiss();
             }
         });
         zhifubao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                zhifubaozhifu();
+                if (sumfee.getText().toString().equals("0")){
+                    Toast.makeText(tingche_linshicheliang.this,"您无需缴费",Toast.LENGTH_SHORT).show();
+                }else {
+                    zhifubaozhifu();
+                }
                 dialog.dismiss();
             }
         });
@@ -166,22 +175,22 @@ public class tingche_linshicheliang extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                OkHttpClient okHttpClient=new OkHttpClient();
-                FormBody formBody=new FormBody.Builder().add("cid",cid).build();
-                Request request=new Request.Builder().url(getString(R.string.cheliangtingcheshoufeixiangqing_url)).post(formBody).build();
-                Call call=okHttpClient.newCall(request);
+                OkHttpClient okHttpClient = new OkHttpClient();
+                FormBody formBody = new FormBody.Builder().add("cid", cid).build();
+                Request request = new Request.Builder().url(getString(R.string.cheliangtingcheshoufeixiangqing_url)).post(formBody).build();
+                Call call = okHttpClient.newCall(request);
                 call.enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        Log.e("-----","错误"+e);
+                        Log.e("-----", "错误" + e);
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        String responseData=response.body().string();
+                        String responseData = response.body().string();
                         try {
-                            JSONObject jsonObject=new JSONObject(responseData);
-                            final JSONObject jsonObjectcl=jsonObject.getJSONObject("data");
+                            JSONObject jsonObject = new JSONObject(responseData);
+                            final JSONObject jsonObjectcl = jsonObject.getJSONObject("data");
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -191,10 +200,12 @@ public class tingche_linshicheliang extends AppCompatActivity {
                                         model.setText(jsonObjectcl.getString("model"));
                                         license_plate.setText(jsonObjectcl.getString("license_plate"));
                                         day.setText(jsonObjectcl.getString("day"));
-                                        String statusstr= "停车状态："+jsonObjectcl.getString("status");
+                                        String statusstr = "停车状态：" + jsonObjectcl.getString("status");
                                         status.setText(statusstr);
-                                        if (status.getText().toString().contains("停车中")) status.setTextColor(Color.parseColor("#FFF13D46"));
-                                        if (day.getText().toString().contains("0"))day.setTextColor(Color.parseColor("#FFF13D46"));
+                                        if (status.getText().toString().contains("停车中"))
+                                            status.setTextColor(Color.parseColor("#FFF13D46"));
+                                        if (day.getText().toString().contains("0"))
+                                            day.setTextColor(Color.parseColor("#FFF13D46"));
                                         indatatime.setText(jsonObjectcl.getString("InDateTime"));
                                         time.setText(jsonObjectcl.getString("time"));
                                         sumfee.setText(jsonObjectcl.getString("sumfee"));
@@ -234,12 +245,12 @@ public class tingche_linshicheliang extends AppCompatActivity {
                     public void onResponse(Call call, Response response) throws IOException {
                         String responseData = response.body().string();
                         try {
-                            JSONObject jsonObject=new JSONObject(responseData);
-                            final String outoder=jsonObject.getString("data");
+                            JSONObject jsonObject = new JSONObject(responseData);
+                            final String outoder = jsonObject.getString("data");
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    zhifubaolei zhifubaolei = new zhifubaolei(tingche_linshicheliang.this, tingche_linshicheliang.this, sumfee.getText().toString(), "临时缴费",outoder,getString(R.string.tingchejiaofei_url));
+                                    zhifubaolei zhifubaolei = new zhifubaolei(tingche_linshicheliang.this, tingche_linshicheliang.this, sumfee.getText().toString(), "临时缴费", outoder, getString(R.string.tingchejiaofei_url));
                                     zhifubaolei.payV2(getWindow().getDecorView());
                                 }
                             });
@@ -270,12 +281,12 @@ public class tingche_linshicheliang extends AppCompatActivity {
                     public void onResponse(Call call, Response response) throws IOException {
                         String responseData = response.body().string();
                         try {
-                            JSONObject jsonObject=new JSONObject(responseData);
-                            final String outoder=jsonObject.getString("data");
+                            JSONObject jsonObject = new JSONObject(responseData);
+                            final String outoder = jsonObject.getString("data");
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    zhifubaolei zhifubaolei = new zhifubaolei(tingche_linshicheliang.this, tingche_linshicheliang.this, "150", "月卡充值",outoder,getString(R.string.yuekachongzhi_url));
+                                    zhifubaolei zhifubaolei = new zhifubaolei(tingche_linshicheliang.this, tingche_linshicheliang.this, "150", "月卡充值", outoder, getString(R.string.yuekachongzhi_url));
                                     zhifubaolei.payV2(getWindow().getDecorView());
                                 }
                             });
@@ -305,11 +316,11 @@ public class tingche_linshicheliang extends AppCompatActivity {
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         String responseData = response.body().string();
-                        Log.e("success",responseData);
+                        Log.e("success", responseData);
                         try {
-                            JSONObject jsonObject=new JSONObject(responseData);
-                            final String outoder=jsonObject.getString("data");
-                            weixinzhifu weixinzhifu=new weixinzhifu(tingche_linshicheliang.this,outoder, sumfee.getText().toString());
+                            JSONObject jsonObject = new JSONObject(responseData);
+                            final String outoder = jsonObject.getString("data");
+                            weixinzhifu weixinzhifu = new weixinzhifu(tingche_linshicheliang.this, outoder, sumfee.getText().toString());
                             weixinzhifu.tongyixiadan();
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -338,9 +349,9 @@ public class tingche_linshicheliang extends AppCompatActivity {
                     public void onResponse(Call call, Response response) throws IOException {
                         String responseData = response.body().string();
                         try {
-                            JSONObject jsonObject=new JSONObject(responseData);
-                            final String outoder=jsonObject.getString("data");
-                            weixinzhifu weixinzhifu=new weixinzhifu(tingche_linshicheliang.this,outoder,"150");
+                            JSONObject jsonObject = new JSONObject(responseData);
+                            final String outoder = jsonObject.getString("data");
+                            weixinzhifu weixinzhifu = new weixinzhifu(tingche_linshicheliang.this, outoder, "150");
                             weixinzhifu.tongyixiadan();
                         } catch (JSONException e) {
                             e.printStackTrace();
