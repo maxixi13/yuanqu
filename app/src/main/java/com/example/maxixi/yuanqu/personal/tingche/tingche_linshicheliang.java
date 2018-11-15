@@ -48,7 +48,7 @@ public class tingche_linshicheliang extends AppCompatActivity {
     private String cid;
     private String uid;
     private AlertDialog dialog;
-    private String yuekapay="0.01";
+    private String yuekapay="150";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
