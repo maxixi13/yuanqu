@@ -134,7 +134,14 @@ public class tingchejilu extends AppCompatActivity {
                     call.enqueue(new Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
-                            Log.e("----","error"+e);
+                            Log.e("file_upcheliang", String.valueOf(e));
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    dialog.dismiss();
+                                    Toast.makeText(tingchejilu.this,"网络链接失败",Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
 
                         @Override
@@ -170,7 +177,13 @@ public class tingchejilu extends AppCompatActivity {
                 call.enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        Log.e("---", "错误" + e);
+                        Log.e("file_sendtinghce", String.valueOf(e));
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(tingchejilu.this,"网络链接失败",Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
 
                     @Override
