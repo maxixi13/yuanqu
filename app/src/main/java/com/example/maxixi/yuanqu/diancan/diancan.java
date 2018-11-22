@@ -390,67 +390,65 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
             }
         }).start();
     }
-
-    private void initData() {
-        shopCart = new ShopCart();
-        dishMenuList = new ArrayList<>();
-        ArrayList<Dish> dishs1 = new ArrayList<>();
-        dishs1.add(new Dish("面包", 3.0, 10,"2","2"));
-        dishs1.add(new Dish("蛋挞", 1.0, 10, "2","2"));
-        dishs1.add(new Dish("牛奶", 4.0, 10, "2","2"));
-        dishs1.add(new Dish("肠粉", 1.0, 10, "2","2"));
-        dishs1.add(new Dish("绿茶饼", 1.0, 10, "2","2"));
-        dishs1.add(new Dish("花卷", 1.0, 10, "2","2"));
-        dishs1.add(new Dish("包子", 1.0, 10,"2","2"));
-        DishMenu menu1 = new DishMenu("盖浇饭", dishs1);
-
-        ArrayList<Dish> dishs2 = new ArrayList<>();
-        dishs2.add(new Dish("粥", 1.0, 10, "2","2"));
-        dishs2.add(new Dish("炒饭", 1.0, 10, "2","2"));
-        dishs2.add(new Dish("炒米粉", 1.0, 10, "2","2"));
-        dishs2.add(new Dish("炒粿条", 1.0, 10, "2","2"));
-        dishs2.add(new Dish("炒牛河", 1.0, 10, "2","2"));
-        dishs2.add(new Dish("炒菜", 1.0, 10, "2","2"));
-        DishMenu menu2 = new DishMenu("配菜", dishs2);
-
-        ArrayList<Dish> dishs3 = new ArrayList<>();
-        dishs3.add(new Dish("番茄炒蛋", 1.0, 10, "2","2"));
-        dishs3.add(new Dish("牛肉炒羊肉", 1.0, 10,"2","2"));
-        dishs3.add(new Dish("牛排", 1.0, 10, "2","2"));
-        dishs3.add(new Dish("鸡排", 1.0, 10, "2","2"));
-        dishs3.add(new Dish("猪排", 1.0, 10, "2","2"));
-        DishMenu menu3 = new DishMenu("炒菜", dishs3);
-
-        ArrayList<Dish> dishs4 = new ArrayList<>();
-        dishs4.add(new Dish("牛肉面", 1.0, 10, "2","2"));
-        dishs4.add(new Dish("蛋炒饭", 1.0, 10, "2","2"));
-        dishs4.add(new Dish("馄炖", 1.0, 10, "2","2"));
-        dishs4.add(new Dish("水饺", 1.0, 10, "2","2"));
-        dishs4.add(new Dish("馒头", 1.0, 10, "2","2"));
-        dishs4.add(new Dish("包子", 1.0, 10, "2","2"));
-        DishMenu menu4 = new DishMenu("主食", dishs4);
-
-        ArrayList<Dish> dishs5 = new ArrayList<>();
-        dishs5.add(new Dish("可乐", 1.0, 10, "2","2"));
-        dishs5.add(new Dish("雪碧", 1.0, 10, "2","2"));
-        dishs5.add(new Dish("橙汁", 1.0, 10,"2","2"));
-        dishs5.add(new Dish("椰奶", 1.0, 10, "2","2"));
-        dishs5.add(new Dish("啤酒", 1.0, 10, "2","2"));
-        dishs5.add(new Dish("二锅头", 1.0, 10, "2","2"));
-        DishMenu menu5 = new DishMenu("饮料", dishs5);
-
-
-        dishMenuList.add(menu1);
-        dishMenuList.add(menu2);
-        dishMenuList.add(menu3);
-        dishMenuList.add(menu4);
-        dishMenuList.add(menu5);
-
-
-        initAdapter();
-
-
-    }
+//
+//    private void initData() {
+//        shopCart = new ShopCart();
+//        dishMenuList = new ArrayList<>();
+//        ArrayList<Dish> dishs1 = new ArrayList<>();
+//        dishs1.add(new Dish("面包", 3.0, 10,"2","2"));
+//        dishs1.add(new Dish("蛋挞", 1.0, 10, "2","2"));
+//        dishs1.add(new Dish("牛奶", 4.0, 10, "2","2"));
+//        dishs1.add(new Dish("肠粉", 1.0, 10, "2","2"));
+//        dishs1.add(new Dish("绿茶饼", 1.0, 10, "2","2"));
+//        dishs1.add(new Dish("花卷", 1.0, 10, "2","2"));
+//        dishs1.add(new Dish("包子", 1.0, 10,"2","2"));
+//        DishMenu menu1 = new DishMenu("盖浇饭", dishs1);
+//
+//        ArrayList<Dish> dishs2 = new ArrayList<>();
+//        dishs2.add(new Dish("粥", 1.0, 10, "2","2"));
+//        dishs2.add(new Dish("炒饭", 1.0, 10, "2","2"));
+//        dishs2.add(new Dish("炒米粉", 1.0, 10, "2","2"));
+//        dishs2.add(new Dish("炒粿条", 1.0, 10, "2","2"));
+//        dishs2.add(new Dish("炒牛河", 1.0, 10, "2","2"));
+//        dishs2.add(new Dish("炒菜", 1.0, 10, "2","2"));
+//        DishMenu menu2 = new DishMenu("配菜", dishs2);
+//
+//        ArrayList<Dish> dishs3 = new ArrayList<>();
+//        dishs3.add(new Dish("番茄炒蛋", 1.0, 10, "2","2"));
+//        dishs3.add(new Dish("牛肉炒羊肉", 1.0, 10,"2","2"));
+//        dishs3.add(new Dish("牛排", 1.0, 10, "2","2"));
+//        dishs3.add(new Dish("鸡排", 1.0, 10, "2","2"));
+//        dishs3.add(new Dish("猪排", 1.0, 10, "2","2"));
+//        DishMenu menu3 = new DishMenu("炒菜", dishs3);
+//
+//        ArrayList<Dish> dishs4 = new ArrayList<>();
+//        dishs4.add(new Dish("牛肉面", 1.0, 10, "2","2"));
+//        dishs4.add(new Dish("蛋炒饭", 1.0, 10, "2","2"));
+//        dishs4.add(new Dish("馄炖", 1.0, 10, "2","2"));
+//        dishs4.add(new Dish("水饺", 1.0, 10, "2","2"));
+//        dishs4.add(new Dish("馒头", 1.0, 10, "2","2"));
+//        dishs4.add(new Dish("包子", 1.0, 10, "2","2"));
+//        DishMenu menu4 = new DishMenu("主食", dishs4);
+//
+//        ArrayList<Dish> dishs5 = new ArrayList<>();
+//        dishs5.add(new Dish("可乐", 1.0, 10, "2","2"));
+//        dishs5.add(new Dish("雪碧", 1.0, 10, "2","2"));
+//        dishs5.add(new Dish("橙汁", 1.0, 10,"2","2"));
+//        dishs5.add(new Dish("椰奶", 1.0, 10, "2","2"));
+//        dishs5.add(new Dish("啤酒", 1.0, 10, "2","2"));
+//        dishs5.add(new Dish("二锅头", 1.0, 10, "2","2"));
+//        DishMenu menu5 = new DishMenu("饮料", dishs5);
+//
+//
+//        dishMenuList.add(menu1);
+//        dishMenuList.add(menu2);
+//        dishMenuList.add(menu3);
+//        dishMenuList.add(menu4);
+//        dishMenuList.add(menu5);
+//
+//
+//        initAdapter();
+//    }
 
 
 }
