@@ -76,7 +76,7 @@ public class TingchecheliangAdapter extends RecyclerView.Adapter<Tingchecheliang
     }
 
     @Override
-    public void onBindViewHolder(final TingchecheliangAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         Tingchecheliang tingchecheliang = myList.get(position);
         holder.type.setText(tingchecheliang.getType());
         holder.carname.setText(tingchecheliang.getCarname());
