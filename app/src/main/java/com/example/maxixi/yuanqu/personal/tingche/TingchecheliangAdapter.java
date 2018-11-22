@@ -1,6 +1,7 @@
 package com.example.maxixi.yuanqu.personal.tingche;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,6 +15,7 @@ import com.example.maxixi.yuanqu.R;
 import java.util.List;
 
 import static android.support.constraint.Constraints.TAG;
+import static com.example.maxixi.yuanqu.R.color.colorAccent;
 import static com.example.maxixi.yuanqu.R.color.top_blue;
 
 
@@ -32,6 +34,7 @@ public class TingchecheliangAdapter extends RecyclerView.Adapter<Tingchecheliang
 
 
     private List<Tingchecheliang> myList;
+    private Context context;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView type;
@@ -41,6 +44,7 @@ public class TingchecheliangAdapter extends RecyclerView.Adapter<Tingchecheliang
         TextView time;
         TextView state;
         TextView shengyu;
+
 
 
         public ViewHolder(View view) {
@@ -57,8 +61,9 @@ public class TingchecheliangAdapter extends RecyclerView.Adapter<Tingchecheliang
 
     }
 
-    public TingchecheliangAdapter(List<Tingchecheliang> tingcheList) {
-        myList = tingcheList;
+    public TingchecheliangAdapter(List<Tingchecheliang> tingcheList, Context context) {
+        this.myList = tingcheList;
+        this.context=context;
     }
 
     @Override
@@ -79,8 +84,8 @@ public class TingchecheliangAdapter extends RecyclerView.Adapter<Tingchecheliang
         holder.platenum.setText(tingchecheliang.getPlatenum());
 //        holder.time.setText(tingchecheliang.getTime());
         holder.state.setText(tingchecheliang.getState());
-        if (!tingchecheliang.getState().contains("停车中")) holder.state.setTextColor(Color.parseColor("#09affb"));
-        if (tingchecheliang.getTime().contains("0"))holder.time.setTextColor(Color.parseColor("#FFF13D46"));
+        if (tingchecheliang.getState().contains("中")) holder.state.setTextColor(context.getColor(R.color.red));
+        if (tingchecheliang.getTime().contains("0"))holder.time.setTextColor(context.getColor(R.color.red));
 
         String gettimelinshi=tingchecheliang.getTime()+"次";
         String gettimeyueka=tingchecheliang.getTime()+"天";

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/scrollview_cloud"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?android:actionBarSize"
+        android:layout_marginTop="?android:attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/beijingf5f5f5"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/cloud_zhengfu"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginRight="17dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/cloud_zhengfu" />
+
+            <ImageButton
+                android:id="@+id/cloud_jinrong"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginRight="17dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/cloud_jinrong" />
+
+            <ImageButton
+                android:id="@+id/cloud_zuling"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginRight="17dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/cloud_zuling" />
+
+            <ImageButton
+                android:id="@+id/cloud_chuangye"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginRight="17dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/cloud_chuangye" />
+
+            <ImageButton
+                android:id="@+id/cloud_fuwu"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_marginBottom="11dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginRight="17dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/cloud_qiye" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:title="@string/title_cloud"
+        android:titleTextColor="@android:color/white"/>
+
+</android.support.constraint.ConstraintLayout>

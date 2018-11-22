@@ -95,7 +95,7 @@ public class tingche_guanlicheliang extends AppCompatActivity {
                                 Tingchecheliang tingchecheliang = new Tingchecheliang(jsonObjectcl.getString("card"), jsonObjectcl.getString("brand"), jsonObjectcl.getString("model"), jsonObjectcl.getString("license_plate"), jsonObjectcl.getString("day"), "停车状态：" + jsonObjectcl.getString("status"), jsonObjectcl.getString("cid"));
                                 tingchecheliangList.add(tingchecheliang);
                             }
-                            final TingchecheliangAdapter tingchecheliangAdapter = new TingchecheliangAdapter(tingchecheliangList);
+                            final TingchecheliangAdapter tingchecheliangAdapter = new TingchecheliangAdapter(tingchecheliangList,tingche_guanlicheliang.this);
                             tingchecheliangAdapter.setOnItemClickListener(new TingchecheliangAdapter.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(View view, int position) {
