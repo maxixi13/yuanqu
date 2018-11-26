@@ -360,7 +360,7 @@ public class diancan extends AppCompatActivity implements LeftMenuAdapter.onItem
                             ArrayList<Dish> dish = new ArrayList<>();
                             for (int i = 0; i < array.length(); ++i) {
                                 JSONObject jsonObjectchild = array.getJSONObject(i);
-                                dish.add(new Dish(jsonObjectchild.getString("name"), jsonObjectchild.getDouble("price"), jsonObjectchild.getInt("hot"),getString(R.string.waimaishouye_image_url)+jsonObjectchild.getString("food_img"),jsonObjectchild.getString("mid")));
+                                dish.add(new Dish(jsonObjectchild.getString("name"), jsonObjectchild.getDouble("price"),99,getString(R.string.waimaishouye_image_url)+jsonObjectchild.getString("food_img"),jsonObjectchild.getString("mid")));
                             }
                             final DishMenu menu = new DishMenu(key, dish);
                             runOnUiThread(new Runnable() {
