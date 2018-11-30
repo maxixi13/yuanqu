@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="shouye_image_url">http://mizhanzc.com</string>
-    <string name="waimaishouye_image_url">http://mizhanzc.com</string>
-    <string name="touxiang_image_url">http://mizhanzc.com</string>
-    <string name="shouye_url">http://mizhanzc.com/index/index/index1</string>
-    <string name="chuangyefuwu_url">http://mizhanzc.com/index/Consultationdetails/entrepreneurship_list</string>
-    <string name="jinrongfuwu_url">http://mizhanzc.com/index/Consultationdetails/finance_list</string>
-    <string name="qiyefuwu_url">http://mizhanzc.com/index/Consultationdetails/enterprise_list</string>
-    <string name="zhengfuzixun_url">http://mizhanzc.com/index/Consultationdetails/government_list</string>
-    <string name="tianjiawaimaidizhi_url">http://mizhanzc.com/index/Menu/doaddress</string>
-    <string name="waimaishouye_url">http://mizhanzc.com/index/Menu/menu</string>
-    <string name="gerenzhongxinyunfuwu_url">http://mizhanzc.com/index/Consultationdetails/cloud_apply</string>
-    <string name="tianjiatousujianyi_url">http://mizhanzc.com/index/Property/complaint</string>
-    <string name="tousuleixing_url">http://mizhanzc.com/index/Property/complaint_type</string>
-    <string name="tianjiabaoxiu_url">http://mizhanzc.com/index/Property/repair</string>
-    <string name="baoxiuleixing_url">http://mizhanzc.com/index/Property/repair_type</string>
-    <string name="yonghuzhuce_url">http://mizhanzc.com/index/User/register</string>
-    <string name="huoquyanzhengma_url">http://mizhanzc.com/index/user/alidayu</string>
-    <string name="yonghudenglu_url">http://mizhanzc.com/index/User/login</string>
-    <string name="yonghuchakanyunfuwushenqing_url">http://mizhanzc.com/index/Consultationdetails/view_record</string>
-    <string name="zhengfuzhixunxiangqing_url">http://mizhanzc.com/index/consultationdetails/government_details</string>
-    <string name="zhengfuzixunshenqing_url">http://mizhanzc.com/index/consultationdetails/government_apply</string>
-    <string name="jinrongfuwuxiangqing_url">http://mizhanzc.com/index/consultationdetails/finance_details</string>
-    <string name="jinrongfuwushenqing_url">http://mizhanzc.com/index/consultationdetails/finance_apply</string>
-    <string name="chuangyefuwuxiangqing_url">http://mizhanzc.com/index/consultationdetails/entrepreneurship_details</string>
-    <string name="chuangyefuwushenqing_url">http://mizhanzc.com/index/consultationdetails/entrepreneurship_apply</string>
-    <string name="qiyefuwuxiangqing_url">http://mizhanzc.com/index/consultationdetails/enterprise_details</string>
-    <string name="qiyefuwushenqing_url">http://mizhanzc.com/index/consultationdetails/enterprise_apply</string>
-    <string name="zhengfuzixunshenqingjiance_url">http://mizhanzc.com/index/consultationdetails/test_government_apply</string>
-    <string name="jinrongfuwushenqingjiance_url">http://mizhanzc.com/index/consultationdetails/test_finance_apply</string>
-    <string name="chuangyefuwushenqingjiance_yrl">http://mizhanzc.com/index/consultationdetails/test_entrepreneurship_apply</string>
-    <string name="qiyefuwushenqingjiance_url">http://mizhanzc.com/index/consultationdetails/test_enterprise_apply</string>
-    <string name="fanhuizhengfuzixunbiaoti_url">http://mizhanzc.com/index/consultationdetails/government_for</string>
-    <string name="fanhuijinrongfuwubiaoti_url">http://mizhanzc.com/index/consultationdetails/finance_for</string>
-    <string name="fanhuichuangyefuwubiaoti_url">http://mizhanzc.com/index/consultationdetails/entrepreneurship_for</string>
-    <string name="chengweiqiyeyonghu_url">"http://mizhanzc.com/index/User/enter_user"</string>
-    <string name="yanzhengqiyeyonghushifouzhuce_url">http://mizhanzc.com/index/User/register_enter</string>
-    <string name="yonghushangchuantouxiang_url">http://mizhanzc.com/index/User/user_route</string>
-    <string name="yonghugerenxinxi_url">http://mizhanzc.com/index/User/userinfo</string>
-    <string name="yonghutingcheshoufeiliebiao_url">http://mizhanzc.com/index/Car/parking</string>
-    <string name="tianjiacheliang_url">http://mizhanzc.com/index/Car/addcar</string>
-    <string name="cheliangtingcheshoufeixiangqing_url">http://mizhanzc.com/index/Car/card</string>
-    <string name="stingcheshoufeijilu_url">http://mizhanzc.com/index/Car/carding</string>
-    <string name="shanggeyuetingcheshoufeijilu_rul">http://mizhanzc.com/index/Car/last_month</string>
-    <string name="shangshanggeyuetingcheshoufeijilu_rul">http://mizhanzc.com/index/Car/later_month</string>
-    <string name="waimaidizhiguanli_url">http://mizhanzc.com/index/Menu/address</string>
-    <string name="xiugaimorendizhi_url">http://mizhanzc.com/index/Menu/address_status</string>
-    <string name="weixinappid_url">http://mizhanzc.com/index/Wechat/unified_order</string>
-    <string name="weixinappid_queren_url">http://mizhanzc.com/index/Wechat/query_order</string>
-    <string name="diancaishoufei_url">http://mizhanzc.com/index/Menu/order_pay</string>
-    <string name="yuekachongzhi_url">http://mizhanzc.com/index/Car/mcard</string>
-    <string name="tingchejiaofei_url">http://mizhanzc.com/index/Car/park_fee</string>
-    <string name="yuekaxufei_url">http://mizhanzc.com/index/Car/card_renewal</string>
-    <string name="querenshouhuo_url">http://mizhanzc.com/index/Menu/order_complete</string>
-    <string name="diancanshoufei_url">http://mizhanzc.com/index/Menu/order_pay</string>
-    <string name="shengchengdingdan_url">http://mizhanzc.com/index/Menu/doorder</string>
-    <string name="dingdanliebiao_url">http://mizhanzc.com/index/Menu/order_list</string>
-    <string name="baoxiuliebiao_url">http://mizhanzc.com/index/Property/repair_list</string>
-    <string name="baoxiuxiangqing_url">http://mizhanzc.com/index/Property/complaint_details</string>
-    <string name="tousuliebiao_url">http://mizhanzc.com/index/Property/complaint_list</string>
-    <string name="tousuxiangqing_url">http://mizhanzc.com/index/Property/complaint_details</string>
-    <string name="yuanqujieshao_url">http://mizhanzc.com//index/banner/park_introduce</string>
+    <string name="shouye_image_url" translatable="false">http://mizhanzc.com</string>
+    <string name="waimaishouye_image_url" translatable="false">http://mizhanzc.com</string>
+    <string name="touxiang_image_url" translatable="false">http://mizhanzc.com</string>
+    <string name="shouye_url" translatable="false">http://mizhanzc.com/index/index/index1</string>
+    <string name="chuangyefuwu_url" translatable="false">http://mizhanzc.com/index/Consultationdetails/entrepreneurship_list</string>
+    <string name="jinrongfuwu_url" translatable="false">http://mizhanzc.com/index/Consultationdetails/finance_list</string>
+    <string name="qiyefuwu_url" translatable="false">http://mizhanzc.com/index/Consultationdetails/enterprise_list</string>
+    <string name="zhengfuzixun_url" translatable="false">http://mizhanzc.com/index/Consultationdetails/government_list</string>
+    <string name="tianjiawaimaidizhi_url" translatable="false">http://mizhanzc.com/index/Menu/doaddress</string>
+    <string name="waimaishouye_url" translatable="false">http://mizhanzc.com/index/Menu/menu</string>
+    <string name="gerenzhongxinyunfuwu_url" translatable="false">http://mizhanzc.com/index/Consultationdetails/cloud_apply</string>
+    <string name="tianjiatousujianyi_url" translatable="false">http://mizhanzc.com/index/Property/complaint</string>
+    <string name="tousuleixing_url" translatable="false">http://mizhanzc.com/index/Property/complaint_type</string>
+    <string name="tianjiabaoxiu_url" translatable="false">http://mizhanzc.com/index/Property/repair</string>
+    <string name="baoxiuleixing_url" translatable="false">http://mizhanzc.com/index/Property/repair_type</string>
+    <string name="yonghuzhuce_url" translatable="false">http://mizhanzc.com/index/User/register</string>
+    <string name="huoquyanzhengma_url" translatable="false">http://mizhanzc.com/index/user/alidayu</string>
+    <string name="yonghudenglu_url" translatable="false">http://mizhanzc.com/index/User/login</string>
+    <string name="yonghuchakanyunfuwushenqing_url" translatable="false">http://mizhanzc.com/index/Consultationdetails/view_record</string>
+    <string name="zhengfuzhixunxiangqing_url" translatable="false">http://mizhanzc.com/index/consultationdetails/government_details</string>
+    <string name="zhengfuzixunshenqing_url" translatable="false">http://mizhanzc.com/index/consultationdetails/government_apply</string>
+    <string name="jinrongfuwuxiangqing_url" translatable="false">http://mizhanzc.com/index/consultationdetails/finance_details</string>
+    <string name="jinrongfuwushenqing_url" translatable="false">http://mizhanzc.com/index/consultationdetails/finance_apply</string>
+    <string name="chuangyefuwuxiangqing_url" translatable="false">http://mizhanzc.com/index/consultationdetails/entrepreneurship_details</string>
+    <string name="chuangyefuwushenqing_url" translatable="false">http://mizhanzc.com/index/consultationdetails/entrepreneurship_apply</string>
+    <string name="qiyefuwuxiangqing_url" translatable="false">http://mizhanzc.com/index/consultationdetails/enterprise_details</string>
+    <string name="qiyefuwushenqing_url" translatable="false">http://mizhanzc.com/index/consultationdetails/enterprise_apply</string>
+    <string name="zhengfuzixunshenqingjiance_url" translatable="false">http://mizhanzc.com/index/consultationdetails/test_government_apply</string>
+    <string name="jinrongfuwushenqingjiance_url" translatable="false">http://mizhanzc.com/index/consultationdetails/test_finance_apply</string>
+    <string name="chuangyefuwushenqingjiance_yrl" translatable="false">http://mizhanzc.com/index/consultationdetails/test_entrepreneurship_apply</string>
+    <string name="qiyefuwushenqingjiance_url" translatable="false">http://mizhanzc.com/index/consultationdetails/test_enterprise_apply</string>
+    <string name="fanhuizhengfuzixunbiaoti_url" translatable="false">http://mizhanzc.com/index/consultationdetails/government_for</string>
+    <string name="fanhuijinrongfuwubiaoti_url" translatable="false">http://mizhanzc.com/index/consultationdetails/finance_for</string>
+    <string name="fanhuichuangyefuwubiaoti_url" translatable="false">http://mizhanzc.com/index/consultationdetails/entrepreneurship_for</string>
+    <string name="chengweiqiyeyonghu_url" translatable="false">"http://mizhanzc.com/index/User/enter_user"</string>
+    <string name="yanzhengqiyeyonghushifouzhuce_url" translatable="false">http://mizhanzc.com/index/User/register_enter</string>
+    <string name="yonghushangchuantouxiang_url" translatable="false">http://mizhanzc.com/index/User/user_route</string>
+    <string name="yonghugerenxinxi_url" translatable="false">http://mizhanzc.com/index/User/userinfo</string>
+    <string name="yonghutingcheshoufeiliebiao_url" translatable="false">http://mizhanzc.com/index/Car/parking</string>
+    <string name="tianjiacheliang_url" translatable="false">http://mizhanzc.com/index/Car/addcar</string>
+    <string name="cheliangtingcheshoufeixiangqing_url" translatable="false">http://mizhanzc.com/index/Car/card</string>
+    <string name="stingcheshoufeijilu_url" translatable="false">http://mizhanzc.com/index/Car/carding</string>
+    <string name="shanggeyuetingcheshoufeijilu_rul" translatable="false">http://mizhanzc.com/index/Car/last_month</string>
+    <string name="shangshanggeyuetingcheshoufeijilu_rul" translatable="false">http://mizhanzc.com/index/Car/later_month</string>
+    <string name="waimaidizhiguanli_url" translatable="false">http://mizhanzc.com/index/Menu/address</string>
+    <string name="xiugaimorendizhi_url" translatable="false">http://mizhanzc.com/index/Menu/address_status</string>
+    <string name="weixinappid_url" translatable="false">http://mizhanzc.com/index/Wechat/unified_order</string>
+    <string name="weixinappid_queren_url" translatable="false">http://mizhanzc.com/index/Wechat/query_order</string>
+    <string name="diancaishoufei_url" translatable="false">http://mizhanzc.com/index/Menu/order_pay</string>
+    <string name="yuekachongzhi_url" translatable="false">http://mizhanzc.com/index/Car/mcard</string>
+    <string name="tingchejiaofei_url" translatable="false">http://mizhanzc.com/index/Car/park_fee</string>
+    <string name="yuekaxufei_url" translatable="false">http://mizhanzc.com/index/Car/card_renewal</string>
+    <string name="querenshouhuo_url" translatable="false">http://mizhanzc.com/index/Menu/order_complete</string>
+    <string name="diancanshoufei_url" translatable="false">http://mizhanzc.com/index/Menu/order_pay</string>
+    <string name="shengchengdingdan_url" translatable="false">http://mizhanzc.com/index/Menu/doorder</string>
+    <string name="dingdanliebiao_url" translatable="false">http://mizhanzc.com/index/Menu/order_list</string>
+    <string name="baoxiuliebiao_url" translatable="false">http://mizhanzc.com/index/Property/repair_list</string>
+    <string name="baoxiuxiangqing_url" translatable="false">http://mizhanzc.com/index/Property/complaint_details</string>
+    <string name="tousuliebiao_url" translatable="false">http://mizhanzc.com/index/Property/complaint_list</string>
+    <string name="tousuxiangqing_url" translatable="false">http://mizhanzc.com/index/Property/complaint_details</string>
+    <string name="yuanqujieshao_url" translatable="false">http://mizhanzc.com//index/banner/park_introduce</string>
 
 
     //网络地址
-    <string name="mizujie_url">http://www.mzujie.com</string>
-    <string name="baidu_url">https://www.baidu.com</string>
-    <string name="tel">02157885000</string>
+    <string name="mizujie_url" translatable="false">http://www.mzujie.com</string>
+    <string name="baidu_url" translatable="false">https://www.baidu.com</string>
+    <string name="tel" translatable="false">02157885000</string>
 </resources>
